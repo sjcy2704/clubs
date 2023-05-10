@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('23s1-wdc-ug070-world-execute-me:server');
+var debug = require('debug')('back-end:server');
 var http = require('http');
 
 /**

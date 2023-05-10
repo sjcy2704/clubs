@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev:frontend": "vite",
+    "dev:backend": "node ../Back-End/bin/www",
+    "dev": "concurrently 'npm:dev:frontend' 'npm:dev:backend'",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -13,6 +15,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
+    "concurrently": "^8.0.1",
+    "nodemon": "^2.0.22",
     "vite": "^4.2.0"
   }
 }

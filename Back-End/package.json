@@ -1,8 +1,7 @@
 {
-  "name": "23s1-wdc-ug070-world-execute-me",
+  "name": "back-end",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "start": "node ./bin/www"
   },
