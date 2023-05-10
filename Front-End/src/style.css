@@ -14,6 +14,40 @@
   -webkit-text-size-adjust: 100%;
 }
 
+.topDiv {
+  background-color: black;
+  top: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.bottomDiv {
+  background-color: black;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.bottomCorner {
+  border-bottom: 100px solid black;
+  border-left: 100px solid transparent;
+  height: 0;
+  width: 125px;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  float: left;
+}
+
+.topCorner {
+  border-top: 100px solid black;
+  border-right: 100px solid transparent;
+  height: 0;
+  width: 125px;
+  top: 0;
+  position: absolute;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
