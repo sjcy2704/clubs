@@ -1,3 +1,6 @@
+* {
+  margin: 0;
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,30 +16,27 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+/* Reusable */
+.flex {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+/* Rest of Css */
+header {
+  position: sticky;
+}
 
 .topDiv {
   background-color: black;
-  top: 0;
-  position: absolute;
-  width: 100%;
-}
-
-.bottomDiv {
-  background-color: black;
-  bottom: 0;
-  position: absolute;
-  width: 100%;
-}
-
-.bottomCorner {
-  border-bottom: 100px solid black;
-  border-left: 100px solid transparent;
-  height: 0;
-  width: 125px;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  float: left;
+  padding: 20px 50px;
 }
 
 .topCorner {
@@ -46,19 +46,27 @@
   width: 125px;
   top: 0;
   position: absolute;
+  z-index: -1;
 }
 
-.flex {
-  display: flex;
+.bottomDiv {
+  background-color: black;
+  padding: 20px 50px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
-.row {
-  flex-direction: row;
+.bottomCorner {
+  border-bottom: 100px solid black;
+  border-left: 100px solid transparent;
+  width: 125px;
+  height: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
 }
-
-/* .justify-between { */
-/*   justify-content: between; */
-/* } */
 
 ul {
   text-decoration: none;
@@ -74,14 +82,6 @@ a {
 }
 a:hover {
   color: #242424;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
@@ -107,10 +107,6 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-.card {
-  padding: 2em;
 }
 
 @media (prefers-color-scheme: light) {

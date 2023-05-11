@@ -9,9 +9,21 @@ const nav = [
 </script>
 
 <template>
-  <ul class="flex row justify-between">
-    <li v-for="item in nav">
-      <a :href="item.path">{{ item.title }}</a>
-    </li>
-  </ul>
+  <header>
+    <div class="topCorner"></div>
+    <div class="topDiv flex justify-between">
+      <p style="color: white">Club name</p>
+      <ul class="flex row justify-between nav">
+        <li v-for="item in nav">
+          <a :href="item.path">{{ item.title }}</a>
+        </li>
+      </ul>
+    </div>
+  </header>
 </template>
+
+<style scoped>
+.nav {
+  width: 35%;
+}
+</style>
