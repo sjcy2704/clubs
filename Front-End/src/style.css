@@ -50,50 +50,9 @@
 }
 
 /* Rest of Css */
-/* header { */
-/*   position: fixed; */
-/*   margin-bottom: 20px; */
-/*   width: 100%; */
-/* } */
+
 main {
   margin-bottom: 70px;
-}
-
-.topDiv {
-  background-color: black;
-  padding: 20px 100px;
-}
-
-.topCorner {
-  border-top: 80px solid black;
-  border-right: 100px solid transparent;
-  height: 0;
-  width: 125px;
-  top: 0;
-  position: absolute;
-  z-index: -1;
-}
-
-footer {
-  position: relative;
-  width: 100%;
-}
-
-.bottomDiv {
-  background-color: black;
-  padding: 20px 50px;
-  position: relative;
-}
-
-.bottomCorner {
-  border-bottom: 80px solid black;
-  border-left: 100px solid transparent;
-  width: 125px;
-  height: 0;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: -1;
 }
 
 ul {
@@ -113,24 +72,6 @@ a:hover {
 }
 
 @media only screen and (max-width: 550px) {
-  .topDiv {
-    padding: 15px 20px;
-  }
-
-  .topCorner {
-    border-top: 70px solid black;
-    border-right: 50px solid transparent;
-  }
-
-  .bottomDiv {
-    padding: 15px 20px;
-  }
-
-  .bottomCorner {
-    border-left: 50px solid transparent;
-    border-bottom: 70px solid black;
-  }
-
   .sm-col {
     flex-direction: column;
     /* display: none; */

@@ -25,4 +25,31 @@ const navRoutes = [
 .nav {
   width: 20%;
 }
+
+.topDiv {
+  background-color: black;
+  padding: 20px 100px;
+}
+
+.topCorner {
+  box-sizing: content-box;
+  border-top: 80px solid black;
+  border-right: 100px solid transparent;
+  height: 0;
+  width: 125px;
+  top: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+@media only screen and (max-width: 550px) {
+  .topDiv {
+    padding: 15px 20px;
+  }
+
+  .topCorner {
+    border-top: 70px solid black;
+    border-right: 50px solid transparent;
+  }
+}
 </style>
