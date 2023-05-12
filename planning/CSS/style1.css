@@ -6,11 +6,6 @@
     sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  /* color-scheme: light dark; */
-  /* color: rgba(255, 255, 255, 0.87); */
-  /* background-color: #242424; */
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -148,6 +143,7 @@ h1 {
 
 .rvspBlack {
   border: black solid 1px;
+  border-radius: 10px;
   background-color: black;
   width: 290px;
   height: 100px;
@@ -157,6 +153,7 @@ h1 {
 
 .rvspWhite {
   border: black solid 1px;
+  border-radius: 10px;
   width: 290px;
   height: 100px;
   margin-top: 10px;
