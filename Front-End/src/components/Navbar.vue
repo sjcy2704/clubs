@@ -1,11 +1,5 @@
 <script setup>
-const nav = [
-  { title: "Home", path: "/" },
-  { title: "Clubs", path: "/clubs" },
-  { title: "Memberships", path: "#" },
-  { title: "Sign Up", path: "/signup" },
-  { title: "Login", path: "/login" },
-];
+import { routes } from "../routes/index";
 </script>
 
 <template>
@@ -14,8 +8,8 @@ const nav = [
     <div class="topDiv flex justify-between">
       <p style="color: white">Club name</p>
       <ul class="flex row justify-between nav">
-        <li v-for="item in nav">
-          <RouterLink :to="item.path">{{ item.title }}</RouterLink>
+        <li v-for="item in routes">
+          <RouterLink :to="item.path">{{ item.name }}</RouterLink>
         </li>
       </ul>
     </div>

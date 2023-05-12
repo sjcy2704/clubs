@@ -2,19 +2,19 @@ import { createWebHistory, createRouter } from "vue-router";
 
 const Home = () => import("../views/Home.vue");
 const Clubs = () => import("../views/Clubs.vue");
+const Memberships = () => import("../views/Memberships.vue");
 const Login = () => import("../views/Login.vue");
 const SignUp = () => import("../views/SignUp.vue");
 
-const routes = [
-  { path: "/", component: Home },
-  { path: "/clubs", component: Clubs },
-  { path: "/login", component: Login },
-  { path: "/signup", component: SignUp },
+export const routes = [
+  { name: "Home", path: "/", component: Home },
+  { name: "Clubs", path: "/clubs", component: Clubs },
+  { name: "Memberships", path: "/memberships", component: Memberships },
+  { name: "Sign Up", path: "/signup", component: SignUp },
+  { name: "Login", path: "/login", component: Login },
 ];
 
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory(),
   routes,
 });
-
-export default router;
