@@ -1,80 +1,56 @@
 <template>
   <div class="container">
-    <pre style="font-size: 100px">
-Welcome to 
-University name</pre
-    >
+    <div class="title">
+      Welcome to <br />
+      University name
+    </div>
   </div>
 
   <div class="news">
-    <pre style="font-size: 25px">
-News
-
-
-
-
-
-
-
-
-
-
-
-
-    </pre>
+    <h2 class="newsTitle">News</h2>
   </div>
-  <div class="clubs">
-    <pre style="font-size: 25px; text-align: center">
-Log in to see 
- your clubs!
-
-
-
-
-
-
-
-
-
-
-
- 
-  </pre
-    >
-  </div>
-
-  <div class="rvspBlack">
-    <div class="reDiv">
-      <pre style="color: white">
-  Events/RVSP
-  </pre
-      >
+  <div class="clubRelated flex">
+    <div class="clubs">
+      <h2 class="clubTitle">Log in to see your clubs!</h2>
     </div>
-  </div>
+    <div class="eventsCards flex col justify-between align-center">
+      <div class="rvspBlack">
+        <div class="reDiv">
+          <div class="white">Events/RVSP</div>
+        </div>
+      </div>
 
-  <div class="rvspWhite">
-    <div class="reDiv">
-      <pre>
-  Event/RVSP
-  </pre
-      >
-    </div>
-  </div>
+      <div class="rvspWhite">
+        <div class="reDiv">
+          <div>Event/RVSP</div>
+        </div>
+      </div>
 
-  <div class="rvspBlack">
-    <div class="reDiv">
-      <pre style="color: white">
-  Events/RVSP
-  </pre
-      >
+      <div class="rvspBlack">
+        <div class="reDiv">
+          <div class="white">Events/RVSP</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.title {
+  font-size: 100px;
+}
+
+.newsTitle {
+  font-size: 25px;
+}
+
+.clubTitle {
+  font-size: 25px;
+  text-align: center;
+}
+
 .reDiv {
   font-size: 20px;
-  transform: skew(30deg);
 }
 
 .container {
@@ -87,42 +63,47 @@ Log in to see
   border: black 2px solid;
   border-radius: 10px;
   width: 75%;
-  margin: auto;
+  height: 550px;
   padding: 20px;
   box-sizing: border-box;
+}
+
+.clubRelated {
+  width: 75%;
 }
 
 .clubs {
   border: black 2px solid;
   border-radius: 10px;
-  width: 600px;
-  margin-left: 238px;
+  width: 50%;
+  height: 550px;
   margin-top: 10px;
   padding: 20px;
-  float: left;
   box-sizing: content-box;
 }
 
+.eventsCards {
+  align-items: center;
+  width: 50%;
+  padding: 30px 40px;
+}
+
 .rvspBlack {
-  transform: skew(-30deg);
   border: black solid 1px;
+  border-radius: 10px;
   background-color: black;
   width: 290px;
   height: 100px;
-  margin-right: 100px;
   margin-top: 10px;
   padding: 20px;
-  float: right;
 }
 
 .rvspWhite {
-  transform: skew(-30deg);
   border: black solid 1px;
+  border-radius: 10px;
   width: 290px;
   height: 100px;
-  margin-right: 100px;
   margin-top: 10px;
   padding: 20px;
-  float: right;
 }
 </style>

@@ -2,7 +2,8 @@
   margin: 0;
 }
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Mono", Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -16,7 +17,12 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
 /* Reusable */
+.white {
+  color: white;
+}
+
 .flex {
   display: flex;
 }
@@ -25,28 +31,39 @@
   flex-direction: row;
 }
 
+.col {
+  flex-direction: column;
+}
+
 .justify-between {
   justify-content: space-between;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
 /* Rest of Css */
-header {
-  position: fixed;
-  margin-bottom: 20px;
-  width: 100%;
+/* header { */
+/*   position: fixed; */
+/*   margin-bottom: 20px; */
+/*   width: 100%; */
+/* } */
+main {
+  margin-bottom: 70px;
 }
 
 .topDiv {
   background-color: black;
-  padding: 20px 50px;
-}
-
-main {
-  height: 110vh;
+  padding: 20px 100px;
 }
 
 .topCorner {
-  border-top: 100px solid black;
+  border-top: 80px solid black;
   border-right: 100px solid transparent;
   height: 0;
   width: 125px;
@@ -56,17 +73,18 @@ main {
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
+  position: relative;
   width: 100%;
 }
+
 .bottomDiv {
   background-color: black;
   padding: 20px 50px;
+  position: relative;
 }
 
 .bottomCorner {
-  border-bottom: 100px solid black;
+  border-bottom: 80px solid black;
   border-left: 100px solid transparent;
   width: 125px;
   height: 0;
@@ -92,84 +110,6 @@ a:hover {
   color: #242424;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-
-.reDiv {
-  font-size: 20px;
-  transform: skew(30deg);
-}
-
-.container {
-  text-align: center;
-  padding: 50px;
-}
-
-.news {
-  text-align: left;
-  border: black 2px solid;
-  border-radius: 10px;
-  width: 75%;
-  margin: auto;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.clubs {
-  border: black 2px solid;
-  border-radius: 10px;
-  width: 600px;
-  margin-left: 238px;
-  margin-top: 10px;
-  padding: 20px;
-  float: left;
-  box-sizing: content-box;
-}
-
-.rvspBlack {
-  transform: skew(-30deg);
-  border: black solid 1px;
-  background-color: black;
-  width: 290px;
-  height: 100px;
-  margin-right: 100px;
-  margin-top: 10px;
-  padding: 20px;
-  float: right;
-}
-
-.rvspWhite {
-  transform: skew(-30deg);
-  border: black solid 1px;
-  width: 290px;
-  height: 100px;
-  margin-right: 100px;
-  margin-top: 10px;
-  padding: 20px;
-  float: right;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
 @media only screen and (max-width: 450px) {
   .topDiv {
     padding: 15px 20px;
@@ -182,13 +122,12 @@ button:focus-visible {
   .bottomDiv {
     padding: 15px 20px;
   }
+
   .bottomCorner {
     border-left: 50px solid transparent;
     border-bottom: 70px solid black;
   }
-  footer {
-    position: relative;
-  }
+
   .sm-col {
     flex-direction: column;
     display: none;
