@@ -43,6 +43,9 @@
 }
 
 /* Rest of Css */
+.nav {
+  width: 20%;
+}
 main {
   margin-bottom: 70px;
 }
