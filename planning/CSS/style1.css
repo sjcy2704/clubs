@@ -30,10 +30,6 @@
   }
   
   /* Rest of Css */
-  header {
-    position: sticky;
-    margin-bottom: 20px;
-  }
   
   .topDiv {
     background-color: black;
@@ -53,9 +49,7 @@
   .bottomDiv {
     background-color: black;
     padding: 20px 50px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    position: relative;
   }
   
   .bottomCorner {
