@@ -6,7 +6,7 @@ import Footer from "./components/Footer.vue";
 <template>
   <Navbar />
   <main>
-    <p style="font-size: 100px">Can you guys turn this into the jpeg lol</p>
+    <RouterView />
   </main>
   <Footer />
 </template>

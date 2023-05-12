@@ -15,7 +15,7 @@ const nav = [
       <p style="color: white">Club name</p>
       <ul class="flex row justify-between nav">
         <li v-for="item in nav">
-          <a :href="item.path">{{ item.title }}</a>
+          <RouterLink :to="item.path">{{ item.title }}</RouterLink>
         </li>
       </ul>
     </div>
