@@ -7,7 +7,7 @@ import { routes } from "../routes/index";
     <div class="topCorner"></div>
     <div class="topDiv flex justify-between">
       <p style="color: white">Club name</p>
-      <ul class="flex row justify-between nav">
+      <ul class="flex row sm-col justify-between nav">
         <li v-for="item in routes">
           <RouterLink :to="item.path">{{ item.name }}</RouterLink>
         </li>

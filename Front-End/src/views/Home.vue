@@ -1,7 +1,9 @@
 <template>
   <div class="container">
-    <pre style="font-size: 100px">Welcome to 
-University name</pre>
+    <pre style="font-size: 100px">
+Welcome to 
+University name</pre
+    >
   </div>
 
   <div class="news">
@@ -21,8 +23,8 @@ News
 
     </pre>
   </div>
-<div class="clubs">
-  <pre style="font-size: 25px; text-align: center;">
+  <div class="clubs">
+    <pre style="font-size: 25px; text-align: center">
 Log in to see 
  your clubs!
 
@@ -37,35 +39,39 @@ Log in to see
 
 
  
-  </pre>
-</div>
-
-<div class="rvspBlack">
-  <div class="reDiv"><pre style="color: white">
-  Events/RVSP
-  </pre>
+  </pre
+    >
   </div>
-</div>
 
-<div class="rvspWhite">
-  <div class="reDiv"><pre>
+  <div class="rvspBlack">
+    <div class="reDiv">
+      <pre style="color: white">
+  Events/RVSP
+  </pre
+      >
+    </div>
+  </div>
+
+  <div class="rvspWhite">
+    <div class="reDiv">
+      <pre>
   Event/RVSP
-  </pre>
+  </pre
+      >
+    </div>
   </div>
-</div>
 
-<div class="rvspBlack">
-  <div class="reDiv"><pre style="color: white">
+  <div class="rvspBlack">
+    <div class="reDiv">
+      <pre style="color: white">
   Events/RVSP
-  </pre>
+  </pre
+      >
+    </div>
   </div>
-</div>
-
 </template>
 
-
 <style scoped>
-
 .reDiv {
   font-size: 20px;
   transform: skew(30deg);

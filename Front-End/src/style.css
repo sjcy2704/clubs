@@ -31,13 +31,18 @@
 
 /* Rest of Css */
 header {
-  position: sticky;
+  position: fixed;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .topDiv {
   background-color: black;
   padding: 20px 50px;
+}
+
+main {
+  height: 110vh;
 }
 
 .topCorner {
@@ -50,12 +55,14 @@ header {
   z-index: -1;
 }
 
-.bottomDiv {
-  background-color: black;
-  padding: 20px 50px;
+footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+.bottomDiv {
+  background-color: black;
+  padding: 20px 50px;
 }
 
 .bottomCorner {
@@ -89,7 +96,6 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -162,6 +168,31 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media only screen and (max-width: 450px) {
+  .topDiv {
+    padding: 15px 20px;
+  }
+  .topCorner {
+    border-top: 70px solid black;
+    border-right: 50px solid transparent;
+  }
+
+  .bottomDiv {
+    padding: 15px 20px;
+  }
+  .bottomCorner {
+    border-left: 50px solid transparent;
+    border-bottom: 70px solid black;
+  }
+  footer {
+    position: relative;
+  }
+  .sm-col {
+    flex-direction: column;
+    display: none;
+  }
 }
 
 @media (prefers-color-scheme: light) {
