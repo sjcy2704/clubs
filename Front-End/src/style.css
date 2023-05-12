@@ -1,5 +1,7 @@
 * {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 :root {
   font-family: "Roboto Mono", Inter, system-ui, Avenir, Helvetica, Arial,
@@ -110,10 +112,11 @@ a:hover {
   color: #242424;
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 550px) {
   .topDiv {
     padding: 15px 20px;
   }
+
   .topCorner {
     border-top: 70px solid black;
     border-right: 50px solid transparent;
@@ -130,7 +133,10 @@ a:hover {
 
   .sm-col {
     flex-direction: column;
-    display: none;
+    /* display: none; */
+  }
+  .sm-w100 {
+    width: 100%;
   }
 }
 

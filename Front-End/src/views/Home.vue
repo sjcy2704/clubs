@@ -1,34 +1,34 @@
 <template>
   <div class="container">
     <div class="title">
-      Welcome to <br />
-      University name
+      <span>Welcome to</span>
+      Uni Clubs
     </div>
   </div>
 
   <div class="news">
-    <h2 class="newsTitle">News</h2>
+    <h2 class="subTitle">News</h2>
   </div>
-  <div class="clubRelated flex">
+  <div class="clubRelated flex sm-col">
     <div class="clubs">
-      <h2 class="clubTitle">Log in to see your clubs!</h2>
+      <h2 class="subTitle">Clubs</h2>
     </div>
     <div class="eventsCards flex col justify-between align-center">
       <div class="rvspBlack">
         <div class="reDiv">
-          <div class="white">Events/RVSP</div>
+          <div class="white">Events</div>
         </div>
       </div>
 
       <div class="rvspWhite">
         <div class="reDiv">
-          <div>Event/RVSP</div>
+          <div>Event</div>
         </div>
       </div>
 
       <div class="rvspBlack">
         <div class="reDiv">
-          <div class="white">Events/RVSP</div>
+          <div class="white">Events</div>
         </div>
       </div>
     </div>
@@ -36,17 +36,16 @@
 </template>
 
 <style scoped>
+.title span {
+  font-size: 0.7em;
+  display: block;
+}
 .title {
-  font-size: 100px;
+  font-size: 4em;
 }
 
-.newsTitle {
+.subTitle {
   font-size: 25px;
-}
-
-.clubTitle {
-  font-size: 25px;
-  text-align: center;
 }
 
 .reDiv {
@@ -59,13 +58,11 @@
 }
 
 .news {
-  text-align: left;
   border: black 2px solid;
   border-radius: 10px;
   width: 75%;
   height: 550px;
   padding: 20px;
-  box-sizing: border-box;
 }
 
 .clubRelated {
@@ -79,7 +76,6 @@
   height: 550px;
   margin-top: 10px;
   padding: 20px;
-  box-sizing: content-box;
 }
 
 .eventsCards {
@@ -89,21 +85,38 @@
 }
 
 .rvspBlack {
-  border: black solid 1px;
+  border: black solid 2px;
   border-radius: 10px;
   background-color: black;
   width: 290px;
-  height: 100px;
+  height: 140px;
   margin-top: 10px;
   padding: 20px;
 }
 
 .rvspWhite {
-  border: black solid 1px;
+  border: black solid 2px;
   border-radius: 10px;
   width: 290px;
-  height: 100px;
+  height: 140px;
   margin-top: 10px;
   padding: 20px;
+}
+
+@media only screen and (max-width: 550px) {
+  .clubs {
+    width: 100%;
+  }
+  .eventsCards {
+    width: 100%;
+    padding: 0;
+  }
+
+  .rvspBlack {
+    width: 100%;
+  }
+  .rvspWhite {
+    width: 100%;
+  }
 }
 </style>

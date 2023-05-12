@@ -1,5 +1,10 @@
 <script setup>
-import { routes } from "../routes/index";
+const navRoutes = [
+  { name: "Home", path: "/" },
+  { name: "Clubs", path: "/clubs" },
+  { name: "Sign Up", path: "/signup" },
+  { name: "Login", path: "/login" },
+];
 </script>
 
 <template>
@@ -8,7 +13,7 @@ import { routes } from "../routes/index";
     <div class="topDiv flex justify-between">
       <p style="color: white">Club name</p>
       <ul class="flex row sm-col justify-between nav">
-        <li v-for="item in routes">
+        <li v-for="item in navRoutes">
           <RouterLink :to="item.path">{{ item.name }}</RouterLink>
         </li>
       </ul>
@@ -18,6 +23,6 @@ import { routes } from "../routes/index";
 
 <style scoped>
 .nav {
-  width: 35%;
+  width: 20%;
 }
 </style>
