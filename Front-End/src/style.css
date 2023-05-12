@@ -105,6 +105,60 @@ button:hover {
   border-color: #646cff;
 }
 
+.reDiv {
+  font-size: 20px;
+  transform: skew(30deg);
+}
+
+.container {
+  text-align: center;
+  padding: 50px;
+}
+
+.news {
+  text-align: left;
+  border: black 2px solid;
+  border-radius: 10px;
+  width: 75%;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.clubs {
+  border: black 2px solid;
+  border-radius: 10px;
+  width: 600px;
+  margin-left: 238px;
+  margin-top: 10px;
+  padding: 20px;
+  float: left;
+  box-sizing: content-box;
+}
+
+.rvspBlack {
+  transform: skew(-30deg);
+  border: black solid 1px;
+  background-color: black;
+  width: 290px;
+  height: 100px;
+  margin-right: 100px;
+  margin-top: 10px;
+  padding: 20px;
+  float: right;
+}
+
+.rvspWhite {
+  transform: skew(-30deg);
+  border: black solid 1px;
+  width: 290px;
+  height: 100px;
+  margin-right: 100px;
+  margin-top: 10px;
+  padding: 20px;
+  float: right;
+}
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
