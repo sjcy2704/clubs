@@ -56,11 +56,9 @@
     border-bottom: 100px solid black;
     border-left: 100px solid transparent;
     width: 125px;
-    height: 0;
-    position: absolute;
+    position: relative;
     bottom: 0;
     right: 0;
-    z-index: -1;
   }
   
   ul {
@@ -123,10 +121,10 @@
     border: black 2px solid;
     border-radius: 10px;
     width: 600px;
+    height: 800px;
     margin-left: 238px;
     margin-top: 10px;
     padding: 20px;
-    float: left;
     box-sizing: content-box;
   }
   
@@ -134,23 +132,23 @@
     transform: skew(-30deg);
     border: black solid 1px;
     background-color: black;
-    width: 290px;
-    height: 100px;
-    margin-right: 100px;
+    width: 500px;
+    height: 200px;
+    margin-left: 100px;
     margin-top: 10px;
     padding: 20px;
-    float: right;
+    display: block;
   }
   
   .rvspWhite {
     transform: skew(-30deg);
     border: black solid 1px;
-    width: 290px;
-    height: 100px;
-    margin-right: 100px;
+    width: 500px;
+    height: 200px;
+    margin-left: 100px;
     margin-top: 10px;
     padding: 20px;
-    float: right;
+    display: block;
   }
   
   button:focus,
