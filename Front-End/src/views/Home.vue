@@ -1,36 +1,34 @@
 <template>
-  <div class="container center">
+  <div class="container">
     <div class="title">
       <span>Welcome to</span>
       Uni Clubs
     </div>
   </div>
 
-  <div class="news center">
+  <div class="news">
     <h2 class="subTitle">News</h2>
   </div>
-  <div class="clubRelated center">
-    <div class="flex">
-      <div class="clubs">
-        <h2 class="subTitle">Clubs</h2>
+  <div class="clubRelated flex sm-col">
+    <div class="clubs">
+      <h2 class="subTitle">Clubs</h2>
+    </div>
+    <div class="eventsCards flex col justify-between align-center">
+      <div class="rvspBlack">
+        <div class="reDiv">
+          <div class="white">Events</div>
+        </div>
       </div>
-      <div class="eventsCards flex col justify-between align-center">
-        <div class="rvspBlack">
-          <div class="reDiv">
-            <div class="white">Events</div>
-          </div>
-        </div>
 
-        <div class="rvspWhite">
-          <div class="reDiv">
-            <div>Event</div>
-          </div>
+      <div class="rvspWhite">
+        <div class="reDiv">
+          <div>Event</div>
         </div>
+      </div>
 
-        <div class="rvspBlack">
-          <div class="reDiv">
-            <div class="white">Events</div>
-          </div>
+      <div class="rvspBlack">
+        <div class="reDiv">
+          <div class="white">Events</div>
         </div>
       </div>
     </div>
