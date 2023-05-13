@@ -29,6 +29,19 @@
   display: flex;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-start {
+  align-items: flex-start;
+}
+
+.center {
+  display: inline-block;
+  margin: 0 auto;
+}
+
 .row {
   flex-direction: row;
 }
@@ -53,6 +66,7 @@
 
 main {
   margin-bottom: 70px;
+  text-align: center;
 }
 
 ul {
@@ -69,6 +83,11 @@ a {
 }
 a:hover {
   color: #242424;
+}
+
+.container {
+  text-align: center;
+  padding: 50px;
 }
 
 @media only screen and (max-width: 550px) {
