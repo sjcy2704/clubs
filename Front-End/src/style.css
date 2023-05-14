@@ -89,13 +89,15 @@ a {
   color: white;
   text-decoration: inherit;
 }
-a:hover {
-  color: #242424;
-}
 
 .container {
   text-align: center;
   padding: 50px;
+}
+
+.lsgForm {
+  max-width: 380px;
+  text-align: left;
 }
 
 @media only screen and (max-width: 550px) {

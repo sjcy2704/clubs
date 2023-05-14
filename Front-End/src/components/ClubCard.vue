@@ -26,6 +26,7 @@ defineProps({
 .clubContainer {
   width: 250px;
 }
+
 .clubDetails {
   width: 55%;
 }
@@ -53,6 +54,7 @@ defineProps({
 
 .clubIcon {
   border: black 2px solid;
+  border-radius: 10px;
   width: 250px;
   height: 250px;
 }

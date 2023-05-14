@@ -14,7 +14,7 @@ clubStore.getClubs();
   <div class="cardsContainer flex flex-wrap">
     <ClubCard
       v-for="club in clubStore.clubs"
-      :name="club.name"
+      :name="club.short_name"
       :category="club.category"
       :members="club.members"
     />

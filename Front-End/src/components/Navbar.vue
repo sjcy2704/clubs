@@ -1,20 +1,31 @@
 <script setup>
 const navRoutes = [
-  { name: "Home", path: "/" },
-  { name: "Clubs", path: "/clubs" },
-  { name: "Sign Up", path: "/signup" },
-  { name: "Login", path: "/login" },
+  { name: "Home", path: "/", class: "home" },
+  { name: "Clubs", path: "/clubs", class: "clubs" },
+  { name: "Sign Up", path: "/signup", class: "signup" },
+  { name: "Login", path: "/login", class: "login" },
 ];
+// import { useRoute } from "vue-router";
+// import { watch, computed } from "vue";
+
+// const route = useRoute();
+// let currRoute = "";
+
+// watch(route, (newRoute) => {
+//   currRoute = newRoute.path;
+// });
 </script>
 
 <template>
   <header>
     <div class="topCorner"></div>
     <div class="topDiv flex justify-between">
-      <p style="color: white">Club name</p>
+      <RouterLink to="/" class="logo white">World-Execute-Me</RouterLink>
       <ul class="flex row sm-col justify-between nav">
-        <li v-for="item in navRoutes">
-          <RouterLink :to="item.path">{{ item.name }}</RouterLink>
+        <li class="navItem" v-for="item in navRoutes">
+          <RouterLink class="navLink" :to="item.path">{{
+            item.name
+          }}</RouterLink>
         </li>
       </ul>
     </div>
@@ -22,8 +33,29 @@ const navRoutes = [
 </template>
 
 <style scoped>
+.logo {
+  font-weight: 500;
+}
+
+.navItem {
+  width: 80px;
+  padding: 1px 2px;
+  text-align: center;
+  border-radius: 8px;
+  color: white;
+}
+
+.navItem:hover {
+  color: black;
+  background-color: white;
+}
+
+.navLink {
+  color: inherit;
+}
+
 .nav {
-  width: 20%;
+  width: 23%;
 }
 
 .topDiv {
@@ -36,7 +68,7 @@ const navRoutes = [
   border-top: 80px solid black;
   border-right: 100px solid transparent;
   height: 0;
-  width: 125px;
+  width: 320px;
   top: 0;
   position: absolute;
   z-index: -1;
