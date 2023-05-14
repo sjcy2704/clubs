@@ -23,6 +23,39 @@ router.get("/", function (req, res, next) {
   });
 });
 
+router.post("/", function (req, res, next) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const { clubID, userID } = req.body;
+
+    const query = "INSERT INTO ClubMembers (clubID, userID) VALUES (?, ?)";
+
+    connection.query(query, [clubID, userID], function (err) {
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+
+      res.send("Member added!");
+    });
+
+    const update = "UPDATE Clubs SET members = members + 1 WHERE clubID = ?";
+
+    connection.query(update, clubID, function (err) {
+      connection.release();
+
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+    });
+  });
+});
+
 router.get("/:id", function (req, res, next) {
   req.pool.getConnection(function (err, connection) {
     if (err) {
