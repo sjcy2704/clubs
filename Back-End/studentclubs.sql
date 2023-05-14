@@ -79,6 +79,7 @@ CREATE TABLE
     `name` varchar(50) NOT NULL,
     `category` varchar(50) NOT NULL,
     `manager` int unsigned NOT NULL,
+    `members` int unsigned DEFAULT 0,
     PRIMARY KEY (`clubID`),
     UNIQUE KEY `manager` (`manager`),
     CONSTRAINT `Clubs_ibfk_1` FOREIGN KEY (`manager`) REFERENCES `Users` (`userID`)
@@ -176,7 +177,8 @@ CREATE TABLE
     `phone` varchar(15) DEFAULT NULL,
     `userType` varchar(10) DEFAULT 'user',
     PRIMARY KEY (`userID`),
-    UNIQUE KEY `username` (`username`)
+    UNIQUE KEY `username` (`username`),
+    UNIQUE KEY `email` (`email`)
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 /*!40101 SET character_set_client = @saved_cs_client */;

@@ -10,30 +10,41 @@ defineProps({
   <div class="clubContainer">
     <div class="clubIcon"></div>
     <div class="details flex justify-between">
-      <div>
+      <div class="clubDetails">
         <p class="name">{{ name }}</p>
         <p class="category">{{ category }}</p>
       </div>
-      <div class="membersDiv flex align-center">
-        <p class="members">{{ members }}</p>
-        <font-awesome-icon icon="fa-solid fa-users" />
+      <div class="members flex">
+        <p class="membersCount">{{ members }}</p>
+        <font-awesome-icon class="memberIcon" icon="fa-solid fa-users" />
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.clubContainer {
+  width: 250px;
+}
+.clubDetails {
+  width: 55%;
+}
+
 .details {
   text-align: left;
   padding: 10px 0;
 }
 
-.membersDiv {
+.members {
   margin-right: 10px;
 }
 
-.members {
+.membersCount {
   margin-right: 5px;
+}
+
+.memberIcon {
+  padding-top: 5px;
 }
 
 .category {
