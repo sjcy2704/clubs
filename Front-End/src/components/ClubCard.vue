@@ -2,7 +2,7 @@
 defineProps({
   name: String,
   category: String,
-  members: String,
+  members: Number,
 });
 </script>
 

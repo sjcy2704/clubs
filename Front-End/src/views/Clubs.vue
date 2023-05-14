@@ -1,13 +1,11 @@
 <script setup>
 import ClubCard from "../components/ClubCard.vue";
-import { onMounted } from "vue";
+import { onBeforeMount, onMounted, warn } from "vue";
 import { useClubStore } from "../stores/ClubStore";
 
 const clubStore = useClubStore();
 
 clubStore.getClubs();
-
-// const req = new xml();
 </script>
 
 <template>
@@ -20,7 +18,6 @@ clubStore.getClubs();
       v-for="club in clubStore.clubs"
       :name="club.name"
       :category="club.category"
-      members="10"
     />
   </div>
 </template>

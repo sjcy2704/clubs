@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="bottomDiv">
-      <p>Twitter</p>
+      <p class="white">Twitter</p>
     </div>
 
     <div class="bottomCorner"></div>
