@@ -1,17 +1,9 @@
 <script setup>
-import { onBeforeUpdate, onUpdated } from "vue";
 import ClubCard from "../components/ClubCard.vue";
 import { useClubStore } from "../stores/ClubStore";
 
 const clubStore = useClubStore();
 clubStore.getClubs();
-
-// onUpdated(() => {});
-
-// onBeforeUpdate(() => {
-//   clubStore.getMembersCount();
-//   clubStore.mapMembersCount();
-// });
 </script>
 
 <template>
