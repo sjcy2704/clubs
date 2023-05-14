@@ -20,6 +20,13 @@
   -webkit-text-size-adjust: 100%;
 }
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
 /* Reusable */
 .white {
   color: white;
@@ -67,6 +74,7 @@
 main {
   margin-bottom: 70px;
   text-align: center;
+  height: 100%;
 }
 
 ul {

@@ -9,28 +9,13 @@
   <div class="news">
     <h2 class="subTitle">News</h2>
   </div>
+
   <div class="clubRelated flex sm-col">
     <div class="clubs">
       <h2 class="subTitle">Clubs</h2>
     </div>
-    <div class="eventsCards flex col justify-between align-center">
-      <div class="rvspBlack">
-        <div class="reDiv">
-          <div class="white">Events</div>
-        </div>
-      </div>
-
-      <div class="rvspWhite">
-        <div class="reDiv">
-          <div>Event</div>
-        </div>
-      </div>
-
-      <div class="rvspBlack">
-        <div class="reDiv">
-          <div class="white">Events</div>
-        </div>
-      </div>
+    <div class="clubs">
+      <h2 class="subTitle">Events</h2>
     </div>
   </div>
 </template>
@@ -56,12 +41,14 @@
   border: black 2px solid;
   border-radius: 10px;
   width: 75%;
-  height: 550px;
+  height: 600px;
   padding: 20px;
 }
 
 .clubRelated {
   width: 75%;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .clubs {
@@ -69,7 +56,6 @@
   border-radius: 10px;
   width: 50%;
   height: 550px;
-  margin-top: 10px;
   padding: 20px;
 }
 

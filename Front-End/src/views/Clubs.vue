@@ -1,13 +1,27 @@
 <script setup>
 import ClubCard from "../components/ClubCard.vue";
+import { onMounted } from "vue";
+import { useClubStore } from "../stores/ClubStore";
+
+const clubStore = useClubStore();
+
+clubStore.getClubs();
+
+// const req = new xml();
 </script>
+
 <template>
   <div class="container">
     <div class="title">Clubs</div>
   </div>
 
   <div class="cardsContainer flex flex-wrap">
-    <ClubCard v-for="n in 20" name="Club" category="Fitness" members="10" />
+    <ClubCard
+      v-for="club in clubStore.clubs"
+      :name="club.name"
+      :category="club.category"
+      members="10"
+    />
   </div>
 </template>
 
