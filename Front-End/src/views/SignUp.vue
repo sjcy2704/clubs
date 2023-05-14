@@ -1,6 +1,6 @@
 <script setup>
 import FormInput from "../components/FormInput.vue";
-import { reactive } from "vue";
+import { reactive, watch, watchEffect } from "vue";
 
 const signup = reactive({
   firstName: "",
@@ -9,6 +9,24 @@ const signup = reactive({
   password: "",
   email: "",
   phone: "",
+});
+
+let errs = [];
+
+function validateEmail(email) {
+  if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+    errs["email"] = "Invalid email address";
+  } else {
+    errs["email"] = "";
+  }
+
+  if (email === "") {
+    errs["email"] = "";
+  }
+}
+
+watchEffect(() => {
+  validateEmail(signup.email);
 });
 </script>
 
@@ -23,9 +41,14 @@ const signup = reactive({
       <FormInput label="Family Name:" v-model="signup.familyName" />
     </div>
     <FormInput label="Username:" v-model="signup.username" />
-    <FormInput label="Password:" v-model="signup.password" />
+    <FormInput
+      label="Password:"
+      passwordField="true"
+      v-model="signup.password"
+    />
     <FormInput label="Email:" v-model="signup.email" />
     <FormInput label="Phone Number:" v-model="signup.phone" />
+    <span class="errors" v-if="errs">{{ errs.email }}</span>
     <button type="button">Sign Up</button>
     <div class="options">
       <a href="#">Sign Up as a Manager</a>

@@ -1,13 +1,20 @@
+<script setup>
+import FormInput from "../components/FormInput.vue";
+import { reactive } from "vue";
+
+const login = reactive({
+  username: "",
+  password: "",
+});
+</script>
+
 <template>
   <div class="container">
     <p class="title">login</p>
   </div>
 
-  <div class="loginform">
-    <p>username:</p>
-    <input type="text" />
-    <p>password:</p>
-    <input type="text" />
+  <div class="lsgForm">
+    <FormInput label="Username" v-model="login.username" />
   </div>
 </template>
 
