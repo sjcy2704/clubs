@@ -10,11 +10,16 @@ const login = reactive({
 
 <template>
   <div class="container">
-    <p class="title">login</p>
+    <p class="title">Login</p>
   </div>
 
   <div class="lsgForm">
     <FormInput label="Username" v-model="login.username" />
+    <FormInput label="Password" v-model="login.password" />
+    <button type="button">Login</button>
+    <div class="options">
+      <RouterLink to="/signup">Sign Up</RouterLink>
+    </div>
   </div>
 </template>
 
