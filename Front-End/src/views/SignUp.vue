@@ -1,7 +1,7 @@
 <script setup>
 import FormInput from "../components/FormInput.vue";
 import { useRouter } from "vue-router";
-import { reactive, ref, watch, watchEffect } from "vue";
+import { reactive } from "vue";
 import validateAll from "../helpers/validators";
 
 const signup = reactive({

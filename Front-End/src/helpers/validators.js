@@ -43,18 +43,22 @@ function validateAll(signup) {
     errs.push("Name cannot be empty");
   }
 
-  const req = new XMLHttpRequest();
+  if (signup.username.length === 0) {
+    errs.push("Username cannot be empty");
+  } else {
+    const req = new XMLHttpRequest();
 
-  req.onreadystatechange = () => {
-    if (req.readyState === 4 && req.status === 200) {
-      if (JSON.parse(req.responseText).length > 0) {
-        errs.push("Username already exists");
+    req.onreadystatechange = () => {
+      if (req.readyState === 4 && req.status === 200) {
+        if (JSON.parse(req.responseText).length > 0) {
+          errs.push("Username already exists");
+        }
       }
-    }
-  };
+    };
 
-  req.open("GET", "http://localhost:8080/users/" + signup.username, false);
-  req.send();
+    req.open("GET", "http://localhost:8080/users/" + signup.username, false);
+    req.send();
+  }
 
   errs.push(...validatePassword(signup.password, signup.confirm));
   errs.push(validateEmail(signup.email));
