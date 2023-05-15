@@ -68,6 +68,9 @@ function createUser() {
       <div v-if="!signup.manager">
         <a href="#" @click="signup.manager = true">Sign Up as a Manager</a>
       </div>
+      <div v-else>
+        <a href="#" @click="signup.manager = false">Sign Up as a User</a>
+      </div>
       <RouterLink to="/login">Login</RouterLink>
     </div>
   </div>
