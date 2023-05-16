@@ -70,6 +70,7 @@ function initPassport(passport, db) {
       const query = "SELECT * FROM Users WHERE userID = ?";
 
       connection.query(query, userID, function (err, rows, fields) {
+        connection.release();
         if (err) throw err;
 
         const {
