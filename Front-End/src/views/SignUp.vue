@@ -24,15 +24,17 @@ const errs = reactive({
 function createUser() {
   errs.errors = [];
   errs.errors.push(...validateAll(signup));
-  if (!errs.errors) {
+
+  if (errs.errors.length === 0) {
     const req = new XMLHttpRequest();
     req.onreadystatechange = () => {
       if (req.readyState == 4 && req.status == 200) {
         router.push("/");
       }
     };
-    req.open("POST", "http://localhost:8080/users");
-    req.send(signup);
+    req.open("POST", "http://localhost:8080/users/signup");
+    req.setRequestHeader("Content-Type", "application/json");
+    req.send(JSON.stringify(signup));
   }
 }
 </script>

@@ -1,14 +1,3 @@
-function validateEmail(email) {
-  let msg;
-  if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-    msg = "Invalid email address";
-  } else {
-    msg = "";
-  }
-
-  return msg;
-}
-
 function validatePassword(password, confirm) {
   if (password !== confirm) {
     return ["Passwords does not match"];
@@ -61,7 +50,10 @@ function validateAll(signup) {
   }
 
   errs.push(...validatePassword(signup.password, signup.confirm));
-  errs.push(validateEmail(signup.email));
+
+  if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(signup.email)) {
+    errs.push("Invalid email address");
+  }
 
   return errs;
 }

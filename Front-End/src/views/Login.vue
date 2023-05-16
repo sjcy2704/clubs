@@ -14,7 +14,7 @@ const login = reactive({
   </div>
 
   <div class="lsgForm">
-    <FormInput label="Username or Email" v-model="login.username" />
+    <FormInput label="Username" v-model="login.username" />
     <FormInput label="Password" v-model="login.password" />
     <button type="button">Login</button>
     <div class="options">
