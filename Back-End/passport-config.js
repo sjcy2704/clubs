@@ -1,51 +1,49 @@
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 
-function initPassport(passport) {
-  const authenticateUser = async (req, username, password, done) => {
-    let user;
-    req.pool.getConnection(function (err, connection) {
+function initPassport(passport, db) {
+  const authenticateUser = (username, password, done) => {
+    db.getConnection(function (err, connection) {
       if (err) {
         throw err;
       }
 
       const query = "SELECT * FROM Users WHERE username = ?";
-      connection.query(query, username, function (err, rows, fields) {
+      connection.query(query, username, async function (err, rows, fields) {
         connection.release();
         if (err) {
           throw err;
         }
 
-        user = rows[0];
-      });
-    });
-
-    if (user == null) {
-      return done(null, false, { message: "No user with that username" });
-    }
-
-    if (await bcrypt.compare(password, user.password)) {
-      return done(null, user);
-    } else {
-      return done(null, false, { message: "Incorrect password" });
-    }
-  };
-
-  const getUserID = (id) => {
-    req.pool.getConnection(function (err, connection) {
-      if (err) {
-        throw err;
-      }
-
-      const query = "SELECT * FROM Users WHERE userID = ?";
-
-      connection.query(query, id, function (err, rows, field) {
-        connection.release();
-        if (err) {
-          throw err;
+        if (rows.length === 0) {
+          return done(null, false, { message: "No user with that username" });
         }
 
-        return rows[0];
+        const {
+          userID,
+          firstName,
+          familyName,
+          username,
+          email,
+          phone,
+          userType,
+        } = rows[0];
+
+        const user = {
+          userID,
+          firstName,
+          familyName,
+          username,
+          email,
+          phone,
+          userType,
+        };
+
+        if (await bcrypt.compare(password, rows[0].password)) {
+          return done(null, user);
+        } else {
+          return done(null, false, { message: "Incorrect password" });
+        }
       });
     });
   };
@@ -55,16 +53,48 @@ function initPassport(passport) {
       {
         usernameField: "username",
         passwordField: "password",
-        passReqToCallback: true,
       },
       authenticateUser
     )
   );
+
   passport.serializeUser((user, done) => {
     done(null, user.userID);
   });
+
   passport.deserializeUser((userID, done) => {
-    return done(null, getUserID(userID));
+    console.log(userID);
+    db.getConnection(function (err, connection) {
+      if (err) throw err;
+
+      const query = "SELECT * FROM Users WHERE userID = ?";
+
+      connection.query(query, userID, function (err, rows, fields) {
+        if (err) throw err;
+
+        const {
+          userID,
+          firstName,
+          familyName,
+          username,
+          email,
+          phone,
+          userType,
+        } = rows[0];
+
+        const user = {
+          userID,
+          firstName,
+          familyName,
+          username,
+          email,
+          phone,
+          userType,
+        };
+
+        return done(null, user);
+      });
+    });
   });
 }
 

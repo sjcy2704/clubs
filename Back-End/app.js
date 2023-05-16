@@ -7,14 +7,14 @@ var bcrypt = require("bcrypt");
 var passport = require("passport");
 var initPassport = require("./passport-config");
 
-initPassport(passport);
-
 var mysql = require("mysql");
 
 var dbConnectionPool = mysql.createPool({
   host: "localhost",
   database: "studentclubs",
 });
+
+initPassport(passport, dbConnectionPool);
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");

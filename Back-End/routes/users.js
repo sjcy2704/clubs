@@ -1,20 +1,35 @@
 var express = require("express");
 var router = express.Router();
 var bcrypt = require("bcrypt");
+var passport = require("passport");
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
-  res.redirect("/");
-});
-
-router.post("/signup", function (req, res, next) {
-  req.pool.getConnection(async function (err, connection) {
+  req.pool.getConnection(function (err, connection) {
     if (err) {
       res.sendStatus(500);
       return;
     }
 
-    console.log(req.body);
+    const query = "SELECT * FROM Users";
+
+    connection.query(query, function (err, rows, fields) {
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+
+      res.json(rows);
+    });
+  });
+});
+
+router.post("/signup", function (req, res, next) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
 
     const { firstName, familyName, username, password, email, phone, manager } =
       req.body;
@@ -41,6 +56,21 @@ router.post("/signup", function (req, res, next) {
         }
       );
     });
+  });
+});
+
+router.post("/login", passport.authenticate("local"), function (req, res) {
+  console.log(req.session);
+  res.send("Login successful");
+});
+
+router.delete("/logout", function (req, res, next) {
+  req.logout(function (err) {
+    if (err) {
+      throw err;
+    }
+
+    res.send("Logged Out Successfully");
   });
 });
 
