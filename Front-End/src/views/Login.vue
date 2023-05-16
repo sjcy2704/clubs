@@ -19,7 +19,7 @@ function logUser() {
     }
   };
 
-  req.open("POST", "http://localhost:8080/users/login");
+  req.open("POST", "http://localhost:8080/login");
   req.setRequestHeader("Content-Type", "application/json");
   req.withCredentials = true;
   req.send(JSON.stringify(login));

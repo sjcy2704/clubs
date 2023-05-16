@@ -32,7 +32,7 @@ function createUser() {
         router.push("/");
       }
     };
-    req.open("POST", "http://localhost:8080/users/signup");
+    req.open("POST", "http://localhost:8080/signup");
     req.setRequestHeader("Content-Type", "application/json");
     req.send(JSON.stringify(signup));
   }
