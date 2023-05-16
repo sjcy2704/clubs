@@ -170,7 +170,7 @@ CREATE TABLE
   `Users` (
     `userID` int unsigned NOT NULL AUTO_INCREMENT,
     `username` varchar(25) NOT NULL,
-    `password` varchar(50) NOT NULL,
+    `password` varchar(70) NOT NULL,
     `email` varchar(63) NOT NULL,
     `firstName` varchar(63) NOT NULL,
     `familyName` varchar(63) NOT NULL,

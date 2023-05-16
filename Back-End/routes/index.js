@@ -4,9 +4,13 @@ var router = express.Router();
 var bcrypt = require("bcrypt");
 var passport = require("passport");
 
+router.get("/session", function (req, res) {
+  console.log(req.session.id);
+});
+
 router.post("/login", passport.authenticate("local"), function (req, res) {
-  console.log(req.session);
-  res.send("Login successful");
+  res.cookie("sessionid", req.session.id);
+  res.json("logged success");
 });
 
 router.post("/logout", function (req, res, next) {
@@ -15,7 +19,8 @@ router.post("/logout", function (req, res, next) {
       throw err;
     }
 
-    res.send("Logged Out Successfully");
+    res.clearCookie("sessionid");
+    return res.send("Logged Out Successfully");
   });
 });
 
@@ -23,6 +28,7 @@ router.post("/signup", function (req, res, next) {
   req.pool.getConnection(function (err, connection) {
     if (err) {
       res.sendStatus(500);
+      throw err;
       return;
     }
 
@@ -44,10 +50,10 @@ router.post("/signup", function (req, res, next) {
         function (err) {
           if (err) {
             res.sendStatus(500);
+            throw err;
             return;
           }
-
-          res.send("User registered successfully!");
+          res.status(201).send("User registered successfully!");
         }
       );
     });

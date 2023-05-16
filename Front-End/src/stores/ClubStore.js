@@ -3,7 +3,6 @@ import { defineStore } from "pinia";
 export const useClubStore = defineStore("ClubStore", {
   state: () => ({
     clubs: [],
-    members: [],
   }),
   actions: {
     getClubs() {

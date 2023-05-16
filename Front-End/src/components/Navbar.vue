@@ -1,19 +1,24 @@
 <script setup>
+import { inject, computed } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { logout } from "../helpers/auth";
+const $cookies = inject("$cookies");
+const router = useRouter();
+const route = useRoute();
+
 const navRoutes = [
   { name: "Home", path: "/", class: "home" },
   { name: "Clubs", path: "/clubs", class: "clubs" },
+];
+
+const logInRoutes = [
   { name: "Sign Up", path: "/signup", class: "signup" },
   { name: "Login", path: "/login", class: "login" },
 ];
-// import { useRoute } from "vue-router";
-// import { watch, computed } from "vue";
 
-// const route = useRoute();
-// let currRoute = "";
-
-// watch(route, (newRoute) => {
-//   currRoute = newRoute.path;
-// });
+const loggedIn = computed(() => {
+  return $cookies.get("sessionid");
+});
 </script>
 
 <template>
@@ -27,6 +32,14 @@ const navRoutes = [
             item.name
           }}</RouterLink>
         </li>
+        <li v-if="!loggedIn" class="navItem" v-for="item in logInRoutes">
+          <RouterLink class="navLink" :to="item.path">{{
+            item.name
+          }}</RouterLink>
+        </li>
+        <li v-if="loggedIn" class="navItem">
+          <a class="navLink" href="#" @click="logout(router, route)">Logout</a>
+        </li>
       </ul>
     </div>
   </header>
@@ -35,6 +48,10 @@ const navRoutes = [
 <style scoped>
 .logo {
   font-weight: 500;
+}
+
+.nav {
+  width: 23%;
 }
 
 .navItem {
@@ -52,10 +69,6 @@ const navRoutes = [
 
 .navLink {
   color: inherit;
-}
-
-.nav {
-  width: 23%;
 }
 
 .topDiv {

@@ -3,6 +3,7 @@ import { router } from "./routes/index";
 import { createPinia } from "pinia";
 import "./style.css";
 import App from "./App.vue";
+import VueCookies from "vue-cookies";
 
 const pinia = createPinia();
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -14,5 +15,6 @@ library.add(faUsers);
 createApp(App)
   .use(pinia)
   .use(router)
+  .use(VueCookies)
   .component("font-awesome-icon", FontAwesomeIcon)
   .mount("#app");

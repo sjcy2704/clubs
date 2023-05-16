@@ -4,7 +4,7 @@ import Footer from "./components/Footer.vue";
 </script>
 
 <template>
-  <Navbar />
+  <Navbar :key="$route.fullPath" />
   <main class="flex col align-center">
     <RouterView />
   </main>

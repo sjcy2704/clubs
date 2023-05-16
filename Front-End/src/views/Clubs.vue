@@ -3,7 +3,9 @@ import ClubCard from "../components/ClubCard.vue";
 import { useClubStore } from "../stores/ClubStore";
 
 const clubStore = useClubStore();
-clubStore.getClubs();
+if (clubStore.clubs.length < 1) {
+  clubStore.getClubs();
+}
 </script>
 
 <template>

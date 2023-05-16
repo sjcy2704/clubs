@@ -59,17 +59,16 @@ function initPassport(passport, db) {
   );
 
   passport.serializeUser((user, done) => {
-    done(null, user.userID);
+    done(null, user);
   });
 
-  passport.deserializeUser((userID, done) => {
-    console.log(userID);
+  passport.deserializeUser((user, done) => {
     db.getConnection(function (err, connection) {
       if (err) throw err;
 
       const query = "SELECT * FROM Users WHERE userID = ?";
 
-      connection.query(query, userID, function (err, rows, fields) {
+      connection.query(query, user.userID, function (err, rows, fields) {
         connection.release();
         if (err) throw err;
 

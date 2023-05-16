@@ -3,6 +3,7 @@ import FormInput from "../components/FormInput.vue";
 import { useRouter } from "vue-router";
 import { reactive } from "vue";
 import validateAll from "../helpers/validators";
+import { signUpUser, logUser } from "../helpers/auth";
 
 const signup = reactive({
   firstName: "",
@@ -26,15 +27,7 @@ function createUser() {
   errs.errors.push(...validateAll(signup));
 
   if (errs.errors.length === 0) {
-    const req = new XMLHttpRequest();
-    req.onreadystatechange = () => {
-      if (req.readyState == 4 && req.status == 200) {
-        router.push("/");
-      }
-    };
-    req.open("POST", "http://localhost:8080/signup");
-    req.setRequestHeader("Content-Type", "application/json");
-    req.send(JSON.stringify(signup));
+    signedUp = signUpUser(signup, router);
   }
 }
 </script>
