@@ -22,14 +22,14 @@ if ($cookies.get("sessionid")) {
     <p class="title">Login</p>
   </div>
 
-  <div class="lsgForm">
+  <form class="lsgForm" v-on:submit.prevent="logUser(login, router)">
     <FormInput label="Username" v-model="login.username" />
-    <FormInput label="Password" v-model="login.password" />
-    <button type="button" @click="logUser(login, router)">Login</button>
+    <FormInput label="Password" v-model="login.password" passwordField="true" />
+    <button type="submit">Login</button>
     <div class="options">
       <RouterLink to="/signup">Sign Up</RouterLink>
     </div>
-  </div>
+  </form>
 </template>
 
 <style scoped>

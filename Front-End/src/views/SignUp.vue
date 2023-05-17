@@ -3,7 +3,7 @@ import FormInput from "../components/FormInput.vue";
 import { useRouter } from "vue-router";
 import { reactive } from "vue";
 import validateAll from "../helpers/validators";
-import { signUpUser, logUser } from "../helpers/auth";
+import { signUpUser } from "../helpers/auth";
 
 const signup = reactive({
   firstName: "",
@@ -27,7 +27,7 @@ function createUser() {
   errs.errors.push(...validateAll(signup));
 
   if (errs.errors.length === 0) {
-    signedUp = signUpUser(signup, router);
+    signUpUser(signup, router);
   }
 }
 </script>
@@ -37,7 +37,7 @@ function createUser() {
     <p class="title">Sign Up</p>
   </div>
 
-  <div class="lsgForm">
+  <form class="lsgForm" v-on:submit.prevent="createUser">
     <div class="flex justify-between name sm-col">
       <FormInput label="First Name" v-model="signup.firstName" />
       <FormInput label="Family Name" v-model="signup.familyName" />
@@ -58,7 +58,7 @@ function createUser() {
     <span class="errors" v-if="errs.errors" v-for="err in errs.errors">{{
       err
     }}</span>
-    <button @click="createUser" type="button">Sign Up</button>
+    <button type="submit">Sign Up</button>
     <div class="options">
       <div v-if="!signup.manager">
         <a href="#" @click="signup.manager = true">Sign Up as a Manager</a>
@@ -68,7 +68,7 @@ function createUser() {
       </div>
       <RouterLink to="/login">Login</RouterLink>
     </div>
-  </div>
+  </form>
 </template>
 
 <style scoped>
