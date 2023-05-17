@@ -28,7 +28,7 @@
 	},
 
 	// Force AMD64 architecture
-	"runArgs": ["--platform=linux/amd64" ],
+	"runArgs": ["--platform=linux/amd64"],
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	"remoteUser": "root",

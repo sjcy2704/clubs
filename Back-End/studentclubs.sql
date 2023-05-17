@@ -77,6 +77,7 @@ CREATE TABLE
   `Clubs` (
     `clubID` int unsigned NOT NULL AUTO_INCREMENT,
     `name` varchar(50) NOT NULL,
+    `short_name` varchar(20) NOT NULL,
     `category` varchar(50) NOT NULL,
     `manager` int unsigned NOT NULL,
     `members` int unsigned DEFAULT 0,

@@ -12,116 +12,76 @@ INSERT INTO
 VALUES
   (
     'admin',
-    'admin',
+    '$2a$10$EapMP7QBfQxsJtraAY8lT.BZLXIpC2VlOEN6YGNFu3CzTtfOPnHvi',
     'admin@admin.com',
     'admin',
     'system',
     'admin'
-  );
-
-INSERT INTO
-  Users (
-    username,
-    password,
-    email,
-    firstName,
-    familyName,
-    userType
-  )
-VALUES
+  ),
   (
     'manager1',
-    'manager',
+    '$2a$10$wLViudQdkOrjouRaeCQuy.gT.e5TNdcRtk2absHgvNGGCpkgMN8PW',
     'manager@clubs.com',
     'Juan',
     'Diaz',
     'manager'
-  );
-
-INSERT INTO
-  Users (
-    username,
-    password,
-    email,
-    firstName,
-    familyName,
-    userType
-  )
-VALUES
+  ),
   (
     'manager2',
-    'manager',
+    '$2a$10$kLT/ZlDELezE7R6kv4I0oe2nySil158GL6hsaC./Pdjg59zrpbfny',
     'manager2@clubs.com',
     'Duan',
     'Jonson',
     'manager'
-  );
-
-INSERT INTO
-  Users (
-    username,
-    password,
-    email,
-    firstName,
-    familyName,
-    userType
-  )
-VALUES
+  ),
   (
     'manager3',
-    'manager',
+    '$2a$10$dNkyOBFy1xtcpH.3xd8LEuSoJ8dHohvpLIwrybPrReK7ACwKSZGAK',
     'manager3@clubs.com',
     'Jose',
     'Andorra',
     'manager'
-  );
-
-INSERT INTO
-  Users (username, password, email, firstName, familyName)
-VALUES
+  ),
   (
     'user1',
-    'user',
+    '$2a$10$tGrdFPRKUzpRwabT48ApNuMYrmcpAGO47nFeCvjdlLw7BsX3y7meK',
     'user@user.com',
     'Sarah',
-    'Swain'
+    'Swain',
+    'user'
   );
 
 INSERT INTO
-  Clubs (name, category, manager)
+  Clubs (short_name, name, category, manager)
 VALUES
-  ('Adelaide Uni Volleyball Club', 'Sports', 1);
-
-INSERT INTO
-  Clubs (name, category, manager)
-VALUES
-  ('Engineering Club', 'Engineering', 2);
-
-INSERT INTO
-  Clubs (name, category, manager)
-VALUES
-  ('Med Society', 'Health', 3);
-
-INSERT INTO
-  Clubs (name, category, manager)
-VALUES
-  ('CS Club', 'Computer Science', 4);
+  (
+    'AUVC',
+    'Adelaide Uni Volleyball Club',
+    'Sports',
+    1
+  ),
+  ('ENG Club', 'Engineering Club', 'Engineering', 2),
+  ('Med Society', 'Medical Society', 'Health', 3),
+  (
+    'CS Club',
+    'Computer Science Club',
+    'Computer Science',
+    4
+  );
 
 INSERT INTO
   ClubMembers (clubID, userID)
 VALUES
-  (1, 1);
+  (1, 1),
+  (2, 2),
+  (1, 3),
+  (2, 3);
 
 UPDATE Clubs
 SET
   members = members + 1
 WHERE
   clubID = 1;
-
-INSERT INTO
-  ClubMembers (clubID, userID)
-VALUES
-  (2, 2);
 
 UPDATE Clubs
 SET
@@ -129,21 +89,11 @@ SET
 WHERE
   clubID = 2;
 
-INSERT INTO
-  ClubMembers (clubID, userID)
-VALUES
-  (1, 3);
-
 UPDATE Clubs
 SET
   members = members + 1
 WHERE
   clubID = 1;
-
-INSERT INTO
-  ClubMembers (clubID, userID)
-VALUES
-  (2, 3);
 
 UPDATE Clubs
 SET
