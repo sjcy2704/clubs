@@ -1,10 +1,7 @@
 <script setup>
-import { inject, computed } from "vue";
-import { useRouter, useRoute } from "vue-router";
-import { logout } from "../helpers/auth";
-const $cookies = inject("$cookies");
-const router = useRouter();
-const route = useRoute();
+import { computed } from "vue";
+import Profile from "./Profile.vue";
+import authenticate from "../helpers/authenticate";
 
 const navRoutes = [
   { name: "Home", path: "/", class: "home" },
@@ -17,7 +14,9 @@ const logInRoutes = [
 ];
 
 const loggedIn = computed(() => {
-  return $cookies.get("sessionid");
+  const auth = authenticate();
+
+  return auth === "true";
 });
 </script>
 
@@ -38,7 +37,7 @@ const loggedIn = computed(() => {
           }}</RouterLink>
         </li>
         <li v-if="loggedIn" class="navItem">
-          <a class="navLink" href="#" @click="logout(router, route)">Logout</a>
+          <Profile />
         </li>
       </ul>
     </div>

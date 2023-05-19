@@ -4,13 +4,13 @@ var router = express.Router();
 var bcrypt = require("bcrypt");
 var passport = require("passport");
 
-router.get("/session", function (req, res) {
-  console.log(req.session.id);
+router.get("/authenticate", function (req, res) {
+  res.send(req.isAuthenticated());
 });
 
 router.post("/login", passport.authenticate("local"), function (req, res) {
   res.cookie("sessionid", req.session.id);
-  res.json("logged success");
+  res.send("logged success");
 });
 
 router.post("/logout", function (req, res, next) {

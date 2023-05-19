@@ -10,7 +10,6 @@ export const useClubStore = defineStore("ClubStore", {
 
       request.onreadystatechange = () => {
         if (request.readyState == 4 && request.status === 200) {
-          console.log(JSON.parse(request.responseText));
           this.clubs = JSON.parse(request.responseText);
         }
       };

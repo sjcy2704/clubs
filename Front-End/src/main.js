@@ -8,9 +8,9 @@ import VueCookies from "vue-cookies";
 const pinia = createPinia();
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faUsers, faUser } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faUsers);
+library.add(faUsers, faUser);
 
 createApp(App)
   .use(pinia)
