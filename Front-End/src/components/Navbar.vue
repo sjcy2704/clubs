@@ -2,6 +2,7 @@
 import { computed } from "vue";
 import Profile from "./Profile.vue";
 import authenticate from "../helpers/authenticate";
+import { useUserStore } from "../stores/userStore";
 
 const navRoutes = [
   { name: "Home", path: "/", class: "home" },
@@ -13,8 +14,12 @@ const logInRoutes = [
   { name: "Login", path: "/login", class: "login" },
 ];
 
+const userStore = useUserStore();
 const loggedIn = computed(() => {
   const auth = authenticate();
+  if (auth === "true" && Object.keys(userStore.user).length === 0) {
+    userStore.getUser();
+  }
 
   return auth === "true";
 });

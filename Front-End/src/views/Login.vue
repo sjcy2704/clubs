@@ -3,6 +3,8 @@ import { useRouter } from "vue-router";
 import FormInput from "../components/FormInput.vue";
 import { reactive, inject } from "vue";
 import { logUser } from "../helpers/auth";
+import { useUserStore } from "../stores/userStore";
+const userStore = useUserStore();
 
 const login = reactive({
   username: "",
@@ -22,7 +24,7 @@ if ($cookies.get("sessionid")) {
     <p class="title">Login</p>
   </div>
 
-  <form class="lsgForm" v-on:submit.prevent="logUser(login, router)">
+  <form class="lsgForm" v-on:submit.prevent="logUser(login, router, userStore)">
     <FormInput label="Username" v-model="login.username" />
     <FormInput label="Password" v-model="login.password" passwordField="true" />
     <button type="submit">Login</button>

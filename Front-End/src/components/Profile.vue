@@ -1,24 +1,30 @@
 <script setup>
 import { useRouter, useRoute } from "vue-router";
 import { logout } from "../helpers/auth";
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useUserStore } from "../stores/userStore";
 
 const router = useRouter();
 const route = useRoute();
 
 let show = ref(true);
+
+const userStore = useUserStore();
 </script>
+
 <template>
   <div class="dropdown">
     <div class="profile">
-      <a class="name" href="#">Jose</a>
+      <a class="name" href="#">{{ userStore.username }}</a>
       <font-awesome-icon icon="fa-solid fa-user" />
     </div>
     <div v-if="show" class="dropdownContent">
       <div class="flex col">
-        <a class="navLink" href="#" @click="logout(router, route)">Profile</a>
-        <a class="navLink" href="#" @click="logout(router, route)">Settings</a>
-        <a class="navLink" href="#" @click="logout(router, route)">Logout</a>
+        <a class="navLink" href="#">Profile</a>
+        <a class="navLink" href="#">Settings</a>
+        <a class="navLink" href="#" @click="logout(router, route, userStore)"
+          >Logout</a
+        >
       </div>
     </div>
   </div>

@@ -1,11 +1,19 @@
 <script setup>
 import ClubCard from "../components/ClubCard.vue";
-import { useClubStore } from "../stores/ClubStore";
+import { ref } from "vue";
 
-const clubStore = useClubStore();
-if (clubStore.clubs.length < 1) {
-  clubStore.getClubs();
+let clubs = ref([]);
+
+async function getClubs() {
+  const res = await fetch("http://localhost:8080/clubs", {
+    method: "GET",
+    credentials: "include",
+  });
+  await res.json().then((json) => {
+    clubs.value = json;
+  });
 }
+getClubs();
 </script>
 
 <template>
@@ -15,7 +23,7 @@ if (clubStore.clubs.length < 1) {
 
   <div class="cardsContainer flex flex-wrap">
     <ClubCard
-      v-for="club in clubStore.clubs"
+      v-for="club in clubs"
       :name="club.short_name"
       :category="club.category"
       :members="club.members"

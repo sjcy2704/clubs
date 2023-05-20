@@ -1,3 +1,5 @@
+const host = "http://localhost:8080";
+
 export function logUser(login, router) {
   const req = new XMLHttpRequest();
 
@@ -7,13 +9,13 @@ export function logUser(login, router) {
     }
   };
 
-  req.open("POST", "http://localhost:8080/login");
+  req.open("POST", host + "/login");
   req.setRequestHeader("Content-Type", "application/json");
   req.withCredentials = true;
   req.send(JSON.stringify(login));
 }
 
-export function logout(router, route) {
+export function logout(router, route, userStore) {
   const req = new XMLHttpRequest();
 
   req.onreadystatechange = () => {
@@ -23,10 +25,11 @@ export function logout(router, route) {
       } else {
         router.go();
       }
+      userStore.$reset();
     }
   };
 
-  req.open("POST", "http://localhost:8080/logout");
+  req.open("POST", host + "/logout");
 
   req.withCredentials = true;
   req.send();
@@ -43,7 +46,7 @@ export function signUpUser(signup, router) {
       logUser(user, router);
     }
   };
-  req.open("POST", "http://localhost:8080/signup");
+  req.open("POST", host + "/signup");
   req.setRequestHeader("Content-Type", "application/json");
   req.withCredentials = true;
   req.send(JSON.stringify(signup));

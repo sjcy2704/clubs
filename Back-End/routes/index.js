@@ -8,9 +8,14 @@ router.get("/authenticate", function (req, res) {
   res.send(req.isAuthenticated());
 });
 
+router.get("/user", function (req, res) {
+  res.json(req.user);
+});
+
 router.post("/login", passport.authenticate("local"), function (req, res) {
   res.cookie("sessionid", req.session.id);
-  res.send("logged success");
+  req.user = req.session.passport.user;
+  res.json(req.session.passport.user);
 });
 
 router.post("/logout", function (req, res, next) {
@@ -50,7 +55,6 @@ router.post("/signup", function (req, res, next) {
         function (err) {
           if (err) {
             res.sendStatus(500);
-            throw err;
             return;
           }
           res.status(201).send("User registered successfully!");

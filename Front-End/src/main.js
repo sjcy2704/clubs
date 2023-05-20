@@ -12,7 +12,8 @@ import { faUsers, faUser } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faUsers, faUser);
 
-createApp(App)
+const app = createApp(App);
+app
   .use(pinia)
   .use(router)
   .use(VueCookies)
