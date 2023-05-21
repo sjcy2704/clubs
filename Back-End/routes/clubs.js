@@ -49,4 +49,25 @@ router.get("/:id", function (req, res, next) {
   });
 });
 
+router.get("/manager/:managerID", function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const { managerID } = req.params;
+
+    const query = "SELECT * FROM Clubs WHERE manager = ?";
+    connection.query(query, managerID, function (err, rows) {
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+
+      res.json(rows);
+    });
+  });
+});
+
 module.exports = router;

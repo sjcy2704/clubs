@@ -35,10 +35,10 @@ const userStore = useUserStore();
           ></RouterLink>
         </div>
         <div v-if="userStore.user.userType === 'manager'">
-          <a class="navLink flex justify-between" href="#"
+          <RouterLink class="navLink flex justify-between" to="/clubs/manage"
             >Manage
             <span> <font-awesome-icon icon="fa-solid fa-bars-progress" /> </span
-          ></a>
+          ></RouterLink>
         </div>
         <a class="navLink flex justify-between" href="#"
           >Settings <span> <font-awesome-icon icon="fa-solid fa-gear" /> </span
