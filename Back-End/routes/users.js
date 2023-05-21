@@ -29,7 +29,7 @@ router.get("/:username", function (req, res, next) {
     }
 
     const { username } = req.params;
-    const query = "SELECT username FROM Users WHERE username = ?";
+    const query = "SELECT userID FROM Users WHERE username = ?";
     connection.query(query, username, function (err, rows, fields) {
       connection.release();
       if (err) {

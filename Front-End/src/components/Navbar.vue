@@ -20,6 +20,7 @@ const loggedIn = computed(() => {
   if (auth === "true" && Object.keys(userStore.user).length === 0) {
     userStore.getUser();
   }
+  console.log(auth);
 
   return auth === "true";
 });

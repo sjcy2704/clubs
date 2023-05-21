@@ -65,11 +65,15 @@ if ($cookies.get("sessionid")) {
     }}</span>
     <button type="submit">Sign Up</button>
     <div class="options">
-      <div v-if="!signup.manager">
-        <a href="#" @click="signup.manager = true">Sign Up as a Manager</a>
+      <div
+        class="signUpType"
+        v-if="!signup.manager"
+        @click.capture="signup.manager = true"
+      >
+        <p>Sign Up as a Manager</p>
       </div>
-      <div v-else>
-        <a href="#" @click="signup.manager = false">Sign Up as a User</a>
+      <div v-else class="signUpType" @click.capture="signup.manager = false">
+        <p>Sign Up as a User</p>
       </div>
       <RouterLink to="/login">Login</RouterLink>
     </div>
@@ -79,6 +83,9 @@ if ($cookies.get("sessionid")) {
 <style scoped>
 .title {
   font-size: 2.8em;
+}
+.signUpType {
+  cursor: pointer;
 }
 
 .name {

@@ -30,15 +30,14 @@ router.post("/logout", function (req, res, next) {
 });
 
 router.post("/signup", function (req, res, next) {
+  const { firstName, familyName, username, password, email, phone, manager } =
+    req.body;
+
   req.pool.getConnection(function (err, connection) {
     if (err) {
       res.sendStatus(500);
-      throw err;
       return;
     }
-
-    const { firstName, familyName, username, password, email, phone, manager } =
-      req.body;
 
     let userType = "user";
     if (manager) {
@@ -53,11 +52,12 @@ router.post("/signup", function (req, res, next) {
         query,
         [firstName, familyName, username, hash, email, phone, userType],
         function (err) {
+          connection.release();
           if (err) {
             res.sendStatus(500);
             return;
           }
-          res.status(201).send("User registered successfully!");
+          res.sendStatus(201);
         }
       );
     });

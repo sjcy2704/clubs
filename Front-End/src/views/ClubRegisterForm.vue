@@ -1,13 +1,23 @@
 <script setup>
 import FormInput from "../components/FormInput.vue";
 import { reactive, ref } from "vue";
+import { useUserStore } from "../stores/userStore";
+import authenticate from "../helpers/authenticate";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
+const logged = authenticate();
+if (logged === "false") {
+  router.push("/");
+}
+
+const userStore = useUserStore();
 const clubDetails = reactive({
   name: "",
   short_name: "",
   category: "",
   description: "",
-  manager: 1,
+  manager: userStore.user.userID,
 });
 
 const categories = ref([
