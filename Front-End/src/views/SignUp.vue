@@ -1,7 +1,7 @@
 <script setup>
 import FormInput from "../components/FormInput.vue";
 import { useRouter } from "vue-router";
-import { reactive } from "vue";
+import { reactive, inject } from "vue";
 import validateAll from "../helpers/validators";
 import { signUpUser } from "../helpers/auth";
 
@@ -29,6 +29,11 @@ function createUser() {
   if (errs.errors.length === 0) {
     signUpUser(signup, router);
   }
+}
+
+const $cookies = inject("$cookies");
+if ($cookies.get("sessionid")) {
+  router.push("/");
 }
 </script>
 

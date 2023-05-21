@@ -4,12 +4,18 @@ const Home = () => import("../views/Home.vue");
 const Clubs = () => import("../views/Clubs.vue");
 const Login = () => import("../views/Login.vue");
 const SignUp = () => import("../views/SignUp.vue");
+const ClubSignUp = () => import("../views/ClubRegisterForm.vue");
 
 export const routes = [
   { name: "Home", path: "/", component: Home },
   { name: "Clubs", path: "/clubs", component: Clubs },
   { name: "Sign Up", path: "/signup", component: SignUp },
   { name: "Login", path: "/login", component: Login },
+  {
+    name: "ClubSignUp",
+    path: "/clubsignup",
+    component: ClubSignUp,
+  },
 ];
 
 export const router = createRouter({

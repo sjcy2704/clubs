@@ -13,9 +13,20 @@ import {
   faUser,
   faCubesStacked,
   faRightFromBracket,
+  faGear,
+  faBarsProgress,
+  faTableColumns,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faUsers, faUser, faCubesStacked, faRightFromBracket);
+library.add(
+  faUsers,
+  faUser,
+  faCubesStacked,
+  faRightFromBracket,
+  faGear,
+  faBarsProgress,
+  faTableColumns
+);
 
 const app = createApp(App);
 app

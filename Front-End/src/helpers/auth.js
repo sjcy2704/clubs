@@ -1,11 +1,16 @@
 const host = "http://localhost:8080";
 
-export function logUser(login, router) {
+export function logUser(login, router, errors) {
   const req = new XMLHttpRequest();
 
   req.onreadystatechange = () => {
-    if (req.readyState === 4 && req.status === 200) {
-      router.push("/");
+    if (req.readyState === 4) {
+      console.log(req.status);
+      if (req.status === 200) {
+        router.push("/");
+      } else if (req.status === 401) {
+        errors.errs = true;
+      }
     }
   };
 
