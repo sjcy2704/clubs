@@ -1,6 +1,6 @@
 const host = "http://localhost:8080";
 
-export async function logUser(login, router, errors = null) {
+export async function logUser(login, router, userStore, errors = null) {
   await fetch(`${host}/login`, {
     method: "POST",
     credentials: "include",
@@ -12,7 +12,11 @@ export async function logUser(login, router, errors = null) {
     if ((res.status === 401 || res.status === 400) && errors) {
       errors.errs = true;
     } else {
-      router.push("/");
+      res.json().then((json) => {
+        userStore.user = json;
+        userStore.loggedIn = true;
+        router.push("/");
+      });
     }
   });
 }
@@ -31,7 +35,7 @@ export async function logout(router, route, userStore) {
   });
 }
 
-export async function signUpUser(signup, router) {
+export async function signUpUser(signup, router, userStore) {
   await fetch(`${host}/signup`, {
     method: "POST",
     credentials: "include",
@@ -44,6 +48,6 @@ export async function signUpUser(signup, router) {
       username: signup.username,
       password: signup.password,
     };
-    logUser(user, router);
+    logUser(user, router, userStore);
   });
 }

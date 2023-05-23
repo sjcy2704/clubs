@@ -176,10 +176,12 @@ CREATE TABLE
     `firstName` varchar(63) NOT NULL,
     `familyName` varchar(63) NOT NULL,
     `phone` varchar(15) DEFAULT NULL,
-    `userType` varchar(10) DEFAULT 'user',
-    PRIMARY KEY (`userID`),
-    UNIQUE KEY `username` (`username`),
-    UNIQUE KEY `email` (`email`)
+    `userType`
+    SET
+      ('user', 'admin', 'manager') DEFAULT 'user',
+      PRIMARY KEY (`userID`),
+      UNIQUE KEY `username` (`username`),
+      UNIQUE KEY `email` (`email`)
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 /*!40101 SET character_set_client = @saved_cs_client */;

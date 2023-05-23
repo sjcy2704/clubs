@@ -15,7 +15,7 @@ const userStore = useUserStore();
 <template>
   <div class="dropdown">
     <div class="profile">
-      <a class="name" href="#">{{ userStore.name }} </a>
+      <a class="name" href="#">{{ userStore.user.firstName }} </a>
     </div>
     <div v-if="show" class="dropdownContent">
       <div class="dropdownItems flex col">

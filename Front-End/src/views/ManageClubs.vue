@@ -1,14 +1,9 @@
 <script setup>
 import { useUserStore } from "../stores/userStore.js";
-import { useRouter } from "vue-router";
 import ClubCard from "../components/ClubCard.vue";
 import { ref } from "vue";
 
 const userStore = useUserStore();
-const router = useRouter();
-if (userStore.user.userType !== "manager") {
-  router.push("/");
-}
 
 let clubs = ref([]);
 
@@ -22,12 +17,16 @@ async function getClubs() {
     });
   });
 }
+
 getClubs();
 </script>
 
 <template>
   <div class="container">
     <div class="title">Manage Clubs</div>
+    <button type="button" class="newClub">
+      <font-awesome-icon class="plus" icon="fa-solid fa-plus" />
+    </button>
   </div>
 
   <div class="cardsContainer flex flex-wrap">
@@ -41,8 +40,25 @@ getClubs();
 </template>
 
 <style scoped>
+.container {
+  position: relative;
+}
+
 .title {
   font-size: 2.5em;
+  text-align: left;
+}
+
+.newClub {
+  position: absolute;
+  width: 50px;
+  padding: 10px 0;
+  right: -200px;
+  top: 30%;
+}
+
+.plus {
+  font-size: 1.25em;
 }
 
 .cardsContainer {

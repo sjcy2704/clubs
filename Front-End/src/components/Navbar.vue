@@ -1,7 +1,5 @@
 <script setup>
-import { computed } from "vue";
 import Profile from "./Profile.vue";
-import authenticate from "../helpers/authenticate";
 import { useUserStore } from "../stores/userStore";
 
 const navRoutes = [
@@ -15,15 +13,6 @@ const logInRoutes = [
 ];
 
 const userStore = useUserStore();
-const loggedIn = computed(() => {
-  const auth = authenticate();
-  if (auth === "true" && Object.keys(userStore.user).length === 0) {
-    userStore.getUser();
-  }
-  console.log(auth);
-
-  return auth === "true";
-});
 </script>
 
 <template>
@@ -37,12 +26,16 @@ const loggedIn = computed(() => {
             item.name
           }}</RouterLink>
         </li>
-        <li v-if="!loggedIn" class="navItem" v-for="item in logInRoutes">
+        <li
+          v-if="!userStore.loggedIn"
+          class="navItem"
+          v-for="item in logInRoutes"
+        >
           <RouterLink class="navLink" :to="item.path">{{
             item.name
           }}</RouterLink>
         </li>
-        <li v-if="loggedIn" class="navItem">
+        <li v-if="userStore.loggedIn" class="navItem">
           <Profile />
         </li>
       </ul>

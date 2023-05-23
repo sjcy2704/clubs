@@ -4,11 +4,15 @@ var router = express.Router();
 var bcrypt = require("bcrypt");
 var passport = require("passport");
 
-router.get("/authenticate", function (req, res) {
-  res.send(req.isAuthenticated());
-});
+function checkAuth(req, res, next) {
+  if (!req.isAuthenticated()) {
+    res.json({ authenticated: false });
+  } else {
+    next();
+  }
+}
 
-router.get("/user", function (req, res) {
+router.get("/user", checkAuth, function (req, res) {
   res.json(req.user);
 });
 
@@ -32,6 +36,9 @@ router.post("/logout", function (req, res, next) {
 router.post("/signup", function (req, res, next) {
   const { firstName, familyName, username, password, email, phone, manager } =
     req.body;
+
+  firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
+  familyName = familyName.charAt(0).toUpperCase() + familyName.slice(1);
 
   req.pool.getConnection(function (err, connection) {
     if (err) {

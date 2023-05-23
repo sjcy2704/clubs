@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import { router } from "./routes/index";
 import { createPinia } from "pinia";
+import piniaPersist from "pinia-plugin-persist";
 import "./style.css";
 import App from "./App.vue";
 import VueCookies from "vue-cookies";
@@ -16,6 +17,7 @@ import {
   faGear,
   faBarsProgress,
   faTableColumns,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -25,8 +27,11 @@ library.add(
   faRightFromBracket,
   faGear,
   faBarsProgress,
-  faTableColumns
+  faTableColumns,
+  faPlus
 );
+
+pinia.use(piniaPersist);
 
 const app = createApp(App);
 app

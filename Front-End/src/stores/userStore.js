@@ -4,7 +4,6 @@ export const useUserStore = defineStore("userStore", {
   state: () => ({
     user: {},
     loggedIn: false,
-    name: "",
   }),
   actions: {
     async getUser() {
@@ -13,13 +12,15 @@ export const useUserStore = defineStore("userStore", {
         credentials: "include",
       }).then((res) => {
         res.json().then((json) => {
-          this.user = json;
-          this.loggedIn = true;
-
-          let name = json.firstName;
-          this.name = name.charAt(0).toUpperCase() + name.slice(1);
+          if (json.userID) {
+            this.user = json;
+            this.loggedIn = true;
+          }
         });
       });
     },
+  },
+  persist: {
+    enabled: true,
   },
 });

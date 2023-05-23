@@ -1,9 +1,11 @@
 <script setup>
 import FormInput from "../components/FormInput.vue";
 import { useRouter } from "vue-router";
-import { reactive, inject } from "vue";
+import { reactive } from "vue";
 import validateAll from "../helpers/validators";
 import { signUpUser } from "../helpers/auth";
+
+const router = useRouter();
 
 const signup = reactive({
   firstName: "",
@@ -16,8 +18,6 @@ const signup = reactive({
   manager: false,
 });
 
-const router = useRouter();
-
 const errs = reactive({
   errors: [],
 });
@@ -29,11 +29,6 @@ function createUser() {
   if (errs.errors.length === 0) {
     signUpUser(signup, router);
   }
-}
-
-const $cookies = inject("$cookies");
-if ($cookies.get("sessionid")) {
-  router.push("/");
 }
 </script>
 

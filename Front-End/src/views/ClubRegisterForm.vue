@@ -2,14 +2,6 @@
 import FormInput from "../components/FormInput.vue";
 import { reactive, ref } from "vue";
 import { useUserStore } from "../stores/userStore";
-import authenticate from "../helpers/authenticate";
-import { useRouter } from "vue-router";
-
-const router = useRouter();
-const logged = authenticate();
-if (logged === "false") {
-  router.push("/");
-}
 
 const userStore = useUserStore();
 const clubDetails = reactive({

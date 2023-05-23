@@ -1,8 +1,11 @@
 <script setup>
 import { useRouter } from "vue-router";
 import FormInput from "../components/FormInput.vue";
-import { reactive, inject } from "vue";
+import { reactive } from "vue";
 import { logUser } from "../helpers/auth";
+import { useUserStore } from "../stores/userStore";
+
+const router = useRouter();
 
 const login = reactive({
   username: "",
@@ -13,12 +16,7 @@ const errors = reactive({
   errs: false,
 });
 
-const router = useRouter();
-
-const $cookies = inject("$cookies");
-if ($cookies.get("sessionid")) {
-  router.push("/");
-}
+const userStore = useUserStore();
 </script>
 
 <template>
@@ -26,7 +24,10 @@ if ($cookies.get("sessionid")) {
     <p class="title">Login</p>
   </div>
 
-  <form class="lsgForm" v-on:submit.prevent="logUser(login, router, errors)">
+  <form
+    class="lsgForm"
+    v-on:submit.prevent="logUser(login, router, userStore, errors)"
+  >
     <FormInput label="Username" v-model="login.username" />
     <FormInput label="Password" v-model="login.password" passwordField="true" />
     <span class="errors" v-if="errors.errs"
