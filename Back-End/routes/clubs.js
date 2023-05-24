@@ -22,6 +22,35 @@ router.get("/", function (req, res, next) {
   });
 });
 
+router.post("/", function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      throw err;
+      return;
+    }
+
+    const { name, short_name, category, description, manager } = req.body;
+
+    const query =
+      "INSERT INTO Clubs(name, short_name, category, description, manager) VALUES (?, ?, ?, ?, ?)";
+    connection.query(
+      query,
+      [name, short_name, category, description, manager],
+      function (err) {
+        connection.release();
+        if (err) {
+          res.sendStatus(500);
+          throw err;
+          return;
+        }
+
+        res.sendStatus(201);
+      }
+    );
+  });
+});
+
 router.get("/:id", function (req, res, next) {
   req.pool.getConnection(function (err, connection) {
     if (err) {

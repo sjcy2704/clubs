@@ -2,6 +2,7 @@
 import FormInput from "../components/FormInput.vue";
 import { reactive, ref } from "vue";
 import { useUserStore } from "../stores/userStore";
+import { useRouter } from "vue-router";
 
 const userStore = useUserStore();
 const clubDetails = reactive({
@@ -27,6 +28,19 @@ const categories = ref([
   { value: "Sports" },
   { value: "Technology" },
 ]);
+
+const router = useRouter();
+
+async function addClub() {
+  await fetch("http://localhost:8080/clubs", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify(clubDetails),
+  }).then(() => {
+    router.push("/clubs/manage");
+  });
+}
 </script>
 
 <template>
@@ -38,7 +52,7 @@ const categories = ref([
   <div class="container">
     <p class="title">Club<span>Registration</span></p>
   </div>
-  <form class="lsgForm">
+  <form class="lsgForm" v-on:submit.prevent="addClub">
     <FormInput label="Club Name" v-model="clubDetails.name" />
     <div class="shortName">
       <FormInput label="Short Name" v-model="clubDetails.short_name" />

@@ -7,13 +7,19 @@ const Login = () => import("../views/Login.vue");
 const SignUp = () => import("../views/SignUp.vue");
 const ClubSignUp = () => import("../views/ClubRegisterForm.vue");
 const ManageClubs = () => import("../views/ManageClubs.vue");
-const ClubsRouterView = () => import("../routerViews/ClubsRouterView.vue");
+const RouterView = () => import("../views/RouterView.vue");
 
+// {
+//   path: "/user",
+//   component: ClubsRouterView,
+//   children: [{ name: "profile", path: "" }, { path: "clubs" }],
+//   meta: { requiresAuth: true },
+// },
 export const routes = [
   { name: "Home", path: "/", component: Home },
   {
     path: "/clubs",
-    component: ClubsRouterView,
+    component: RouterView,
     children: [
       { name: "Clubs", path: "", component: Clubs },
       {

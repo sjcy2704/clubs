@@ -79,10 +79,10 @@ CREATE TABLE
     `name` varchar(50) NOT NULL,
     `short_name` varchar(20) NOT NULL,
     `category` varchar(50) NOT NULL,
+    `description` text,
     `manager` int unsigned NOT NULL,
     `members` int unsigned DEFAULT 0,
     PRIMARY KEY (`clubID`),
-    UNIQUE KEY `manager` (`manager`),
     CONSTRAINT `Clubs_ibfk_1` FOREIGN KEY (`manager`) REFERENCES `Users` (`userID`)
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 

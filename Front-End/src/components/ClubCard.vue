@@ -3,6 +3,7 @@ defineProps({
   name: String,
   category: String,
   members: Number,
+  clubID: Number,
 });
 </script>
 
