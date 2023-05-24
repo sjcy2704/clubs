@@ -15,12 +15,18 @@ export const useUserStore = defineStore("userStore", {
           if (json.userID) {
             this.user = json;
             this.loggedIn = true;
+          } else {
+            this.user = {};
+            this.loggedIn = false;
           }
         });
       });
     },
   },
   persist: {
-    enabled: true,
+    storage: localStorage,
+    beforeRestore: (ctx) => {
+      ctx.store.getUser();
+    },
   },
 });

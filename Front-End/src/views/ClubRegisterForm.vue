@@ -17,20 +17,24 @@ const categories = ref([
   { value: "Arts" },
   { value: "Business" },
   { value: "Cultural" },
+  { value: "Faith & Religion" },
   { value: "Health" },
   { value: "Hobby" },
   { value: "Language" },
   { value: "Media" },
   { value: "Politics" },
-  { value: "Religious" },
   { value: "Science" },
-  { value: "Spiritual" },
   { value: "Sports" },
   { value: "Technology" },
 ]);
 </script>
 
 <template>
+  <a class="back" @click="$router.go(-1)"
+    ><font-awesome-icon
+      icon="fa-solid
+    fa-chevron-left"
+  /></a>
   <div class="container">
     <p class="title">Club<span>Registration</span></p>
   </div>
@@ -59,6 +63,15 @@ const categories = ref([
   display: block;
   font-size: 0.55em;
   font-weight: 400;
+}
+
+.back {
+  color: black;
+  cursor: pointer;
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  font-size: 1.5em;
 }
 
 .categorySelect {

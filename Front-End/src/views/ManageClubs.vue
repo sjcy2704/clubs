@@ -24,9 +24,9 @@ getClubs();
 <template>
   <div class="container">
     <div class="title">Manage Clubs</div>
-    <button type="button" class="newClub">
+    <RouterLink to="/clubs/register" class="newClub">
       <font-awesome-icon class="plus" icon="fa-solid fa-plus" />
-    </button>
+    </RouterLink>
   </div>
 
   <div class="cardsContainer flex flex-wrap">
@@ -54,7 +54,9 @@ getClubs();
   width: 50px;
   padding: 10px 0;
   right: -200px;
-  top: 30%;
+  top: 35%;
+  background-color: black;
+  border-radius: 10px;
 }
 
 .plus {

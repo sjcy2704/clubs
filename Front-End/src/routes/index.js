@@ -7,7 +7,7 @@ const Login = () => import("../views/Login.vue");
 const SignUp = () => import("../views/SignUp.vue");
 const ClubSignUp = () => import("../views/ClubRegisterForm.vue");
 const ManageClubs = () => import("../views/ManageClubs.vue");
-const ClubsRouterView = () => import("../views/ClubsRouterView.vue");
+const ClubsRouterView = () => import("../routerViews/ClubsRouterView.vue");
 
 export const routes = [
   { name: "Home", path: "/", component: Home },
