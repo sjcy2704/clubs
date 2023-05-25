@@ -3,6 +3,7 @@ import FormInput from "../components/FormInput.vue";
 import { reactive, ref } from "vue";
 import { useUserStore } from "../stores/userStore";
 import { useRouter } from "vue-router";
+import { validateClub } from "../helpers/validators";
 
 const userStore = useUserStore();
 const clubDetails = reactive({
@@ -31,7 +32,7 @@ const categories = ref([
 
 const router = useRouter();
 
-async function addClub() {
+async function registerClub() {
   await fetch("http://localhost:8080/clubs", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -40,6 +41,15 @@ async function addClub() {
   }).then(() => {
     router.push("/clubs/manage");
   });
+}
+
+function addClub() {
+  errs.errors = [];
+  errs.errors.push(...validateClub(clubDetails));
+
+  if (errs.errors.length === 0) {
+    registerClub();
+  }
 }
 </script>
 

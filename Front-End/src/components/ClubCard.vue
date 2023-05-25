@@ -3,17 +3,22 @@ defineProps({
   name: String,
   category: String,
   members: Number,
-  clubID: Number,
 });
 </script>
 
 <template>
   <div class="clubContainer">
-    <div class="clubIcon"></div>
+    <RouterLink to="/">
+      <div class="clubIcon"></div>
+    </RouterLink>
     <div class="details flex justify-between">
       <div class="clubDetails">
-        <p class="name">{{ name }}</p>
-        <p class="category">{{ category }}</p>
+        <RouterLink to="/">
+          <p class="name">{{ name }}</p>
+        </RouterLink>
+        <RouterLink to="/">
+          <p class="category">{{ category }}</p>
+        </RouterLink>
       </div>
       <div class="members flex">
         <p class="membersCount">{{ members }}</p>
@@ -24,6 +29,9 @@ defineProps({
 </template>
 
 <style scoped>
+a {
+  color: black;
+}
 .clubContainer {
   width: 250px;
 }

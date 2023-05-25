@@ -25,7 +25,7 @@ function validatePassword(password, confirm) {
   return msg;
 }
 
-function validateAll(signup) {
+export function validateUser(signup) {
   let errs = [];
 
   if (signup.firstName.length === 0 || signup.familyName.length === 0) {
@@ -45,7 +45,11 @@ function validateAll(signup) {
       }
     };
 
-    req.open("GET", "http://localhost:8080/users/" + signup.username, false);
+    req.open(
+      "GET",
+      "http://localhost:8080/users/username/" + signup.username,
+      false
+    );
     req.send();
   }
 
@@ -58,4 +62,20 @@ function validateAll(signup) {
   return errs;
 }
 
-export default validateAll;
+// Club Register Validators
+
+export function validateClub(details) {
+  let errs = [];
+
+  if (details.name.length === 0) {
+    errs.push("Name cannot be empty");
+  }
+
+  if (details.short_name.length === 0) {
+    errs.push("Short Name cannot be empty");
+  }
+
+  if (details.category.length === 0) {
+    errs.push("Select a category");
+  }
+}

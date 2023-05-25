@@ -26,6 +26,9 @@ const userStore = useUserStore();
             item.name
           }}</RouterLink>
         </li>
+        <li class="navItem" v-if="userStore.loggedIn">
+          <RouterLink class="navLink" to="/user/clubs">My Clubs</RouterLink>
+        </li>
         <li
           v-if="!userStore.loggedIn"
           class="navItem"
@@ -53,8 +56,7 @@ const userStore = useUserStore();
 }
 
 .navItem {
-  width: 80px;
-  padding: 1px 2px;
+  padding: 2px 10px;
   text-align: center;
   border-radius: 8px;
   color: white;

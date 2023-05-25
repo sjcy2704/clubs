@@ -1,4 +1,4 @@
-import { createWebHistory, createRouter } from "vue-router";
+import { createWebHistory, createRouter, RouterLink } from "vue-router";
 import { useUserStore } from "../stores/userStore";
 
 const Home = () => import("../views/Home.vue");
@@ -8,6 +8,7 @@ const SignUp = () => import("../views/SignUp.vue");
 const ClubSignUp = () => import("../views/ClubRegisterForm.vue");
 const ManageClubs = () => import("../views/ManageClubs.vue");
 const RouterView = () => import("../views/RouterView.vue");
+const MyClubs = () => import("../views/MyClubs.vue");
 
 // {
 //   path: "/user",
@@ -32,6 +33,14 @@ export const routes = [
         component: ClubSignUp,
         meta: { requiresAuth: true, privilages: true },
       },
+    ],
+  },
+  {
+    path: "/user",
+    component: RouterView,
+    children: [
+      { name: "Profile", path: "", component: RouterView },
+      { path: "clubs", component: MyClubs },
     ],
   },
   {

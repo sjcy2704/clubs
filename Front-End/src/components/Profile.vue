@@ -29,10 +29,6 @@ const userStore = useUserStore();
           <a class="navLink flex justify-between" href="#"
             >Profile <span> <font-awesome-icon icon="fa-solid fa-user" /> </span
           ></a>
-          <RouterLink class="navLink flex justify-between" to="/clubs"
-            >My Clubs
-            <span><font-awesome-icon icon="fa-solid fa-cubes-stacked" /></span
-          ></RouterLink>
         </div>
         <div v-if="userStore.user.userType === 'manager'">
           <RouterLink class="navLink flex justify-between" to="/clubs/manage"
@@ -71,7 +67,7 @@ const userStore = useUserStore();
   background-color: black;
   padding: 25px 10px 10px;
   top: 25px;
-  left: -40px;
+  left: -55px;
   text-align: left;
   width: 185px;
 }

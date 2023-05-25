@@ -2,7 +2,7 @@
 import FormInput from "../components/FormInput.vue";
 import { useRouter } from "vue-router";
 import { reactive } from "vue";
-import validateAll from "../helpers/validators";
+import { validateUser } from "../helpers/validators";
 import { signUpUser } from "../helpers/auth";
 
 const router = useRouter();
@@ -24,7 +24,7 @@ const errs = reactive({
 
 function createUser() {
   errs.errors = [];
-  errs.errors.push(...validateAll(signup));
+  errs.errors.push(...validateUser(signup));
 
   if (errs.errors.length === 0) {
     signUpUser(signup, router);
