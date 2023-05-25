@@ -1,9 +1,9 @@
 <script setup>
-import FormInput from "../components/FormInput.vue";
+import FormInput from "../../components/FormInput.vue";
 import { useRouter } from "vue-router";
 import { reactive } from "vue";
-import { validateUser } from "../helpers/validators";
-import { signUpUser } from "../helpers/auth";
+import { validateUser } from "../../helpers/validators";
+import { signUpUser } from "../../helpers/auth";
 
 const router = useRouter();
 

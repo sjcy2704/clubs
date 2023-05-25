@@ -1,5 +1,5 @@
 <script setup>
-import Profile from "./Profile.vue";
+import UserMenu from "./UserMenu.vue";
 import { useUserStore } from "../stores/userStore";
 
 const navRoutes = [
@@ -39,7 +39,7 @@ const userStore = useUserStore();
           }}</RouterLink>
         </li>
         <li v-if="userStore.loggedIn" class="navItem">
-          <Profile />
+          <UserMenu />
         </li>
       </ul>
     </div>

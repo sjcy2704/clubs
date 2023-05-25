@@ -3,9 +3,9 @@ import { useUserStore } from "../stores/userStore";
 
 const Home = () => import("../views/Home.vue");
 const Clubs = () => import("../views/Clubs.vue");
-const Login = () => import("../views/Login.vue");
-const SignUp = () => import("../views/SignUp.vue");
-const ClubSignUp = () => import("../views/ClubRegisterForm.vue");
+const Login = () => import("../views/forms/Login.vue");
+const SignUp = () => import("../views/forms/SignUp.vue");
+const ClubSignUp = () => import("../views/forms/ClubRegisterForm.vue");
 const ManageClubs = () => import("../views/ManageClubs.vue");
 const RouterView = () => import("../views/RouterView.vue");
 const MyClubs = () => import("../views/MyClubs.vue");
@@ -32,6 +32,10 @@ export const routes = [
         path: "register",
         component: ClubSignUp,
         meta: { requiresAuth: true, privilages: true },
+      },
+      {
+        path: ":id",
+        component: RouterView,
       },
     ],
   },

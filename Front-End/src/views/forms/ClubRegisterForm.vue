@@ -1,9 +1,9 @@
 <script setup>
-import FormInput from "../components/FormInput.vue";
+import FormInput from "../../components/FormInput.vue";
 import { reactive, ref } from "vue";
-import { useUserStore } from "../stores/userStore";
+import { useUserStore } from "../../stores/userStore";
 import { useRouter } from "vue-router";
-import { validateClub } from "../helpers/validators";
+import { validateClub } from "../../helpers/validators";
 
 const userStore = useUserStore();
 const clubDetails = reactive({
