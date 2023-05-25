@@ -66,9 +66,9 @@ CREATE TABLE `Clubs` (
   `manager` int unsigned NOT NULL,
   `members` int unsigned DEFAULT '0',
   PRIMARY KEY (`clubID`),
-  UNIQUE KEY `manager` (`manager`),
+  KEY `Clubs_ibfk_1` (`manager`),
   CONSTRAINT `Clubs_ibfk_1` FOREIGN KEY (`manager`) REFERENCES `Users` (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,7 +77,7 @@ CREATE TABLE `Clubs` (
 
 LOCK TABLES `Clubs` WRITE;
 /*!40000 ALTER TABLE `Clubs` DISABLE KEYS */;
-INSERT INTO `Clubs` VALUES (1,'Adelaide Uni Volleyball Club','AUVC','Sports',NULL,1,2),(2,'Engineering Club','ENG Club','Engineering',NULL,2,2),(3,'Medical Society','Med Society','Health',NULL,3,0),(4,'Computer Science Club','CS Club','Computer Science',NULL,4,0);
+INSERT INTO `Clubs` VALUES (1,'Adelaide Uni Volleyball Club','AUVC','Sports',NULL,1,2),(2,'Engineering Club','ENG Club','Engineering',NULL,2,2),(3,'Medical Society','Med Society','Health',NULL,3,0),(4,'Computer Science Club','CS Club','Computer Science',NULL,4,0),(5,'Adelaide Nursing Students\' Society','ANNS','Health','',2,0);
 /*!40000 ALTER TABLE `Clubs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,10 +153,11 @@ CREATE TABLE `Users` (
   `familyName` varchar(63) NOT NULL,
   `phone` varchar(15) DEFAULT NULL,
   `userType` set('user','admin','manager') DEFAULT 'user',
+  `avatar` varchar(2083) DEFAULT 'http://localhost:8080/public/user-avatars/default-user.jpg',
   PRIMARY KEY (`userID`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -165,7 +166,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'admin','$2a$10$EapMP7QBfQxsJtraAY8lT.BZLXIpC2VlOEN6YGNFu3CzTtfOPnHvi','admin@admin.com','admin','system',NULL,'admin'),(2,'manager1','$2a$10$wLViudQdkOrjouRaeCQuy.gT.e5TNdcRtk2absHgvNGGCpkgMN8PW','manager@clubs.com','Juan','Diaz',NULL,'manager'),(3,'manager2','$2a$10$kLT/ZlDELezE7R6kv4I0oe2nySil158GL6hsaC./Pdjg59zrpbfny','manager2@clubs.com','Duan','Jonson',NULL,'manager'),(4,'manager3','$2a$10$dNkyOBFy1xtcpH.3xd8LEuSoJ8dHohvpLIwrybPrReK7ACwKSZGAK','manager3@clubs.com','Jose','Andorra',NULL,'manager'),(5,'user1','$2a$10$tGrdFPRKUzpRwabT48ApNuMYrmcpAGO47nFeCvjdlLw7BsX3y7meK','user@user.com','Sarah','Swain',NULL,'user');
+INSERT INTO `Users` VALUES (1,'admin','$2a$10$EapMP7QBfQxsJtraAY8lT.BZLXIpC2VlOEN6YGNFu3CzTtfOPnHvi','admin@admin.com','admin','system',NULL,'admin','http://localhost:8080/public/user-avatars/default-user.jpg'),(2,'manager1','$2a$10$wLViudQdkOrjouRaeCQuy.gT.e5TNdcRtk2absHgvNGGCpkgMN8PW','manager@clubs.com','Juan','Diaz',NULL,'manager','http://localhost:8080/public/user-avatars/default-user.jpg'),(3,'manager2','$2a$10$kLT/ZlDELezE7R6kv4I0oe2nySil158GL6hsaC./Pdjg59zrpbfny','manager2@clubs.com','Duan','Jonson',NULL,'manager','http://localhost:8080/public/user-avatars/default-user.jpg'),(4,'manager3','$2a$10$dNkyOBFy1xtcpH.3xd8LEuSoJ8dHohvpLIwrybPrReK7ACwKSZGAK','manager3@clubs.com','Jose','Andorra',NULL,'manager','http://localhost:8080/public/user-avatars/default-user.jpg'),(5,'user1','$2a$10$tGrdFPRKUzpRwabT48ApNuMYrmcpAGO47nFeCvjdlLw7BsX3y7meK','user@user.com','Sarah','Swain',NULL,'user','http://localhost:8080/public/user-avatars/default-user.jpg'),(6,'testuser123','$2b$10$71ylZQhAapxL/yZygXgppuEM0i3/v7qQOFepFvX23a4k9nRgJUclG','test@user123.com','Test','User','','manager','http://localhost:8080/images/4cca1f25d214652688766d1e5d6f8302.jpeg'),(7,'ksmith','$2b$10$vY6vpHGk67.Qce1erJEVouWL/Cl1o0f9NowbiJv4ZCuj6fC3DqtAy','ksmith@email.com','Karin','Smith','','user','http://localhost:8080/images/igpp.jpeg');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -178,4 +179,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-24 16:18:42
+-- Dump completed on 2023-05-25 19:27:34

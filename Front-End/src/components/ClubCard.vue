@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-  name: String,
+  short_name: String,
   category: String,
   members: Number,
 });
@@ -14,7 +14,7 @@ defineProps({
     <div class="details flex justify-between">
       <div class="clubDetails">
         <RouterLink to="/">
-          <p class="name">{{ name }}</p>
+          <p class="name">{{ short_name }}</p>
         </RouterLink>
         <RouterLink to="/">
           <p class="category">{{ category }}</p>

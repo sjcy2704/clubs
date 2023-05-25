@@ -22,12 +22,7 @@ getClubs();
   </div>
 
   <div class="cardsContainer flex flex-wrap">
-    <ClubCard
-      v-for="club in clubs"
-      :name="club.short_name"
-      :category="club.category"
-      :members="club.members"
-    />
+    <ClubCard v-for="club in clubs" v-bind="club" />
   </div>
 </template>
 

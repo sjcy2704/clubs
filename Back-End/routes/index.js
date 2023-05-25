@@ -4,6 +4,36 @@ var router = express.Router();
 var bcrypt = require("bcrypt");
 var passport = require("passport");
 
+var multer = require("multer");
+const path = require("path");
+const DIR = path.join(__dirname, "../public/user-avatars");
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, DIR);
+  },
+  filename: (req, file, cb) => {
+    const fileName = file.originalname.toLowerCase().split(" ").join("-");
+    cb(null, fileName);
+  },
+});
+
+var upload = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    if (
+      file.mimetype == "image/png" ||
+      file.mimetype == "image/jpg" ||
+      file.mimetype == "image/jpeg"
+    ) {
+      cb(null, true);
+    } else {
+      cb(null, false);
+      return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
+    }
+  },
+});
+
 function checkAuth(req, res, next) {
   if (!req.isAuthenticated()) {
     res.json({ authenticated: false });
@@ -33,12 +63,16 @@ router.post("/logout", function (req, res, next) {
   });
 });
 
-router.post("/signup", function (req, res, next) {
-  const { firstName, familyName, username, password, email, phone, manager } =
+router.post("/signup", upload.single("avatar"), function (req, res, next) {
+  let { firstName, familyName, username, password, email, phone, manager } =
     req.body;
 
   firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
   familyName = familyName.charAt(0).toUpperCase() + familyName.slice(1);
+
+  const path = `${req.protocol}://${req.get("host")}/images/${
+    req.file.filename
+  }`;
 
   req.pool.getConnection(function (err, connection) {
     if (err) {
@@ -47,17 +81,17 @@ router.post("/signup", function (req, res, next) {
     }
 
     let userType = "user";
-    if (manager) {
+    if (manager === "true") {
       userType = "manager";
     }
 
     bcrypt.hash(password, 10, function (err, hash) {
       const query =
-        "INSERT INTO Users (firstName, familyName, username, password, email, phone, userType) VALUES (?,?,?,?,?,?,?)";
+        "INSERT INTO Users (firstName, familyName, username, password, email, phone, userType, avatar) VALUES (?,?,?,?,?,?,?,?)";
 
       connection.query(
         query,
-        [firstName, familyName, username, hash, email, phone, userType],
+        [firstName, familyName, username, hash, email, phone, userType, path],
         function (err) {
           connection.release();
           if (err) {

@@ -35,14 +35,18 @@ export async function logout(router, route, userStore) {
   });
 }
 
-export async function signUpUser(signup, router, userStore) {
+export async function signUpUser(signup, avatar, router, userStore) {
+  const formData = new FormData();
+  for (const key in signup) {
+    formData.append(key, signup[key]);
+  }
+
+  formData.append("avatar", avatar);
+
   await fetch(`${host}/signup`, {
     method: "POST",
     credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(signup),
+    body: formData,
   }).then(() => {
     const user = {
       username: signup.username,

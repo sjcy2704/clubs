@@ -1,9 +1,11 @@
 <script setup>
 import FormInput from "../../components/FormInput.vue";
 import { useRouter } from "vue-router";
-import { reactive } from "vue";
+import { reactive, ref, watch } from "vue";
 import { validateUser } from "../../helpers/validators";
 import { signUpUser } from "../../helpers/auth";
+import { useUserStore } from "../../stores/userStore";
+import Dropzone from "../../components/Dropzone.vue";
 
 const router = useRouter();
 
@@ -18,6 +20,8 @@ const signup = reactive({
   manager: false,
 });
 
+let avatar = ref(null);
+
 const errs = reactive({
   errors: [],
 });
@@ -27,7 +31,8 @@ function createUser() {
   errs.errors.push(...validateUser(signup));
 
   if (errs.errors.length === 0) {
-    signUpUser(signup, router);
+    const userStore = useUserStore();
+    signUpUser(signup, avatar.value[0], router, userStore);
   }
 }
 </script>
@@ -37,24 +42,27 @@ function createUser() {
     <p class="title">Sign Up</p>
   </div>
 
-  <form class="lsgForm" v-on:submit.prevent="createUser">
+  <form id="signUpForm" class="lsgForm" v-on:submit.prevent="createUser">
     <div class="flex justify-between name sm-col">
       <FormInput label="First Name" v-model="signup.firstName" />
       <FormInput label="Family Name" v-model="signup.familyName" />
     </div>
     <FormInput label="Username" v-model="signup.username" />
-    <FormInput
-      label="Password"
-      passwordField="true"
-      v-model="signup.password"
-    />
-    <FormInput
-      label="Confirm Password"
-      passwordField="true"
-      v-model="signup.confirm"
-    />
+    <div class="flex justify-between name">
+      <FormInput
+        label="Password"
+        passwordField="true"
+        v-model="signup.password"
+      />
+      <FormInput
+        label="Confirm Password"
+        passwordField="true"
+        v-model="signup.confirm"
+      />
+    </div>
     <FormInput label="Email" v-model="signup.email" />
     <FormInput label="Phone Number" v-model="signup.phone" />
+    <Dropzone v-model="avatar" />
     <span class="errors" v-if="errs.errors" v-for="err in errs.errors">{{
       err
     }}</span>

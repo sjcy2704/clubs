@@ -179,6 +179,7 @@ CREATE TABLE
     `userType`
     SET
       ('user', 'admin', 'manager') DEFAULT 'user',
+      `avatar` varchar(2083) DEFAULT 'http://localhost:8080/public/user-avatars/default-user.jpg',
       PRIMARY KEY (`userID`),
       UNIQUE KEY `username` (`username`),
       UNIQUE KEY `email` (`email`)
