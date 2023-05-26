@@ -27,6 +27,7 @@ function initPassport(passport, db) {
           email,
           phone,
           userType,
+          avatar,
         } = rows[0];
 
         const user = {
@@ -37,6 +38,7 @@ function initPassport(passport, db) {
           email,
           phone,
           userType,
+          avatar,
         };
 
         if (await bcrypt.compare(password, rows[0].password)) {
@@ -80,6 +82,7 @@ function initPassport(passport, db) {
           email,
           phone,
           userType,
+          avatar,
         } = rows[0];
 
         const user = {
@@ -90,6 +93,7 @@ function initPassport(passport, db) {
           email,
           phone,
           userType,
+          avatar,
         };
 
         return done(null, user);

@@ -52,7 +52,7 @@ const userStore = useUserStore();
 }
 
 .nav {
-  width: 23%;
+  width: 30%;
 }
 
 .navItem {
@@ -62,10 +62,10 @@ const userStore = useUserStore();
   color: white;
 }
 
-.navItem:hover {
-  color: black;
-  background-color: white;
-}
+/* .navItem:hover { */
+/*   color: black; */
+/*   background-color: white; */
+/* } */
 
 .navLink {
   color: inherit;

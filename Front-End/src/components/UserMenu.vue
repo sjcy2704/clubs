@@ -15,7 +15,10 @@ const userStore = useUserStore();
 <template>
   <div class="dropdown">
     <div class="profile">
-      <a class="name" href="#">{{ userStore.user.firstName }} </a>
+      <a class="name flex" href="#"
+        >{{ userStore.user.firstName }}
+        <!-- <img class="avatar" :src="userStore.user.avatar" /> -->
+      </a>
     </div>
     <div v-if="show" class="dropdownContent">
       <div class="dropdownItems flex col">
@@ -53,12 +56,20 @@ const userStore = useUserStore();
 </template>
 
 <style scoped>
+.avatar {
+  width: 40px;
+  border-radius: 100px;
+  position: absolute;
+  right: -50px;
+  top: -5px;
+}
 .dropdown {
   position: relative;
 }
 
 .name {
   color: inherit;
+  position: relative;
 }
 
 .dropdownContent {

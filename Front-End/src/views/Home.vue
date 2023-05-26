@@ -15,7 +15,7 @@
       <h2 class="subTitle">Clubs</h2>
     </div>
     <div class="clubs">
-      <h2 class="subTitle">Events</h2>
+      <h2 class="subTitle">Upcoming Events</h2>
     </div>
   </div>
 </template>
