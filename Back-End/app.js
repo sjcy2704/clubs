@@ -14,14 +14,17 @@ var dbConnectionPool = mysql.createPool({
   database: "studentclubs",
 });
 
-initPassport(passport, dbConnectionPool);
-
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var clubsRouter = require("./routes/clubs");
 var membersRouter = require("./routes/members");
 
 var app = express();
+
+app.use(function (req, res, next) {
+  initPassport(passport, dbConnectionPool, res);
+  next();
+});
 
 app.use(function (req, res, next) {
   req.pool = dbConnectionPool;

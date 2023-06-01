@@ -1,18 +1,20 @@
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 
-function initPassport(passport, db) {
+function initPassport(passport, db, res) {
   const authenticateUser = (username, password, done) => {
     db.getConnection(function (err, connection) {
       if (err) {
-        throw err;
+        res.status(401).json({ error: "Invalid input" });
+        return;
       }
 
       const query = "SELECT * FROM Users WHERE username = ?";
       connection.query(query, username, async function (err, rows, fields) {
         connection.release();
         if (err) {
-          throw err;
+          res.status(401).json({ error: "No user with that username" });
+          return;
         }
 
         if (rows.length === 0) {
@@ -66,13 +68,19 @@ function initPassport(passport, db) {
 
   passport.deserializeUser((user, done) => {
     db.getConnection(function (err, connection) {
-      if (err) throw err;
+      if (err) {
+        res.sendStatus(401);
+        return;
+      }
 
       const query = "SELECT * FROM Users WHERE userID = ?";
 
       connection.query(query, user.userID, function (err, rows, fields) {
         connection.release();
-        if (err) throw err;
+        if (err) {
+          res.sendStatus(401);
+          return;
+        }
 
         const {
           userID,
