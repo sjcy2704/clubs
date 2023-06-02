@@ -16,10 +16,7 @@ await fetch(`http://localhost:8080/clubs/${route.params.clubID}`).then((res) =>
   <Suspense>
     <div class="container">
       <div class="detailsContainer flex justify-center">
-        <img
-          src="http://localhost:8080/user-avatars/default-user.jpg"
-          class="img"
-        />
+        <img :src="details.logo" class="img" />
         <div class="clubDetails flex col justify-between">
           <div class="main">
             <h1>{{ details.name }}</h1>

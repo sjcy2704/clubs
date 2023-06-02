@@ -82,6 +82,7 @@ CREATE TABLE
     `description` text,
     `manager` int unsigned NOT NULL,
     `members` int unsigned DEFAULT 0,
+    `logo` varchar(2083) DEFAULT 'http://localhost:8080/club-logos/default-club.png',
     PRIMARY KEY (`clubID`),
     CONSTRAINT `Clubs_ibfk_1` FOREIGN KEY (`manager`) REFERENCES `Users` (`userID`)
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;

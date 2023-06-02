@@ -4,20 +4,21 @@ defineProps({
   short_name: String,
   category: String,
   members: Number,
+  logo: String,
 });
 </script>
 
 <template>
   <div class="clubContainer">
     <RouterLink :to="/clubs/ + clubID">
-      <div class="clubIcon"></div>
+      <img :src="logo" class="clubIcon" />
     </RouterLink>
     <div class="details flex justify-between">
       <div class="clubDetails">
-        <RouterLink to="/">
+        <RouterLink :to="/clubs/ + clubID">
           <p class="name">{{ short_name }}</p>
         </RouterLink>
-        <RouterLink to="/">
+        <RouterLink :to="/clubs/ + clubID">
           <p class="category">{{ category }}</p>
         </RouterLink>
       </div>

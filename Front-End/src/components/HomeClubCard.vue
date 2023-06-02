@@ -5,14 +5,12 @@ defineProps({
   short_name: String,
   category: String,
   members: Number,
+  logo: String,
 });
 </script>
 <template>
   <RouterLink :to="/clubs/ + clubID" class="card flex">
-    <img
-      src="http://localhost:8080/user-avatars/default-user.jpg"
-      class="img"
-    />
+    <img :src="logo" class="img" />
     <div class="clubDetails flex col justify-between">
       <div class="name">
         <p class="clubName">{{ name }}</p>
