@@ -35,14 +35,7 @@ getClubs();
         <RouterLink to="/clubs"> Top Clubs </RouterLink>
       </h2>
       <div class="clubCards flex col">
-        <ClubCard
-          class="clubCard"
-          v-for="club in clubs"
-          :name="club.name"
-          :short_name="club.short_name"
-          :category="club.category"
-          :members="club.members"
-        />
+        <ClubCard class="clubCard" v-for="club in clubs" v-bind="club" />
       </div>
     </div>
     <div class="clubs">

@@ -102,7 +102,7 @@ router.get("/:id", function (req, res, next) {
         return;
       }
 
-      res.json(rows);
+      res.json(rows[0]);
     });
   });
 });

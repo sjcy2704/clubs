@@ -1,5 +1,6 @@
 <script setup>
 defineProps({
+  clubID: Number,
   short_name: String,
   category: String,
   members: Number,
@@ -8,7 +9,7 @@ defineProps({
 
 <template>
   <div class="clubContainer">
-    <RouterLink to="/">
+    <RouterLink :to="/clubs/ + clubID">
       <div class="clubIcon"></div>
     </RouterLink>
     <div class="details flex justify-between">

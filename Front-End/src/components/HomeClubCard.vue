@@ -1,5 +1,6 @@
 <script setup>
 defineProps({
+  clubID: Number,
   name: String,
   short_name: String,
   category: String,
@@ -7,7 +8,7 @@ defineProps({
 });
 </script>
 <template>
-  <RouterLink to="/clubs" class="card flex">
+  <RouterLink :to="/clubs/ + clubID" class="card flex">
     <img
       src="http://localhost:8080/user-avatars/default-user.jpg"
       class="img"
