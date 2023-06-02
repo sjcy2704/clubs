@@ -22,10 +22,10 @@ await fetch(`http://localhost:8080/clubs/${route.params.clubID}`).then((res) =>
         />
         <div class="clubDetails flex col justify-between">
           <div class="main">
-            <h1>{{ details.name || "Club Name" }}</h1>
-            <h2>{{ details.short_name || "Short" }}</h2>
-            <h3>{{ details.category || "Category" }}</h3>
-            <h4>Total Members: {{ details.members || 0 }}</h4>
+            <h1>{{ details.name }}</h1>
+            <h2>{{ details.short_name }}</h2>
+            <h3>{{ details.category }}</h3>
+            <h4>Total Members: {{ details.members }}</h4>
           </div>
           <p v-if="details.description" class="description">
             {{ details.description }}

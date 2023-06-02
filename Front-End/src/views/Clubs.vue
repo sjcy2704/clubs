@@ -4,16 +4,14 @@ import { ref } from "vue";
 
 let clubs = ref([]);
 
-async function getClubs() {
-  const res = await fetch("http://localhost:8080/clubs", {
-    method: "GET",
-    credentials: "include",
-  });
-  await res.json().then((json) => {
+await fetch("http://localhost:8080/clubs", {
+  method: "GET",
+  credentials: "include",
+}).then((res) =>
+  res.json().then((json) => {
     clubs.value = json;
-  });
-}
-getClubs();
+  })
+);
 </script>
 
 <template>

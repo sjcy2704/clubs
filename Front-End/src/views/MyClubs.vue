@@ -7,18 +7,14 @@ const userStore = useUserStore();
 
 let clubs = ref([]);
 
-async function getClubs() {
-  await fetch(`http://localhost:8080/users/${userStore.user.userID}/clubs`, {
-    method: "GET",
-    credentials: "include",
-  }).then((res) => {
-    res.json().then((json) => {
-      clubs.value = json;
-    });
+await fetch(`http://localhost:8080/users/${userStore.user.userID}/clubs`, {
+  method: "GET",
+  credentials: "include",
+}).then((res) => {
+  res.json().then((json) => {
+    clubs.value = json;
   });
-}
-
-getClubs();
+});
 </script>
 
 <template>
