@@ -1,3 +1,22 @@
+<script setup>
+import ClubCard from "../components/HomeClubCard.vue";
+
+import { ref } from "vue";
+
+let clubs = ref([]);
+
+async function getClubs() {
+  const res = await fetch("http://localhost:8080/clubs", {
+    method: "GET",
+    credentials: "include",
+  });
+  await res.json().then((json) => {
+    clubs.value = json.toSorted((x, y) => y.members - x.members).splice(0, 10);
+  });
+}
+getClubs();
+</script>
+
 <template>
   <div class="container">
     <div class="title">
@@ -12,7 +31,19 @@
 
   <div class="clubRelated flex sm-col">
     <div class="clubs">
-      <h2 class="subTitle">Clubs</h2>
+      <h2 class="subTitle">
+        <RouterLink to="/clubs"> Top Clubs </RouterLink>
+      </h2>
+      <div class="clubCards flex col">
+        <ClubCard
+          class="clubCard"
+          v-for="club in clubs"
+          :name="club.name"
+          :short_name="club.short_name"
+          :category="club.category"
+          :members="club.members"
+        />
+      </div>
     </div>
     <div class="clubs">
       <h2 class="subTitle">Upcoming Events</h2>
@@ -21,6 +52,9 @@
 </template>
 
 <style scoped>
+a {
+  color: inherit;
+}
 .title span {
   font-size: 0.7em;
   display: block;
@@ -31,6 +65,20 @@
 
 .subTitle {
   font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.clubCard {
+  box-sizing: unset;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+
+.clubCards .clubCard:last-child {
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .reDiv {
@@ -56,7 +104,12 @@
   border-radius: 10px;
   width: 50%;
   height: 550px;
-  padding: 20px;
+  padding: 20px 30px;
+  overflow-y: scroll;
+}
+
+.clubs::-webkit-scrollbar {
+  display: none;
 }
 
 .eventsCards {
