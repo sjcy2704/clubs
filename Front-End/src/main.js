@@ -20,6 +20,12 @@ import {
   faPlus,
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebook,
+  faInstagram,
+  faTwitter,
+  faDiscord,
+} from "@fortawesome/free-brands-svg-icons";
 
 library.add(
   faUsers,
@@ -30,7 +36,11 @@ library.add(
   faBarsProgress,
   faTableColumns,
   faPlus,
-  faChevronLeft
+  faChevronLeft,
+  faFacebook,
+  faInstagram,
+  faTwitter,
+  faDiscord
 );
 
 pinia.use(piniaPersistedState);

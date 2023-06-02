@@ -9,7 +9,7 @@ const ClubSignUp = () => import("../views/forms/ClubRegisterForm.vue");
 const ManageClubs = () => import("../views/ManageClubs.vue");
 const RouterView = () => import("../views/RouterView.vue");
 const MyClubs = () => import("../views/MyClubs.vue");
-// const Test = () => import("../views/test.vue");
+const Test = () => import("../views/ClubDetails.vue");
 
 // {
 //   path: "/user",
@@ -40,7 +40,7 @@ export const routes = [
       },
     ],
   },
-  // { path: "/test", component: Test },
+  { path: "/test", component: Test },
   {
     path: "/user",
     component: RouterView,
