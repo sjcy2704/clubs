@@ -17,7 +17,7 @@ We recommend using the 'Shared Repository Model (Branch & Pull)' to collaborate 
 ### Frontend
 [VueJS](https://vuejs.org/)
 
-[Vue-Router](https://router.vuejs.org/) 
+[Vue-Router](https://router.vuejs.org/) for client-side routing
 
 [Pinia](https://pinia.vuejs.org/) for state management
 
@@ -74,10 +74,10 @@ following command:
 service mysql start
 ```
 
-Once you successfully start the mysql server, you will need a new terminal
-having in total two terminals. Change directory to either one of
+Once you successfully start the MySQL server, you will need a new terminal
+(having in total two terminals). Change directory to either one of
 the main folders in each terminal (Front-end in one terminal and Back-end in the
-other one) and run the following commands:
+other one) and run the following commands in their respective terminals:
 
 ```
 // For Front-end
