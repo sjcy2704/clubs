@@ -55,7 +55,7 @@ router.post("/", function (req, res, next) {
   });
 });
 
-router.get("/:id", function (req, res, next) {
+router.get("/club/:id", function (req, res, next) {
   req.pool.getConnection(function (err, connection) {
     if (err) {
       res.sendStatus(500);
@@ -74,6 +74,34 @@ router.get("/:id", function (req, res, next) {
       }
 
       res.json(rows);
+    });
+  });
+});
+
+router.get("/club/:clubID/user/:userID", function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const { clubID, userID } = req.params;
+
+    const query = "SELECT * FROM ClubMembers WHERE userID = ? AND clubID = ?";
+
+    connection.query(query, [userID, clubID], function (err, rows) {
+      connection.release();
+
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+
+      if (rows.length > 0) {
+        res.json({ joined: true });
+      } else {
+        res.json({ joined: false });
+      }
     });
   });
 });
