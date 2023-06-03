@@ -14,11 +14,19 @@ We recommend using the 'Shared Repository Model (Branch & Pull)' to collaborate 
 # Student Clubs
 
 ## Built with
+### Frontend
 [VueJS](https://vuejs.org/)
 
-[Vue-Router](https://router.vuejs.org/)
+[Vue-Router](https://router.vuejs.org/) 
 
-[Pinia](https://pinia.vuejs.org/)
+[Pinia](https://pinia.vuejs.org/) for state management
+
+### Backend
+[ExpressJS](https://expressjs.com/) for the server
+
+[Passport.js](https://www.passportjs.org/) for authentication
+
+[MySQL](https://www.mysql.com/) as the database
 
 ## Setup
 ### Requirements
@@ -28,23 +36,25 @@ Internet Browser (Chrome, Firefox, Safari, etc)
 
 [Node.js](https://nodejs.org) is required to install dependencies and run scripts via `npm`.
 
-[VSCode](https://code.visualstudio.com/) with Remote Development Extension
+[VSCode](https://code.visualstudio.com/) with [Remote Development Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack
+)
 
 [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
 ### Installation
 After installing the tools required, you can go ahead and clone the repository
-using Git
+using Git in your terminal.
 
 ```
 git clone https://github.com/sjcy2704/23S1_WDC_UG070_world-execute-me-
 ```
 
-After cloning the repository, you will find two main folders called Front-End
-and Back-end.
+After cloning the repository, change directory to the repository and you will find two main folders called **Front-End**
+and **Back-end**.
 
 Change directory to each of the folder using the commands
-`cd Front-End` and `cd Back-end`. On each folder run the following command:
+`cd Front-End` and `cd Back-end`. On each folder run the following command to
+install the dependencies
 
 ```
 npm install
