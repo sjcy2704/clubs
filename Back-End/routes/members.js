@@ -36,21 +36,22 @@ router.post("/", function (req, res, next) {
     connection.query(query, [clubID, userID], function (err) {
       if (err) {
         res.sendStatus(500);
+        throw err;
         return;
       }
+      const update = "UPDATE Clubs SET members = members + 1 WHERE clubID = ?";
 
-      res.send("Member added!");
-    });
+      connection.query(update, clubID, function (err) {
+        connection.release();
 
-    const update = "UPDATE Clubs SET members = members + 1 WHERE clubID = ?";
+        if (err) {
+          res.sendStatus(500);
+          throw err;
+          return;
+        }
+      });
 
-    connection.query(update, clubID, function (err) {
-      connection.release();
-
-      if (err) {
-        res.sendStatus(500);
-        return;
-      }
+      res.sendStatus(201);
     });
   });
 });

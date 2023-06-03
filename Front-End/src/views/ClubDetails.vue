@@ -6,20 +6,38 @@ const route = useRoute();
 const userStore = useUserStore();
 
 const details = ref({});
-const joined = ref(false);
+const join = ref(false);
 
 await fetch(`http://localhost:8080/clubs/${route.params.clubID}`).then((res) =>
   res.json().then((json) => {
     details.value = json;
-    if (userStore.loggedIn) {
-      fetch(
-        `http://localhost:8080/members/club/${json.clubID}/user/${userStore.user.userID}`
-      ).then((res) => {
-        res.json().then((joinedValue) => (joined.value = joinedValue.joined));
-      });
-    }
   })
 );
+
+if (userStore.loggedIn) {
+  await fetch(
+    `http://localhost:8080/members/club/${details.value.clubID}/user/${userStore.user.userID}`
+  ).then((res) => {
+    res.json().then(({ joined }) => (join.value = joined));
+  });
+}
+
+async function joinClub() {
+  await fetch(`http://localhost:8080/members`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      clubID: details.value.clubID,
+      userID: userStore.user.userID,
+    }),
+  }).then(() => {
+    join.value = true;
+    details.value.members += 1;
+  });
+}
 </script>
 
 <template>
@@ -52,7 +70,9 @@ await fetch(`http://localhost:8080/clubs/${route.params.clubID}`).then((res) =>
             <a href="#"><font-awesome-icon icon="fa-brands fa-instagram" /></a>
             <a href="#"><font-awesome-icon icon="fa-brands fa-discord" /></a>
           </div>
-          <button v-if="!joined" class="joinButton">Join Club</button>
+          <button v-if="!join" class="joinButton" @click="joinClub">
+            Join Club
+          </button>
         </div>
       </div>
     </div>

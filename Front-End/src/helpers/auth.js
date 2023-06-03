@@ -9,7 +9,6 @@ export async function logUser(login, router, userStore, errors = null) {
     },
     body: JSON.stringify(login),
   }).then((res) => {
-    console.log(res);
     if ((res.status === 401 || res.status === 400) && errors) {
       errors.errs = true;
     } else {
