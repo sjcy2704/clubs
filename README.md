@@ -14,27 +14,31 @@ We recommend using the 'Shared Repository Model (Branch & Pull)' to collaborate 
 # Student Clubs
 
 ## Built with
-VueJS
-Vue-Router
-Pinia
+[VueJS](https://vuejs.org/)
+
+[Vue-Router](https://router.vuejs.org/)
+
+[Pinia](https://pinia.vuejs.org/)
 
 ## Setup
 ### Requirements
 Internet Browser (Chrome, Firefox, Safari, etc)
 
-Git
+[Git](https://git-scm.com/downloads) for version control.
 
-NodeJS
+[Node.js](https://nodejs.org) is required to install dependencies and run scripts via `npm`.
 
-VSCode with Remote Development Extension
+[VSCode](https://code.visualstudio.com/) with Remote Development Extension
 
-Docker for Desktop
+[Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
 ### Installation
 After installing the tools required, you can go ahead and clone the repository
 using Git
 
-```git clone https://github.com/sjcy2704/23S1_WDC_UG070_world-execute-me-```
+```
+git clone https://github.com/sjcy2704/23S1_WDC_UG070_world-execute-me-
+```
 
 After cloning the repository, you will find two main folders called Front-End
 and Back-end.
@@ -42,7 +46,9 @@ and Back-end.
 Change directory to each of the folder using the commands
 `cd Front-End` and `cd Back-end`. On each folder run the following command:
 
-```npm install```
+```
+npm install
+```
 
 ### Running the Web App
 To run the web application, you will need to have the Docker for Desktop
@@ -54,7 +60,9 @@ appear a notification to `Reopen in Container`. It should look like this:
 After you reopen the project in a container, open the terminal and run the
 following command:
 
-```service mysql start```
+```
+service mysql start
+```
 
 Once you successfully start the mysql server, you will need a new terminal
 having in total two terminals. Change directory to either one of
@@ -72,6 +80,8 @@ npm start
 After running both commands in their respective terminals, you can go ahead and
 see the web application running in your browser.
 
-```http://localhost:5173```
+```
+http://localhost:5173
+```
 
 
