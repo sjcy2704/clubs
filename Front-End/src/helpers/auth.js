@@ -35,13 +35,15 @@ export async function logout(router, route, userStore) {
   });
 }
 
-export async function signUpUser(signup, avatar, router, userStore) {
+export async function signUpUser(signup, router, userStore) {
   const formData = new FormData();
   for (const key in signup) {
-    formData.append(key, signup[key]);
+    if (key === "avatar" && signup[key]) {
+      formData.append(key, signup[key][0]);
+    } else {
+      formData.append(key, signup[key]);
+    }
   }
-
-  formData.append("avatar", avatar);
 
   await fetch(`${host}/signup`, {
     method: "POST",

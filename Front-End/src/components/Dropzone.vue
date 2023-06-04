@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { useDropzone } from "vue3-dropzone";
 
-const props = defineProps(["modelValue"]);
+const props = defineProps(["modelValue", "label"]);
 const emit = defineEmits(["update:modelValue"]);
 
 let file = ref(null);
@@ -26,7 +26,7 @@ function deleteFile() {
 
 <template>
   <div>
-    <p class="label">Profile Avatar</p>
+    <p class="label">{{ label }}</p>
     <div :class="{ dropzone: !file }" v-bind="getRootProps()">
       <div :class="{ isDragActive, border: !file }">
         <input v-bind="getInputProps()" />

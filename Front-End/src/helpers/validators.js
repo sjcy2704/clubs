@@ -79,5 +79,9 @@ export function validateClub(details) {
     errs.push("Select a category");
   }
 
+  if (!details.logo) {
+    errs.push("Requires a Club Logo");
+  }
+
   return errs;
 }

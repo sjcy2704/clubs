@@ -6,12 +6,14 @@ import { useRouter } from "vue-router";
 import { validateClub } from "../../helpers/validators";
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
+import Dropzone from "../../components/Dropzone.vue";
 
 const userStore = useUserStore();
 const clubDetails = reactive({
   name: "",
   short_name: "",
   category: "",
+  logo: null,
   description: "",
   manager: userStore.user.userID,
 });
@@ -35,11 +37,19 @@ const categories = ref([
 const router = useRouter();
 
 async function registerClub() {
+  const formData = new FormData();
+  for (const key in clubDetails) {
+    if (key === "logo" && clubDetails[key]) {
+      formData.append(key, clubDetails[key][0]);
+    } else {
+      formData.append(key, clubDetails[key]);
+    }
+  }
+
   await fetch("http://localhost:8080/clubs", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
     credentials: "include",
-    body: JSON.stringify(clubDetails),
+    body: formData,
   }).then(() => {
     router.push("/clubs/manage");
   });
@@ -79,6 +89,7 @@ function addClub() {
         {{ category.value }}
       </option>
     </select>
+    <Dropzone label="Club Logo" v-model="clubDetails.logo" />
     <p>Description</p>
     <QuillEditor v-model:content="clubDetails.description" contentType="html" />
     <button type="submit">Create Club</button>

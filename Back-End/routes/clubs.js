@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var multer = require("multer");
 const path = require("path");
-const DIR = path.join(__dirname, "../public/club-icons");
+const DIR = path.join(__dirname, "../public/club-logos");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -51,33 +51,39 @@ router.get("/", function (req, res, next) {
   });
 });
 
-router.post("/", function (req, res) {
+router.post("/", upload.single("logo"), function (req, res) {
   req.pool.getConnection(function (err, connection) {
     if (err) {
       res.sendStatus(500);
-      throw err;
       return;
     }
 
     const { name, short_name, category, description, manager } = req.body;
-    console.log(description);
-
-    const query =
+    let path;
+    let query =
       "INSERT INTO Clubs(name, short_name, category, description, manager) VALUES (?, ?, ?, ?, ?)";
-    connection.query(
-      query,
-      [name, short_name, category, description, manager],
-      function (err) {
-        connection.release();
-        if (err) {
-          res.sendStatus(500);
-          throw err;
-          return;
-        }
+    let values = [name, short_name, category, description, manager];
 
-        res.sendStatus(201);
+    if (req.file) {
+      path = `${req.protocol}://${req.get("host")}/club-logos/${
+        req.file.filename
+      }`;
+
+      values.push(path);
+
+      query =
+        "INSERT INTO Clubs(name, short_name, category, description, manager, logo) VALUES (?, ?, ?, ?, ?, ?)";
+    }
+
+    connection.query(query, values, function (err) {
+      connection.release();
+      if (err) {
+        res.sendStatus(500);
+        return;
       }
-    );
+
+      res.sendStatus(201);
+    });
   });
 });
 

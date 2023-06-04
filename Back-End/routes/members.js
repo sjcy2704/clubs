@@ -36,7 +36,6 @@ router.post("/", function (req, res, next) {
     connection.query(query, [clubID, userID], function (err) {
       if (err) {
         res.sendStatus(500);
-        throw err;
         return;
       }
       const update = "UPDATE Clubs SET members = members + 1 WHERE clubID = ?";
@@ -46,7 +45,6 @@ router.post("/", function (req, res, next) {
 
         if (err) {
           res.sendStatus(500);
-          throw err;
           return;
         }
       });

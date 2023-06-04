@@ -17,10 +17,9 @@ const signup = reactive({
   confirm: "",
   email: "",
   phone: "",
+  avatar: null,
   manager: false,
 });
-
-let avatar = ref(null);
 
 const errs = reactive({
   errors: [],
@@ -32,7 +31,7 @@ function createUser() {
 
   if (errs.errors.length === 0) {
     const userStore = useUserStore();
-    signUpUser(signup, avatar.value[0], router, userStore);
+    signUpUser(signup, router, userStore);
   }
 }
 </script>
@@ -58,7 +57,7 @@ function createUser() {
     </div>
     <Input label="Email" v-model="signup.email" />
     <Input label="Phone Number" v-model="signup.phone" />
-    <Dropzone v-model="avatar" />
+    <Dropzone label="Profile Avatar" v-model="signup.avatar" />
     <span class="errors" v-if="errs.errors" v-for="err in errs.errors">{{
       err
     }}</span>

@@ -55,7 +55,8 @@ router.post("/login", passport.authenticate("local"), function (req, res) {
 router.post("/logout", function (req, res, next) {
   req.logout(function (err) {
     if (err) {
-      throw err;
+      res.sendStatus(500);
+      return;
     }
 
     res.clearCookie("sessionid");
@@ -70,9 +71,20 @@ router.post("/signup", upload.single("avatar"), function (req, res, next) {
   firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
   familyName = familyName.charAt(0).toUpperCase() + familyName.slice(1);
 
-  const path = `${req.protocol}://${req.get("host")}/images/${
-    req.file.filename
-  }`;
+  let path = null;
+  let values = [firstName, familyName, username, hash, email, phone, userType];
+
+  let query =
+    "INSERT INTO Users (firstName, familyName, username, password, email, phone, userType) VALUES (?,?,?,?,?,?,?)";
+  if (req.file) {
+    path = `${req.protocol}://${req.get("host")}/user-avatars/${
+      req.file.filename
+    }`;
+    values.push(path);
+
+    query =
+      "INSERT INTO Users (firstName, familyName, username, password, email, phone, userType, avatar) VALUES (?,?,?,?,?,?,?,?)";
+  }
 
   req.pool.getConnection(function (err, connection) {
     if (err) {
@@ -86,21 +98,14 @@ router.post("/signup", upload.single("avatar"), function (req, res, next) {
     }
 
     bcrypt.hash(password, 10, function (err, hash) {
-      const query =
-        "INSERT INTO Users (firstName, familyName, username, password, email, phone, userType, avatar) VALUES (?,?,?,?,?,?,?,?)";
-
-      connection.query(
-        query,
-        [firstName, familyName, username, hash, email, phone, userType, path],
-        function (err) {
-          connection.release();
-          if (err) {
-            res.sendStatus(500);
-            return;
-          }
-          res.sendStatus(201);
+      connection.query(query, values, function (err) {
+        connection.release();
+        if (err) {
+          res.sendStatus(500);
+          return;
         }
-      );
+        res.sendStatus(201);
+      });
     });
   });
 });
