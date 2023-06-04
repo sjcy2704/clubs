@@ -19,6 +19,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var clubsRouter = require("./routes/clubs");
 var membersRouter = require("./routes/members");
+var authRouter = require("./routes/auth");
 
 var app = express();
 
@@ -61,5 +62,6 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/clubs", clubsRouter);
 app.use("/members", membersRouter);
+app.use("/auth", authRouter);
 
 module.exports = app;
