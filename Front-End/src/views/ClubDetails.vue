@@ -9,19 +9,24 @@ const userStore = useUserStore();
 const details = ref({});
 const join = ref(false);
 
-await fetch(`http://localhost:8080/clubs/${route.params.clubID}`).then((res) =>
-  res.json().then((json) => {
-    details.value = json;
-  })
+await fetch(`http://localhost:8080/clubs/${route.params.clubID}`).then(
+  (res) => {
+    if (res.status === 404) {
+      router.replace({ name: "NotFound", params: { 0: `/${route.path}` } });
+    } else {
+      res.json().then((json) => {
+        details.value = json;
+        if (userStore.loggedIn) {
+          fetch(
+            `http://localhost:8080/members/club/${details.value.clubID}/user/${userStore.user.userID}`
+          ).then((res) => {
+            res.json().then(({ joined }) => (join.value = joined));
+          });
+        }
+      });
+    }
+  }
 );
-
-if (userStore.loggedIn) {
-  await fetch(
-    `http://localhost:8080/members/club/${details.value.clubID}/user/${userStore.user.userID}`
-  ).then((res) => {
-    res.json().then(({ joined }) => (join.value = joined));
-  });
-}
 
 async function joinClub() {
   if (!userStore.loggedIn) {

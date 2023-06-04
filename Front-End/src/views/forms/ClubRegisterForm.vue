@@ -43,9 +43,12 @@ async function registerClub() {
   });
 }
 
+const errs = reactive({
+  errors: [],
+});
+
 function addClub() {
-  errs.errors = [];
-  errs.errors.push(...validateClub(clubDetails));
+  errs.errors = validateClub(clubDetails);
 
   if (errs.errors.length === 0) {
     registerClub();
@@ -74,7 +77,11 @@ function addClub() {
         {{ category.value }}
       </option>
     </select>
-    <textarea class="descriptionText" placeholder="Description"></textarea>
+    <textarea
+      v-model="clubDetails.description"
+      class="descriptionText"
+      placeholder="Description"
+    ></textarea>
     <button type="submit">Create Club</button>
   </form>
 </template>

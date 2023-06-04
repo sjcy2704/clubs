@@ -25,8 +25,12 @@ let search = ref("");
     </div>
   </div>
 
-  <div class="cardsContainer flex flex-wrap">
-    <ClubCard v-for="club in clubStore.getCurrentClubs(search)" v-bind="club" />
+  <div class="cardsContainer">
+    <ClubCard
+      class="item"
+      v-for="club in clubStore.getCurrentClubs(search)"
+      v-bind="club"
+    />
   </div>
 </template>
 
@@ -50,8 +54,13 @@ let search = ref("");
 }
 
 .cardsContainer {
-  gap: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   width: 60%;
   margin: 0 auto;
+}
+
+.item {
+  justify-self: center;
 }
 </style>

@@ -78,4 +78,6 @@ export function validateClub(details) {
   if (details.category.length === 0) {
     errs.push("Select a category");
   }
+
+  return errs;
 }

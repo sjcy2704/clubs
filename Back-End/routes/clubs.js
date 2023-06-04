@@ -60,6 +60,7 @@ router.post("/", function (req, res) {
     }
 
     const { name, short_name, category, description, manager } = req.body;
+    console.log(description);
 
     const query =
       "INSERT INTO Clubs(name, short_name, category, description, manager) VALUES (?, ?, ?, ?, ?)";

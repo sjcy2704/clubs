@@ -10,6 +10,7 @@ const ManageClubs = () => import("../views/ManageClubs.vue");
 const RouterView = () => import("../views/RouterView.vue");
 const MyClubs = () => import("../views/MyClubs.vue");
 const ClubDetails = () => import("../views/ClubDetails.vue");
+const NotFound = () => import("../views/404.vue");
 
 // {
 //   path: "/user",
@@ -60,6 +61,11 @@ export const routes = [
     path: "/login",
     component: Login,
     meta: { guestOnly: true },
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: NotFound,
   },
 ];
 
