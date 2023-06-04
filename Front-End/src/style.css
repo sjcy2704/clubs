@@ -32,6 +32,14 @@ body {
   color: white;
 }
 
+.w-100 {
+  width: 100%;
+}
+
+.w-65 {
+  width: 65%;
+}
+
 .flex {
   display: flex;
 }
@@ -71,6 +79,25 @@ body {
 
 /* Rest of Css */
 
+input {
+  padding: 5px 10px;
+  font-size: 1.15em;
+  width: 100%;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: none;
+  font-family: inherit;
+}
+
+input[type="password"] {
+  font-family: Verdana;
+  letter-spacing: 0.125em;
+}
+
+input:focus-visible {
+  outline: 1px solid gray;
+}
 main {
   margin-bottom: 70px;
   text-align: center;
@@ -92,7 +119,7 @@ a {
 
 .container {
   text-align: center;
-  padding: 50px;
+  padding: 20px 47px;
 }
 
 .lsgForm {

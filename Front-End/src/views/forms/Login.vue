@@ -1,6 +1,6 @@
 <script setup>
 import { useRouter } from "vue-router";
-import FormInput from "../../components/FormInput.vue";
+import Input from "../../components/Input.vue";
 import { reactive } from "vue";
 import { logUser } from "../../helpers/auth";
 import { useUserStore } from "../../stores/userStore";
@@ -28,8 +28,8 @@ const userStore = useUserStore();
     class="lsgForm"
     v-on:submit.prevent="logUser(login, router, userStore, errors)"
   >
-    <FormInput label="Username" v-model="login.username" />
-    <FormInput label="Password" v-model="login.password" passwordField="true" />
+    <Input label="Username" v-model="login.username" />
+    <Input label="Password" v-model="login.password" passwordField="true" />
     <span class="errors" v-if="errors.errs"
       >Username or password incorrect</span
     >

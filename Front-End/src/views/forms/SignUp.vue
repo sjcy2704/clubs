@@ -1,5 +1,5 @@
 <script setup>
-import FormInput from "../../components/FormInput.vue";
+import Input from "../../components/Input.vue";
 import { useRouter } from "vue-router";
 import { reactive, ref, watch } from "vue";
 import { validateUser } from "../../helpers/validators";
@@ -44,24 +44,20 @@ function createUser() {
 
   <form id="signUpForm" class="lsgForm" v-on:submit.prevent="createUser">
     <div class="flex justify-between name sm-col">
-      <FormInput label="First Name" v-model="signup.firstName" />
-      <FormInput label="Family Name" v-model="signup.familyName" />
+      <Input label="First Name" v-model="signup.firstName" />
+      <Input label="Family Name" v-model="signup.familyName" />
     </div>
-    <FormInput label="Username" v-model="signup.username" />
+    <Input label="Username" v-model="signup.username" />
     <div class="flex justify-between name">
-      <FormInput
-        label="Password"
-        passwordField="true"
-        v-model="signup.password"
-      />
-      <FormInput
+      <Input label="Password" passwordField="true" v-model="signup.password" />
+      <Input
         label="Confirm Password"
         passwordField="true"
         v-model="signup.confirm"
       />
     </div>
-    <FormInput label="Email" v-model="signup.email" />
-    <FormInput label="Phone Number" v-model="signup.phone" />
+    <Input label="Email" v-model="signup.email" />
+    <Input label="Phone Number" v-model="signup.phone" />
     <Dropzone v-model="avatar" />
     <span class="errors" v-if="errs.errors" v-for="err in errs.errors">{{
       err

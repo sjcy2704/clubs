@@ -1,5 +1,5 @@
 <script setup>
-import FormInput from "../../components/FormInput.vue";
+import Input from "../../components/Input.vue";
 import { reactive, ref } from "vue";
 import { useUserStore } from "../../stores/userStore";
 import { useRouter } from "vue-router";
@@ -63,9 +63,9 @@ function addClub() {
     <p class="title">Club<span>Registration</span></p>
   </div>
   <form class="lsgForm" v-on:submit.prevent="addClub">
-    <FormInput label="Club Name" v-model="clubDetails.name" />
+    <Input label="Club Name" v-model="clubDetails.name" />
     <div class="shortName">
-      <FormInput label="Short Name" v-model="clubDetails.short_name" />
+      <Input label="Short Name" v-model="clubDetails.short_name" />
       <span class="example">e.g. CS Club - Computer Science Club</span>
     </div>
     <p class="category">Category</p>

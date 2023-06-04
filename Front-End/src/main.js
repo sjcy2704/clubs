@@ -19,6 +19,7 @@ import {
   faTableColumns,
   faPlus,
   faChevronLeft,
+  faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -40,7 +41,8 @@ library.add(
   faFacebook,
   faInstagram,
   faTwitter,
-  faDiscord
+  faDiscord,
+  faMagnifyingGlass
 );
 
 pinia.use(piniaPersistedState);
