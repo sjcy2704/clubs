@@ -22,6 +22,11 @@ await fetch(`http://localhost:8080/users/${userStore.user.userID}/clubs`, {
     <div class="title">My Clubs</div>
   </div>
 
+  <div class="noClubs" v-if="clubs.length === 0">
+    <h2>No clubs joined!</h2>
+    <p>Join one here <RouterLink to="/clubs">Clubs</RouterLink></p>
+  </div>
+
   <div class="cardsContainer flex flex-wrap">
     <ClubCard v-for="club in clubs" v-bind="club" />
   </div>
@@ -49,6 +54,10 @@ await fetch(`http://localhost:8080/users/${userStore.user.userID}/clubs`, {
 
 .plus {
   font-size: 1.25em;
+}
+
+.noClubs a {
+  color: black;
 }
 
 .cardsContainer {
