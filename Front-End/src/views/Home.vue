@@ -83,7 +83,7 @@ a {
   border-radius: 10px;
   width: 75%;
   height: 600px;
-  padding: 20px;
+  padding: 20px 30px;
 }
 
 .clubRelated {

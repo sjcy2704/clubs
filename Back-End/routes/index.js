@@ -42,6 +42,19 @@ function checkAuth(req, res, next) {
   }
 }
 
+router.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["email", "profile"] })
+);
+
+router.get(
+  "/auth/google/callback",
+  passport.authenticate("google"),
+  function (req, res) {
+    res.json(req.user);
+  }
+);
+
 router.get("/user", checkAuth, function (req, res) {
   res.json(req.user);
 });

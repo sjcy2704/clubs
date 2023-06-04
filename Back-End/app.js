@@ -6,6 +6,7 @@ var session = require("express-session");
 var passport = require("passport");
 var initPassport = require("./passport-config");
 var cors = require("cors");
+require("dotenv").config();
 
 var mysql = require("mysql");
 

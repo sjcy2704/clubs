@@ -183,9 +183,14 @@ CREATE TABLE
     SET
       ('user', 'admin', 'manager') DEFAULT 'user',
       `avatar` varchar(2083) DEFAULT 'http://localhost:8080/user-avatars/default-user.jpg',
+      `provider_id` varchar(30),
+      `provider`
+    SET
+      ('local', 'google', 'github') DEFAULT 'local',
       PRIMARY KEY (`userID`),
       UNIQUE KEY `username` (`username`),
-      UNIQUE KEY `email` (`email`)
+      UNIQUE KEY `email` (`email`),
+      UNIQUE KEY `provider_id` (`provider_id`)
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 /*!40101 SET character_set_client = @saved_cs_client */;
