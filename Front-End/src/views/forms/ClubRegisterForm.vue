@@ -4,6 +4,8 @@ import { reactive, ref } from "vue";
 import { useUserStore } from "../../stores/userStore";
 import { useRouter } from "vue-router";
 import { validateClub } from "../../helpers/validators";
+import { QuillEditor } from "@vueup/vue-quill";
+import "@vueup/vue-quill/dist/vue-quill.snow.css";
 
 const userStore = useUserStore();
 const clubDetails = reactive({
@@ -65,7 +67,7 @@ function addClub() {
   <div class="container">
     <p class="title">Club<span>Registration</span></p>
   </div>
-  <form class="lsgForm" v-on:submit.prevent="addClub">
+  <form class="lsgForm registerForm" v-on:submit.prevent="addClub">
     <Input label="Club Name" v-model="clubDetails.name" />
     <div class="shortName">
       <Input label="Short Name" v-model="clubDetails.short_name" />
@@ -77,16 +79,16 @@ function addClub() {
         {{ category.value }}
       </option>
     </select>
-    <textarea
-      v-model="clubDetails.description"
-      class="descriptionText"
-      placeholder="Description"
-    ></textarea>
+    <p>Description</p>
+    <QuillEditor v-model:content="clubDetails.description" contentType="html" />
     <button type="submit">Create Club</button>
   </form>
 </template>
 
 <style scoped>
+.registerForm {
+  max-width: 500px;
+}
 .title {
   font-size: 3em;
 }
@@ -140,5 +142,6 @@ function addClub() {
   border: 1px solid black;
   border-radius: 5px;
   box-shadow: none;
+  white-space: pre-wrap;
 }
 </style>

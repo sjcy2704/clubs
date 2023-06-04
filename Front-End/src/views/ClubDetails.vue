@@ -66,9 +66,11 @@ async function joinClub() {
           <h3>{{ details.category }}</h3>
           <h4>Total Members: {{ details.members }}</h4>
         </div>
-        <p v-if="details.description" class="description">
-          {{ details.description }}
-        </p>
+        <p
+          v-if="details.description"
+          v-html="details.description"
+          class="description"
+        ></p>
         <p v-else class="description">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
