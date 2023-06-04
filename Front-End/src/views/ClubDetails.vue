@@ -1,8 +1,9 @@
 <script setup>
-import { ref, onBeforeMount } from "vue";
-import { useRoute } from "vue-router";
+import { ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { useUserStore } from "../stores/userStore";
 const route = useRoute();
+const router = useRouter();
 const userStore = useUserStore();
 
 const details = ref({});
@@ -23,24 +24,33 @@ if (userStore.loggedIn) {
 }
 
 async function joinClub() {
-  await fetch(`http://localhost:8080/members`, {
-    method: "POST",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      clubID: details.value.clubID,
-      userID: userStore.user.userID,
-    }),
-  }).then(() => {
-    join.value = true;
-    details.value.members += 1;
-  });
+  if (!userStore.loggedIn) {
+    router.push("/login");
+  } else {
+    await fetch(`http://localhost:8080/members`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        clubID: details.value.clubID,
+        userID: userStore.user.userID,
+      }),
+    }).then(() => {
+      join.value = true;
+      details.value.members += 1;
+    });
+  }
 }
 </script>
 
 <template>
+  <a class="back" @click="$router.go(-1)"
+    ><font-awesome-icon
+      icon="fa-solid
+    fa-chevron-left"
+  /></a>
   <div class="container">
     <div class="detailsContainer flex justify-center">
       <img :src="details.logo" class="img" />
@@ -88,6 +98,15 @@ async function joinClub() {
 </template>
 
 <style scoped>
+.back {
+  color: black;
+  cursor: pointer;
+  position: absolute;
+  left: 10%;
+  top: 15%;
+  font-size: 1.5em;
+}
+
 .subTitle {
   font-size: 25px;
   margin-bottom: 20px;

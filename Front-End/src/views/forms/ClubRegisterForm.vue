@@ -94,7 +94,7 @@ function addClub() {
   cursor: pointer;
   position: absolute;
   left: 10%;
-  top: 10%;
+  top: 15%;
   font-size: 1.5em;
 }
 

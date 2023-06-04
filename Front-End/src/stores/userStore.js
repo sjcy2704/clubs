@@ -24,7 +24,7 @@ export const useUserStore = defineStore("userStore", {
     },
   },
   persist: {
-    storage: localStorage,
+    storage: sessionStorage,
     beforeRestore: (ctx) => {
       ctx.store.getUser();
     },
