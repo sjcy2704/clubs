@@ -59,86 +59,77 @@ function initPassport(passport, db, res) {
         throw err;
       }
 
-      let user = {};
+      let query = "SELECT * FROM Users WHERE email = ?";
+      connection.query(
+        query,
+        profile._json.email,
+        function (firstConErr, rows) {
+          if (firstConErr) {
+            throw firstConErr;
+          }
+          if (rows.length === 0) {
+            const password = Math.random().toString(36).substring(2);
+            bcrypt.hash(password, 10, function (err, hash) {
+              query =
+                "INSERT INTO Users(username, password, email, firstName, familyName, avatar, provider_id, provider) VALUES (?,?,?,?,?,?,?,?)";
+              const { sub, given_name, family_name, picture, email } =
+                profile._json;
+              connection.query(
+                query,
+                [
+                  email,
+                  hash,
+                  email,
+                  given_name,
+                  family_name,
+                  picture,
+                  sub,
+                  profile.provider,
+                ],
+                function (err, rows) {
+                  if (err) {
+                    throw err;
+                  }
+                  connection.release();
 
-      let query = "SELECT * FROM Users WHERE provider_id = ?";
-      connection.query(query, profile.id, function (firstConErr, rows) {
-        if (firstConErr) {
-          throw firstConErr;
-        }
-
-        if (rows.length === 0) {
-          let userID;
-          connection.query(
-            "SELECT AUTO_INCREMENT as userID FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'studentclubs' AND TABLE_NAME = 'Users'",
-            function (autoErr, rows) {
-              if (autoErr) {
-                throw autoErr;
-              }
-
-              userID = rows.userID;
-            }
-          );
-          const password = Math.random().toString(36).substring(2);
-          bcrypt.hash(password, 10, function (err, hash) {
-            query =
-              "INSERT INTO Users(username, password, email, firstName, familyName, avatar, provider_id, provider) VALUES (?,?,?,?,?,?,?,?)";
-            const { sub, given_name, family_name, picture, email } =
-              profile._json;
+                  const user = {
+                    userID: rows.insertId,
+                    firstName: given_name,
+                    familyName: family_name,
+                    avatar: picture,
+                    email,
+                  };
+                  return done(null, user);
+                }
+              );
+            });
+          } else {
+            const {
+              userID,
+              firstName,
+              familyName,
+              username,
+              email,
+              phone,
+              userType,
+              avatar,
+            } = rows[0];
             user = {
               userID,
-              firstName: given_name,
-              familyName: family_name,
-              avatar: picture,
+              firstName,
+              familyName,
+              username,
               email,
+              phone,
+              userType,
+              avatar,
             };
-            connection.query(
-              query,
-              [
-                email,
-                hash,
-                email,
-                given_name,
-                family_name,
-                picture,
-                sub,
-                profile.provider,
-              ],
-              function (err) {
-                connection.release();
-                if (err) {
-                  throw err;
-                }
-              }
-            );
+            connection.release();
 
             return done(null, user);
-          });
-        } else {
-          const {
-            userID,
-            firstName,
-            familyName,
-            username,
-            email,
-            phone,
-            userType,
-            avatar,
-          } = rows[0];
-          user = {
-            userID,
-            firstName,
-            familyName,
-            username,
-            email,
-            phone,
-            userType,
-            avatar,
-          };
-
-          return done(null, user);
+          }
         }
-      });
+      );
     });
   };
 
@@ -170,7 +161,7 @@ function initPassport(passport, db, res) {
   passport.deserializeUser((user, done) => {
     db.getConnection(function (err, connection) {
       if (err) {
-        res.sendStatus(401);
+        res.sendStatus(500);
         return;
       }
 
@@ -179,8 +170,7 @@ function initPassport(passport, db, res) {
       connection.query(query, user.userID, function (err, rows, fields) {
         connection.release();
         if (err) {
-          res.sendStatus(401);
-          return;
+          throw err;
         }
 
         const {

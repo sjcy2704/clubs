@@ -78,6 +78,11 @@ body {
 }
 
 /* Rest of Css */
+hr {
+  border-style: solid;
+  margin-bottom: 10px;
+}
+
 .ql-container {
   min-height: 200px;
 }

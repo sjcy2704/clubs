@@ -41,7 +41,6 @@ export const routes = [
       },
     ],
   },
-  // { path: "/test", component: Test },
   {
     path: "/user",
     component: RouterView,
@@ -66,6 +65,12 @@ export const routes = [
     path: "/:pathMatch(.*)*",
     name: "NotFound",
     component: NotFound,
+  },
+  {
+    path: "/auth/google",
+    redirect: (to) => {
+      window.location.href = "http://localhost:8080/auth/google";
+    },
   },
 ];
 

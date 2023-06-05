@@ -19,13 +19,8 @@ const errors = reactive({
 const userStore = useUserStore();
 
 async function logWithGoogle() {
-  await fetch("http://localhost:8080/auth/google").then((res) =>
-    console.log(res)
-  );
+  router.push("/auth/google");
 }
-const scr = document.createElement("script");
-scr.setAttribute("src", "https://accounts.google.com/gsi/client");
-document.head.appendChild(scr);
 </script>
 
 <template>
@@ -37,30 +32,17 @@ document.head.appendChild(scr);
     class="lsgForm"
     v-on:submit.prevent="logUser(login, router, userStore, errors)"
   >
+    <button class="googleLogin" type="button" @click="logWithGoogle">
+      Login With Google
+      <font-awesome-icon class="googleIcon" icon="fa-brands fa-google" />
+    </button>
+    <hr />
     <Input label="Username" v-model="login.username" />
     <Input label="Password" v-model="login.password" passwordField="true" />
     <span class="errors" v-if="errors.errs"
       >Username or password incorrect</span
     >
-    <div
-      id="g_id_onload"
-      data-client_id="278035573871-ofiafg7qat39cikdsso6n4e1ppvvokee.apps.googleusercontent.com"
-      data-context="signin"
-      data-ux_mode="redirect"
-      data-nonce=""
-      data-login_uri="http://localhost:8080/auth/google"
-      data-auto_prompt="false"
-    ></div>
 
-    <div
-      class="g_id_signin"
-      data-type="standard"
-      data-shape="rectangular"
-      data-theme="filled_black"
-      data-text="signin_with"
-      data-size="large"
-      data-logo_alignment="left"
-    ></div>
     <button type="submit">Login</button>
     <div class="options">
       <RouterLink to="/signup">Sign Up</RouterLink>
@@ -69,6 +51,19 @@ document.head.appendChild(scr);
 </template>
 
 <style scoped>
+hr {
+  border-style: solid;
+  margin-bottom: 10px;
+}
+.googleLogin {
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+.googleIcon {
+  font-size: 1.3em;
+}
 .title {
   font-size: 2.8em;
 }

@@ -26,6 +26,8 @@ import {
   faInstagram,
   faTwitter,
   faDiscord,
+  faGoogle,
+  faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 
 library.add(
@@ -42,7 +44,9 @@ library.add(
   faInstagram,
   faTwitter,
   faDiscord,
-  faMagnifyingGlass
+  faMagnifyingGlass,
+  faGoogle,
+  faGithub
 );
 
 pinia.use(piniaPersistedState);
