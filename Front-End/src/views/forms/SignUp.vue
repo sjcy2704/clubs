@@ -26,8 +26,7 @@ const errs = reactive({
 });
 
 function createUser() {
-  errs.errors = [];
-  errs.errors.push(...validateUser(signup));
+  validateUser(signup).then((errors) => (errs.errors = errors));
 
   if (errs.errors.length === 0) {
     const userStore = useUserStore();
@@ -43,19 +42,25 @@ function createUser() {
 
   <form id="signUpForm" class="lsgForm" v-on:submit.prevent="createUser">
     <div class="flex justify-between name sm-col">
-      <Input label="First Name" v-model="signup.firstName" />
-      <Input label="Family Name" v-model="signup.familyName" />
+      <Input label="First Name" v-model="signup.firstName" required="true" />
+      <Input label="Family Name" v-model="signup.familyName" required="true" />
     </div>
-    <Input label="Username" v-model="signup.username" />
+    <Input label="Username" v-model="signup.username" required="true" />
     <div class="flex justify-between name">
-      <Input label="Password" passwordField="true" v-model="signup.password" />
+      <Input
+        label="Password"
+        passwordField="true"
+        v-model="signup.password"
+        required="true"
+      />
       <Input
         label="Confirm Password"
         passwordField="true"
         v-model="signup.confirm"
+        required="true"
       />
     </div>
-    <Input label="Email" v-model="signup.email" />
+    <Input label="Email" v-model="signup.email" required="true" />
     <Input label="Phone Number" v-model="signup.phone" />
     <Dropzone label="Profile Avatar" v-model="signup.avatar" />
     <span class="errors" v-if="errs.errors" v-for="err in errs.errors">{{

@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { api } from "../helpers/api";
 
 export const useUserStore = defineStore("userStore", {
   state: () => ({
@@ -7,19 +8,13 @@ export const useUserStore = defineStore("userStore", {
   }),
   actions: {
     async getUser() {
-      await fetch("http://localhost:8080/user", {
-        method: "GET",
-        credentials: "include",
-      }).then((res) => {
-        res.json().then((json) => {
-          if (json.userID) {
-            this.user = json;
-            this.loggedIn = true;
-          } else {
-            this.user = {};
-            this.loggedIn = false;
-          }
-        });
+      await api.get("/user").then(({ data }) => {
+        if (data.userID) {
+          this.user = data;
+          this.loggedIn = true;
+        } else {
+          this.$reset();
+        }
       });
     },
   },

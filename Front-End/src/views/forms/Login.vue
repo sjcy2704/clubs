@@ -51,10 +51,6 @@ async function logWithGoogle() {
 </template>
 
 <style scoped>
-hr {
-  border-style: solid;
-  margin-bottom: 10px;
-}
 .googleLogin {
   padding: 10px;
   display: flex;

@@ -1,3 +1,5 @@
+import { api } from "./api";
+
 function validatePassword(password, confirm) {
   if (password !== confirm) {
     return ["Passwords does not match"];
@@ -25,33 +27,14 @@ function validatePassword(password, confirm) {
   return msg;
 }
 
-export function validateUser(signup) {
+export async function validateUser(signup) {
   let errs = [];
 
-  if (signup.firstName.length === 0 || signup.familyName.length === 0) {
-    errs.push("Name cannot be empty");
-  }
-
-  if (signup.username.length === 0) {
-    errs.push("Username cannot be empty");
-  } else {
-    const req = new XMLHttpRequest();
-
-    req.onreadystatechange = () => {
-      if (req.readyState === 4 && req.status === 200) {
-        if (JSON.parse(req.responseText).length > 0) {
-          errs.push("Username already exists");
-        }
-      }
-    };
-
-    req.open(
-      "GET",
-      "http://localhost:8080/users/username/" + signup.username,
-      false
-    );
-    req.send();
-  }
+  await api.get(`/users/username/${signup.username}`).then((res) => {
+    if (res.data.length > 0) {
+      errs.push("Username already exists");
+    }
+  });
 
   errs.push(...validatePassword(signup.password, signup.confirm));
 

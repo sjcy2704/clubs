@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { api } from "../helpers/api";
 
 export const useClubStore = defineStore("clubStore", {
   state: () => ({
@@ -6,14 +7,7 @@ export const useClubStore = defineStore("clubStore", {
   }),
   actions: {
     async getClubs() {
-      await fetch("http://localhost:8080/clubs", {
-        method: "GET",
-        credentials: "include",
-      }).then((res) =>
-        res.json().then((json) => {
-          this.clubs = json;
-        })
-      );
+      await api.get("/clubs").then(({ data }) => (this.clubs = data));
     },
     getCurrentClubs(search) {
       if (search.length === 0) {

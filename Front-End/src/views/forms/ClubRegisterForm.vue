@@ -7,6 +7,7 @@ import { validateClub } from "../../helpers/validators";
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
 import Dropzone from "../../components/Dropzone.vue";
+import { api } from "../../helpers/api";
 
 const userStore = useUserStore();
 const clubDetails = reactive({
@@ -15,6 +16,10 @@ const clubDetails = reactive({
   category: "",
   logo: null,
   description: "",
+  facebook: "",
+  twitter: "",
+  instagram: "",
+  discord: "",
   manager: userStore.user.userID,
 });
 
@@ -46,18 +51,14 @@ async function registerClub() {
     }
   }
 
-  await fetch("http://localhost:8080/clubs", {
-    method: "POST",
-    credentials: "include",
-    body: formData,
-  }).then(() => {
-    router.push("/clubs/manage");
-  });
+  await api.post("/clubs", formData).then(() => router.push("/clubs/manage"));
 }
 
 const errs = reactive({
   errors: [],
 });
+
+let showSocialLinks = ref(false);
 
 function addClub() {
   errs.errors = validateClub(clubDetails);
@@ -78,25 +79,59 @@ function addClub() {
     <p class="title">Club<span>Registration</span></p>
   </div>
   <form class="lsgForm registerForm" v-on:submit.prevent="addClub">
-    <Input label="Club Name" v-model="clubDetails.name" />
+    <Input label="Club Name" v-model="clubDetails.name" required="true" />
     <div class="shortName">
-      <Input label="Short Name" v-model="clubDetails.short_name" />
+      <Input
+        label="Short Name"
+        v-model="clubDetails.short_name"
+        required="true"
+      />
       <span class="example">e.g. CS Club - Computer Science Club</span>
     </div>
+
     <p class="category">Category</p>
-    <select class="categorySelect" v-model="clubDetails.category">
+    <select class="categorySelect" v-model="clubDetails.category" required>
       <option v-for="category in categories" :value="category.value">
         {{ category.value }}
       </option>
     </select>
     <Dropzone label="Club Logo" v-model="clubDetails.logo" />
-    <p>Description</p>
+    <p class="descLabel">Description</p>
     <QuillEditor v-model:content="clubDetails.description" contentType="html" />
+    <div class="socialLinks">
+      <a
+        class="showlinks"
+        v-if="!showSocialLinks"
+        @click="showSocialLinks = true"
+        >Add Social Links</a
+      >
+      <div v-else="showSocialLinks" class="socialLinksInputs">
+        <Input label="Facebook" v-model="clubDetails.facebook" />
+        <Input label="Twitter" v-model="clubDetails.twitter" />
+        <Input label="Instagram" v-model="clubDetails.instagram" />
+        <Input label="Discord" v-model="clubDetails.discord" />
+      </div>
+    </div>
+
     <button type="submit">Create Club</button>
   </form>
 </template>
 
 <style scoped>
+.showlinks {
+  color: black;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.socialLinks {
+  margin-top: 15px;
+}
+
+.descLabel {
+  margin-top: 10px;
+}
+
 .registerForm {
   max-width: 500px;
 }

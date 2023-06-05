@@ -2,19 +2,15 @@
 import { useUserStore } from "../stores/userStore.js";
 import ClubCard from "../components/ClubCard.vue";
 import { ref } from "vue";
+import { api } from "../helpers/api";
 
 const userStore = useUserStore();
 
 let clubs = ref([]);
 
-await fetch(`http://localhost:8080/users/${userStore.user.userID}/clubs`, {
-  method: "GET",
-  credentials: "include",
-}).then((res) => {
-  res.json().then((json) => {
-    clubs.value = json;
-  });
-});
+await api
+  .get(`/users/${userStore.user.userID}/clubs`)
+  .then(({ data }) => (clubs.value = data));
 </script>
 
 <template>

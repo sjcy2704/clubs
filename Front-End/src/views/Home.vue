@@ -2,16 +2,13 @@
 import ClubCard from "../components/HomeClubCard.vue";
 
 import { ref } from "vue";
+import { api } from "../helpers/api";
 
 let clubs = ref([]);
 
 async function getClubs() {
-  const res = await fetch("http://localhost:8080/clubs", {
-    method: "GET",
-    credentials: "include",
-  });
-  await res.json().then((json) => {
-    clubs.value = json.toSorted((x, y) => y.members - x.members).splice(0, 10);
+  await api.get("/clubs").then(({ data }) => {
+    clubs.value = data.toSorted((x, y) => y.members - x.members).splice(0, 10);
   });
 }
 getClubs();

@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useUserStore } from "../stores/userStore";
+import { api } from "../helpers/api";
 const route = useRoute();
 const router = useRouter();
 const userStore = useUserStore();
@@ -9,43 +10,36 @@ const userStore = useUserStore();
 const details = ref({});
 const join = ref(false);
 
-await fetch(`http://localhost:8080/clubs/${route.params.clubID}`).then(
-  (res) => {
-    if (res.status === 404) {
-      router.replace({ name: "NotFound", params: { 0: `/${route.path}` } });
-    } else {
-      res.json().then((json) => {
-        details.value = json;
-        if (userStore.loggedIn) {
-          fetch(
-            `http://localhost:8080/members/club/${details.value.clubID}/user/${userStore.user.userID}`
-          ).then((res) => {
-            res.json().then(({ joined }) => (join.value = joined));
-          });
-        }
-      });
+await api.get(`/clubs/${route.params.clubID}`).then((res) => {
+  if (res.status === 404) {
+    router.replace({ name: "NotFound" });
+  } else {
+    details.value = res.data;
+    if (userStore.loggedIn) {
+      api
+        .get(
+          `/members/club/${details.value.clubID}/user/${userStore.user.userID}`
+        )
+        .then(({ data }) => {
+          join.value = data.joined;
+        });
     }
   }
-);
+});
 
 async function joinClub() {
   if (!userStore.loggedIn) {
     router.push("/login");
   } else {
-    await fetch(`http://localhost:8080/members`, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    await api
+      .post("/members", {
         clubID: details.value.clubID,
         userID: userStore.user.userID,
-      }),
-    }).then(() => {
-      join.value = true;
-      details.value.members += 1;
-    });
+      })
+      .then(() => {
+        join.value = true;
+        details.value.members += 1;
+      });
   }
 }
 </script>
@@ -59,7 +53,7 @@ async function joinClub() {
   <div class="container">
     <div class="detailsContainer flex justify-center">
       <img :src="details.logo" class="img" />
-      <div class="clubDetails flex col justify-between">
+      <div class="clubDetails flex col">
         <div class="main">
           <h1>{{ details.name }}</h1>
           <h2>{{ details.short_name }}</h2>
@@ -82,10 +76,18 @@ async function joinClub() {
         </p>
         <div class="flex justify-between align-center">
           <div class="socialMedia">
-            <a href="#"><font-awesome-icon icon="fa-brands fa-facebook" /></a>
-            <a href="#"><font-awesome-icon icon="fa-brands fa-twitter" /></a>
-            <a href="#"><font-awesome-icon icon="fa-brands fa-instagram" /></a>
-            <a href="#"><font-awesome-icon icon="fa-brands fa-discord" /></a>
+            <a v-if="details.facebook" :href="details.facebook"
+              ><font-awesome-icon icon="fa-brands fa-facebook"
+            /></a>
+            <a v-if="details.twitter" :href="details.twitter"
+              ><font-awesome-icon icon="fa-brands fa-twitter"
+            /></a>
+            <a v-if="details.instagram" :href="details.instagram"
+              ><font-awesome-icon icon="fa-brands fa-instagram"
+            /></a>
+            <a v-if="details.discord" :href="details.discord"
+              ><font-awesome-icon icon="fa-brands fa-discord"
+            /></a>
           </div>
           <button v-if="!join" class="joinButton" @click="joinClub">
             Join Club
@@ -157,6 +159,7 @@ async function joinClub() {
 
 .description {
   text-align: justify;
+  margin-bottom: 10px;
 }
 
 .socialMedia {

@@ -1,5 +1,5 @@
 <script setup>
-defineProps(["label", "modelValue", "passwordField"]);
+defineProps(["label", "modelValue", "passwordField", "required"]);
 defineEmits(["update:modelValue"]);
 </script>
 
@@ -12,6 +12,7 @@ defineEmits(["update:modelValue"]);
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
       :type="passwordField ? 'password' : 'text'"
+      :required="required ? true : false"
     />
   </div>
 </template>
