@@ -53,7 +53,8 @@ a {
   color: black;
 }
 .clubContainer {
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
 }
 
 .clubDetails {

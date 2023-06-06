@@ -90,6 +90,15 @@ router.post("/", upload.single("logo"), function (req, res) {
         }
       });
 
+      query = "INSERT INTO ClubMembers(clubID, userID) VALUES (?,?)";
+
+      connection.query(query, [rows.insertId, manager], function (err) {
+        if (err) {
+          res.sendStatus(500);
+          return;
+        }
+      });
+
       connection.release();
 
       res.sendStatus(201);

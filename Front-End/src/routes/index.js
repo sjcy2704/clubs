@@ -1,5 +1,6 @@
 import { createWebHistory, createRouter, RouterLink } from "vue-router";
 import { useUserStore } from "../stores/userStore";
+import { api } from "../helpers/api";
 
 const Home = () => import("../views/Home.vue");
 const Clubs = () => import("../views/Clubs.vue");
@@ -12,6 +13,7 @@ const MyClubs = () => import("../views/MyClubs.vue");
 const ClubDetails = () => import("../views/ClubDetails.vue");
 const NotFound = () => import("../views/404.vue");
 const ManageClub = () => import("../views/ManageClub.vue");
+const ManageMembers = () => import("../views/ManageMembers.vue");
 
 // {
 //   path: "/user",
@@ -43,8 +45,13 @@ export const routes = [
       {
         name: "ManageClub",
         path: ":clubID/manage",
-        meta: { requiresAuth: true, privilages: true },
+        meta: { requiresAuth: true, privilages: true, manager: true },
         component: ManageClub,
+      },
+      {
+        path: ":clubID/manage/members",
+        component: ManageMembers,
+        meta: { requiresAuth: true, privilages: true, manager: true },
       },
     ],
   },
@@ -126,6 +133,21 @@ router.beforeEach((to, from, next) => {
     }
 
     next("/");
+  } else {
+    next();
+  }
+});
+
+router.beforeEach(async (to, from, next) => {
+  const userStore = useUserStore();
+  if (to.matched.some((record) => record.meta.manager)) {
+    await api.get(`/clubs/${to.params.clubID}/managers`).then(({ data }) => {
+      if (!data.find((club) => club.manager === userStore.user.userID)) {
+        next("/");
+        return;
+      }
+    });
+    next();
   } else {
     next();
   }

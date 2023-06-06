@@ -54,6 +54,37 @@ router.post("/", function (req, res, next) {
   });
 });
 
+router.post("/remove", function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const { clubID, userID } = req.body;
+
+    let query = "DELETE FROM ClubMembers WHERE clubID = ? AND userID = ?";
+
+    connection.query(query, [clubID, userID], function (err) {
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+
+      query = "UPDATE Clubs SET members = members - 1 WHERE clubID = ?";
+
+      connection.query(query, clubID, function (err) {
+        if (err) {
+          throw err;
+          return;
+        }
+      });
+
+      res.sendStatus(200);
+    });
+  });
+});
+
 router.get("/club/:id", function (req, res, next) {
   req.pool.getConnection(function (err, connection) {
     if (err) {
@@ -64,7 +95,7 @@ router.get("/club/:id", function (req, res, next) {
     const { id } = req.params;
 
     const query =
-      "SELECT u.userID, u.username, u.email, u.firstName, u.familyName, u.phone, u.userType, c.name FROM Users u JOIN ClubMembers cm ON u.userID = cm.userID JOIN Clubs c ON cm.clubID = c.clubID WHERE c.clubID = ?";
+      "SELECT u.userID, u.firstName, u.familyName, u.userType, u.gender FROM Users u JOIN ClubMembers cm ON u.userID = cm.userID JOIN Clubs c ON cm.clubID = c.clubID WHERE c.clubID = ?";
     connection.query(query, id, function (err, rows, fields) {
       connection.release();
       if (err) {

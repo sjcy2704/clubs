@@ -70,35 +70,40 @@ VALUES
   );
 
 INSERT INTO
+  Managers (clubID, manager)
+VALUES
+  (1, 1),
+  (2, 2),
+  (3, 3),
+  (4, 4);
+
+INSERT INTO
   ClubMembers (clubID, userID)
 VALUES
   (1, 1),
   (2, 2),
-  (1, 3),
-  (2, 3);
-
-UPDATE Clubs
-SET
-  members = members + 1
-WHERE
-  clubID = 1;
-
-UPDATE Clubs
-SET
-  members = members + 1
-WHERE
-  clubID = 2;
-
-UPDATE Clubs
-SET
-  members = members + 1
-WHERE
-  clubID = 1;
+  (3, 3),
+  (4, 4),
+  (2, 3),
+  (4, 1),
+  (4, 2);
 
 UPDATE Clubs
 SET
   members = members + 1
 WHERE
   clubID = 2;
+
+UPDATE Clubs
+SET
+  members = members + 1
+WHERE
+  clubID = 4;
+
+UPDATE Clubs
+SET
+  members = members + 1
+WHERE
+  clubID = 4;
 
 -- select u.userID, u.username, u.email, u.firstName, u.familyName, u.phone, u.userType, c.name from Users u join ClubMembers cm on u.userID = cm.userID join Clubs c on cm.clubID = c.clubID;

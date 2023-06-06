@@ -1,16 +1,15 @@
 <script setup>
 import ClubCard from "../components/ClubCard.vue";
 import { ref } from "vue";
-import { useClubStore } from "../stores/clubStore";
 import { watchEffect } from "vue";
+import { api } from "../helpers/api";
 
-const clubStore = useClubStore();
-await clubStore.getClubs();
+let allClubs = ref([]);
+await api.get("/clubs").then(({ data }) => (allClubs.value = data));
 
 let search = ref("");
 let showSearch = ref(false);
 let categoryFilter = ref("");
-let filtered = ref(false);
 let showFilter = ref(false);
 
 const categories = ref([
@@ -29,16 +28,42 @@ const categories = ref([
   { value: "Technology" },
 ]);
 
+function filterClubs(search, filter) {
+  if (search === "" && filter === "") {
+    return allClubs.value;
+  }
+
+  search = search.toLowerCase();
+  return allClubs.value.filter((club) => {
+    if (search === "" && filter !== "") {
+      return club.category === filter;
+    } else if (search !== "" && filter === "") {
+      return (
+        club.name.toLowerCase().includes(search) ||
+        club.short_name.toLowerCase().includes(search) ||
+        club.category.toLowerCase().includes(search)
+      );
+    }
+
+    return (
+      club.name.toLowerCase().includes(search) ||
+      club.short_name.toLowerCase().includes(search) ||
+      club.category.toLowerCase().includes(search) ||
+      club.category === filter
+    );
+  });
+}
+
 let clubs = ref([]);
 
 watchEffect(() => {
-  clubs.value = clubStore.getCurrentClubs(search.value, categoryFilter.value);
+  clubs.value = filterClubs(search.value, categoryFilter.value);
 });
 </script>
 
 <template>
-  <div class="flex col align-center">
-    <div class="container w-65">
+  <div class="allClubsContainer flex col align-center">
+    <div class="container w-100">
       <div class="title">Clubs</div>
       <div class="lookupContainer flex justify-between">
         <div class="searchContainer">
@@ -86,13 +111,8 @@ watchEffect(() => {
       </div>
     </div>
 
-    <div class="cardsContainer">
-      <ClubCard
-        v-if="clubs.length > 0"
-        class="item"
-        v-for="club in clubs"
-        v-bind="club"
-      />
+    <div v-if="clubs.length > 0" class="cardsContainer">
+      <ClubCard class="item" v-for="club in clubs" v-bind="club" />
     </div>
     <h2 v-if="clubs.length <= 0">No Clubs</h2>
   </div>
@@ -179,8 +199,7 @@ watchEffect(() => {
 .cardsContainer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  width: 60%;
-  margin: 0 auto;
+  gap: 40px;
 }
 
 .item {

@@ -15,15 +15,17 @@ await api
 
 <template>
   <div class="flex col align-center">
-    <div class="container">
+    <div class="container flex align-center justify-between">
       <div class="title">Manage Clubs</div>
-      <RouterLink to="/clubs/register" class="newClub">
-        New Club
-        <font-awesome-icon class="plus" icon="fa-solid fa-plus" />
-      </RouterLink>
+      <div>
+        <RouterLink to="/clubs/register" class="newClub">
+          New Club
+          <font-awesome-icon class="plus" icon="fa-solid fa-plus" />
+        </RouterLink>
+      </div>
     </div>
 
-    <div class="cardsContainer flex flex-wrap">
+    <div class="cardsContainer">
       <ClubCard v-for="club in clubs" v-bind="club" manage />
     </div>
   </div>
@@ -32,30 +34,29 @@ await api
 <style scoped>
 .container {
   position: relative;
+  width: 100%;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-top: 40px;
 }
 
 .title {
+  text-align: center;
   font-size: 2.5em;
-  text-align: left;
+  flex-grow: 1;
 }
 
 .newClub {
-  position: absolute;
-  width: 150px;
-  padding: 10px 0;
-  right: -200px;
-  top: 30%;
+  padding: 10px;
   background-color: black;
   border-radius: 10px;
 }
 
 .plus {
   font-size: 1.25em;
-}
-
-.cardsContainer {
-  gap: 40px;
-  width: 60%;
-  margin: 0 auto;
 }
 </style>

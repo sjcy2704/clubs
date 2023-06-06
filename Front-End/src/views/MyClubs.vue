@@ -14,7 +14,7 @@ await api
 </script>
 
 <template>
-  <div class="flex col align-center">
+  <div class="flex col align-center w-100">
     <div class="container">
       <div class="title">My Clubs</div>
     </div>
@@ -26,6 +26,7 @@ await api
 
     <div class="cardsContainer flex flex-wrap">
       <ClubCard v-for="club in clubs" v-bind="club" />
+      <ClubCard v-for="club in clubs" v-bind="club" />
     </div>
   </div>
 </template>
@@ -33,6 +34,13 @@ await api
 <style scoped>
 .container {
   position: relative;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-top: 40px;
 }
 
 .title {
@@ -56,11 +64,5 @@ await api
 
 .noClubs a {
   color: black;
-}
-
-.cardsContainer {
-  gap: 40px;
-  width: 60%;
-  margin: 0 auto;
 }
 </style>

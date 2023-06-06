@@ -85,7 +85,7 @@ CREATE TABLE
     `instagram` varchar(400),
     `discord` varchar(400),
     `manager` int unsigned NOT NULL,
-    `members` int unsigned DEFAULT 0,
+    `members` int unsigned DEFAULT 1,
     `logo` varchar(2083) DEFAULT 'http://localhost:8080/club-logos/default-club.png',
     PRIMARY KEY (`clubID`),
     UNIQUE KEY `name` (`name`),
@@ -132,6 +132,28 @@ LOCK TABLES `Events` WRITE;
 
 UNLOCK TABLES;
 
+--
+-- Table structure for table `Managers`
+--
+
+DROP TABLE IF EXISTS `Managers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Managers` (
+  `manager` int unsigned NOT NULL,
+  `clubID` int unsigned NOT NULL,
+  PRIMARY KEY (`manager`,`clubID`),
+  KEY `clubID` (`clubID`),
+  CONSTRAINT `Managers_ibfk_1` FOREIGN KEY (`manager`) REFERENCES `Users` (`userID`),
+  CONSTRAINT `Managers_ibfk_2` FOREIGN KEY (`clubID`) REFERENCES `Clubs` (`clubID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+LOCK TABLES `Managers` WRITE;
+/*!40000 ALTER TABLE `Managers` DISABLE KEYS */;
+
+/*!40000 ALTER TABLE `Managers` ENABLE KEYS */;
+UNLOCK TABLES;
 --
 -- Table structure for table `News`
 --

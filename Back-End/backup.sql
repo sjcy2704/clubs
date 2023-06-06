@@ -63,12 +63,19 @@ CREATE TABLE `Clubs` (
   `short_name` varchar(20) NOT NULL,
   `category` varchar(50) NOT NULL,
   `description` text,
+  `facebook` varchar(400) DEFAULT NULL,
+  `twitter` varchar(400) DEFAULT NULL,
+  `instagram` varchar(400) DEFAULT NULL,
+  `discord` varchar(400) DEFAULT NULL,
   `manager` int unsigned NOT NULL,
   `members` int unsigned DEFAULT '0',
+  `logo` varchar(2083) DEFAULT 'http://localhost:8080/club-logos/default-club.png',
   PRIMARY KEY (`clubID`),
+  UNIQUE KEY `name` (`name`),
+  UNIQUE KEY `short_name` (`short_name`),
   KEY `Clubs_ibfk_1` (`manager`),
   CONSTRAINT `Clubs_ibfk_1` FOREIGN KEY (`manager`) REFERENCES `Users` (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,7 +84,7 @@ CREATE TABLE `Clubs` (
 
 LOCK TABLES `Clubs` WRITE;
 /*!40000 ALTER TABLE `Clubs` DISABLE KEYS */;
-INSERT INTO `Clubs` VALUES (1,'Adelaide Uni Volleyball Club','AUVC','Sports',NULL,1,2),(2,'Engineering Club','ENG Club','Engineering',NULL,2,2),(3,'Medical Society','Med Society','Health',NULL,3,0),(4,'Computer Science Club','CS Club','Computer Science',NULL,4,0),(5,'Adelaide Nursing Students\' Society','ANNS','Health','',2,0);
+INSERT INTO `Clubs` VALUES (1,'Adelaide Uni Volleyball Club','AUVC','Sports',NULL,NULL,NULL,NULL,NULL,1,2,'http://localhost:8080/club-logos/default-club.png'),(2,'Engineering Club','ENG Club','Engineering',NULL,NULL,NULL,NULL,NULL,2,2,'http://localhost:8080/club-logos/default-club.png'),(3,'Medical Society','Med Society','Health',NULL,NULL,NULL,NULL,NULL,3,0,'http://localhost:8080/club-logos/default-club.png'),(4,'Computer Science Club','CS Club','Computer Science',NULL,NULL,NULL,NULL,NULL,4,0,'http://localhost:8080/club-logos/default-club.png');
 /*!40000 ALTER TABLE `Clubs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,6 +115,33 @@ CREATE TABLE `Events` (
 LOCK TABLES `Events` WRITE;
 /*!40000 ALTER TABLE `Events` DISABLE KEYS */;
 /*!40000 ALTER TABLE `Events` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Managers`
+--
+
+DROP TABLE IF EXISTS `Managers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Managers` (
+  `manager` int unsigned NOT NULL,
+  `clubID` int unsigned NOT NULL,
+  PRIMARY KEY (`manager`,`clubID`),
+  KEY `clubID` (`clubID`),
+  CONSTRAINT `Managers_ibfk_1` FOREIGN KEY (`manager`) REFERENCES `Users` (`userID`),
+  CONSTRAINT `Managers_ibfk_2` FOREIGN KEY (`clubID`) REFERENCES `Clubs` (`clubID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Managers`
+--
+
+LOCK TABLES `Managers` WRITE;
+/*!40000 ALTER TABLE `Managers` DISABLE KEYS */;
+INSERT INTO `Managers` VALUES (1,1),(2,2),(3,3),(4,4);
+/*!40000 ALTER TABLE `Managers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -152,12 +186,16 @@ CREATE TABLE `Users` (
   `firstName` varchar(63) NOT NULL,
   `familyName` varchar(63) NOT NULL,
   `phone` varchar(15) DEFAULT NULL,
+  `gender` set('M','F','NB') DEFAULT NULL,
   `userType` set('user','admin','manager') DEFAULT 'user',
-  `avatar` varchar(2083) DEFAULT 'http://localhost:8080/public/user-avatars/default-user.jpg',
+  `avatar` varchar(2083) DEFAULT 'http://localhost:8080/user-avatars/default-user.jpg',
+  `provider_id` varchar(30) DEFAULT NULL,
+  `provider` set('local','google','github') DEFAULT 'local',
   PRIMARY KEY (`userID`),
   UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `provider_id` (`provider_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,7 +204,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'admin','$2a$10$EapMP7QBfQxsJtraAY8lT.BZLXIpC2VlOEN6YGNFu3CzTtfOPnHvi','admin@admin.com','admin','system',NULL,'admin','http://localhost:8080/public/user-avatars/default-user.jpg'),(2,'manager1','$2a$10$wLViudQdkOrjouRaeCQuy.gT.e5TNdcRtk2absHgvNGGCpkgMN8PW','manager@clubs.com','Juan','Diaz',NULL,'manager','http://localhost:8080/public/user-avatars/default-user.jpg'),(3,'manager2','$2a$10$kLT/ZlDELezE7R6kv4I0oe2nySil158GL6hsaC./Pdjg59zrpbfny','manager2@clubs.com','Duan','Jonson',NULL,'manager','http://localhost:8080/public/user-avatars/default-user.jpg'),(4,'manager3','$2a$10$dNkyOBFy1xtcpH.3xd8LEuSoJ8dHohvpLIwrybPrReK7ACwKSZGAK','manager3@clubs.com','Jose','Andorra',NULL,'manager','http://localhost:8080/public/user-avatars/default-user.jpg'),(5,'user1','$2a$10$tGrdFPRKUzpRwabT48ApNuMYrmcpAGO47nFeCvjdlLw7BsX3y7meK','user@user.com','Sarah','Swain',NULL,'user','http://localhost:8080/public/user-avatars/default-user.jpg'),(6,'testuser123','$2b$10$71ylZQhAapxL/yZygXgppuEM0i3/v7qQOFepFvX23a4k9nRgJUclG','test@user123.com','Test','User','','manager','http://localhost:8080/images/4cca1f25d214652688766d1e5d6f8302.jpeg'),(7,'ksmith','$2b$10$vY6vpHGk67.Qce1erJEVouWL/Cl1o0f9NowbiJv4ZCuj6fC3DqtAy','ksmith@email.com','Karin','Smith','','user','http://localhost:8080/images/igpp.jpeg');
+INSERT INTO `Users` VALUES (1,'admin','$2a$10$EapMP7QBfQxsJtraAY8lT.BZLXIpC2VlOEN6YGNFu3CzTtfOPnHvi','admin@admin.com','admin','system',NULL,NULL,'admin','http://localhost:8080/user-avatars/default-user.jpg',NULL,'local'),(2,'manager1','$2a$10$wLViudQdkOrjouRaeCQuy.gT.e5TNdcRtk2absHgvNGGCpkgMN8PW','manager@clubs.com','Juan','Diaz',NULL,NULL,'manager','http://localhost:8080/user-avatars/default-user.jpg',NULL,'local'),(3,'manager2','$2a$10$kLT/ZlDELezE7R6kv4I0oe2nySil158GL6hsaC./Pdjg59zrpbfny','manager2@clubs.com','Duan','Jonson',NULL,NULL,'manager','http://localhost:8080/user-avatars/default-user.jpg',NULL,'local'),(4,'manager3','$2a$10$dNkyOBFy1xtcpH.3xd8LEuSoJ8dHohvpLIwrybPrReK7ACwKSZGAK','manager3@clubs.com','Jose','Andorra',NULL,NULL,'manager','http://localhost:8080/user-avatars/default-user.jpg',NULL,'local'),(5,'user1','$2a$10$tGrdFPRKUzpRwabT48ApNuMYrmcpAGO47nFeCvjdlLw7BsX3y7meK','user@user.com','Sarah','Swain',NULL,NULL,'user','http://localhost:8080/user-avatars/default-user.jpg',NULL,'local'),(6,'stevenjchung12@gmail.com','$2b$10$MFrdUk7yRuZ8Nrw2B4Zl0On7uxsHzleh8iQa2oNBrneotcRp5NlgS','stevenjchung12@gmail.com','Steven','Chung',NULL,NULL,'user','https://lh3.googleusercontent.com/a/AAcHTtcHKqeM99_hwjpYBEfAyJoX24KGwDaEUTH6VBYr=s96-c','111417509629559128862','google');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -179,4 +217,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-25 19:27:34
+-- Dump completed on 2023-06-06  7:52:26

@@ -136,7 +136,7 @@ async function joinClub() {
 
 .container {
   text-align: left;
-  padding: 100px 120px 50px;
+  padding: 40px 120px 50px;
 }
 
 .detailsContainer {

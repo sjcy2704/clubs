@@ -24,6 +24,8 @@ import {
   faCalendarDays,
   faBullhorn,
   faInfo,
+  faPenToSquare,
+  faUserMinus,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -54,7 +56,9 @@ library.add(
   faFilter,
   faCalendarDays,
   faBullhorn,
-  faInfo
+  faInfo,
+  faPenToSquare,
+  faUserMinus
 );
 
 pinia.use(piniaPersistedState);

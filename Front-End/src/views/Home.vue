@@ -15,7 +15,7 @@ getClubs();
 </script>
 
 <template>
-  <div class="flex col align-center">
+  <div class="homeContainer flex col align-center w-100">
     <div class="container">
       <div class="title">
         <span>Welcome to</span>
@@ -54,6 +54,10 @@ getClubs();
 </template>
 
 <style scoped>
+.homeContainer {
+  margin-bottom: 70px;
+}
+
 a {
   color: inherit;
 }

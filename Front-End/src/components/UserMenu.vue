@@ -28,17 +28,15 @@ const userStore = useUserStore();
             <span><font-awesome-icon icon="fa-solid fa-table-columns" /></span
           ></RouterLink>
         </div>
-        <div v-if="userStore.user.userType != 'admin'">
-          <a class="navLink flex justify-between" href="#"
-            >Profile <span> <font-awesome-icon icon="fa-solid fa-user" /> </span
-          ></a>
-        </div>
-        <div v-if="userStore.user.userType === 'manager'">
+        <div v-if="userStore.user.userType !== 'user'">
           <RouterLink class="navLink flex justify-between" to="/clubs/manage"
-            >Manage
+            >Manage Clubs
             <span> <font-awesome-icon icon="fa-solid fa-bars-progress" /> </span
           ></RouterLink>
         </div>
+        <a class="navLink flex justify-between" href="#"
+          >Profile <span> <font-awesome-icon icon="fa-solid fa-user" /> </span
+        ></a>
         <a class="navLink flex justify-between" href="#"
           >Settings <span> <font-awesome-icon icon="fa-solid fa-gear" /> </span
         ></a>
@@ -63,6 +61,7 @@ const userStore = useUserStore();
   right: -50px;
   top: -5px;
 }
+
 .dropdown {
   position: relative;
 }
@@ -81,6 +80,7 @@ const userStore = useUserStore();
   left: -55px;
   text-align: left;
   width: 185px;
+  z-index: 9999;
 }
 
 .dropdown:hover .dropdownContent {
