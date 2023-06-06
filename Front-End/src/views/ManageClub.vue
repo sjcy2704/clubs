@@ -2,11 +2,20 @@
 import DasboardCard from "../components/DashboardCard.vue";
 import { useRoute, useRouter } from "vue-router";
 import { api } from "../helpers/api";
+import { useUserStore } from "../stores/userStore";
+
+const userStore = useUserStore();
 
 const route = useRoute();
 const router = useRouter();
-
 const { clubID } = route.params;
+
+await api.get(`/clubs/${clubID}/managers`).then(({ data }) => {
+  console.log(data);
+  if (!data.find((club) => club.manager === userStore.user.userID)) {
+    router.push("/");
+  }
+});
 
 let name;
 await api.get(`/clubs/${clubID}`).then(({ data }) => (name = data.name));
@@ -49,6 +58,7 @@ await api.get(`/clubs/${clubID}`).then(({ data }) => (name = data.name));
 }
 
 .manageCards {
+  margin-top: 35px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 40px;

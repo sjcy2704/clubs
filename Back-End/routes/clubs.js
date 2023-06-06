@@ -75,12 +75,22 @@ router.post("/", upload.single("logo"), function (req, res) {
         "INSERT INTO Clubs(name, short_name, category, description, manager, logo) VALUES (?, ?, ?, ?, ?, ?)";
     }
 
-    connection.query(query, values, function (err) {
-      connection.release();
+    connection.query(query, values, function (err, rows) {
       if (err) {
         res.sendStatus(500);
         return;
       }
+
+      query = "INSERT INTO Managers(clubID, manager) VALUES (?,?)";
+
+      connection.query(query, [rows.insertId, manager], function (err) {
+        if (err) {
+          res.sendStatus(500);
+          return;
+        }
+      });
+
+      connection.release();
 
       res.sendStatus(201);
     });
@@ -110,6 +120,27 @@ router.get("/:id", function (req, res, next) {
       }
 
       res.json(rows[0]);
+    });
+  });
+});
+
+router.get("/:id/managers", function (req, res, next) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const { id } = req.params;
+
+    const query = "SELECT manager FROM Managers WHERE clubID = ?";
+    connection.query(query, id, function (err, rows) {
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+
+      res.json(rows);
     });
   });
 });
