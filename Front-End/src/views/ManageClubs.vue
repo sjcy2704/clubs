@@ -14,15 +14,13 @@ await api
 </script>
 
 <template>
-  <div class="flex col align-center">
-    <div class="container flex align-center justify-between">
+  <div class="mainContainer flex col align-center">
+    <div class="container flex align-center justify-between sm-col">
       <div class="title">Manage Clubs</div>
-      <div>
-        <RouterLink to="/clubs/register" class="newClub">
-          New Club
-          <font-awesome-icon class="plus" icon="fa-solid fa-plus" />
-        </RouterLink>
-      </div>
+      <RouterLink to="/clubs/register" class="newClub">
+        New Club
+        <font-awesome-icon class="plus" icon="fa-solid fa-plus" />
+      </RouterLink>
     </div>
 
     <div class="cardsContainer">
@@ -32,6 +30,10 @@ await api
 </template>
 
 <style scoped>
+.mainContainer {
+  margin-bottom: 70px;
+  margin-top: 50px;
+}
 .container {
   position: relative;
   width: 100%;
@@ -58,5 +60,20 @@ await api
 
 .plus {
   font-size: 1.25em;
+}
+
+@media only screen and (max-width: 550px) {
+  .title {
+    margin-bottom: 20px;
+  }
+
+  .cardsContainer {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .newClub {
+    width: 100%;
+  }
 }
 </style>

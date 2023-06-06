@@ -18,7 +18,7 @@ defineProps({
       </div>
       <div class="subDetails flex justify-between">
         <p>{{ category }}</p>
-        <p>
+        <p class="membersCount">
           Total Members: {{ members }}
           <font-awesome-icon
             icon="fa-solid
@@ -38,8 +38,8 @@ defineProps({
 
 .img {
   border-radius: 5px;
-  height: 100px;
-  width: 100px;
+  max-height: 100px;
+  max-width: 100px;
 }
 
 .clubDetails {
@@ -60,5 +60,17 @@ defineProps({
 .subDetails {
   width: 100%;
   font-size: 0.95em;
+}
+
+@media only screen and (max-width: 550px) {
+  .name {
+    font-size: 0.9em;
+  }
+  .clubDetails {
+    justify-content: start;
+  }
+  .membersCount {
+    display: none;
+  }
 }
 </style>

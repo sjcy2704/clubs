@@ -75,10 +75,11 @@ router.post("/remove", function (req, res) {
 
       connection.query(query, clubID, function (err) {
         if (err) {
-          throw err;
+          res.sendStatus(500);
           return;
         }
       });
+      connection.release();
 
       res.sendStatus(200);
     });

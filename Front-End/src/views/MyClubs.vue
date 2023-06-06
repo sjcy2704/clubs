@@ -14,7 +14,7 @@ await api
 </script>
 
 <template>
-  <div class="flex col align-center w-100">
+  <div class="mainContainer flex col align-center w-100">
     <div class="container">
       <div class="title">My Clubs</div>
     </div>
@@ -64,5 +64,11 @@ await api
 
 .noClubs a {
   color: black;
+}
+
+@media only screen and (max-width: 550px) {
+  .cardsContainer {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

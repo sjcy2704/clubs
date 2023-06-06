@@ -15,7 +15,7 @@ router.get("/", function (req, res, next) {
         res.sendStatus(500);
         return;
       }
-
+      connection.release();
       res.json(rows);
     });
   });
@@ -57,6 +57,7 @@ router.get("/:userID/clubs", function (req, res) {
       if (err) {
         res.sendStatus(500);
       }
+      connection.release();
 
       res.json(rows);
     });

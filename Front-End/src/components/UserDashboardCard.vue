@@ -34,7 +34,7 @@ async function removeMember() {
       src="http://localhost:8080/user-avatars/default-user.jpg"
       class="profilePic"
     />
-    <div class="flex justify-between w-100">
+    <div class="flex justify-between w-100 sm-col">
       <div class="userDetails">
         <h3>{{ props.firstName + " " + props.familyName }}</h3>
         <p>User ID: {{ props.userID }}</p>
@@ -42,7 +42,7 @@ async function removeMember() {
         <p v-if="props.gender">Gender: {{ genderValues[props.gender] }}</p>
       </div>
       <div v-if="!props.currManager" class="options flex align-center">
-        <p>Edit <font-awesome-icon icon="fa-solid fa-pen-to-square" /></p>
+        <p>View <font-awesome-icon icon="fa-solid fa-pen-to-square" /></p>
         <a @click="removeMember"
           >Remove <font-awesome-icon icon="fa-solid fa-user-minus"
         /></a>
@@ -81,5 +81,11 @@ async function removeMember() {
   height: 80px;
   background-color: black;
   margin-right: 20px;
+}
+
+@media only screen and (max-width: 550px) {
+  .options {
+    padding: 0;
+  }
 }
 </style>

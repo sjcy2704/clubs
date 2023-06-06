@@ -62,16 +62,17 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div class="allClubsContainer flex col align-center">
+  <div class="mainContainer flex col align-center">
     <div class="container w-100">
       <div class="title">Clubs</div>
-      <div class="lookupContainer flex justify-between">
+      <div class="lookupContainer flex justify-between sm-col">
         <div class="searchContainer">
           <input
             :class="{ show: showSearch }"
             v-model="search"
             class="searchbar"
             type="search"
+            placeholder="Search Club"
           />
           <font-awesome-icon
             class="searchicon"
@@ -204,5 +205,30 @@ watchEffect(() => {
 
 .item {
   justify-self: center;
+}
+
+@media only screen and (max-width: 550px) {
+  .categorySelect {
+    width: 100%;
+    opacity: 1;
+  }
+  .searchbar {
+    width: 100%;
+    opacity: 1;
+    margin-bottom: 10px;
+  }
+  .cardsContainer {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .filterIcon {
+    display: none;
+  }
+  .filter {
+    opacity: 1;
+  }
+  .filterContainer {
+    width: 100%;
+  }
 }
 </style>

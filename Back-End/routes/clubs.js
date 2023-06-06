@@ -149,6 +149,7 @@ router.get("/:id/managers", function (req, res, next) {
         return;
       }
 
+      connection.release();
       res.json(rows);
     });
   });
@@ -163,12 +164,14 @@ router.get("/manager/:managerID", function (req, res) {
 
     const { managerID } = req.params;
 
-    const query = "SELECT * FROM Clubs WHERE manager = ?";
+    const query =
+      "SELECT c.* FROM Clubs c INNER JOIN Managers m ON c.clubID = m.clubID WHERE m.manager = ?";
     connection.query(query, managerID, function (err, rows) {
       if (err) {
         res.sendStatus(500);
         return;
       }
+      connection.release();
 
       res.json(rows);
     });
