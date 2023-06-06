@@ -24,30 +24,31 @@ async function logWithGoogle() {
 </script>
 
 <template>
-  <div class="container">
-    <p class="title">Login</p>
-  </div>
-
-  <form
-    class="lsgForm"
-    v-on:submit.prevent="logUser(login, router, userStore, errors)"
-  >
-    <button class="googleLogin" type="button" @click="logWithGoogle">
-      Login With Google
-      <font-awesome-icon class="googleIcon" icon="fa-brands fa-google" />
-    </button>
-    <hr />
-    <Input label="Username" v-model="login.username" />
-    <Input label="Password" v-model="login.password" passwordField="true" />
-    <span class="errors" v-if="errors.errs"
-      >Username or password incorrect</span
-    >
-
-    <button type="submit">Login</button>
-    <div class="options">
-      <RouterLink to="/signup">Sign Up</RouterLink>
+  <div class="flex col align-center">
+    <div class="container">
+      <p class="title">Login</p>
     </div>
-  </form>
+
+    <form
+      class="lsgForm"
+      v-on:submit.prevent="logUser(login, router, userStore, errors)"
+    >
+      <button class="googleLogin" type="button" @click="logWithGoogle">
+        Login With Google
+        <font-awesome-icon class="googleIcon" icon="fa-brands fa-google" />
+      </button>
+      <hr />
+      <Input label="Username" v-model="login.username" />
+      <Input label="Password" v-model="login.password" passwordField="true" />
+      <span class="errors" v-if="errors.errs"
+        >Username or password incorrect</span
+      >
+      <button type="submit">Login</button>
+      <div class="options">
+        <RouterLink to="/signup">Sign Up</RouterLink>
+      </div>
+    </form>
+  </div>
 </template>
 
 <style scoped>

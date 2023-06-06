@@ -2,7 +2,11 @@
   <RouterView v-slot="{ Component }">
     <Suspense>
       <component :is="Component" />
-      <template #fallback><h1>Loading...</h1></template>
+      <template #fallback
+        ><div class="flex col align-center">
+          <h1>Loading...</h1>
+        </div></template
+      >
     </Suspense>
   </RouterView>
 </template>

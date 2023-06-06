@@ -14,15 +14,18 @@ await api
 </script>
 
 <template>
-  <div class="container">
-    <div class="title">Manage Clubs</div>
-    <RouterLink to="/clubs/register" class="newClub">
-      <font-awesome-icon class="plus" icon="fa-solid fa-plus" />
-    </RouterLink>
-  </div>
+  <div class="flex col align-center">
+    <div class="container">
+      <div class="title">Manage Clubs</div>
+      <RouterLink to="/clubs/register" class="newClub">
+        New Club
+        <font-awesome-icon class="plus" icon="fa-solid fa-plus" />
+      </RouterLink>
+    </div>
 
-  <div class="cardsContainer flex flex-wrap">
-    <ClubCard v-for="club in clubs" v-bind="club" />
+    <div class="cardsContainer flex flex-wrap">
+      <ClubCard v-for="club in clubs" v-bind="club" manage />
+    </div>
   </div>
 </template>
 
@@ -38,10 +41,10 @@ await api
 
 .newClub {
   position: absolute;
-  width: 50px;
+  width: 150px;
   padding: 10px 0;
   right: -200px;
-  top: 35%;
+  top: 30%;
   background-color: black;
   border-radius: 10px;
 }

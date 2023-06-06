@@ -76,7 +76,15 @@ body {
 .align-center {
   align-items: center;
 }
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
 
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 /* Rest of Css */
 hr {
   border-style: solid;
@@ -91,7 +99,7 @@ input {
   font-size: 1.15em;
   width: 100%;
   margin-bottom: 15px;
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 5px;
   box-shadow: none;
   font-family: inherit;
@@ -102,8 +110,19 @@ input[type="password"] {
   letter-spacing: 0.125em;
 }
 
-input:focus-visible {
-  outline: 1px solid gray;
+select {
+  padding: 5px 10px;
+  font-size: 1em;
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 5px;
+  box-shadow: none;
+  font-family: inherit;
+}
+
+input:focus-visible,
+select:focus-visible {
+  outline-color: black;
 }
 
 input[type="search"]::-webkit-search-cancel-button {
@@ -119,6 +138,15 @@ main {
   height: 100%;
 }
 
+.googleLogin {
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+.googleIcon {
+  font-size: 1.3em;
+}
 ul {
   text-decoration: none;
   list-style: none;
@@ -173,7 +201,6 @@ button {
 @media only screen and (max-width: 550px) {
   .sm-col {
     flex-direction: column;
-    /* display: none; */
   }
   .sm-w100 {
     width: 100%;

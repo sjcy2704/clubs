@@ -5,20 +5,38 @@ defineProps({
   category: String,
   members: Number,
   logo: String,
+  manage: Boolean,
+  name: String,
 });
 </script>
 
 <template>
   <div class="clubContainer">
-    <RouterLink :to="/clubs/ + clubID">
+    <RouterLink
+      :to="
+        manage ? { name: 'ManageClub', params: { clubID } } : '/clubs/' + clubID
+      "
+    >
       <img :src="logo" class="clubIcon" />
     </RouterLink>
     <div class="details flex justify-between">
       <div class="clubDetails">
-        <RouterLink :to="/clubs/ + clubID">
+        <RouterLink
+          :to="
+            manage
+              ? { name: 'ManageClub', params: { clubID }, state: { name } }
+              : '/clubs/' + clubID
+          "
+        >
           <p class="name">{{ short_name }}</p>
         </RouterLink>
-        <RouterLink :to="/clubs/ + clubID">
+        <RouterLink
+          :to="
+            manage
+              ? { name: 'ManageClub', params: { clubID } }
+              : '/clubs/' + clubID
+          "
+        >
           <p class="category">{{ category }}</p>
         </RouterLink>
       </div>

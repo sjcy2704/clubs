@@ -20,6 +20,10 @@ import {
   faPlus,
   faChevronLeft,
   faMagnifyingGlass,
+  faFilter,
+  faCalendarDays,
+  faBullhorn,
+  faInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -46,7 +50,11 @@ library.add(
   faDiscord,
   faMagnifyingGlass,
   faGoogle,
-  faGithub
+  faGithub,
+  faFilter,
+  faCalendarDays,
+  faBullhorn,
+  faInfo
 );
 
 pinia.use(piniaPersistedState);

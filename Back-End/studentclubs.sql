@@ -80,6 +80,10 @@ CREATE TABLE
     `short_name` varchar(20) NOT NULL,
     `category` varchar(50) NOT NULL,
     `description` text,
+    `facebook` varchar(400),
+    `twitter` varchar(400),
+    `instagram` varchar(400),
+    `discord` varchar(400),
     `manager` int unsigned NOT NULL,
     `members` int unsigned DEFAULT 0,
     `logo` varchar(2083) DEFAULT 'http://localhost:8080/club-logos/default-club.png',
@@ -179,7 +183,10 @@ CREATE TABLE
     `firstName` varchar(63) NOT NULL,
     `familyName` varchar(63) NOT NULL,
     `phone` varchar(15) DEFAULT NULL,
-    `userType`
+    `gender`
+    SET
+      ('M', 'F', 'NB') DEFAULT NULL,
+      `userType`
     SET
       ('user', 'admin', 'manager') DEFAULT 'user',
       `avatar` varchar(2083) DEFAULT 'http://localhost:8080/user-avatars/default-user.jpg',

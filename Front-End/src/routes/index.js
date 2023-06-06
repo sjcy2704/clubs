@@ -11,6 +11,7 @@ const RouterView = () => import("../views/RouterView.vue");
 const MyClubs = () => import("../views/MyClubs.vue");
 const ClubDetails = () => import("../views/ClubDetails.vue");
 const NotFound = () => import("../views/404.vue");
+const test = () => import("../views/new.vue");
 
 // {
 //   path: "/user",
@@ -39,6 +40,13 @@ export const routes = [
         path: ":clubID",
         component: ClubDetails,
       },
+      {
+        name: "ManageClub",
+        path: ":clubID/manage",
+        meta: { requiresAuth: true, privilages: true },
+        component: test,
+      },
+      { path: "test", component: test },
     ],
   },
   {

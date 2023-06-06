@@ -15,28 +15,40 @@ getClubs();
 </script>
 
 <template>
-  <div class="container">
-    <div class="title">
-      <span>Welcome to</span>
-      Uni Clubs
-    </div>
-  </div>
-
-  <div class="news">
-    <h2 class="subTitle">News</h2>
-  </div>
-
-  <div class="clubRelated flex sm-col">
-    <div class="clubs">
-      <h2 class="subTitle">
-        <RouterLink to="/clubs"> Top Clubs </RouterLink>
-      </h2>
-      <div class="clubCards flex col">
-        <ClubCard class="clubCard" v-for="club in clubs" v-bind="club" />
+  <div class="flex col align-center">
+    <div class="container">
+      <div class="title">
+        <span>Welcome to</span>
+        Uni Clubs
       </div>
     </div>
-    <div class="clubs">
-      <h2 class="subTitle">Upcoming Events</h2>
+
+    <div class="news">
+      <h2 class="subTitle">News</h2>
+      <div>
+        <h3>No news</h3>
+      </div>
+    </div>
+
+    <div class="clubRelated flex sm-col">
+      <div class="clubs">
+        <div class="titleContainer flex justify-between align-center">
+          <RouterLink to="/clubs">
+            <h2 class="subTitle">Top Clubs</h2>
+          </RouterLink>
+          <RouterLink to="/clubs"> <h4>See All Clubs</h4> </RouterLink>
+        </div>
+
+        <div class="clubCards flex col">
+          <ClubCard class="clubCard" v-for="club in clubs" v-bind="club" />
+        </div>
+      </div>
+      <div class="clubs">
+        <h2 class="subTitle">Upcoming Events</h2>
+        <div>
+          <h3>No events</h3>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -53,9 +65,12 @@ a {
   font-size: 4em;
 }
 
+.titleContainer {
+  margin-bottom: 20px;
+}
+
 .subTitle {
   font-size: 25px;
-  margin-bottom: 20px;
 }
 
 .clubCard {

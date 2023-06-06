@@ -30,7 +30,7 @@ const categories = ref([
   { value: "Cultural" },
   { value: "Faith & Religion" },
   { value: "Health" },
-  { value: "Hobby" },
+  { value: "Hobbies" },
   { value: "Language" },
   { value: "Media" },
   { value: "Politics" },
@@ -154,14 +154,8 @@ function addClub() {
 }
 
 .categorySelect {
-  padding: 5px 10px;
   font-size: 1.15em;
-  width: 100%;
   margin-bottom: 15px;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: none;
-  font-family: inherit;
 }
 
 .shortName {
@@ -176,18 +170,5 @@ function addClub() {
 
 .category {
   margin-top: 10px;
-}
-
-.descriptionText {
-  padding: 15px;
-  font-size: 1.15em;
-  min-height: 200px;
-  max-height: 200px;
-  min-width: 100%;
-  max-width: 100%;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: none;
-  white-space: pre-wrap;
 }
 </style>

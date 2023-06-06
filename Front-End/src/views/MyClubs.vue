@@ -14,17 +14,19 @@ await api
 </script>
 
 <template>
-  <div class="container">
-    <div class="title">My Clubs</div>
-  </div>
+  <div class="flex col align-center">
+    <div class="container">
+      <div class="title">My Clubs</div>
+    </div>
 
-  <div class="noClubs" v-if="clubs.length === 0">
-    <h2>No clubs joined!</h2>
-    <p>Join one here <RouterLink to="/clubs">Clubs</RouterLink></p>
-  </div>
+    <div class="noClubs" v-if="clubs.length === 0">
+      <h2>No clubs joined!</h2>
+      <p>Join one here <RouterLink to="/clubs">Clubs</RouterLink></p>
+    </div>
 
-  <div class="cardsContainer flex flex-wrap">
-    <ClubCard v-for="club in clubs" v-bind="club" />
+    <div class="cardsContainer flex flex-wrap">
+      <ClubCard v-for="club in clubs" v-bind="club" />
+    </div>
   </div>
 </template>
 

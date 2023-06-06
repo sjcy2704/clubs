@@ -1,16 +1,19 @@
 import { api } from "./api";
-const host = "http://localhost:8080";
 
 export async function logUser(login, router, userStore, errors = null) {
-  await api.post("/login", login).then((res) => {
-    if ((res.status === 401 || res.status === 400) && errors) {
-      errors.err = true;
-    } else {
+  await api
+    .post("/login", login)
+    .then((res) => {
       userStore.user = res.data;
       userStore.loggedIn = true;
       router.push("/");
-    }
-  });
+    })
+    .catch(({ response }) => {
+      console.log(response);
+      if ((response.status === 401 || response.status === 400) && errors) {
+        errors.errs = true;
+      }
+    });
 }
 
 export async function logout(router, route, userStore) {
