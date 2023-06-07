@@ -4,23 +4,25 @@ import { logout } from "../helpers/auth";
 import { ref } from "vue";
 import { useUserStore } from "../stores/userStore";
 
+defineProps({
+  hide: Boolean,
+});
+
 const router = useRouter();
 const route = useRoute();
-
-let show = ref(true);
 
 const userStore = useUserStore();
 </script>
 
 <template>
   <div class="dropdown">
-    <div class="profile">
+    <div v-if="!hide" class="profile">
       <a class="name flex" href="#"
         >{{ userStore.user.firstName }}
         <!-- <img class="avatar" :src="userStore.user.avatar" /> -->
       </a>
     </div>
-    <div v-if="show" class="dropdownContent">
+    <div class="dropdownContent">
       <div class="dropdownItems flex col">
         <div v-if="userStore.user.userType === 'admin'">
           <RouterLink class="navLink flex justify-between" to="/"
@@ -71,28 +73,36 @@ const userStore = useUserStore();
   position: relative;
 }
 
-.dropdownContent {
-  display: none;
-  position: absolute;
-  background-color: black;
-  padding: 25px 10px 10px;
-  top: 25px;
-  left: -55px;
-  text-align: left;
-  width: 185px;
-  z-index: 9999;
+@media only screen and (min-width: 981px) {
+  .dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: black;
+    padding: 25px 10px 10px;
+    top: 25px;
+    left: -55px;
+    text-align: left;
+    width: 185px;
+    z-index: 9999;
+  }
+
+  .dropdown:hover .dropdownContent {
+    display: block;
+  }
+
+  .dropdownItems a {
+    padding: 5px 10px;
+  }
+
+  .dropdownItems a:hover {
+    background-color: white;
+    color: black;
+  }
 }
 
-.dropdown:hover .dropdownContent {
-  display: block;
-}
-
-.dropdownItems a {
-  padding: 5px 10px;
-}
-
-.dropdownItems a:hover {
-  background-color: white;
-  color: black;
+@media only screen and (max-width: 980px) {
+  .navLink {
+    padding: 20px;
+  }
 }
 </style>

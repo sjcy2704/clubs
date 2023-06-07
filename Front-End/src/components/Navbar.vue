@@ -1,16 +1,34 @@
 <script setup>
 import UserMenu from "./UserMenu.vue";
 import { useUserStore } from "../stores/userStore";
+import { ref } from "vue";
 
 const navRoutes = [
-  { name: "Home", path: "/", class: "home" },
-  { name: "Clubs", path: "/clubs", class: "clubs" },
+  { name: "Home", path: "/", class: "home", icon: "fa-solid fa-house" },
+  {
+    name: "Clubs",
+    path: "/clubs",
+    class: "clubs",
+    icon: "fa-solid fa-layer-group",
+  },
 ];
 
 const logInRoutes = [
-  { name: "Sign Up", path: "/signup", class: "signup" },
-  { name: "Login", path: "/login", class: "login" },
+  {
+    name: "Sign Up",
+    path: "/signup",
+    class: "signup",
+    icon: "fa-solid fa-address-card",
+  },
+  {
+    name: "Login",
+    path: "/login",
+    class: "login",
+    icon: "fa-solid fa-right-to-bracket",
+  },
 ];
+
+let showMenu = ref(false);
 
 const userStore = useUserStore();
 </script>
@@ -20,7 +38,7 @@ const userStore = useUserStore();
     <div class="topCorner"></div>
     <div class="topDiv flex justify-between">
       <RouterLink to="/" class="logo white">World-Execute-Me</RouterLink>
-      <ul class="flex row sm-col justify-between nav">
+      <ul class="flex row sm-col justify-between nav hide">
         <li class="navItem" v-for="item in navRoutes">
           <RouterLink class="navLink" :to="item.path">{{
             item.name
@@ -40,6 +58,40 @@ const userStore = useUserStore();
         </li>
         <li v-if="userStore.loggedIn" class="navItem">
           <UserMenu />
+        </li>
+      </ul>
+      <font-awesome-icon
+        @click="showMenu = !showMenu"
+        class="icon l-hide"
+        icon="fa-solid fa-burger"
+      />
+    </div>
+    <div class="hamburgerMenu l-hide">
+      <ul v-if="showMenu" class="menu">
+        <li class="navItem" v-for="item in navRoutes">
+          <RouterLink class="navLink flex justify-between" :to="item.path"
+            >{{ item.name }}<font-awesome-icon :icon="item.icon"
+          /></RouterLink>
+        </li>
+        <li class="navItem" v-if="userStore.loggedIn">
+          <RouterLink class="navLink flex justify-between" to="/profile/clubs"
+            >My Clubs
+            <font-awesome-icon
+              icon="fa-solid
+            fa-baseball-bat-ball"
+          /></RouterLink>
+        </li>
+        <li
+          v-if="!userStore.loggedIn"
+          class="navItem"
+          v-for="item in logInRoutes"
+        >
+          <RouterLink class="navLink" :to="item.path"
+            >{{ item.name }} <font-awesome-icon :icon="item.icon"
+          /></RouterLink>
+        </li>
+        <li v-if="userStore.loggedIn" class="navItem">
+          <UserMenu hide />
         </li>
       </ul>
     </div>
@@ -87,14 +139,60 @@ const userStore = useUserStore();
   z-index: -1;
 }
 
-@media only screen and (max-width: 550px) {
-  .topDiv {
-    padding: 15px 20px;
-  }
+.l-hide {
+  display: none;
+}
 
+@media only screen and (max-width: 1140px) {
+  .topDiv {
+    padding: 20px 40px;
+  }
+}
+
+@media only screen and (max-width: 1040px) {
   .topCorner {
     border-top: 70px solid black;
     border-right: 50px solid transparent;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .hide {
+    display: none;
+  }
+
+  .l-hide {
+    display: block;
+  }
+
+  .hamburgerMenu {
+    font-size: 1.2em;
+  }
+
+  .icon {
+    cursor: pointer;
+    font-size: 1.3em;
+  }
+
+  .menu {
+    background-color: black;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    padding: 10px 0;
+  }
+
+  .navItem {
+    padding: 20px 40px;
+    text-align: left;
+  }
+  .navItem:last-child {
+    padding: 0 20px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .topCorner {
+    display: none;
   }
 }
 </style>

@@ -90,6 +90,9 @@ body {
   opacity: 0;
 }
 /* Rest of Css */
+header {
+  color: white;
+}
 hr {
   border-style: solid;
   margin-bottom: 10px;

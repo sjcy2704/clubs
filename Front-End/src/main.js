@@ -27,6 +27,13 @@ import {
   faPenToSquare,
   faUserMinus,
   faTrashCan,
+  faBars,
+  faBurger,
+  faLayerGroup,
+  faBaseballBatBall,
+  faHouse,
+  faRightToBracket,
+  faAddressCard,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -60,7 +67,14 @@ library.add(
   faInfo,
   faPenToSquare,
   faUserMinus,
-  faTrashCan
+  faTrashCan,
+  faBars,
+  faBurger,
+  faLayerGroup,
+  faBaseballBatBall,
+  faHouse,
+  faRightToBracket,
+  faAddressCard
 );
 
 pinia.use(piniaPersistedState);
