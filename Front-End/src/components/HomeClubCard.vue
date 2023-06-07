@@ -16,7 +16,7 @@ defineProps({
         <p class="clubName">{{ name }}</p>
         <p class="subName">{{ short_name }}</p>
       </div>
-      <div class="subDetails flex justify-between">
+      <div class="subDetails flex justify-between m-col">
         <p>{{ category }}</p>
         <p class="membersCount">
           Total Members: {{ members }}
@@ -62,15 +62,24 @@ defineProps({
   font-size: 0.95em;
 }
 
+@media only screen and (max-width: 1430px) {
+  .m-col {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .membersCount {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 550px) {
   .name {
     font-size: 0.9em;
   }
   .clubDetails {
     justify-content: start;
-  }
-  .membersCount {
-    display: none;
   }
 }
 </style>

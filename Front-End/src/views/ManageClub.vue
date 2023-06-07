@@ -57,6 +57,11 @@ await api.get(`/clubs/${clubID}`).then(({ data }) => {
   gap: 40px;
 }
 
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  .cardsContainer {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
 @media only screen and (max-width: 550px) {
   .manageCards {
     grid-template-columns: 1fr;

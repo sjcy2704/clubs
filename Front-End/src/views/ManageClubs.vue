@@ -24,7 +24,7 @@ await api
     </div>
 
     <div class="cardsContainer">
-      <ClubCard v-for="club in clubs" v-bind="club" manage />
+      <ClubCard v-for="club in clubs" class="item" v-bind="club" manage />
     </div>
   </div>
 </template>
@@ -51,15 +51,31 @@ await api
   font-size: 2.5em;
   flex-grow: 1;
 }
+.item {
+  justify-self: center;
+}
 
 .newClub {
-  padding: 10px;
+  padding: 10px 15px;
   background-color: black;
   border-radius: 10px;
 }
 
 .plus {
   font-size: 1.25em;
+}
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  .cardsContainer {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .cardsContainer {
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    width: 525px;
+  }
 }
 
 @media only screen and (max-width: 550px) {
@@ -73,7 +89,7 @@ await api
   }
 
   .newClub {
-    width: 100%;
+    width: 60%;
   }
 }
 </style>
