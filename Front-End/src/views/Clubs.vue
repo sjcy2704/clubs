@@ -65,7 +65,7 @@ watchEffect(() => {
   <div class="mainContainer flex col align-center">
     <div class="container w-100">
       <div class="title">Clubs</div>
-      <div class="lookupContainer flex justify-between sm-col">
+      <div class="lookupContainer flex justify-between sm-col m-col">
         <div class="searchContainer">
           <input
             :class="{ show: showSearch }"
@@ -112,10 +112,10 @@ watchEffect(() => {
       </div>
     </div>
 
-    <div v-if="clubs.length > 0" class="cardsContainer">
+    <div class="cardsContainer">
       <ClubCard class="item" v-for="club in clubs" v-bind="club" />
+      <h2 class="noClubs" v-if="clubs.length <= 0">No Clubs</h2>
     </div>
-    <h2 v-if="clubs.length <= 0">No Clubs</h2>
   </div>
 </template>
 
@@ -207,7 +207,24 @@ watchEffect(() => {
   justify-self: center;
 }
 
-@media only screen and (max-width: 550px) {
+.noClubs {
+  grid-column: 1 / span 4;
+  width: 1120px;
+  justify-self: stretch;
+  text-align: center;
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  .cardsContainer {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .filterContainer {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
   .categorySelect {
     width: 100%;
     opacity: 1;
@@ -217,18 +234,34 @@ watchEffect(() => {
     opacity: 1;
     margin-bottom: 10px;
   }
-  .cardsContainer {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .filterIcon {
-    display: none;
-  }
   .filter {
     opacity: 1;
   }
   .filterContainer {
     width: 100%;
+  }
+  .cardsContainer {
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    width: 525px;
+  }
+  .noClubs {
+    width: 100%;
+    grid-column: 1 / span2;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .cardsContainer {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+  }
+  .filterIcon {
+    display: none;
+  }
+  .noClubs {
+    grid-column: 1 / span 1;
   }
 }
 </style>
