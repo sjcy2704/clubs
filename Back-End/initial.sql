@@ -106,4 +106,23 @@ SET
 WHERE
   clubID = 4;
 
+INSERT INTO
+  Events (
+    name,
+    description,
+    starttime,
+    endtime,
+    rsvpLimit,
+    clubID
+  )
+VALUES
+  (
+    'Event Test',
+    'Test',
+    '2023-06-08 2:30:00',
+    '2023-06-08 3:30:00',
+    80,
+    2
+  );
+
 -- select u.userID, u.username, u.email, u.firstName, u.familyName, u.phone, u.userType, c.name from Users u join ClubMembers cm on u.userID = cm.userID join Clubs c on cm.clubID = c.clubID;

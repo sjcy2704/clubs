@@ -155,6 +155,30 @@ router.get("/:id/managers", function (req, res, next) {
   });
 });
 
+router.get("/:id/events", function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const { id } = req.params;
+
+    let query = "SELECT * FROM Events WHERE clubID = ?";
+
+    connection.query(query, id, function (err, rows) {
+      connection.release();
+
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+
+      res.json(rows);
+    });
+  });
+});
+
 router.get("/manager/:managerID", function (req, res) {
   req.pool.getConnection(function (err, connection) {
     if (err) {

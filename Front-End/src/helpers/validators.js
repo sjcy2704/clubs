@@ -29,12 +29,15 @@ function validatePassword(password, confirm) {
 
 export async function validateUser(signup) {
   let errs = [];
-
-  await api.get(`/users/username/${signup.username}`).then((res) => {
-    if (res.data.length > 0) {
-      errs.push("Username already exists");
-    }
-  });
+  if (!/\s/.test(signup.username)) {
+    errs.push("Username should not contain spaces");
+  } else {
+    await api.get(`/users/username/${signup.username}`).then((res) => {
+      if (res.data.length > 0) {
+        errs.push("Username already exists");
+      }
+    });
+  }
 
   errs.push(...validatePassword(signup.password, signup.confirm));
 

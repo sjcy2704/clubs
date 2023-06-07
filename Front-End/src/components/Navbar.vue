@@ -27,7 +27,7 @@ const userStore = useUserStore();
           }}</RouterLink>
         </li>
         <li class="navItem" v-if="userStore.loggedIn">
-          <RouterLink class="navLink" to="/user/clubs">My Clubs</RouterLink>
+          <RouterLink class="navLink" to="/profile/clubs">My Clubs</RouterLink>
         </li>
         <li
           v-if="!userStore.loggedIn"

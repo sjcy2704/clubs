@@ -1,74 +1,68 @@
 <script setup>
 import { ref, watchEffect } from "vue";
-import UserCard from "../components/ManageUserCard.vue";
+import EventCard from "../components/ManageEventCard.vue";
 import { useRoute, useRouter } from "vue-router";
 import { api } from "../helpers/api";
-import { useUserStore } from "../stores/userStore";
-const userStore = useUserStore();
 
 const route = useRoute();
 const router = useRouter();
 
 const { clubID } = route.params;
-let members = ref([]);
-
-await api
-  .get(`/members/club/${clubID}`)
-  .then(({ data }) => (members.value = data));
-
-let managers = ref([]);
-await api
-  .get(`/clubs/${clubID}/managers`)
-  .then(
-    ({ data }) => (managers.value = data.map((manager) => manager.manager))
-  );
 
 let search = ref("");
 let filter = ref("");
+let allEvents = ref([]);
 
-let currMembers = ref([]);
+await api
+  .get(`/clubs/${clubID}/events`)
+  .then(({ data }) => (allEvents.value = data));
 
-function filterMembers(search, filter) {
-  if (search === "" && filter === "") {
-    return members.value;
-  }
+// let currMembers = ref([]);
 
-  let res = [];
+// function filterMembers(search, filter) {
+//   if (search === "" && filter === "") {
+//     return members.value;
+//   }
 
-  search = search.toLowerCase();
-  if (filter === "managers") {
-    res = members.value.filter((member) =>
-      managers.value.includes(member.userID)
-    );
-  } else if (filter === "members") {
-    res = members.value.filter(
-      (member) => !managers.value.includes(member.userID)
-    );
-  }
+//   let res = [];
 
-  return res.filter(
-    (member) =>
-      member.firstName.toLowerCase().includes(search) ||
-      member.familyName.toLowerCase().includes(search)
-  );
-}
+//   search = search.toLowerCase();
+//   if (filter === "managers") {
+//     res = members.value.filter((member) =>
+//       managers.value.includes(member.userID)
+//     );
+//   } else if (filter === "members") {
+//     res = members.value.filter(
+//       (member) => !managers.value.includes(member.userID)
+//     );
+//   }
 
-watchEffect(() => {
-  currMembers.value = filterMembers(search.value, filter.value);
-});
+//   return res.filter(
+//     (member) =>
+//       member.firstName.toLowerCase().includes(search) ||
+//       member.familyName.toLowerCase().includes(search)
+//   );
+// }
+
+// watchEffect(() => {
+//   currMembers.value = filterMembers(search.value, filter.value);
+// });
 </script>
 
 <template>
   <div class="usersContainer">
     <div class="manageMenu">
-      <h2>Manage Members</h2>
+      <div class="topMenu flex align-center justify-between">
+        <h2>Manage Events</h2>
+        <a class="newEvent">New Event</a>
+      </div>
       <div class="menuContainer flex justify-between align-center sm-col">
         <div class="sm-w100 searchContainer">
           <input
             v-model="search"
             class="searchbar"
             type="search"
-            placeholder="Search Name"
+            placeholder="Search Event Name"
           />
           <font-awesome-icon
             class="searchicon"
@@ -77,37 +71,19 @@ watchEffect(() => {
         </div>
 
         <div class="filterContainer flex align-center">
+          <font-awesome-icon class="filterIcon" icon="fa-solid fa-filter" />
           <div class="flex filter">
             <select class="roleSelect" v-model="filter">
-              <option value="" disabled selected>Role</option>
-              <option value="managers">Managers</option>
-              <option value="members">Members</option>
+              <option value="" selected>All</option>
+              <option value="upcoming">Upcoming</option>
+              <option value="past">Past</option>
             </select>
-            <button
-              v-if="filter !== ''"
-              type="button"
-              class="filterButton resetFilter"
-              @click="filter = ''"
-            >
-              Reset Filter
-            </button>
           </div>
-          <font-awesome-icon
-            class="filterIcon"
-            icon="fa-solid fa-filter"
-            @click="showFilter = !showFilter"
-          />
         </div>
       </div>
     </div>
     <div class="userCardsContainer">
-      <UserCard
-        v-for="member in currMembers"
-        v-bind="member"
-        :clubID="Number(clubID)"
-        :role="managers.includes(member.userID) ? 'Manager' : 'Member'"
-        :curr-manager="member.userID === userStore.user.userID"
-      />
+      <EventCard v-for="event in allEvents" v-bind="event" />
     </div>
   </div>
 </template>
@@ -163,7 +139,7 @@ input {
 
 .filterContainer {
   gap: 20px;
-  width: 30%;
+  width: 20%;
   justify-content: end;
 }
 
@@ -186,7 +162,7 @@ input {
 }
 
 .userCardsContainer {
-  padding: 20px 20px;
+  padding: 20px 20px 10px;
 }
 
 @media only screen and (max-width: 550px) {

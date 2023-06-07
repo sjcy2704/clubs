@@ -58,11 +58,19 @@ await api.get(`/clubs/${clubID}`).then(({ data }) => {
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
-  .cardsContainer {
+  .manageCards {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-@media only screen and (max-width: 550px) {
+
+@media only screen and (max-width: 1024px) {
+  .manageCards {
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+}
+
+@media only screen and (max-width: 620px) {
   .manageCards {
     grid-template-columns: 1fr;
   }

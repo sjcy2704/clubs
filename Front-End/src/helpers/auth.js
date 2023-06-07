@@ -1,8 +1,10 @@
 import { api } from "./api";
 
 export async function logUser(login, router, userStore, errors = null) {
+  let { username, password } = login;
+  username = username.toLowerCase();
   await api
-    .post("/login", login)
+    .post("/login", { username, password })
     .then((res) => {
       userStore.user = res.data;
       userStore.loggedIn = true;

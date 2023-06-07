@@ -26,6 +26,7 @@ import {
   faInfo,
   faPenToSquare,
   faUserMinus,
+  faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -58,7 +59,8 @@ library.add(
   faBullhorn,
   faInfo,
   faPenToSquare,
-  faUserMinus
+  faUserMinus,
+  faTrashCan
 );
 
 pinia.use(piniaPersistedState);
