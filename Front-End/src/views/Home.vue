@@ -8,7 +8,7 @@ let clubs = ref([]);
 
 async function getClubs() {
   await api.get("/clubs").then(({ data }) => {
-    clubs.value = data.toSorted((x, y) => y.members - x.members).splice(0, 10);
+    clubs.value = data.sort((x, y) => y.members - x.members).splice(0, 10);
   });
 }
 getClubs();
