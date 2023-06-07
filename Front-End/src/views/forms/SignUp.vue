@@ -38,6 +38,7 @@ function createUser() {
 
   if (errs.errors.length === 0) {
     const userStore = useUserStore();
+    signup.username = signup.username.toLowerCase();
     signUpUser(signup, router, userStore);
   }
 }

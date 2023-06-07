@@ -17,36 +17,36 @@ await api
   .get(`/clubs/${clubID}/events`)
   .then(({ data }) => (allEvents.value = data));
 
-// let currMembers = ref([]);
+let currEvents = ref([]);
 
-// function filterMembers(search, filter) {
-//   if (search === "" && filter === "") {
-//     return members.value;
-//   }
+function filterEvents(search, filter) {
+  if (search === "" && filter === "") {
+    return allEvents.value;
+  }
 
-//   let res = [];
+  let res = [];
 
-//   search = search.toLowerCase();
-//   if (filter === "managers") {
-//     res = members.value.filter((member) =>
-//       managers.value.includes(member.userID)
-//     );
-//   } else if (filter === "members") {
-//     res = members.value.filter(
-//       (member) => !managers.value.includes(member.userID)
-//     );
-//   }
+  search = search.toLowerCase();
 
-//   return res.filter(
-//     (member) =>
-//       member.firstName.toLowerCase().includes(search) ||
-//       member.familyName.toLowerCase().includes(search)
-//   );
-// }
+  const currDate = new Date();
+  if (filter === "upcoming") {
+    res = allEvents.value.filter((event) => {
+      const startDate = new Date(event.starttime);
+      return startDate > currDate;
+    });
+  } else {
+    res = allEvents.value.filter((event) => {
+      const startDate = new Date(event.starttime);
+      return startDate < currDate;
+    });
+  }
 
-// watchEffect(() => {
-//   currMembers.value = filterMembers(search.value, filter.value);
-// });
+  return res.filter((event) => event.name.toLowerCase().includes(search));
+}
+
+watchEffect(() => {
+  currEvents.value = filterEvents(search.value, filter.value);
+});
 </script>
 
 <template>
@@ -83,7 +83,11 @@ await api
       </div>
     </div>
     <div class="userCardsContainer">
-      <EventCard v-for="event in allEvents" v-bind="event" />
+      <EventCard
+        v-for="event in currEvents"
+        v-bind="event"
+        v-model="currEvents"
+      />
     </div>
   </div>
 </template>
@@ -163,6 +167,12 @@ input {
 
 .userCardsContainer {
   padding: 20px 20px 10px;
+}
+
+.newEvent {
+  border-radius: 5px;
+  padding: 5px 20px;
+  background-color: black;
 }
 
 @media only screen and (max-width: 550px) {

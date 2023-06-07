@@ -22,4 +22,27 @@ router.get("/", function (req, res) {
   });
 });
 
+router.post("/remove", function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const { eventID } = req.body;
+
+    let query = "DELETE FROM Events WHERE eventID = ?";
+
+    connection.query(query, eventID, function (err) {
+      connection.release();
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+
+      res.sendStatus(200);
+    });
+  });
+});
+
 module.exports = router;

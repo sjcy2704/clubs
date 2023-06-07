@@ -1,31 +1,61 @@
 <script setup>
+import { watchEffect } from "vue";
+import { api } from "../helpers/api";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
 const props = defineProps({
   name: String,
   starttime: String,
   endtime: String,
   disabled: Boolean,
+  eventID: Number,
+  modelValue: Object,
 });
 
-const date = new Date(props.starttime);
-const endDate = new Date(props.endtime);
+const emits = defineEmits(["update:modelValue"]);
 
-const eventDate = date.toLocaleDateString("en-AU");
-const eventStartTime = date.toLocaleTimeString("en-AU", {
-  hour: "2-digit",
-  minute: "2-digit",
+let date = ref();
+let endDate = ref();
+let eventDate = ref();
+let eventStartTime = ref();
+let eventEndTime = ref();
+let duration = ref();
+
+watchEffect(() => {
+  date.value = new Date(props.starttime);
+  endDate.value = new Date(props.endtime);
+  eventDate.value = date.value.toLocaleDateString("en-AU");
+  eventStartTime.value = date.value.toLocaleTimeString("en-AU", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  eventEndTime.value = endDate.value.toLocaleTimeString("en-AU", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  duration.value = Math.abs(endDate.value - date.value) / 60000;
 });
-const eventEndTime = endDate.toLocaleTimeString("en-AU", {
-  hour: "2-digit",
-  minute: "2-digit",
-});
-const duration = Math.abs(endDate - date) / 60000;
+
+async function removeEvent() {
+  await api.post("/events/remove", { eventID: props.eventID }).then(() => {
+    props.modelValue.splice(
+      props.modelValue.findIndex((obj) => obj.eventID === props.eventID),
+      1
+    );
+
+    emits("update:modelValue", props.modelValue);
+  });
+}
 </script>
 
 <template>
   <div class="userCard flex align-center" :class="{ disabled }">
     <div class="flex justify-between w-100 sm-col">
       <div class="userDetails">
-        <h3>{{ name }}</h3>
+        <h3>{{ props.name }}</h3>
         <div class="details flex">
           <div>
             <p><span>Date: </span>{{ eventDate }}</p>
@@ -39,7 +69,9 @@ const duration = Math.abs(endDate - date) / 60000;
       </div>
       <div class="options flex align-center">
         <p>Edit <font-awesome-icon icon="fa-solid fa-pen-to-square" /></p>
-        <a>Delete <font-awesome-icon icon="fa-solid fa-trash-can" /></a>
+        <a @click="removeEvent"
+          >Delete <font-awesome-icon icon="fa-solid fa-trash-can"
+        /></a>
       </div>
     </div>
   </div>
@@ -70,12 +102,6 @@ const duration = Math.abs(endDate - date) / 60000;
 .options a {
   font-size: 1em;
   font-weight: 400;
-}
-
-.newEvent {
-  border-radius: 5px;
-  padding: 5px 20px;
-  background-color: black;
 }
 
 .disabled {
