@@ -16,10 +16,10 @@ defineProps({
         <p class="clubName">{{ name }}</p>
         <p class="subName">{{ short_name }}</p>
       </div>
-      <div class="subDetails flex justify-between m-col">
-        <p>{{ category }}</p>
+      <div class="subDetails flex justify-between">
+        <p class="category">{{ category }}</p>
         <p class="membersCount">
-          Total Members: {{ members }}
+          {{ members }}
           <font-awesome-icon
             icon="fa-solid
           fa-users"
@@ -63,8 +63,11 @@ defineProps({
 }
 
 @media only screen and (max-width: 1430px) {
-  .m-col {
-    flex-direction: column;
+  .name {
+    font-size: 0.9em;
+  }
+  .category {
+    font-size: 0.9em;
   }
 }
 
@@ -72,12 +75,15 @@ defineProps({
   .membersCount {
     display: none;
   }
+  .name {
+    font-size: 0.8em;
+  }
+  .category {
+    font-size: 0.8em;
+  }
 }
 
 @media only screen and (max-width: 550px) {
-  .name {
-    font-size: 0.9em;
-  }
   .clubDetails {
     justify-content: start;
   }

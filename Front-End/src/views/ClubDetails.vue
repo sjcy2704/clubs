@@ -42,6 +42,8 @@ async function joinClub() {
       });
   }
 }
+
+console.log(details);
 </script>
 
 <template>
@@ -50,52 +52,46 @@ async function joinClub() {
       icon="fa-solid
     fa-chevron-left"
   /></a>
-  <div class="container">
-    <div class="detailsContainer flex justify-center">
-      <img :src="details.logo" class="img" />
-      <div class="clubDetails flex col">
-        <div class="main">
-          <h1>{{ details.name }}</h1>
-          <h2>{{ details.short_name }}</h2>
-          <h3>{{ details.category }}</h3>
-          <h4>Total Members: {{ details.members }}</h4>
-        </div>
-        <p
-          v-if="details.description"
-          v-html="details.description"
-          class="description"
-        ></p>
-        <p v-else class="description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <div class="flex justify-between align-center">
-          <div class="socialMedia">
-            <a v-if="details.facebook" :href="details.facebook"
-              ><font-awesome-icon icon="fa-brands fa-facebook"
-            /></a>
-            <a v-if="details.twitter" :href="details.twitter"
-              ><font-awesome-icon icon="fa-brands fa-twitter"
-            /></a>
-            <a v-if="details.instagram" :href="details.instagram"
-              ><font-awesome-icon icon="fa-brands fa-instagram"
-            /></a>
-            <a v-if="details.discord" :href="details.discord"
-              ><font-awesome-icon icon="fa-brands fa-discord"
-            /></a>
+  <div class="mainContainer flex col align-center sm-col">
+    <div class="container">
+      <div class="detailsContainer flex justify-center">
+        <img :src="details.logo" class="img" />
+        <div class="clubDetails flex col">
+          <div class="main">
+            <h1>{{ details.name }}</h1>
+            <h2>{{ details.short_name }}</h2>
+            <h3>{{ details.category }}</h3>
+            <h4>Total Members: {{ details.members }}</h4>
           </div>
-          <button v-if="!join" class="joinButton" @click="joinClub">
-            Join Club
-          </button>
+          <p
+            v-if="details.description"
+            v-html="details.description"
+            class="description"
+          ></p>
+          <div class="flex justify-between align-center">
+            <div class="socialMedia">
+              <a v-if="details.facebook" :href="details.facebook"
+                ><font-awesome-icon icon="fa-brands fa-facebook"
+              /></a>
+              <a v-if="details.twitter" :href="details.twitter"
+                ><font-awesome-icon icon="fa-brands fa-twitter"
+              /></a>
+              <a v-if="details.instagram" :href="details.instagram"
+                ><font-awesome-icon icon="fa-brands fa-instagram"
+              /></a>
+              <a v-if="details.discord" :href="details.discord"
+                ><font-awesome-icon icon="fa-brands fa-discord"
+              /></a>
+            </div>
+            <button v-if="!join" class="joinButton" @click="joinClub">
+              Join Club
+            </button>
+          </div>
         </div>
       </div>
     </div>
-    <div class="clubRelated flex sm-col justify-center">
+
+    <div class="clubRelated">
       <div class="column">
         <h2 class="subTitle">Announcments</h2>
       </div>
@@ -111,7 +107,7 @@ async function joinClub() {
   color: black;
   cursor: pointer;
   position: absolute;
-  left: 10%;
+  left: 5%;
   top: 15%;
   font-size: 1.5em;
 }
@@ -121,14 +117,18 @@ async function joinClub() {
   margin-bottom: 20px;
 }
 .clubRelated {
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   margin-top: 50px;
+  gap: 40px;
+  width: 70%;
 }
 
 .column {
+  justify-self: center;
   border: black 2px solid;
   border-radius: 10px;
-  width: 650px;
+  width: 100%;
   height: 700px;
   padding: 20px 30px;
   overflow-y: scroll;
@@ -136,11 +136,12 @@ async function joinClub() {
 
 .container {
   text-align: left;
-  padding: 40px 120px 50px;
 }
 
 .detailsContainer {
   gap: 40px;
+  margin-top: 40px;
+  padding: 0 115px;
 }
 
 .img {
@@ -174,5 +175,29 @@ async function joinClub() {
 
 .joinButton {
   width: 50%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .detailsContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .clubDetails {
+    width: 100%;
+  }
+  .back {
+    left: 10%;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .sm-col {
+    flex-direction: column;
+  }
+
+  .clubRelated {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

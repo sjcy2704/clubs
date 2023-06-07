@@ -58,11 +58,31 @@ router.post("/", upload.single("logo"), function (req, res) {
       return;
     }
 
-    const { name, short_name, category, description, manager } = req.body;
+    const {
+      name,
+      short_name,
+      category,
+      description,
+      manager,
+      facebook,
+      twitter,
+      instagram,
+      discord,
+    } = req.body;
     let path;
     let query =
-      "INSERT INTO Clubs(name, short_name, category, description, manager) VALUES (?, ?, ?, ?, ?)";
-    let values = [name, short_name, category, description, manager];
+      "INSERT INTO Clubs(name, short_name, category, description, manager,facebook, twitter, instagram, discord) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    let values = [
+      name,
+      short_name,
+      category,
+      description,
+      manager,
+      facebook,
+      twitter,
+      instagram,
+      discord,
+    ];
 
     if (req.file) {
       path = `${req.protocol}://${req.get("host")}/club-logos/${
@@ -72,7 +92,7 @@ router.post("/", upload.single("logo"), function (req, res) {
       values.push(path);
 
       query =
-        "INSERT INTO Clubs(name, short_name, category, description, manager, logo) VALUES (?, ?, ?, ?, ?, ?)";
+        "INSERT INTO Clubs(name, short_name, category, description, manager, facebook, twitter, instagram, discord, logo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     }
 
     connection.query(query, values, function (err, rows) {

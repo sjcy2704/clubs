@@ -28,7 +28,7 @@ defineProps({
               : '/clubs/' + clubID
           "
         >
-          <p class="name">{{ short_name }}</p>
+          <p class="name">{{ name }}</p>
         </RouterLink>
         <RouterLink
           :to="
@@ -39,10 +39,6 @@ defineProps({
         >
           <p class="category">{{ category }}</p>
         </RouterLink>
-      </div>
-      <div class="members flex">
-        <p class="membersCount">{{ members }}</p>
-        <font-awesome-icon class="memberIcon" icon="fa-solid fa-users" />
       </div>
     </div>
   </div>
@@ -55,10 +51,6 @@ a {
 .clubContainer {
   width: 100%;
   max-width: 250px;
-}
-
-.clubDetails {
-  width: 55%;
 }
 
 .details {

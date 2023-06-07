@@ -75,46 +75,51 @@ function addClub() {
       icon="fa-solid
     fa-chevron-left"
   /></a>
-  <div class="container">
-    <p class="title">Club<span>Registration</span></p>
-  </div>
-  <form class="lsgForm registerForm" v-on:submit.prevent="addClub">
-    <Input label="Club Name" v-model="clubDetails.name" required="true" />
-    <div class="shortName">
-      <Input
-        label="Short Name"
-        v-model="clubDetails.short_name"
-        required="true"
-      />
-      <span class="example">e.g. CS Club - Computer Science Club</span>
+  <div class="mainContainer flex col align-center">
+    <div class="container">
+      <p class="title">Club<span>Registration</span></p>
     </div>
-
-    <p class="category">Category</p>
-    <select class="categorySelect" v-model="clubDetails.category" required>
-      <option v-for="category in categories" :value="category.value">
-        {{ category.value }}
-      </option>
-    </select>
-    <Dropzone label="Club Logo" v-model="clubDetails.logo" />
-    <p class="descLabel">Description</p>
-    <QuillEditor v-model:content="clubDetails.description" contentType="html" />
-    <div class="socialLinks">
-      <a
-        class="showlinks"
-        v-if="!showSocialLinks"
-        @click="showSocialLinks = true"
-        >Add Social Links</a
-      >
-      <div v-else="showSocialLinks" class="socialLinksInputs">
-        <Input label="Facebook" v-model="clubDetails.facebook" />
-        <Input label="Twitter" v-model="clubDetails.twitter" />
-        <Input label="Instagram" v-model="clubDetails.instagram" />
-        <Input label="Discord" v-model="clubDetails.discord" />
+    <form class="lsgForm registerForm" v-on:submit.prevent="addClub">
+      <Input label="Club Name" v-model="clubDetails.name" required="true" />
+      <div class="shortName">
+        <Input
+          label="Short Name"
+          v-model="clubDetails.short_name"
+          required="true"
+        />
+        <span class="example">e.g. CS Club - Computer Science Club</span>
       </div>
-    </div>
 
-    <button type="submit">Create Club</button>
-  </form>
+      <p class="category">Category</p>
+      <select class="categorySelect" v-model="clubDetails.category" required>
+        <option v-for="category in categories" :value="category.value">
+          {{ category.value }}
+        </option>
+      </select>
+      <Dropzone label="Club Logo" v-model="clubDetails.logo" />
+      <p class="descLabel">Description</p>
+      <QuillEditor
+        v-model:content="clubDetails.description"
+        contentType="html"
+      />
+      <div class="socialLinks">
+        <a
+          class="showlinks"
+          v-if="!showSocialLinks"
+          @click="showSocialLinks = true"
+          >Add Social Links</a
+        >
+        <div v-else="showSocialLinks" class="socialLinksInputs">
+          <Input label="Facebook" v-model="clubDetails.facebook" />
+          <Input label="Twitter" v-model="clubDetails.twitter" />
+          <Input label="Instagram" v-model="clubDetails.instagram" />
+          <Input label="Discord" v-model="clubDetails.discord" />
+        </div>
+      </div>
+
+      <button type="submit">Create Club</button>
+    </form>
+  </div>
 </template>
 
 <style scoped>
