@@ -54,7 +54,11 @@ watchEffect(() => {
     <div class="manageMenu">
       <div class="topMenu flex align-center justify-between">
         <h2>Manage Events</h2>
-        <a class="newEvent">New Event</a>
+        <RouterLink
+          :to="'/clubs/' + clubID + '/manage/events/add'"
+          class="newEvent"
+          >New Event</RouterLink
+        >
       </div>
       <div class="menuContainer flex justify-between align-center sm-col">
         <div class="sm-w100 searchContainer">
