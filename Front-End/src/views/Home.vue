@@ -30,7 +30,7 @@ getClubs();
       </div>
     </div>
 
-    <div class="clubRelated flex sm-col">
+    <div class="clubRelated flex sm-col m-col">
       <div class="clubs">
         <div class="titleContainer flex justify-between align-center">
           <RouterLink to="/clubs">
@@ -142,7 +142,7 @@ a {
   padding: 20px;
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 1024px) {
   .clubs {
     width: 100%;
   }
