@@ -9,8 +9,8 @@ defineProps({
 });
 </script>
 <template>
-  <RouterLink :to="/clubs/ + clubID" class="card flex">
-    <img :src="logo" class="img" />
+  <RouterLink :to="/clubs/ + clubID" class="card">
+    <img :src="logo" class="img" loading="lazy" />
     <div class="clubDetails flex col justify-between">
       <div class="name">
         <p class="clubName">{{ name }}</p>
@@ -32,19 +32,21 @@ defineProps({
 
 <style scoped>
 .card {
-  height: 100px;
   width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
 }
 
 .img {
   border-radius: 5px;
-  max-height: 100px;
+  height: auto;
+  width: 100%;
   max-width: 100px;
 }
 
 .clubDetails {
   text-align: left;
-  flex-grow: 1;
+  grid-column: 2 / span 2;
   padding: 0px 20px;
 }
 
@@ -81,11 +83,14 @@ defineProps({
   .category {
     font-size: 0.8em;
   }
+  .clubDetails {
+    justify-content: start;
+  }
 }
 
 @media only screen and (max-width: 550px) {
-  .clubDetails {
-    justify-content: start;
+  .img {
+    max-width: 80px;
   }
 }
 </style>

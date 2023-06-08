@@ -30,23 +30,92 @@ var upload = multer({
   },
 });
 
-/* GET users listing. */
-router.get("/", function (req, res, next) {
+router.get("/top", function (req, res) {
   req.pool.getConnection(function (err, connection) {
     if (err) {
       res.sendStatus(500);
       return;
     }
 
-    const query = "SELECT * FROM Clubs";
-    connection.query(query, function (err, rows, fields) {
-      connection.release();
+    const query = "SELECT * FROM Clubs ORDER BY members DESC";
+    connection.query(query, function (err, rows) {
       if (err) {
         res.sendStatus(500);
         return;
       }
 
       res.json(rows);
+    });
+  });
+});
+
+/* GET users listing. */
+router.get("/", function (req, res, next) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      throw err;
+      return;
+    }
+
+    let { page = 1, limit = 16, category = null } = req.query;
+    page = parseInt(page);
+    limit = parseInt(limit);
+
+    let query = "SELECT COUNT(*) AS records FROM Clubs";
+    let pageCount = 0;
+
+    if (category) {
+      query = "SELECT COUNT(*) AS records FROM Clubs WHERE category = ?";
+      connection.query(query, category, function (err, results) {
+        if (err) {
+          res.sendStatus(500);
+          throw err;
+          return;
+        }
+
+        pageCount = Math.ceil(results[0].records / limit);
+      });
+    } else {
+      connection.query(query, function (err, results) {
+        if (err) {
+          res.sendStatus(500);
+          throw err;
+          return;
+        }
+
+        pageCount = Math.ceil(results[0].records / limit);
+      });
+    }
+
+    if (page <= 0) {
+      page = 1;
+    }
+
+    if (limit <= 0) {
+      limit = 1;
+    }
+
+    const offset = limit * page - limit;
+    console.log(offset, page, limit);
+
+    query = "SELECT * FROM Clubs LIMIT ?, ?";
+    const values = [offset, limit];
+
+    if (category) {
+      query = "SELECT * FROM Clubs WHERE category = ? LIMIT ?, ?";
+      values.unshift(category);
+    }
+
+    connection.query(query, values, function (err, rows, fields) {
+      connection.release();
+      if (err) {
+        res.sendStatus(500);
+        throw err;
+        return;
+      }
+
+      res.json({ pageCount, data: rows });
     });
   });
 });

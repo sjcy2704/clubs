@@ -16,6 +16,7 @@ const ManageClub = () => import("../views/ManageClub.vue");
 const ManageMembers = () => import("../views/ManageMembers.vue");
 const ManageEvents = () => import("../views/ManageEvents.vue");
 const AddEvent = () => import("../views/forms/AddEvents.vue");
+// const test = () => import("../views/Test.vue");
 
 // {
 //   path: "/user",
@@ -25,7 +26,7 @@ const AddEvent = () => import("../views/forms/AddEvents.vue");
 // },
 export const routes = [
   { name: "Home", path: "/", component: Home },
-  { path: "/test", component: AddEvent },
+  // { path: "/test", component: test },
   {
     path: "/clubs",
     component: RouterView,

@@ -7,8 +7,8 @@ import { api } from "../helpers/api";
 let clubs = ref([]);
 
 async function getClubs() {
-  await api.get("/clubs").then(({ data }) => {
-    clubs.value = data.sort((x, y) => y.members - x.members).splice(0, 10);
+  await api.get("/clubs/top").then(({ data }) => {
+    clubs.value = data.splice(0, 10);
   });
 }
 getClubs();

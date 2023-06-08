@@ -1,14 +1,15 @@
 <script setup>
 import ClubCard from "./ClubCard.vue";
-import { ref } from "vue";
+import { ref, toRef } from "vue";
 import { watchEffect } from "vue";
 
 const props = defineProps({
-  clubsList: Array,
+  modelValue: Array,
   label: String,
 });
 
-let allClubs = props.clubsList;
+const emits = defineEmits(["changecategory", "update:modelValue"]);
+let allClubs = ref(props.modelValue);
 
 let search = ref("");
 let showSearch = ref(false);
@@ -28,36 +29,25 @@ const categories = ref([
   { value: "Waite" },
 ]);
 
-function filterClubs(search, filter) {
-  if (search === "" && filter === "") {
-    return allClubs;
+function searchClubs(search) {
+  if (search === "") {
+    return allClubs.value;
   }
 
   search = search.toLowerCase();
-  return allClubs.filter((club) => {
-    if (search === "" && filter !== "") {
-      return club.category === filter;
-    } else if (search !== "" && filter === "") {
-      return (
-        club.name.toLowerCase().includes(search) ||
-        club.short_name.toLowerCase().includes(search) ||
-        club.category.toLowerCase().includes(search)
-      );
-    }
-
-    return (
-      club.name.toLowerCase().includes(search) ||
+  return allClubs.value.filter((club) => {
+    club.name.toLowerCase().includes(search) ||
       club.short_name.toLowerCase().includes(search) ||
-      club.category.toLowerCase().includes(search) ||
-      club.category === filter
-    );
+      club.category.toLowerCase().includes(search);
   });
 }
 
 let clubs = ref([]);
 
 watchEffect(() => {
-  clubs.value = filterClubs(search.value, categoryFilter.value);
+  emits("changecategory", categoryFilter.value);
+  allClubs.value = props.modelValue;
+  clubs.value = searchClubs(search.value);
 });
 </script>
 
@@ -114,8 +104,10 @@ watchEffect(() => {
 
     <div class="cardsContainer">
       <ClubCard class="item" v-for="club in clubs" v-bind="club" />
-      <!-- <h2 class="noClubs" v-if="clubs.value.length <= 0">No Clubs</h2> -->
+      <h2 class="noClubs" v-if="clubs.length <= 0">No Clubs</h2>
     </div>
+
+    <slot />
   </div>
 </template>
 

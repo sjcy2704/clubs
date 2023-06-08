@@ -34,6 +34,7 @@ import {
   faHouse,
   faRightToBracket,
   faAddressCard,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -74,7 +75,8 @@ library.add(
   faBaseballBatBall,
   faHouse,
   faRightToBracket,
-  faAddressCard
+  faAddressCard,
+  faChevronRight
 );
 
 pinia.use(piniaPersistedState);

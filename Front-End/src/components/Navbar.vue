@@ -66,8 +66,12 @@ const userStore = useUserStore();
         icon="fa-solid fa-burger"
       />
     </div>
-    <div class="hamburgerMenu l-hide">
-      <ul v-if="showMenu" class="menu">
+    <div
+      @mouseleave="showMenu = false"
+      :class="{ open: showMenu }"
+      class="hamburgerMenu l-hide"
+    >
+      <ul @click="showMenu = false" class="menu">
         <li class="navItem" v-for="item in navRoutes">
           <RouterLink class="navLink flex justify-between" :to="item.path"
             >{{ item.name }}<font-awesome-icon :icon="item.icon"
@@ -83,10 +87,10 @@ const userStore = useUserStore();
         </li>
         <li
           v-if="!userStore.loggedIn"
-          class="navItem"
+          class="navItem notLoggedIn"
           v-for="item in logInRoutes"
         >
-          <RouterLink class="navLink" :to="item.path"
+          <RouterLink class="navLink flex justify-between" :to="item.path"
             >{{ item.name }} <font-awesome-icon :icon="item.icon"
           /></RouterLink>
         </li>
@@ -110,7 +114,6 @@ const userStore = useUserStore();
 .navItem {
   padding: 2px 10px;
   text-align: center;
-  border-radius: 8px;
   color: white;
 }
 
@@ -167,6 +170,14 @@ const userStore = useUserStore();
 
   .hamburgerMenu {
     font-size: 1.2em;
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition: grid-template-rows 400ms ease-in-out;
+  }
+
+  .hamburgerMenu.open {
+    grid-template-rows: 1fr;
   }
 
   .icon {
@@ -179,14 +190,20 @@ const userStore = useUserStore();
     width: 100%;
     border-radius: 0 0 10px 10px;
     padding: 10px 0;
+    min-height: 0;
   }
 
   .navItem {
     padding: 20px 40px;
     text-align: left;
   }
+
   .navItem:last-child {
     padding: 0 20px;
+  }
+
+  .notLoggedIn:last-child {
+    padding: 20px 40px;
   }
 }
 
