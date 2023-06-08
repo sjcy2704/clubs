@@ -14,32 +14,28 @@ let events = ref([]);
 let news = ref([]);
 
 async function getInfo() {
+  await api.get("/news").then(({ data }) => {
+    if (userStore.loggedIn) {
+      news.value = data.filter(async (announce) => {
+        let joined = false;
+        await api
+          .get(`/members/club/${announce.clubID}/user/${userStore.user.userID}`)
+          .then(({ data }) => {
+            joined = data.joined;
+          });
+        return joined;
+      });
+    } else {
+      news.value = data.filter((announce) => announce.status === "public");
+    }
+  });
+
   await api.get("/clubs/top").then(({ data }) => {
     clubs.value = data.splice(0, 10);
   });
 
   await api.get("/events").then(({ data }) => {
     events.value = data;
-  });
-
-  await api.get("/news").then(({ data }) => {
-    if (userStore.loggedIn) {
-      console.log(data);
-      news.value = data.filter(async (announce) => {
-        let joined = false;
-        await api
-          .get(`/members/club/${announce.clubID}/user/${userStore.user.userID}`)
-          .then(({ data }) => {
-            console.log(data.joined);
-            joined = data.joined;
-          });
-        return joined;
-      });
-      console.log("first");
-    } else {
-      console.log("second");
-      news.value = data.filter((announce) => announce.status === "public");
-    }
   });
 }
 getInfo();

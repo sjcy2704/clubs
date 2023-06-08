@@ -6,6 +6,7 @@ import { watchEffect } from "vue";
 const props = defineProps({
   modelValue: Array,
   label: String,
+  manager: Boolean,
 });
 
 const emits = defineEmits(["changecategory", "update:modelValue"]);
@@ -54,7 +55,13 @@ watchEffect(() => {
 <template>
   <div class="mainContainer flex col align-center">
     <div class="container w-100">
-      <div class="title">{{ props.label }}</div>
+      <div class="flex align-center justify-between sm-col">
+        <div class="title">{{ props.label }}</div>
+        <RouterLink v-if="props.manager" to="/clubs/register" class="newClub">
+          New Club
+          <font-awesome-icon class="plus" icon="fa-solid fa-plus" />
+        </RouterLink>
+      </div>
       <div class="lookupContainer flex justify-between sm-col m-col">
         <div class="searchContainer">
           <input
@@ -103,7 +110,12 @@ watchEffect(() => {
     </div>
 
     <div class="cardsContainer">
-      <ClubCard class="item" v-for="club in clubs" v-bind="club" />
+      <ClubCard
+        class="item"
+        v-for="club in clubs"
+        v-bind="club"
+        :manager="props.manager"
+      />
       <h2 class="noClubs" v-if="clubs.length <= 0">No Clubs</h2>
     </div>
 
@@ -115,6 +127,11 @@ watchEffect(() => {
 .lookupContainer {
   margin-top: 30px;
   margin-bottom: 20px;
+}
+.newClub {
+  padding: 10px 15px;
+  background-color: black;
+  border-radius: 10px;
 }
 
 .hide {
@@ -157,6 +174,8 @@ watchEffect(() => {
 }
 .title {
   font-size: 2.5em;
+  text-align: center;
+  flex-grow: 1;
 }
 
 .searchContainer {
@@ -177,6 +196,9 @@ watchEffect(() => {
   opacity: 1;
 }
 
+.plus {
+  font-size: 1.25em;
+}
 .filterIcon {
   cursor: pointer;
   font-size: 1.2em;

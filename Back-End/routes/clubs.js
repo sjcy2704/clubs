@@ -55,7 +55,6 @@ router.get("/", function (req, res, next) {
   req.pool.getConnection(function (err, connection) {
     if (err) {
       res.sendStatus(500);
-      throw err;
       return;
     }
 
@@ -71,7 +70,6 @@ router.get("/", function (req, res, next) {
       connection.query(query, category, function (err, results) {
         if (err) {
           res.sendStatus(500);
-          throw err;
           return;
         }
 
@@ -81,7 +79,6 @@ router.get("/", function (req, res, next) {
       connection.query(query, function (err, results) {
         if (err) {
           res.sendStatus(500);
-          throw err;
           return;
         }
 
@@ -111,7 +108,6 @@ router.get("/", function (req, res, next) {
       connection.release();
       if (err) {
         res.sendStatus(500);
-        throw err;
         return;
       }
 
@@ -329,21 +325,76 @@ router.get("/manager/:managerID", function (req, res) {
   req.pool.getConnection(function (err, connection) {
     if (err) {
       res.sendStatus(500);
+      throw err;
       return;
     }
 
-    const { managerID } = req.params;
+    let { managerID } = req.params;
 
-    const query =
-      "SELECT c.* FROM Clubs c INNER JOIN Managers m ON c.clubID = m.clubID WHERE m.manager = ?";
-    connection.query(query, managerID, function (err, rows) {
+    let { page = 1, limit = 16, category = null } = req.query;
+
+    managerID = parseInt(managerID);
+    page = parseInt(page);
+    limit = parseInt(limit);
+
+    let query =
+      "SELECT COUNT(*) AS records FROM Clubs c INNER JOIN Managers m ON c.clubID = m.clubID WHERE m.manager = ?";
+    let pageCount = 0;
+
+    if (category) {
+      query =
+        "SELECT COUNT(*) AS records FROM Clubs c INNER JOIN Managers m ON c.clubID = m.clubID WHERE m.manager = ? AND c.category = ?";
+
+      connection.query(query, [managerID, category], function (err, results) {
+        if (err) {
+          res.sendStatus(500);
+          throw err;
+          return;
+        }
+
+        pageCount = Math.ceil(results[0].records / limit);
+      });
+    } else {
+      connection.query(query, managerID, function (err, results) {
+        if (err) {
+          res.sendStatus(500);
+          throw err;
+          return;
+        }
+
+        pageCount = Math.ceil(results[0].records / limit);
+      });
+    }
+
+    if (page <= 0) {
+      page = 1;
+    }
+
+    if (limit <= 0) {
+      limit = 1;
+    }
+
+    const offset = limit * page - limit;
+
+    query =
+      "SELECT c.* FROM Clubs c INNER JOIN Managers m ON c.clubID = m.clubID WHERE m.manager = ? LIMIT ?,?";
+    let values = [managerID, offset, limit];
+
+    if (category) {
+      query =
+        "SELECT c.* FROM Clubs c INNER JOIN Managers m ON c.clubID = m.clubID WHERE m.manager = ? AND c.category = ? LIMIT ?,?";
+      values = [managerID, category, offset, limit];
+    }
+
+    connection.query(query, values, function (err, rows, fields) {
+      connection.release();
       if (err) {
         res.sendStatus(500);
+        throw err;
         return;
       }
-      connection.release();
 
-      res.json(rows);
+      res.json({ pageCount, data: rows });
     });
   });
 });

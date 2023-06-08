@@ -5,7 +5,7 @@ defineProps({
   category: String,
   members: Number,
   logo: String,
-  manage: Boolean,
+  manager: Boolean,
   name: String,
 });
 </script>
@@ -14,7 +14,9 @@ defineProps({
   <div class="clubContainer">
     <RouterLink
       :to="
-        manage ? { name: 'ManageClub', params: { clubID } } : '/clubs/' + clubID
+        manager
+          ? { name: 'ManageClub', params: { clubID } }
+          : '/clubs/' + clubID
       "
     >
       <img :src="logo" class="clubIcon" />
@@ -23,7 +25,7 @@ defineProps({
       <div class="clubDetails">
         <RouterLink
           :to="
-            manage
+            manager
               ? { name: 'ManageClub', params: { clubID }, state: { name } }
               : '/clubs/' + clubID
           "
@@ -32,7 +34,7 @@ defineProps({
         </RouterLink>
         <RouterLink
           :to="
-            manage
+            manager
               ? { name: 'ManageClub', params: { clubID } }
               : '/clubs/' + clubID
           "

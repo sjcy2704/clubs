@@ -1,95 +1,56 @@
 <script setup>
-import { useUserStore } from "../stores/userStore.js";
-import ClubCard from "../components/ClubCard.vue";
-import { ref } from "vue";
+import ViewClubs from "../components/ViewClubs.vue";
+import { useUserStore } from "../stores/userStore";
+import { ref, watchEffect } from "vue";
 import { api } from "../helpers/api";
+import Pagination from "../components/Pagination.vue";
 
 const userStore = useUserStore();
 
-let clubs = ref([]);
+let allClubs = ref([]);
+let pageCount = ref(0);
+let currentPage = ref(1);
+let category = ref("");
+let prevCategory = ref("");
 
-await api
-  .get(`/clubs/manager/${userStore.user.userID}`)
-  .then(({ data }) => (clubs.value = data));
+await api.get(`/clubs/manager/${userStore.user.userID}`).then(({ data }) => {
+  pageCount.value = data.pageCount;
+  allClubs.value = data.data;
+});
+
+function onPageChange(page) {
+  currentPage.value = page;
+}
+
+function onChangeCategory(cat) {
+  prevCategory.value = category.value;
+  category.value = cat;
+}
+
+watchEffect(async () => {
+  let path = `/clubs/manager/${userStore.user.userID}?page=${currentPage.value}&limit=16`;
+  if (category.value !== "") {
+    path = `/clubs/manager/${userStore.user.userID}?page=${currentPage.value}&category=${category.value}&limit=16`;
+  }
+
+  await api.get(path).then(({ data }) => {
+    allClubs.value = data.data;
+    pageCount.value = data.pageCount;
+  });
+});
 </script>
 
 <template>
-  <div class="mainContainer flex col align-center">
-    <div class="container flex align-center justify-between sm-col">
-      <div class="title">Manage Clubs</div>
-      <RouterLink to="/clubs/register" class="newClub">
-        New Club
-        <font-awesome-icon class="plus" icon="fa-solid fa-plus" />
-      </RouterLink>
-    </div>
-
-    <div class="cardsContainer">
-      <ClubCard v-for="club in clubs" class="item" v-bind="club" manage />
-    </div>
-  </div>
+  <ViewClubs
+    @changecategory="onChangeCategory"
+    v-model="allClubs"
+    label="Manage Clubs"
+    manager
+  >
+    <Pagination
+      :current-page="currentPage"
+      :page-count="pageCount"
+      @changepage="onPageChange"
+    />
+  </ViewClubs>
 </template>
-
-<style scoped>
-.mainContainer {
-  margin-bottom: 70px;
-  margin-top: 50px;
-}
-.container {
-  position: relative;
-  width: 100%;
-}
-
-.cardsContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 40px;
-  margin-top: 40px;
-}
-
-.title {
-  text-align: center;
-  font-size: 2.5em;
-  flex-grow: 1;
-}
-.item {
-  justify-self: center;
-}
-
-.newClub {
-  padding: 10px 15px;
-  background-color: black;
-  border-radius: 10px;
-}
-
-.plus {
-  font-size: 1.25em;
-}
-@media only screen and (min-width: 1025px) and (max-width: 1200px) {
-  .cardsContainer {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .cardsContainer {
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-    width: 525px;
-  }
-}
-
-@media only screen and (max-width: 550px) {
-  .title {
-    margin-bottom: 20px;
-  }
-
-  .cardsContainer {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .newClub {
-    width: 60%;
-  }
-}
-</style>
