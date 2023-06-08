@@ -321,6 +321,29 @@ router.get("/:id/news", function (req, res) {
   });
 });
 
+router.get("/:clubID/news/manage", function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const { clubID } = req.params;
+
+    const query = "SELECT * FROM News WHERE clubID = ?";
+
+    connection.query(query, clubID, function (err, rows) {
+      connection.release();
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+
+      res.json(rows);
+    });
+  });
+});
+
 router.get("/manager/:managerID", function (req, res) {
   req.pool.getConnection(function (err, connection) {
     if (err) {

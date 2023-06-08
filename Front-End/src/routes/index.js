@@ -15,6 +15,7 @@ const NotFound = () => import("../views/404.vue");
 const ManageClub = () => import("../views/ManageClub.vue");
 const ManageMembers = () => import("../views/ManageMembers.vue");
 const ManageEvents = () => import("../views/ManageEvents.vue");
+const ManageAnnouncements = () => import("../views/ManageAnnouncements.vue");
 const AddEvent = () => import("../views/forms/AddEvents.vue");
 // const test = () => import("../views/Test.vue");
 
@@ -60,6 +61,11 @@ export const routes = [
       {
         path: ":clubID/manage/events",
         component: ManageEvents,
+        meta: { requiresAuth: true, privilages: true, manager: true },
+      },
+      {
+        path: ":clubID/manage/announcements",
+        component: ManageAnnouncements,
         meta: { requiresAuth: true, privilages: true, manager: true },
       },
       { path: ":clubID/manage/events/add", component: AddEvent },
