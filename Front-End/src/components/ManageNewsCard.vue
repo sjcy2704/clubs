@@ -1,10 +1,10 @@
 <script setup>
-import { watchEffect } from "vue";
 import { api } from "../helpers/api";
 import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 
 const router = useRouter();
+const route = useRoute();
 
 const props = defineProps({
   newsID: Number,
@@ -23,12 +23,7 @@ date.value = new Date(props.posted).toLocaleDateString();
 
 async function removeNews() {
   await api.post("/news/remove", { newsID: props.newsID }).then(() => {
-    const removed = props.modelValue.splice(
-      props.modelValue.findIndex((obj) => obj.eventID === props.eventID),
-      1
-    );
-
-    emits("update:modelValue", removed);
+    router.go();
   });
 }
 </script>

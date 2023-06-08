@@ -22,6 +22,30 @@ router.get("/", function (req, res) {
   });
 });
 
+router.post("/", function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const { title, content, status, clubID } = req.body;
+
+    const query =
+      "INSERT INTO News(title, content, status, clubID) VALUES (?,?,?,?)";
+
+    connection.query(query, [title, content, status, clubID], function (err) {
+      connection.release();
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+
+      res.send(201);
+    });
+  });
+});
+
 router.post("/remove", function (req, res) {
   req.pool.getConnection(function (err, connection) {
     if (err) {

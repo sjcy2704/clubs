@@ -17,6 +17,7 @@ const ManageMembers = () => import("../views/ManageMembers.vue");
 const ManageEvents = () => import("../views/ManageEvents.vue");
 const ManageAnnouncements = () => import("../views/ManageAnnouncements.vue");
 const AddEvent = () => import("../views/forms/AddEvents.vue");
+const AddNews = () => import("../views/forms/AddAnnouncement.vue");
 // const test = () => import("../views/Test.vue");
 
 // {
@@ -69,6 +70,7 @@ export const routes = [
         meta: { requiresAuth: true, privilages: true, manager: true },
       },
       { path: ":clubID/manage/events/add", component: AddEvent },
+      { path: ":clubID/manage/announcements/add", component: AddNews },
     ],
   },
   {

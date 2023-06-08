@@ -24,19 +24,16 @@ const clubDetails = reactive({
 });
 
 const categories = ref([
-  { value: "Academic" },
-  { value: "Arts" },
-  { value: "Business" },
-  { value: "Cultural" },
-  { value: "Faith & Religion" },
-  { value: "Health" },
-  { value: "Hobbies" },
-  { value: "Language" },
-  { value: "Media" },
-  { value: "Politics" },
-  { value: "Science" },
+  { value: "Skills and Professional Development" },
+  { value: "Faith and Religion" },
+  { value: "Culture and Languages" },
+  { value: "Faculty" },
+  { value: "Activities and Hobbies" },
+  { value: "Issue-Based and Politics" },
+  { value: "Volunteering" },
   { value: "Sports" },
-  { value: "Technology" },
+  { value: "Roseworthy" },
+  { value: "Waite" },
 ]);
 
 const router = useRouter();
@@ -51,7 +48,7 @@ async function registerClub() {
     }
   }
 
-  await api.post("/clubs", formData).then(() => router.push("/clubs/manage"));
+  await api.post("/clubs", formData).then(() => router.go(-1));
 }
 
 const errs = reactive({
@@ -96,7 +93,7 @@ function addClub() {
           {{ category.value }}
         </option>
       </select>
-      {{ clubDetails.description }}
+
       <Dropzone label="Club Logo" v-model="clubDetails.logo" />
       <p class="descLabel">Description</p>
       <QuillEditor
