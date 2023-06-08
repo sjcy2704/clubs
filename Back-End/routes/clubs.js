@@ -97,7 +97,6 @@ router.get("/", function (req, res, next) {
     }
 
     const offset = limit * page - limit;
-    console.log(offset, page, limit);
 
     query = "SELECT * FROM Clubs LIMIT ?, ?";
     const values = [offset, limit];

@@ -1,9 +1,8 @@
 <script setup>
 import ViewClubs from "../components/ViewClubs.vue";
-import { ref } from "vue";
+import { ref, watchEffect } from "vue";
 import { api } from "../helpers/api";
 import Pagination from "../components/Pagination.vue";
-import { watchEffect } from "vue";
 
 let allClubs = ref([]);
 let pageCount = ref(0);

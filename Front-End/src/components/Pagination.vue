@@ -12,7 +12,6 @@ const props = defineProps({
 
 const emits = defineEmits(["changepage"]);
 
-// const res = ref([]);
 let availableButtons = props.maxButtons;
 if (props.pageCount < props.maxButtons) {
   availableButtons = props.pageCount;

@@ -50,16 +50,68 @@ router.get("/:userID/clubs", function (req, res) {
     }
 
     const { userID } = req.params;
-    const query =
-      "SELECT c.* FROM Clubs c INNER JOIN ClubMembers m ON c.clubID = m.clubID WHERE m.userID = ?";
 
-    connection.query(query, userID, function (err, rows) {
+    let { page = 1, limit = 16, category = null } = req.query;
+    page = parseInt(page);
+    limit = parseInt(limit);
+
+    let query =
+      "SELECT COUNT(*) as records FROM Clubs c INNER JOIN ClubMembers m ON c.clubID = m.clubID WHERE m.userID = ?";
+    let pageCount = 0;
+
+    if (category) {
+      query =
+        "SELECT COUNT(*) as records FROM Clubs c INNER JOIN ClubMembers m ON c.clubID = m.clubID WHERE m.userID = ? AND c.category = ?";
+      connection.query(query, [userID, category], function (err, results) {
+        if (err) {
+          res.sendStatus(500);
+          throw err;
+          return;
+        }
+
+        pageCount = Math.ceil(results[0].records / limit);
+      });
+    } else {
+      connection.query(query, userID, function (err, results) {
+        if (err) {
+          res.sendStatus(500);
+          throw err;
+          return;
+        }
+
+        pageCount = Math.ceil(results[0].records / limit);
+      });
+    }
+
+    if (page <= 0) {
+      page = 1;
+    }
+
+    if (limit <= 0) {
+      limit = 1;
+    }
+
+    const offset = limit * page - limit;
+
+    query =
+      "SELECT c.* FROM Clubs c INNER JOIN ClubMembers m ON c.clubID = m.clubID WHERE m.userID = ? LIMIT ?,?";
+    let values = [userID, offset, limit];
+
+    if (category) {
+      query =
+        "SELECT c.* FROM Clubs c INNER JOIN ClubMembers m ON c.clubID = m.clubID WHERE m.userID = ? AND c.category = ? LIMIT ?,?";
+      values = [userID, category, offset, limit];
+    }
+
+    connection.query(query, values, function (err, rows, fields) {
+      connection.release();
       if (err) {
         res.sendStatus(500);
+        throw err;
+        return;
       }
-      connection.release();
 
-      res.json(rows);
+      res.json({ pageCount, data: rows });
     });
   });
 });
