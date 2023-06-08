@@ -8,12 +8,21 @@ import { api } from "../../helpers/api";
 
 const route = useRoute();
 
-const newsDetails = reactive({
+let newsDetails = reactive({
   title: "",
   content: "",
   status: "public",
   clubID: route.params.clubID,
 });
+
+let update = ref(false);
+
+if (route.params.newsID) {
+  update.value = true;
+  await api.get(`/news/${route.params.newsID}`).then(({ data }) => {
+    newsDetails = data[0];
+  });
+}
 
 const visibility = ref([
   { name: "Public", value: "public" },
@@ -23,7 +32,11 @@ const visibility = ref([
 const router = useRouter();
 
 async function addNews() {
-  await api.post("/news", newsDetails).then(() => router.go(-1));
+  let path = "/news";
+  if (update.value) {
+    path = "/news/update";
+  }
+  await api.post(path, newsDetails).then(() => router.go(-1));
 }
 </script>
 
@@ -35,7 +48,9 @@ async function addNews() {
   /></a>
   <div class="mainContainer flex col align-center">
     <div class="container">
-      <p class="title">Add Announcement</p>
+      <p class="title">
+        {{ update ? "Edit Announcement" : "Add Announcement" }}
+      </p>
     </div>
     <form class="lsgForm registerForm" v-on:submit.prevent="addNews">
       <Input label="Title" v-model="newsDetails.title" required="true" />
@@ -47,7 +62,9 @@ async function addNews() {
       </select>
       <p class="descLabel">Content</p>
       <QuillEditor v-model:content="newsDetails.content" contentType="html" />
-      <button type="submit">Create Announcement</button>
+      <button type="submit">
+        {{ update ? "Update Announcement" : "Create Announcement" }}
+      </button>
     </form>
   </div>
 </template>

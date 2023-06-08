@@ -36,7 +36,9 @@ async function removeNews() {
         <div class="details flex">Date Posted: {{ date }}</div>
       </div>
       <div class="options flex align-center">
-        <p>Edit <font-awesome-icon icon="fa-solid fa-pen-to-square" /></p>
+        <RouterLink :to="$route.path + '/' + props.newsID"
+          >Edit <font-awesome-icon icon="fa-solid fa-pen-to-square"
+        /></RouterLink>
         <a @click="removeNews"
           >Delete <font-awesome-icon icon="fa-solid fa-trash-can"
         /></a>

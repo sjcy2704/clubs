@@ -71,6 +71,7 @@ export const routes = [
       },
       { path: ":clubID/manage/events/add", component: AddEvent },
       { path: ":clubID/manage/announcements/add", component: AddNews },
+      { path: ":clubID/manage/announcements/:newsID", component: AddNews },
     ],
   },
   {
