@@ -62,6 +62,7 @@ defineProps({
 .subDetails {
   width: 100%;
   font-size: 0.95em;
+  font-weight: 400;
 }
 
 @media only screen and (max-width: 1430px) {

@@ -23,8 +23,8 @@
 
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-SET @@global.time_zone = "+09:30";
-SET @@session.time_zone = "+09:30";
+SET @@global.time_zone = "+00:00";
+SET @@session.time_zone = "+00:00";
 --
 -- Current Database: `studentclubs`
 DROP DATABASE IF EXISTS `studentclubs`;
@@ -177,11 +177,15 @@ CREATE TABLE
   `News` (
     `newsID` int unsigned NOT NULL AUTO_INCREMENT,
     `title` varchar(65) NOT NULL,
-    `content` varchar(300) NOT NULL,
-    `clubID` int unsigned NOT NULL,
-    PRIMARY KEY (`newsID`),
-    KEY `clubID` (`clubID`),
-    CONSTRAINT `News_ibfk_1` FOREIGN KEY (`clubID`) REFERENCES `Clubs` (`clubID`)
+    `content` text NOT NULL,
+    `status`
+    SET
+      ('public', 'private') DEFAULT 'public',
+      `clubID` int unsigned NOT NULL,
+      `posted` timestamp DEFAULT CURRENT_TIMESTAMP,
+      PRIMARY KEY (`newsID`),
+      KEY `clubID` (`clubID`),
+      CONSTRAINT `News_ibfk_1` FOREIGN KEY (`clubID`) REFERENCES `Clubs` (`clubID`)
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 /*!40101 SET character_set_client = @saved_cs_client */;

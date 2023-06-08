@@ -11,7 +11,6 @@ export async function logUser(login, router, userStore, errors = null) {
       router.push("/");
     })
     .catch(({ response }) => {
-      console.log(response);
       if ((response.status === 401 || response.status === 400) && errors) {
         errors.errs = true;
       }

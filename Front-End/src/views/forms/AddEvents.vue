@@ -29,7 +29,6 @@ async function addEvent() {
   eventDetails.starttime = new Date(eventDetails.starttime)
     .toJSON()
     .slice(0, 16);
-  console.log(eventDetails.starttime);
   eventDetails.endtime = new Date(eventDetails.endtime).toJSON().slice(0, 16);
   await api.post("/events", eventDetails).then(() => router.go(-1));
 }
@@ -44,10 +43,6 @@ function setRSVP() {
     rsvp.value = false;
   }
 }
-
-const errs = reactive({
-  errors: [],
-});
 </script>
 
 <template>

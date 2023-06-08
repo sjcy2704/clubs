@@ -50,6 +50,11 @@ watchEffect(() => {
 </script>
 
 <template>
+  <a class="back" @click="$router.go(-1)"
+    ><font-awesome-icon
+      icon="fa-solid
+    fa-chevron-left"
+  /></a>
   <div class="usersContainer">
     <div class="manageMenu">
       <div class="topMenu flex align-center justify-between">
@@ -97,6 +102,15 @@ watchEffect(() => {
 </template>
 
 <style scoped>
+.back {
+  color: black;
+  cursor: pointer;
+  position: absolute;
+  left: 4%;
+  top: 12%;
+  font-size: 1.5em;
+}
+
 .usersContainer {
   border: 2px solid black;
   width: 80%;
@@ -179,6 +193,15 @@ input {
   background-color: black;
 }
 
+@media only screen and (max-width: 1200px) {
+  .searchContainer {
+    width: 40%;
+  }
+
+  .filterContainer {
+    width: 40%;
+  }
+}
 @media only screen and (max-width: 550px) {
   .searchContainer {
     width: 100%;
@@ -195,6 +218,10 @@ input {
 
   .filterIcon {
     display: none;
+  }
+
+  .back {
+    top: 10%;
   }
 }
 </style>

@@ -96,6 +96,7 @@ function addClub() {
           {{ category.value }}
         </option>
       </select>
+      {{ clubDetails.description }}
       <Dropzone label="Club Logo" v-model="clubDetails.logo" />
       <p class="descLabel">Description</p>
       <QuillEditor

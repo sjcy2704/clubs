@@ -1,8 +1,10 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useUserStore } from "../stores/userStore";
 import { api } from "../helpers/api";
+import EventCard from "../components/HomeEventCard.vue";
+import NewsCard from "../components/HomeNewsCard.vue";
 const route = useRoute();
 const router = useRouter();
 const userStore = useUserStore();
@@ -27,6 +29,19 @@ await api.get(`/clubs/${route.params.clubID}`).then((res) => {
   }
 });
 
+let events = ref([]);
+let news = ref([]);
+async function getInfo() {
+  await api.get(`/clubs/${route.params.clubID}/events`).then(({ data }) => {
+    events.value = data;
+  });
+
+  await api.get(`/clubs/${route.params.clubID}/news`).then(({ data }) => {
+    news.value = data;
+  });
+}
+getInfo();
+
 async function joinClub() {
   if (!userStore.loggedIn) {
     router.push("/login");
@@ -42,8 +57,6 @@ async function joinClub() {
       });
   }
 }
-
-console.log(details);
 </script>
 
 <template>
@@ -94,15 +107,38 @@ console.log(details);
     <div class="clubRelated">
       <div class="column">
         <h2 class="subTitle">Announcments</h2>
+        <div class="eventCards flex col">
+          <h3 v-if="news.length <= 0">No news</h3>
+          <NewsCard
+            v-if="news.length > 0"
+            class="newsCard"
+            v-for="announce in news"
+            v-bind="announce"
+            inDetails
+          />
+        </div>
       </div>
       <div class="column">
         <h2 class="subTitle">Upcoming Events</h2>
+        <div class="eventCards flex col">
+          <h3 v-if="events.length <= 0">No events</h3>
+          <EventCard
+            v-if="events.length > 0"
+            class="eventCard"
+            v-for="event in events"
+            v-bind="event"
+            inDetails
+          />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+a {
+  color: black;
+}
 .back {
   color: black;
   cursor: pointer;
@@ -123,7 +159,10 @@ console.log(details);
   gap: 40px;
   width: 70%;
 }
-
+.newsCard {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
 .column {
   justify-self: center;
   border: black 2px solid;
@@ -163,6 +202,11 @@ console.log(details);
   margin-bottom: 10px;
 }
 
+.description :deep(img) {
+  width: 50%;
+  height: auto;
+}
+
 .socialMedia {
   margin-top: 10px;
 }
@@ -177,6 +221,21 @@ console.log(details);
   width: 50%;
 }
 
+.eventCards .eventCard:last-child {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.eventCard {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+
+.eventCards {
+  margin-top: 10px;
+}
 @media only screen and (max-width: 1000px) {
   .detailsContainer {
     flex-direction: column;

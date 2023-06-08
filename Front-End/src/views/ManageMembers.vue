@@ -59,60 +59,75 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div class="usersContainer">
-    <div class="manageMenu">
-      <h2>Manage Members</h2>
-      <div class="menuContainer flex justify-between align-center sm-col">
-        <div class="sm-w100 searchContainer">
-          <input
-            v-model="search"
-            class="searchbar"
-            type="search"
-            placeholder="Search Name"
-          />
-          <font-awesome-icon
-            class="searchicon"
-            icon="fa-solid fa-magnifying-glass"
-          />
-        </div>
-
-        <div class="filterContainer flex align-center">
-          <div class="flex filter">
-            <select class="roleSelect" v-model="filter">
-              <option value="" disabled selected>Role</option>
-              <option value="managers">Managers</option>
-              <option value="members">Members</option>
-            </select>
-            <button
-              v-if="filter !== ''"
-              type="button"
-              class="filterButton resetFilter"
-              @click="filter = ''"
-            >
-              Reset Filter
-            </button>
+  <a class="back" @click="$router.go(-1)"
+    ><font-awesome-icon
+      icon="fa-solid
+    fa-chevron-left"
+  /></a>
+  <div class="mainContainer flex col align-center w-100">
+    <div class="usersContainer">
+      <div class="manageMenu">
+        <h2>Manage Members</h2>
+        <div class="menuContainer flex justify-between align-center sm-col">
+          <div class="sm-w100 searchContainer">
+            <input
+              v-model="search"
+              class="searchbar"
+              type="search"
+              placeholder="Search Name"
+            />
+            <font-awesome-icon
+              class="searchicon"
+              icon="fa-solid fa-magnifying-glass"
+            />
           </div>
-          <font-awesome-icon
-            class="filterIcon"
-            icon="fa-solid fa-filter"
-            @click="showFilter = !showFilter"
-          />
+
+          <div class="filterContainer flex align-center">
+            <div class="flex filter">
+              <select class="roleSelect" v-model="filter">
+                <option value="" disabled selected>Role</option>
+                <option value="managers">Managers</option>
+                <option value="members">Members</option>
+              </select>
+              <button
+                v-if="filter !== ''"
+                type="button"
+                class="filterButton resetFilter"
+                @click="filter = ''"
+              >
+                Reset Filter
+              </button>
+            </div>
+            <font-awesome-icon
+              class="filterIcon"
+              icon="fa-solid fa-filter"
+              @click="showFilter = !showFilter"
+            />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="userCardsContainer">
-      <UserCard
-        v-for="member in currMembers"
-        v-bind="member"
-        :clubID="Number(clubID)"
-        :role="managers.includes(member.userID) ? 'Manager' : 'Member'"
-        :curr-manager="member.userID === userStore.user.userID"
-      />
+      <div class="userCardsContainer">
+        <UserCard
+          v-for="member in currMembers"
+          v-bind="member"
+          :clubID="Number(clubID)"
+          :role="managers.includes(member.userID) ? 'Manager' : 'Member'"
+          :curr-manager="member.userID === userStore.user.userID"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.back {
+  color: black;
+  cursor: pointer;
+  position: absolute;
+  left: 4%;
+  top: 12%;
+  font-size: 1.5em;
+}
 .usersContainer {
   border: 2px solid black;
   width: 80%;
@@ -189,6 +204,15 @@ input {
   padding: 20px 20px;
 }
 
+@media only screen and (max-width: 1200px) {
+  .searchContainer {
+    width: 40%;
+  }
+
+  .filterContainer {
+    width: 40%;
+  }
+}
 @media only screen and (max-width: 550px) {
   .searchContainer {
     width: 100%;
@@ -205,6 +229,10 @@ input {
 
   .filterIcon {
     display: none;
+  }
+
+  .back {
+    top: 10%;
   }
 }
 </style>

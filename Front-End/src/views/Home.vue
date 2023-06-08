@@ -1,17 +1,29 @@
 <script setup>
 import ClubCard from "../components/HomeClubCard.vue";
+import EventCard from "../components/HomeEventCard.vue";
+import NewsCard from "../components/HomeNewsCard.vue";
 
 import { ref } from "vue";
 import { api } from "../helpers/api";
 
 let clubs = ref([]);
+let events = ref([]);
+let news = ref([]);
 
-async function getClubs() {
+async function getInfo() {
   await api.get("/clubs/top").then(({ data }) => {
     clubs.value = data.splice(0, 10);
   });
+
+  await api.get("/events").then(({ data }) => {
+    events.value = data;
+  });
+
+  await api.get("/news").then(({ data }) => {
+    news.value = data;
+  });
 }
-getClubs();
+getInfo();
 </script>
 
 <template>
@@ -25,8 +37,14 @@ getClubs();
 
     <div class="news">
       <h2 class="subTitle">News</h2>
-      <div>
-        <h3>No news</h3>
+      <div class="eventCards flex col">
+        <h3 v-if="news.length <= 0">No news</h3>
+        <NewsCard
+          v-if="news.length > 0"
+          class="newsCard"
+          v-for="announce in news"
+          v-bind="announce"
+        />
       </div>
     </div>
 
@@ -40,13 +58,25 @@ getClubs();
         </div>
 
         <div class="clubCards flex col">
-          <ClubCard class="clubCard" v-for="club in clubs" v-bind="club" />
+          <ClubCard
+            v-if="clubs.length > 0"
+            class="clubCard"
+            v-for="club in clubs"
+            v-bind="club"
+          />
+          <h3 v-if="clubs.length <= 0">No Clubs</h3>
         </div>
       </div>
       <div class="clubs">
         <h2 class="subTitle">Upcoming Events</h2>
-        <div>
-          <h3>No events</h3>
+        <div class="eventCards flex col">
+          <h3 v-if="events.length <= 0">No events</h3>
+          <EventCard
+            v-if="events.length > 0"
+            class="eventCard"
+            v-for="event in events"
+            v-bind="event"
+          />
         </div>
       </div>
     </div>
@@ -80,6 +110,17 @@ a {
   border-bottom: 1px solid black;
 }
 
+.newsCard {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.eventCard {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+
+.eventCards .eventCard:last-child,
 .clubCards .clubCard:last-child {
   border: 0;
   margin: 0;
@@ -117,29 +158,8 @@ a {
   display: none;
 }
 
-.eventsCards {
-  align-items: center;
-  width: 50%;
-  padding: 30px 40px;
-}
-
-.rvspBlack {
-  border: black solid 2px;
-  border-radius: 10px;
-  background-color: black;
-  width: 290px;
-  height: 140px;
+.eventCards {
   margin-top: 10px;
-  padding: 20px;
-}
-
-.rvspWhite {
-  border: black solid 2px;
-  border-radius: 10px;
-  width: 290px;
-  height: 140px;
-  margin-top: 10px;
-  padding: 20px;
 }
 
 @media only screen and (max-width: 1024px) {

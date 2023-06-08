@@ -39,6 +39,7 @@ router.get("/top", function (req, res) {
 
     const query = "SELECT * FROM Clubs ORDER BY members DESC";
     connection.query(query, function (err, rows) {
+      connection.release();
       if (err) {
         res.sendStatus(500);
         return;
@@ -264,6 +265,63 @@ router.get("/:id/events", function (req, res) {
 
       res.json(rows);
     });
+  });
+});
+
+router.get("/:id/news", function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const { id } = req.params;
+
+    if (req.user) {
+      let query = "SELECT * FROM ClubMembers WHERE userID = ? AND clubID = ?";
+
+      connection.query(query, [req.user.userID, id], function (err, rows) {
+        if (err) {
+          res.sendStatus(500);
+          return;
+        }
+
+        let joined = false;
+        if (rows.length > 0) {
+          joined = true;
+        }
+
+        query = "SELECT * FROM News WHERE clubID = ?";
+
+        if (!joined) {
+          query = "SELECT * FROM News WHERE clubID = ? AND status = 'public'";
+        }
+
+        connection.query(query, id, function (err, rows) {
+          connection.release();
+
+          if (err) {
+            res.sendStatus(500);
+            return;
+          }
+
+          res.json(rows);
+        });
+      });
+    } else {
+      let query = "SELECT * FROM News WHERE clubID = ? AND status = 'public'";
+
+      connection.query(query, id, function (err, rows) {
+        connection.release();
+
+        if (err) {
+          res.sendStatus(500);
+          return;
+        }
+
+        res.json(rows);
+      });
+    }
   });
 });
 

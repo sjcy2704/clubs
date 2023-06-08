@@ -17,7 +17,7 @@ defineProps({
         manage ? { name: 'ManageClub', params: { clubID } } : '/clubs/' + clubID
       "
     >
-      <img :src="logo" class="clubIcon" loading="lazy" />
+      <img :src="logo" class="clubIcon" />
     </RouterLink>
     <div class="details flex justify-between">
       <div class="clubDetails">
@@ -51,6 +51,10 @@ a {
 .clubContainer {
   width: 100%;
   max-width: 250px;
+}
+
+.category {
+  font-weight: 400;
 }
 
 .details {

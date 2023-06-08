@@ -81,6 +81,10 @@ async function removeEvent() {
 .details {
   gap: 40px;
 }
+
+.details span {
+  font-weight: 500;
+}
 .userCard {
   padding: 20px 0;
   border-bottom: 2px solid black;
@@ -112,6 +116,15 @@ async function removeEvent() {
 
 .disabled a {
   color: grey;
+}
+
+@media only screen and (max-width: 600px) {
+  .options {
+    margin-top: 10px;
+  }
+  .sm-col {
+    flex-direction: column;
+  }
 }
 
 @media only screen and (max-width: 550px) {
