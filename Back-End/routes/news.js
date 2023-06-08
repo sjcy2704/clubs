@@ -8,7 +8,7 @@ router.get("/", function (req, res) {
       return;
     }
 
-    const query = "SELECT * FROM News WHERE status ='public'";
+    const query = "SELECT * FROM News";
 
     connection.query(query, function (err, rows) {
       connection.release();

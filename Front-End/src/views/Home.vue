@@ -2,9 +2,12 @@
 import ClubCard from "../components/HomeClubCard.vue";
 import EventCard from "../components/HomeEventCard.vue";
 import NewsCard from "../components/HomeNewsCard.vue";
+import { useUserStore } from "../stores/userStore";
 
 import { ref } from "vue";
 import { api } from "../helpers/api";
+
+const userStore = useUserStore();
 
 let clubs = ref([]);
 let events = ref([]);
@@ -20,7 +23,23 @@ async function getInfo() {
   });
 
   await api.get("/news").then(({ data }) => {
-    news.value = data;
+    if (userStore.loggedIn) {
+      console.log(data);
+      news.value = data.filter(async (announce) => {
+        let joined = false;
+        await api
+          .get(`/members/club/${announce.clubID}/user/${userStore.user.userID}`)
+          .then(({ data }) => {
+            console.log(data.joined);
+            joined = data.joined;
+          });
+        return joined;
+      });
+      console.log("first");
+    } else {
+      console.log("second");
+      news.value = data.filter((announce) => announce.status === "public");
+    }
   });
 }
 getInfo();
