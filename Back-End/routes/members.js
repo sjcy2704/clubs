@@ -96,7 +96,7 @@ router.get("/club/:id", function (req, res, next) {
     const { id } = req.params;
 
     const query =
-      "SELECT u.userID, u.firstName, u.familyName, u.userType, u.gender FROM Users u JOIN ClubMembers cm ON u.userID = cm.userID JOIN Clubs c ON cm.clubID = c.clubID WHERE c.clubID = ?";
+      "SELECT u.userID, u.firstName, u.familyName, u.userType, u.gender, u.avatar FROM Users u JOIN ClubMembers cm ON u.userID = cm.userID JOIN Clubs c ON cm.clubID = c.clubID WHERE c.clubID = ?";
     connection.query(query, id, function (err, rows, fields) {
       connection.release();
       if (err) {

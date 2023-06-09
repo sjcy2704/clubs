@@ -35,12 +35,16 @@ async function removeNews() {
         <div class="details flex">Date Posted: {{ date }}</div>
       </div>
       <div class="options flex align-center">
-        <RouterLink :to="/clubs/ + props.clubID + /news/ + props.newsID">
+        <RouterLink
+          :to="/clubs/ + props.clubID + /announcements/ + props.newsID"
+        >
           View
           <font-awesome-icon icon="fa-solid fa-eye" />
         </RouterLink>
         <RouterLink
-          :to="/clubs/ + props.clubID + /manage/ + 'news/' + props.newsID"
+          :to="
+            /clubs/ + props.clubID + /manage/ + 'announcements/' + props.newsID
+          "
           >Edit <font-awesome-icon icon="fa-solid fa-pen-to-square"
         /></RouterLink>
         <a @click="removeNews"

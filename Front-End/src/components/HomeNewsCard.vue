@@ -44,7 +44,7 @@ if (!props.inDetails) {
 
 <template>
   <RouterLink
-    :to="'/clubs/' + props.clubID + '/news/' + props.newsID"
+    :to="'/clubs/' + props.clubID + '/announcements/' + props.newsID"
     class="card"
   >
     <div class="eventDetails">

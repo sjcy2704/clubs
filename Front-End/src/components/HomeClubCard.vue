@@ -18,13 +18,6 @@ defineProps({
       </div>
       <div class="subDetails flex justify-between">
         <p class="category">{{ category }}</p>
-        <p class="membersCount">
-          {{ members }}
-          <font-awesome-icon
-            icon="fa-solid
-          fa-users"
-          />
-        </p>
       </div>
     </div>
   </RouterLink>

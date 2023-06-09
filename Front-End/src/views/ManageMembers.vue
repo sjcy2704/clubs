@@ -12,9 +12,10 @@ const router = useRouter();
 const { clubID } = route.params;
 let members = ref([]);
 
-await api
-  .get(`/members/club/${clubID}`)
-  .then(({ data }) => (members.value = data));
+await api.get(`/members/club/${clubID}`).then(({ data }) => {
+  console.log(data);
+  members.value = data;
+});
 
 let managers = ref([]);
 await api
@@ -27,6 +28,7 @@ let search = ref("");
 let filter = ref("");
 
 let currMembers = ref([]);
+console.log(members);
 
 function filterMembers(search, filter) {
   if (search === "" && filter === "") {
@@ -56,6 +58,7 @@ function filterMembers(search, filter) {
 watchEffect(() => {
   currMembers.value = filterMembers(search.value, filter.value);
 });
+console.log(currMembers);
 </script>
 
 <template>

@@ -34,6 +34,8 @@ async function removeMember() {
     });
   }
 }
+
+console.log(props);
 </script>
 
 <template>

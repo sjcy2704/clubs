@@ -178,10 +178,12 @@ router.post("/", upload.single("logo"), function (req, res) {
       instagram,
       discord,
     } = req.body;
-    facebook = facebook.length <= 0 ? null : facebook;
-    twitter = twitter.length <= 0 ? null : twitter;
-    instagram = instagram.length <= 0 ? null : instagram;
-    discord = discord.length <= 0 ? null : discord;
+
+    facebook = facebook === "null" ? null : facebook;
+    twitter = twitter === "null" ? null : twitter;
+    instagram = instagram === "null" ? null : instagram;
+    discord = discord === "null" ? null : discord;
+
     let path;
     let query =
       "INSERT INTO Clubs(name, short_name, category, description, manager,facebook, twitter, instagram, discord) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -257,11 +259,12 @@ router.post("/update", upload.single("logo"), function (req, res) {
       discord,
       clubID,
     } = req.body;
+    console.log(req.body);
 
-    facebook = facebook.length <= 0 ? null : facebook;
-    twitter = twitter.length <= 0 ? null : twitter;
-    instagram = instagram.length <= 0 ? null : instagram;
-    discord = discord.length <= 0 ? null : discord;
+    facebook = facebook === "null" ? null : facebook;
+    twitter = twitter === "null" ? null : twitter;
+    instagram = instagram === "null" ? null : instagram;
+    discord = discord === "null" ? null : discord;
 
     let path;
     let query =

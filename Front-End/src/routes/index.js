@@ -52,7 +52,7 @@ export const routes = [
         component: ClubDetails,
       },
       {
-        path: ":clubID/news",
+        path: ":clubID/announcements",
         redirect: (to) => {
           return { name: "Club", params: { clubID: to.params.clubID } };
         },
@@ -64,7 +64,7 @@ export const routes = [
         },
       },
       {
-        path: ":clubID/news/:newsID",
+        path: ":clubID/announcements/:newsID",
         component: Announcement,
       },
       {
@@ -88,7 +88,7 @@ export const routes = [
         meta: { requiresAuth: true, privilages: true, manager: true },
       },
       {
-        path: ":clubID/manage/news",
+        path: ":clubID/manage/announcements",
         component: ManageAnnouncements,
         meta: { requiresAuth: true, privilages: true, manager: true },
       },
@@ -108,12 +108,12 @@ export const routes = [
         meta: { requiresAuth: true, privilages: true, manager: true },
       },
       {
-        path: ":clubID/manage/news/add",
+        path: ":clubID/manage/announcements/add",
         component: AddNews,
         meta: { requiresAuth: true, privilages: true, manager: true },
       },
       {
-        path: ":clubID/manage/news/:newsID",
+        path: ":clubID/manage/announcements/:newsID",
         component: AddNews,
         meta: { requiresAuth: true, privilages: true, manager: true },
       },

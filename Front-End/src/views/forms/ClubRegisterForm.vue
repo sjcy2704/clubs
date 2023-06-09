@@ -18,10 +18,6 @@ let clubDetails = reactive({
   category: "",
   logo: null,
   description: "",
-  facebook: "",
-  twitter: "",
-  instagram: "",
-  discord: "",
   manager: userStore.user.userID,
 });
 

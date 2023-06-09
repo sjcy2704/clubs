@@ -60,7 +60,7 @@ async function createUser() {
     }
 
     await api.post(`/user/update`, formData).then(() => {
-      router.go("");
+      router.push("/");
     });
   }
 }
