@@ -29,7 +29,7 @@ function validatePassword(password, confirm) {
 
 export async function validateUser(signup, update = false) {
   let errs = [];
-  if (!/\s/.test(signup.username)) {
+  if (/\s/.test(signup.username)) {
     errs.push("Username should not contain spaces");
   } else {
     if (!update) {

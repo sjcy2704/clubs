@@ -38,7 +38,7 @@ const userStore = useUserStore();
         <RouterLink class="navLink flex justify-between" to="/profile"
           >Profile <span> <font-awesome-icon icon="fa-solid fa-user" /> </span
         ></RouterLink>
-        <RouterLink class="navLink flex justify-between" to="/profile/edit"
+        <RouterLink class="navLink flex justify-between" to="/profile/settings"
           >Settings <span> <font-awesome-icon icon="fa-solid fa-gear" /> </span
         ></RouterLink>
         <a

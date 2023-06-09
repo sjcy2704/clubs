@@ -46,7 +46,7 @@ const errs = reactive({
 });
 
 async function createUser() {
-  validateUser(signup).then((errors) => (errs.errors = errors));
+  validateUser(signup, true).then((errors) => (errs.errors = errors));
 
   if (errs.errors.length === 0) {
     signup.username = signup.username.toLowerCase();
@@ -60,7 +60,7 @@ async function createUser() {
     }
 
     await api.post(`/user/update`, formData).then(() => {
-      router.go("/");
+      router.go("");
     });
   }
 }
