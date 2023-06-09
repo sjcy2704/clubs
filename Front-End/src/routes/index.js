@@ -22,6 +22,7 @@ const Announcement = () => import("../views/Announcement.vue");
 const Event = () => import("../views/Event.vue");
 const GuestList = () => import("../views/GuestList.vue");
 const Profile = () => import("../views/Profile.vue");
+const Settings = () => import("../views/forms/Settings.vue");
 
 export const routes = [
   { name: "Home", path: "/", component: Home },
@@ -30,7 +31,6 @@ export const routes = [
     component: RouterView,
     children: [
       { name: "Clubs", path: "", component: Clubs },
-      // { path: "test", component: test },
       {
         path: "manage",
         component: ManageClubs,
@@ -125,6 +125,7 @@ export const routes = [
     children: [
       { name: "Profile", path: "", component: Profile },
       { path: "clubs", component: MyClubs },
+      { path: "settings", component: Settings },
     ],
   },
   {

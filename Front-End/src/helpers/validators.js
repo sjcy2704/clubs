@@ -27,19 +27,23 @@ function validatePassword(password, confirm) {
   return msg;
 }
 
-export async function validateUser(signup) {
+export async function validateUser(signup, update = false) {
   let errs = [];
   if (!/\s/.test(signup.username)) {
     errs.push("Username should not contain spaces");
   } else {
-    await api.get(`/users/username/${signup.username}`).then((res) => {
-      if (res.data.length > 0) {
-        errs.push("Username already exists");
-      }
-    });
+    if (!update) {
+      await api.get(`/users/username/${signup.username}`).then((res) => {
+        if (res.data.length > 0) {
+          errs.push("Username already exists");
+        }
+      });
+    }
   }
 
-  errs.push(...validatePassword(signup.password, signup.confirm));
+  if (signup.password) {
+    errs.push(...validatePassword(signup.password, signup.confirm));
+  }
 
   if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(signup.email)) {
     errs.push("Invalid email address");

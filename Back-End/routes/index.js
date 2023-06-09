@@ -46,6 +46,103 @@ router.get("/user", checkAuth, function (req, res) {
   res.json(req.user);
 });
 
+router.post("/user/update", upload.single("avatar"), function (req, res) {
+  let {
+    userID,
+    firstName,
+    familyName,
+    username,
+    password,
+    email,
+    gender,
+    phone,
+  } = req.body;
+
+  firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
+  familyName = familyName.charAt(0).toUpperCase() + familyName.slice(1);
+
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    if (password) {
+      bcrypt.hash(password, 10, function (err, hash) {
+        let path;
+        let values = [
+          firstName,
+          familyName,
+          username,
+          hash,
+          email,
+          phone,
+          gender,
+          userID,
+        ];
+
+        let query =
+          "UPDATE Users SET firstName = ?, familyName = ?, username = ?, password = ?, email = ?, phone = ?, gender = ? WHERE userID = ?";
+        if (req.file) {
+          path = `${req.protocol}://${req.get("host")}/user-avatars/${
+            req.file.filename
+          }`;
+          values.pop();
+          values.push(path);
+          values.push(userID);
+
+          query =
+            "UPDATE Users SET firstName = ?, familyName = ?, username = ?, password = ?, email = ?, phone = ?, gender = ?, avatar = ? WHERE userID = ?";
+        }
+
+        connection.query(query, values, function (err) {
+          connection.release();
+          if (err) {
+            res.sendStatus(500);
+            return;
+          }
+          res.sendStatus(200);
+        });
+      });
+    } else {
+      let values = [
+        firstName,
+        familyName,
+        username,
+        email,
+        phone,
+        gender,
+        userID,
+      ];
+
+      let query =
+        "UPDATE Users SET firstName = ?, familyName = ?, username = ?, email = ?, phone = ?, gender = ? WHERE userID = ?";
+
+      if (req.file) {
+        let path = `${req.protocol}://${req.get("host")}/user-avatars/${
+          req.file.filename
+        }`;
+
+        values.pop();
+        values.push(path);
+        values.push(userID);
+
+        query =
+          "UPDATE Users SET firstName = ?, familyName = ?, username = ?, email = ?, phone = ?, gender = ?, avatar = ? WHERE userID = ?";
+      }
+
+      connection.query(query, values, function (err) {
+        connection.release();
+        if (err) {
+          res.sendStatus(500);
+          return;
+        }
+        res.sendStatus(200);
+      });
+    }
+  });
+});
+
 router.post("/login", passport.authenticate("local"), function (req, res) {
   res.cookie("sessionid", req.session.id);
   req.user = req.session.passport.user;

@@ -31,6 +31,7 @@ function initPassport(passport, db, res) {
           phone,
           userType,
           avatar,
+          gender,
         } = rows[0];
 
         const user = {
@@ -42,6 +43,7 @@ function initPassport(passport, db, res) {
           phone,
           userType,
           avatar,
+          gender,
         };
 
         if (await bcrypt.compare(password, rows[0].password)) {
@@ -77,7 +79,7 @@ function initPassport(passport, db, res) {
               connection.query(
                 query,
                 [
-                  email,
+                  email.split("@")[0],
                   hash,
                   email,
                   given_name,
@@ -113,6 +115,7 @@ function initPassport(passport, db, res) {
               phone,
               userType,
               avatar,
+              gender,
             } = rows[0];
             user = {
               userID,
@@ -123,6 +126,7 @@ function initPassport(passport, db, res) {
               phone,
               userType,
               avatar,
+              gender,
             };
             connection.release();
 
@@ -182,6 +186,7 @@ function initPassport(passport, db, res) {
           phone,
           userType,
           avatar,
+          gender,
         } = rows[0];
 
         const user = {
@@ -193,6 +198,7 @@ function initPassport(passport, db, res) {
           phone,
           userType,
           avatar,
+          gender,
         };
 
         return done(null, user);
