@@ -110,3 +110,20 @@ GOOGLE_CLIENT_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
 Now you can use the Google login feature in the website.
+
+### Test the App with Test Credentials
+You may also use these usernames and password to test the website.
+
+```
+# Admin account
+username: admin
+password: admin
+
+# Manager account
+username: manager1
+password: manager
+
+# User account
+username: user1
+password: user
+```
