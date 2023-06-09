@@ -45,24 +45,25 @@ const errs = reactive({
   errors: [],
 });
 
-async function createUser() {
-  validateUser(signup, true).then((errors) => (errs.errors = errors));
-
-  if (errs.errors.length === 0) {
-    signup.username = signup.username.toLowerCase();
-    const formData = new FormData();
-    for (const key in signup) {
-      if (key === "avatar" && signup[key] && signup[key][0] instanceof File) {
-        formData.append(key, signup[key][0]);
-      } else {
-        formData.append(key, signup[key]);
+function createUser() {
+  validateUser(signup, true).then(async (errors) => {
+    errs.errors = errors;
+    if (errors.length === 0) {
+      signup.username = signup.username.toLowerCase();
+      const formData = new FormData();
+      for (const key in signup) {
+        if (key === "avatar" && signup[key] && signup[key][0] instanceof File) {
+          formData.append(key, signup[key][0]);
+        } else {
+          formData.append(key, signup[key]);
+        }
       }
-    }
 
-    await api.post("/user/update", formData).then(() => {
-      router.go("");
-    });
-  }
+      await api.post("/user/update", formData).then(() => {
+        router.go("");
+      });
+    }
+  });
 }
 
 watchEffect(() => {

@@ -128,9 +128,14 @@ export const routes = [
     path: "/profile",
     component: RouterView,
     children: [
-      { name: "Profile", path: "", component: Profile },
-      { path: "clubs", component: MyClubs },
-      { path: "settings", component: Settings },
+      {
+        name: "Profile",
+        path: "",
+        component: Profile,
+        meta: { requiresAuth: true },
+      },
+      { path: "clubs", component: MyClubs, meta: { requiresAuth: true } },
+      { path: "settings", component: Settings, meta: { requiresAuth: true } },
     ],
   },
   {
@@ -179,29 +184,42 @@ export const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const userStore = useUserStore();
-
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (userStore.loggedIn) {
-      if (to.matched.some((record) => record.meta.privilages)) {
-        if (userStore.user.userType !== "user") {
-          next();
-          return;
-        }
-        next("/");
-      }
+      next();
+      return;
     } else {
       next("/login");
     }
-  } else if (to.matched.some((record) => record.meta.guestOnly)) {
+  } else {
+    next();
+  }
+});
+
+router.beforeEach((to, from, next) => {
+  const userStore = useUserStore();
+  if (to.matched.some((record) => record.meta.guestOnly)) {
     if (userStore.loggedIn) {
       next("/");
       return;
     }
     next();
-    return;
   } else {
     next();
-    return;
+  }
+});
+
+router.beforeEach((to, from, next) => {
+  const userStore = useUserStore();
+  if (to.matched.some((record) => record.meta.privilages)) {
+    if (userStore.user.userType !== "user") {
+      next();
+      return;
+    } else {
+      next("/");
+    }
+  } else {
+    next();
   }
 });
 
