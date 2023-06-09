@@ -36,11 +36,12 @@ function searchClubs(search) {
   }
 
   search = search.toLowerCase();
-  return allClubs.value.filter((club) => {
-    club.name.toLowerCase().includes(search) ||
+  return allClubs.value.filter(
+    (club) =>
+      club.name.toLowerCase().includes(search) ||
       club.short_name.toLowerCase().includes(search) ||
-      club.category.toLowerCase().includes(search);
-  });
+      club.category.toLowerCase().includes(search)
+  );
 }
 
 let clubs = ref([]);

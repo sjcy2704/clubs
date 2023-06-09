@@ -59,8 +59,8 @@ async function createUser() {
       }
     }
 
-    await api.post(`/user/update`, formData).then(() => {
-      router.push("/");
+    await api.post("/user/update", formData).then(() => {
+      router.go("");
     });
   }
 }
