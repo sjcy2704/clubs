@@ -19,15 +19,16 @@ const ManageAnnouncements = () => import("../views/ManageAnnouncements.vue");
 const AddEvent = () => import("../views/forms/AddEvents.vue");
 const AddNews = () => import("../views/forms/AddAnnouncement.vue");
 const Announcement = () => import("../views/Announcement.vue");
+const Event = () => import("../views/Event.vue");
 
 export const routes = [
   { name: "Home", path: "/", component: Home },
-  // { path: "/test", component: test },
   {
     path: "/clubs",
     component: RouterView,
     children: [
       { name: "Clubs", path: "", component: Clubs },
+      // { path: "test", component: test },
       {
         path: "manage",
         component: ManageClubs,
@@ -58,6 +59,10 @@ export const routes = [
       {
         path: ":clubID/news/:newsID",
         component: Announcement,
+      },
+      {
+        path: ":clubID/events/:eventID",
+        component: Event,
       },
       {
         name: "ManageClub",
