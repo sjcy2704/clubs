@@ -2,7 +2,7 @@
 import Input from "../../components/Input.vue";
 import { reactive, ref } from "vue";
 import { useUserStore } from "../../stores/userStore";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { validateClub } from "../../helpers/validators";
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
@@ -10,7 +10,9 @@ import Dropzone from "../../components/Dropzone.vue";
 import { api } from "../../helpers/api";
 
 const userStore = useUserStore();
-const clubDetails = reactive({
+const route = useRoute();
+
+let clubDetails = reactive({
   name: "",
   short_name: "",
   category: "",
@@ -22,6 +24,16 @@ const clubDetails = reactive({
   discord: "",
   manager: userStore.user.userID,
 });
+
+let update = ref(false);
+
+if (route.params.clubID) {
+  update.value = true;
+  await api.get(`/clubs/${route.params.clubID}`).then(({ data }) => {
+    clubDetails = reactive(data);
+    clubDetails.logo = null;
+  });
+}
 
 const categories = ref([
   { value: "Skills and Professional Development" },
@@ -41,14 +53,23 @@ const router = useRouter();
 async function registerClub() {
   const formData = new FormData();
   for (const key in clubDetails) {
-    if (key === "logo" && clubDetails[key]) {
+    if (
+      key === "logo" &&
+      clubDetails[key] &&
+      clubDetails[key][0] instanceof File
+    ) {
       formData.append(key, clubDetails[key][0]);
     } else {
       formData.append(key, clubDetails[key]);
     }
   }
 
-  await api.post("/clubs", formData).then(() => router.go(-1));
+  let path = "/clubs";
+  if (update) {
+    path = "/clubs/update";
+  }
+
+  await api.post(path, formData).then(() => router.go(-1));
 }
 
 const errs = reactive({
@@ -58,7 +79,7 @@ const errs = reactive({
 let showSocialLinks = ref(false);
 
 function addClub() {
-  errs.errors = validateClub(clubDetails);
+  errs.errors = validateClub(clubDetails, update);
 
   if (errs.errors.length === 0) {
     registerClub();
@@ -74,7 +95,9 @@ function addClub() {
   /></a>
   <div class="mainContainer flex col align-center">
     <div class="container">
-      <p class="title">Club<span>Registration</span></p>
+      <p class="title">
+        Club<span>{{ update ? "Edit" : "Registration" }}</span>
+      </p>
     </div>
     <form class="lsgForm registerForm" v-on:submit.prevent="addClub">
       <Input label="Club Name" v-model="clubDetails.name" required="true" />
@@ -115,7 +138,9 @@ function addClub() {
         </div>
       </div>
 
-      <button type="submit">Create Club</button>
+      <button type="submit">
+        {{ update ? "Update Club" : "Create Club" }}
+      </button>
     </form>
   </div>
 </template>

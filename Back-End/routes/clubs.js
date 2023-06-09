@@ -191,6 +191,63 @@ router.post("/", upload.single("logo"), function (req, res) {
   });
 });
 
+router.post("/update", upload.single("logo"), function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const {
+      name,
+      short_name,
+      category,
+      description,
+      facebook,
+      twitter,
+      instagram,
+      discord,
+      clubID,
+    } = req.body;
+    let path;
+    let query =
+      "UPDATE Clubs SET name = ?, short_name = ?, category = ?, description = ?,facebook = ?, twitter = ?, instagram = ?, discord = ? WHERE clubID = ?";
+    let values = [
+      name,
+      short_name,
+      category,
+      description,
+      facebook,
+      twitter,
+      instagram,
+      discord,
+      clubID,
+    ];
+
+    if (req.file) {
+      path = `${req.protocol}://${req.get("host")}/club-logos/${
+        req.file.filename
+      }`;
+
+      values.pop();
+      values.push(path);
+      values.push(clubID);
+
+      query =
+        "UPDATE Clubs SET name = ?, short_name = ?, category = ?, description = ?,facebook = ?, twitter = ?, instagram = ?, discord = ?, logo = ? WHERE clubID = ?";
+    }
+
+    connection.query(query, values, function (err, rows) {
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+      connection.release();
+
+      res.sendStatus(200);
+    });
+  });
+});
 router.get("/:id", function (req, res, next) {
   req.pool.getConnection(function (err, connection) {
     if (err) {

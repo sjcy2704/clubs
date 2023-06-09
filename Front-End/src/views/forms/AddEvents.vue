@@ -30,7 +30,6 @@ if (route.params.eventID) {
       .toISOString()
       .slice(0, 16);
   });
-  console.log(eventDetails.starttime);
 } else {
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);

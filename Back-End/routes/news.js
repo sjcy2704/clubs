@@ -109,6 +109,7 @@ router.post("/remove", function (req, res) {
         res.sendStatus(500);
         return;
       }
+      connection.release();
 
       res.send(200);
     });

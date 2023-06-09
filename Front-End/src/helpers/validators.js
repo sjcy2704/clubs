@@ -50,9 +50,8 @@ export async function validateUser(signup) {
 
 // Club Register Validators
 
-export function validateClub(details) {
+export function validateClub(details, update) {
   let errs = [];
-
   if (details.name.length === 0) {
     errs.push("Name cannot be empty");
   }
@@ -65,7 +64,7 @@ export function validateClub(details) {
     errs.push("Select a category");
   }
 
-  if (!details.logo) {
+  if (!details.logo && !update) {
     errs.push("Requires a Club Logo");
   }
 

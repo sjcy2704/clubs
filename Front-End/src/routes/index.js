@@ -89,6 +89,11 @@ export const routes = [
         component: AddNews,
         meta: { requiresAuth: true, privilages: true, manager: true },
       },
+      {
+        path: ":clubID/manage/details",
+        component: ClubSignUp,
+        meta: { requiresAuth: true, privilages: true, manager: true },
+      },
     ],
   },
   {
