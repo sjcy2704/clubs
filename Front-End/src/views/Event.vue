@@ -2,14 +2,32 @@
 import { useRoute, useRouter } from "vue-router";
 import { api } from "../helpers/api.js";
 import { ref } from "vue";
+import { useUserStore } from "../stores/userStore";
+import { computed } from "vue";
+
+const userStore = useUserStore();
 
 const route = useRoute();
 const router = useRouter();
 
 const events = ref([]);
+const rsvpd = ref(false);
+const totalRsvpd = ref(0);
+
+if (userStore.loggedIn) {
+  await api
+    .get(`/rsvp/events/${route.params.eventID}/users/${userStore.user.userID}`)
+    .then(({ data }) => {
+      rsvpd.value = data.rsvpd;
+    });
+}
 
 await api.get(`/events/${route.params.eventID}`).then(({ data }) => {
   events.value = data[0];
+});
+
+await api.get(`/rsvp/events/${route.params.eventID}`).then(({ data }) => {
+  totalRsvpd.value = data.totalRsvpd;
 });
 
 let date = ref();
@@ -36,6 +54,24 @@ let clubName = ref("");
 await api.get(`/clubs/${events.value.clubID}`).then(({ data }) => {
   clubName.value = data.name;
 });
+
+async function rsvpEvent() {
+  if (!userStore.loggedIn) {
+    router.push("/login");
+  } else {
+    await api
+      .post("/rsvp", {
+        eventID: events.value.eventID,
+        userID: userStore.user.userID,
+      })
+      .then(() => {
+        rsvpd.value = true;
+      });
+  }
+}
+const reachLimit = computed(() => {
+  return totalRsvpd.value - events.value.rsvpLimit === 0;
+});
 </script>
 
 <template>
@@ -52,8 +88,8 @@ await api.get(`/clubs/${events.value.clubID}`).then(({ data }) => {
             <h1 class="clubName">{{ clubName }}</h1>
             <h2 class="title">{{ events.name }}</h2>
           </div>
-          <div>
-            <button>RSVP</button>
+          <div v-if="!rsvpd && !reachLimit">
+            <button @click="rsvpEvent">RSVP</button>
           </div>
         </div>
         <div class="details flex justify-between sm-col">

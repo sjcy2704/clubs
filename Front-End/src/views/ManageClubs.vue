@@ -48,6 +48,7 @@ watchEffect(async () => {
     manager
   >
     <Pagination
+      v-if="allClubs.length > 0"
       :current-page="currentPage"
       :page-count="pageCount"
       @changepage="onPageChange"

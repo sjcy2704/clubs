@@ -200,6 +200,32 @@ LOCK TABLES `News` WRITE;
 /*!40000 ALTER TABLE `News` ENABLE KEYS */;
 
 UNLOCK TABLES;
+--
+-- Table structure for table `Rsvp`
+--
+
+DROP TABLE IF EXISTS `Rsvp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Rsvp` (
+  `userID` int unsigned NOT NULL,
+  `eventID` int unsigned NOT NULL,
+  `status` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`userID`,`eventID`),
+  KEY `eventID` (`eventID`),
+  CONSTRAINT `Rsvp_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `Users` (`userID`),
+  CONSTRAINT `Rsvp_ibfk_2` FOREIGN KEY (`eventID`) REFERENCES `Events` (`eventID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Rsvp`
+--
+
+LOCK TABLES `Rsvp` WRITE;
+/*!40000 ALTER TABLE `Rsvp` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Rsvp` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `Users`

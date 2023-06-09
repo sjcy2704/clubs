@@ -20,6 +20,7 @@ const AddEvent = () => import("../views/forms/AddEvents.vue");
 const AddNews = () => import("../views/forms/AddAnnouncement.vue");
 const Announcement = () => import("../views/Announcement.vue");
 const Event = () => import("../views/Event.vue");
+const GuestList = () => import("../views/GuestList.vue");
 
 export const routes = [
   { name: "Home", path: "/", component: Home },
@@ -93,6 +94,11 @@ export const routes = [
       {
         path: ":clubID/manage/events/:eventID",
         component: AddEvent,
+        meta: { requiresAuth: true, privilages: true, manager: true },
+      },
+      {
+        path: ":clubID/manage/events/:eventID/guestlist",
+        component: GuestList,
         meta: { requiresAuth: true, privilages: true, manager: true },
       },
       {

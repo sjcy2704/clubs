@@ -277,5 +277,8 @@ watchEffect(() => {
   .noClubs {
     grid-column: 1 / span 1;
   }
+  .newClub {
+    width: 100%;
+  }
 }
 </style>

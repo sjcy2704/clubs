@@ -68,6 +68,9 @@ async function removeEvent() {
         </div>
       </div>
       <div class="options flex align-center">
+        <RouterLink :to="$route.path + '/' + props.eventID + '/guestlist'"
+          >Guest List <font-awesome-icon icon="fa-solid fa-list"
+        /></RouterLink>
         <RouterLink :to="$route.path + '/' + props.eventID"
           >Edit <font-awesome-icon icon="fa-solid fa-pen-to-square"
         /></RouterLink>
@@ -120,7 +123,7 @@ async function removeEvent() {
   color: grey;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 739px) {
   .options {
     margin-top: 10px;
   }

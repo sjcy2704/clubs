@@ -19,6 +19,7 @@ let eventDetails = reactive({
 
 let update = ref(false);
 
+let tomorrow = new Date();
 if (route.params.eventID) {
   update.value = true;
   await api.get(`/events/${route.params.eventID}`).then(({ data }) => {
@@ -40,7 +41,6 @@ if (route.params.eventID) {
     eventDetails.endtime = eventDetails.endtime.toISOString().slice(0, 16);
   });
 } else {
-  const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   tomorrow.setMinutes(tomorrow.getMinutes() - tomorrow.getTimezoneOffset());
   eventDetails.starttime = tomorrow.toISOString().slice(0, 16);
@@ -55,7 +55,7 @@ async function addEvent() {
     .slice(0, 16);
   eventDetails.endtime = new Date(eventDetails.endtime).toJSON().slice(0, 16);
   let path = "/events";
-  if (update) {
+  if (update.value) {
     path = "/events/update";
   }
   await api.post(path, eventDetails).then(() => router.go(-1));

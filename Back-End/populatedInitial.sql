@@ -47,7 +47,6 @@ VALUES (
     'Swain',
     'user'
   );
-
 INSERT INTO Clubs
 VALUES (
     1,
@@ -63,7 +62,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/abss.png'
   ),
-(
+  (
     2,
     '180 Degrees Consulting - Branch',
     '180DC',
@@ -77,7 +76,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/17904253_1410689965669477_9136746633619311521_n.jpg'
   ),
-(
+  (
     3,
     'Activate Student Ministry',
     'ASM',
@@ -91,7 +90,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435348_2_optimized-capture.jpg'
   ),
-(
+  (
     7,
     'Adelaide Fashion Collective',
     'AFC',
@@ -105,7 +104,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/afc_full_colour.png'
   ),
-(
+  (
     8,
     'Adelaide Health and Medical Sciences Association',
     'AHMSA',
@@ -119,7 +118,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/ahmsa.jpg'
   ),
-(
+  (
     9,
     'Adelaide Indian Students\' Society',
     'AISS',
@@ -133,7 +132,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435333_2_untitled-1.jpg'
   ),
-(
+  (
     10,
     'Adelaide Medical Students\' Society',
     'AMSS',
@@ -147,7 +146,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/amss-shield-colour.png'
   ),
-(
+  (
     11,
     'Adelaide Nursing Students\' Society',
     'ANSS',
@@ -161,7 +160,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/140470300_3385162964939878_7355648638229128640_n.jpg'
   ),
-(
+  (
     12,
     'Adelaide Occupational Therapy Students\' Society',
     'AOTSS',
@@ -175,7 +174,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/logo-with-caption.png'
   ),
-(
+  (
     13,
     'Adelaide Sri Lankan Students Association',
     'ASLSA',
@@ -189,7 +188,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/sri-lankan.jpg'
   ),
-(
+  (
     14,
     'Adelaide Students\' Association of Physics',
     'ASAP',
@@ -203,7 +202,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/asap-logo(1).png'
   ),
-(
+  (
     15,
     'Adelaide Students Society of Critical Care',
     'ASSCC',
@@ -217,7 +216,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/ascc.png'
   ),
-(
+  (
     16,
     'Adelaide Students Toastmasters Club',
     'ASTC',
@@ -231,7 +230,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/toastmasters.jpg'
   ),
-(
+  (
     17,
     'Adelaide Sustainability Association',
     'ASA',
@@ -245,7 +244,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435387_2_12512312_709628779174483_5858947130415483286_n.jpg'
   ),
-(
+  (
     18,
     'Adelaide Uni Hip-Hop Dance Club',
     'AUHDC',
@@ -259,7 +258,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/hiphop.png'
   ),
-(
+  (
     19,
     'Adelaide University Psychiatry Society',
     'AUPS',
@@ -273,7 +272,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/aups-logo.png'
   ),
-(
+  (
     20,
     'Adelaide University Baking Club',
     'AUBC',
@@ -287,7 +286,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/aubc-logo(1).png'
   ),
-(
+  (
     21,
     'Adelaide University Chess Club',
     'AUCC',
@@ -301,7 +300,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/chess-club.jpg'
   ),
-(
+  (
     22,
     'Adelaide University Chinese Students Association',
     'AUCSA',
@@ -315,7 +314,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/aucsa-logo.jpg'
   ),
-(
+  (
     23,
     'Adelaide University Choral Society',
     'AUCS',
@@ -329,7 +328,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/audrey-pfp.png'
   ),
-(
+  (
     25,
     'Adelaide University Comedy Club',
     'AUC Club',
@@ -343,7 +342,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/144158295_234669931471707_2368364429815757606_n(1).jpg'
   ),
-(
+  (
     30,
     'Adelaide University Debating Society',
     'AUDS',
@@ -357,7 +356,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/debating.png'
   ),
-(
+  (
     31,
     'Adelaide University Economics Club',
     'AUEC',
@@ -371,7 +370,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/auec-logo-small.jpg'
   ),
-(
+  (
     32,
     'Adelaide University Education Students Association',
     'AUESA',
@@ -385,7 +384,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435295_2_colour.png'
   ),
-(
+  (
     33,
     'Adelaide University Engineering Society',
     'AUES',
@@ -399,7 +398,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/aues-logo-no-black-nor-background-black-text.png'
   ),
-(
+  (
     34,
     'Adelaide University Filipino Club',
     'AUFC',
@@ -413,7 +412,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3535236_2_ac0b0bae-b4c5-4402-acb4-ca234934b1fb.jpg'
   ),
-(
+  (
     35,
     'Adelaide University Film Society',
     'AUFS',
@@ -427,7 +426,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/4.png'
   ),
-(
+  (
     38,
     'Adelaide University Foosball Club',
     'AUF Club',
@@ -441,7 +440,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/foosball.png'
   ),
-(
+  (
     39,
     'Adelaide University Greens Club',
     'AUGC',
@@ -455,7 +454,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/the-greens.png'
   ),
-(
+  (
     40,
     'Adelaide University IET On Campus',
     'IET',
@@ -469,7 +468,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/iet-on-campus.png'
   ),
-(
+  (
     41,
     'Adelaide University Jewish Students Society',
     'AUJSS',
@@ -483,7 +482,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/aujs-south-australia-logo-(instagram-post-(square))-2.png'
   ),
-(
+  (
     42,
     'Adelaide University Liberal Club',
     'AULC',
@@ -497,7 +496,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/liberal-club.jpg'
   ),
-(
+  (
     43,
     'Adelaide University Malaysian Students Association',
     'AUMSA',
@@ -511,7 +510,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/aumsa-logo.png'
   ),
-(
+  (
     44,
     'Adelaide University Marketing Society',
     'UAMSS',
@@ -525,7 +524,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/uamss-logo-small.jpg'
   ),
-(
+  (
     45,
     'Adelaide University Media Association',
     'AUMA',
@@ -539,7 +538,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/auma-logo---white-background.png'
   ),
-(
+  (
     46,
     'Adelaide University Medical Orchestra',
     'AUMO',
@@ -553,7 +552,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435374_2_favicon.ico.png'
   ),
-(
+  (
     47,
     'Adelaide University Physiotherapy Association',
     'AUPA',
@@ -567,7 +566,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/aupa.jpg'
   ),
-(
+  (
     48,
     'Adelaide University Republic Club',
     'AUPC',
@@ -581,7 +580,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/republic.jpg'
   ),
-(
+  (
     49,
     'Adelaide University Rotaract Club',
     'AURC',
@@ -595,7 +594,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/7.png'
   ),
-(
+  (
     50,
     'Adelaide University Rural Health Alliance',
     'AURHA',
@@ -609,7 +608,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/aurha.png'
   ),
-(
+  (
     51,
     'Adelaide University Sciences Association',
     'AUSA',
@@ -623,7 +622,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/auscalogoshieldbold.png'
   ),
-(
+  (
     52,
     'Adelaide University Secular Club',
     'AUSSA',
@@ -637,7 +636,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/secular.png'
   ),
-(
+  (
     53,
     'Adelaide University Social Science Society',
     'AUSSC',
@@ -651,7 +650,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/300420165_440811538091372_7773423927602357032_n.jpg'
   ),
-(
+  (
     54,
     'Adelaide University Space Society',
     'AUSS',
@@ -665,7 +664,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/124452808_150830950092542_3345956548285742509_o.png'
   ),
-(
+  (
     55,
     'Adelaide University Spanish Club',
     'AUSC',
@@ -679,7 +678,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/spanish.jpg'
   ),
-(
+  (
     56,
     'Adelaide University Student Veterans Association',
     'AUSVA',
@@ -693,7 +692,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/vector-ai-01.jpg'
   ),
-(
+  (
     57,
     'Adelaide Veterinary Students Association',
     'AVSA',
@@ -707,7 +706,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/10.png'
   ),
-(
+  (
     58,
     'Advent Campus Connect',
     'ACC',
@@ -721,7 +720,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435323_2_acc-logo-(1).png'
   ),
-(
+  (
     61,
     'African Students\' Association',
     'African SA',
@@ -735,7 +734,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435308_2_uaasalogo.jpg'
   ),
-(
+  (
     62,
     'Agricultural Students Association',
     'AUASA',
@@ -749,7 +748,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/11.png'
   ),
-(
+  (
     63,
     'AHMS Art Society',
     'AHMSAS',
@@ -763,7 +762,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/145761457_194985512358661_5308118540189363919_n.png'
   ),
-(
+  (
     64,
     'AI & ML Student Club',
     'AIMLSC',
@@ -777,7 +776,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/ai__ml_club_logo_white_backgraound.png'
   ),
-(
+  (
     65,
     'American Institute of Aeronautics and Astronautics',
     'AIAA',
@@ -791,7 +790,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435434_2_aiaa-symbol-astronaut.jpg'
   ),
-(
+  (
     66,
     'Anime Club',
     'AUAC',
@@ -805,7 +804,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435367_2_auac_logo.png'
   ),
-(
+  (
     67,
     'Arts Students Association',
     'Arts SA',
@@ -819,7 +818,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/artsstudentsassociation.jpg'
   ),
-(
+  (
     68,
     'Australia-China Youth Association',
     'ACYA',
@@ -833,7 +832,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/circle-(1).png'
   ),
-(
+  (
     69,
     'AYCC Action Group',
     'AYCCAA',
@@ -847,7 +846,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435405_2_41848043_2089515501060096_1450954336157827072_n.png'
   ),
-(
+  (
     70,
     'Biosciences Network',
     'BN',
@@ -861,7 +860,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435361_2_img_2289.jpg'
   ),
-(
+  (
     71,
     'Bright Futures Society University of Adelaide',
     'BFSUOA',
@@ -875,7 +874,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3495466_2_26914256_1667447053293839_2124612072_n.jpg'
   ),
-(
+  (
     72,
     'Cambodian Student of Adelaide',
     'CamSA',
@@ -889,7 +888,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/cambodian-students-of-adelaide.jpg'
   ),
-(
+  (
     73,
     'Capture the Flag Club',
     'CTF Club',
@@ -903,7 +902,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/logo-refined.png'
   ),
-(
+  (
     74,
     'Car Enthusiasts',
     'AUCE',
@@ -917,7 +916,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3491321_2_logo-final-main.jpg'
   ),
-(
+  (
     75,
     'Chemical Engineering Society',
     'CHEMS',
@@ -931,7 +930,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/chems.jpg'
   ),
-(
+  (
     76,
     'Civil Engineering Society',
     'AUCES',
@@ -945,7 +944,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/civil-engineering.jpg'
   ),
-(
+  (
     77,
     'Classics and Ancient History Society',
     'CAHS',
@@ -959,7 +958,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435297_2_cahs-logo.jpg'
   ),
-(
+  (
     78,
     'Companion Animal Special Interest Group',
     'CASIG',
@@ -973,7 +972,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435436_2_casig-logo.jpg'
   ),
-(
+  (
     79,
     'Competitive Programming Club',
     'CPC',
@@ -987,7 +986,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3491325_2_cpc-png.png'
   ),
-(
+  (
     80,
     'Computer Science Club',
     'CS Club',
@@ -1001,7 +1000,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/computer-science.png'
   ),
-(
+  (
     81,
     'Dental Students\' Society',
     'DSS',
@@ -1015,7 +1014,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435362_2_73158206_409801549692348_5701549242691092480_n-(1).png'
   ),
-(
+  (
     82,
     'Disability, Illness and Divergence Association',
     'DIDA',
@@ -1029,7 +1028,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/dida-logo.jpg'
   ),
-(
+  (
     83,
     'Drawing Club',
     'AUDC',
@@ -1043,7 +1042,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3491322_2_logooo.png'
   ),
-(
+  (
     84,
     'Effective Altruism Club',
     'EAC',
@@ -1057,7 +1056,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435360_2_profile-photo.jpg'
   ),
-(
+  (
     85,
     'Elder Conservatorium Music Theatre Association',
     'ECMTA',
@@ -1071,7 +1070,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/ecmta.jpg'
   ),
-(
+  (
     86,
     'Electrical and Electronic Engineering Society',
     'EEESAU',
@@ -1085,7 +1084,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/electronic-engineering.jpg'
   ),
-(
+  (
     87,
     'Engineers for the Earth',
     'EFEUOfA',
@@ -1099,7 +1098,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/engineers-for-the-earth.png'
   ),
-(
+  (
     88,
     'Engineers Without Borders',
     'EWBUOfA',
@@ -1113,7 +1112,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/engineers-without-borders.jpg'
   ),
-(
+  (
     91,
     'Entrepreneur Club',
     'AUE Club',
@@ -1127,7 +1126,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435425_2_10534636_450639498409795_5040486039051317410_n.png'
   ),
-(
+  (
     92,
     'Equine Special Interest Group',
     'AUESIG',
@@ -1141,7 +1140,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435296_2_esig-image.jpg'
   ),
-(
+  (
     93,
     'EVAC - Video Gamers',
     'EVAC',
@@ -1155,7 +1154,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435332_2_download.jpg'
   ),
-(
+  (
     94,
     'Evangelical Students',
     'ES Adelaide',
@@ -1169,7 +1168,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/evan.jpg'
   ),
-(
+  (
     95,
     'French Club',
     'UOfAFC',
@@ -1183,7 +1182,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435303_2_26239602_10214774566428095_7503557207491388058_n.jpg'
   ),
-(
+  (
     96,
     'GAMES Club',
     'GAMES',
@@ -1197,7 +1196,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/games.jpg'
   ),
-(
+  (
     97,
     'General Practice Students Network',
     'GPSN',
@@ -1211,7 +1210,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/gpsn.jpg'
   ),
-(
+  (
     98,
     'Geography and Development Society',
     'AUGDS',
@@ -1225,7 +1224,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3535254_2_geog-logo.jpg'
   ),
-(
+  (
     99,
     'Geological Society',
     'AUGS',
@@ -1239,7 +1238,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435311_2_logo.png'
   ),
-(
+  (
     103,
     'AU German Club',
     'GC',
@@ -1253,7 +1252,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/augc-logo-high-quality.png'
   ),
-(
+  (
     104,
     'Golden Key International Honour Society',
     'GK',
@@ -1267,7 +1266,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/golden-key.jpg'
   ),
-(
+  (
     105,
     'Health Sciences Postgraduate Association',
     'HESPA',
@@ -1281,7 +1280,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435422_2_29542351_994682124032980_8331652826186774882_n.png'
   ),
-(
+  (
     106,
     'Indonesian Students Association',
     'ISAUOA',
@@ -1295,7 +1294,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435400_2_pp-profile1.jpg'
   ),
-(
+  (
     107,
     'Insight Global Health Group',
     'IGHG',
@@ -1309,7 +1308,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435315_2_screen-shot-2018-04-09-at-20.16.46.png'
   ),
-(
+  (
     108,
     'Islamic Students Society',
     'ISSUA',
@@ -1323,7 +1322,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435321_2_logo-updated.png'
   ),
-(
+  (
     109,
     'Japanese Language and Cultural Society',
     'JLACS',
@@ -1337,7 +1336,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/jlas.png'
   ),
-(
+  (
     110,
     'Karaoke Club',
     'KCUOA',
@@ -1351,7 +1350,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/273434446_145381694574171_636537224576464948_n.jpg'
   ),
-(
+  (
     111,
     'K-Pop Club',
     'KUA',
@@ -1365,7 +1364,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3573162_2_logo.jpg'
   ),
-(
+  (
     114,
     'Labor Club',
     'Labor Club',
@@ -1379,7 +1378,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435393_2_adelaide-universitylabor-club-jpeg.jpg'
   ),
-(
+  (
     115,
     'Law Students\' Society',
     'AULSS',
@@ -1393,7 +1392,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/aulss.jpg'
   ),
-(
+  (
     116,
     'Lifechoice Adelaide',
     'LCA',
@@ -1407,7 +1406,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3572970_2_club-profile-pic.png'
   ),
-(
+  (
     117,
     'Lucid Dream Music Club',
     'LMC',
@@ -1421,7 +1420,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/lmc.jpg'
   ),
-(
+  (
     118,
     'Mathematics Society',
     'AUMS',
@@ -1435,7 +1434,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/full_circle_dark-(1).png'
   ),
-(
+  (
     119,
     'Mature Students Association',
     'MSA',
@@ -1449,7 +1448,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/mature-students.jpg'
   ),
-(
+  (
     120,
     'Mechanical Engineering Student Society',
     'AMESS',
@@ -1463,7 +1462,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/amess.png'
   ),
-(
+  (
     121,
     'Motorcycle Club',
     'AUMSC',
@@ -1477,7 +1476,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435432_2_final_black.jpg'
   ),
-(
+  (
     122,
     'Overseas Christian Fellowship',
     'OSF',
@@ -1491,7 +1490,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/overseas-christian-fellowship.jpg'
   ),
-(
+  (
     125,
     'Paediatrics Society',
     'UOAPS',
@@ -1505,7 +1504,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/paediatricsd.png'
   ),
-(
+  (
     126,
     'Palaeontologists',
     'UOAP',
@@ -1519,7 +1518,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3520274_2_auu-clubs-site-small-logo.jpg'
   ),
-(
+  (
     127,
     'Pathology Society',
     'PathSoc',
@@ -1533,7 +1532,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/pathology.png'
   ),
-(
+  (
     129,
     'Pig Club',
     'Pig Club',
@@ -1547,7 +1546,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3491328_2_pig-club.png'
   ),
-(
+  (
     130,
     'Politics and International Relations Association',
     'PIRA',
@@ -1561,7 +1560,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/pira.jpg'
   ),
-(
+  (
     131,
     'Postgraduate Association for Waite Students',
     'PAWS',
@@ -1575,7 +1574,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/5.png'
   ),
-(
+  (
     132,
     'Pride Club',
     'Pride',
@@ -1589,7 +1588,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435413_2_pride-logo-clean.jpg'
   ),
-(
+  (
     133,
     'Production Animal Special Interest Group',
     'PASIG',
@@ -1603,7 +1602,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/pasig-logo-square.png'
   ),
-(
+  (
     134,
     'Project Management Society',
     'UOAPMS',
@@ -1617,7 +1616,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/final_logo_clubs_page(1).png'
   ),
-(
+  (
     135,
     'Psychology Students\' Association',
     'PSA',
@@ -1631,7 +1630,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/social-media-png.png'
   ),
-(
+  (
     136,
     'Robogals',
     'RGA',
@@ -1645,7 +1644,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435344_2_robogals-adelaide-logo.jpg'
   ),
-(
+  (
     137,
     'Roseworthy Board Games Club',
     'RBGC',
@@ -1659,7 +1658,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/roseworthy-boardgames.jpg'
   ),
-(
+  (
     138,
     'Roseworthy International Student Association',
     'RISA',
@@ -1673,7 +1672,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/risa-logo.jpg'
   ),
-(
+  (
     139,
     'Roseworthy Video Games Club',
     'RVGC',
@@ -1687,7 +1686,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3557259_2_69256957_1384228491743363_1199055144197554176_o.jpg'
   ),
-(
+  (
     140,
     'Salsa Mania Club',
     'SMC',
@@ -1701,7 +1700,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435347_2_7c256f7d-9db4-4498-a709-da0028eb2182.jpg'
   ),
-(
+  (
     141,
     'Saudi Students Association',
     'SSCA',
@@ -1715,7 +1714,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/639f62ff-3ba2-4c36-97fc-899a4924c899.jpg'
   ),
-(
+  (
     142,
     'Singapore Association',
     'SAUOA',
@@ -1729,7 +1728,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/singapore-association.png'
   ),
-(
+  (
     143,
     'Socialist Alternative',
     'SA',
@@ -1743,7 +1742,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/socialist-alternative.png'
   ),
-(
+  (
     144,
     'Society For Creative Anachronism',
     'SCA',
@@ -1757,7 +1756,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435423_2_herman-arms-600x600.png'
   ),
-(
+  (
     145,
     'Society of Petroleum Engineers',
     'SPE',
@@ -1771,7 +1770,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/society-of-petroleum-engineers.jpg'
   ),
-(
+  (
     146,
     'Society of Women in Space Exploration',
     'SWISE',
@@ -1785,7 +1784,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3611334_2_university-of-adelaide.png'
   ),
-(
+  (
     147,
     'Speech Pathology Students Society',
     'UOASPSS',
@@ -1799,7 +1798,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/speech-path-student-society.jpg'
   ),
-(
+  (
     150,
     'Surgical Society',
     'AUSSoc',
@@ -1813,7 +1812,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/auss-logo-1.jpg'
   ),
-(
+  (
     151,
     'Swing Dancing Club',
     'SDC',
@@ -1827,7 +1826,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/swing-dance.jpg'
   ),
-(
+  (
     152,
     'Tabletop Role Playing Games Club',
     'UoARPGC',
@@ -1841,7 +1840,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/logosub2a.png'
   ),
-(
+  (
     153,
     'The Aquatic Animal Special Interest Group',
     'AASIG',
@@ -1855,7 +1854,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/aasig-logo.jpg'
   ),
-(
+  (
     154,
     'The Biology Society of South Australia',
     'BSSA',
@@ -1869,7 +1868,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3561239_2_bssa_logo_aug_2012_medium3.png'
   ),
-(
+  (
     155,
     'The University of Adelaide Philosophy Club',
     'UoAPC',
@@ -1883,7 +1882,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/philosophy.png'
   ),
-(
+  (
     156,
     'University of Adelaide Greek Club',
     'UoAGC',
@@ -1897,7 +1896,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/greek-club.png'
   ),
-(
+  (
     157,
     'University of Adelaide Hong Kong Macau Society',
     'UoAHKMS',
@@ -1911,7 +1910,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/hkmas-icon.jpg'
   ),
-(
+  (
     158,
     'University of Adelaide Mechanical Keyboard Club',
     'KeebClub',
@@ -1925,7 +1924,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/mechanical.jpg'
   ),
-(
+  (
     159,
     'University of Adelaide Model UN Club',
     'UoAMUNC',
@@ -1939,7 +1938,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/model-un.png'
   ),
-(
+  (
     160,
     'Theatre Guild Student Society',
     'UOAPPSA',
@@ -1953,7 +1952,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435426_2_uatg-ss-vertical.png'
   ),
-(
+  (
     161,
     'University of Adelaide Wine Club',
     'UOAWC',
@@ -1967,7 +1966,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/adelaide-uni-wine-club-logo-2022.jpg'
   ),
-(
+  (
     162,
     'UoA Funk & Disco Dance Club',
     'UOAFDDC',
@@ -1981,7 +1980,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/uoa-funk-disco-dance-club.jpg'
   ),
-(
+  (
     163,
     'UofA\'s Tea Club',
     'UOATC',
@@ -1995,7 +1994,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/tea-club-logo.jpg'
   ),
-(
+  (
     164,
     'Vegan Club',
     'UOAVC',
@@ -2009,7 +2008,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/vegan.jpg'
   ),
-(
+  (
     165,
     'Vietnamese Students Association',
     'AVA',
@@ -2023,7 +2022,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/3435346_2_ava-edited-01-(1).png'
   ),
-(
+  (
     166,
     'Wildlife and Exotics Special Interest Group',
     'WESIG',
@@ -2037,7 +2036,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/wildlife-animal-special-interest-group.jpg'
   ),
-(
+  (
     167,
     'Women in Creative Technologies',
     'WICT',
@@ -2051,7 +2050,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/wict-logo-01.jpg'
   ),
-(
+  (
     168,
     'Women in STEM Society',
     'WSTEMSoc',
@@ -2065,7 +2064,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/wistems.jpg'
   ),
-(
+  (
     169,
     'Adelaide University Athletics Club',
     'AU Athletics',
@@ -2079,7 +2078,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/9nyobidenxcuvz9y.png'
   ),
-(
+  (
     170,
     'Adelaide University Badminton Club',
     'AU Badminton',
@@ -2093,7 +2092,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/lbefr2y1ixartjxr.jpg'
   ),
-(
+  (
     171,
     'Adelaide University Baseball Club',
     'AU Baseball',
@@ -2107,7 +2106,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/vvaezoj13leoxvkz.jpg'
   ),
-(
+  (
     172,
     'Adelaide University Basketball Club',
     'AU Basketball',
@@ -2121,7 +2120,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/dnfsym7ye6srdqmf.png'
   ),
-(
+  (
     173,
     'Adelaide University Boat Club',
     'AU Boat Club',
@@ -2135,7 +2134,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/qf7btkdzhj4xorcn.png'
   ),
-(
+  (
     174,
     'Adelaide University Cricket Club',
     'AU Cricket',
@@ -2149,7 +2148,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/aqfhi7wfsjsmeoh8.png'
   ),
-(
+  (
     175,
     'Adelaide University Cycling Club',
     'AU Cycling',
@@ -2163,7 +2162,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/sj3aimzqtmzu2oks.png'
   ),
-(
+  (
     176,
     'Adelaide University eSports Club',
     'AU esports',
@@ -2177,7 +2176,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/1ds6rheefjtngdbm.png'
   ),
-(
+  (
     177,
     'Adelaide University Fencing Club',
     'AU Fencing',
@@ -2191,7 +2190,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/q81fuiidwhcuuilf.png'
   ),
-(
+  (
     178,
     'Adelaide University Football Club',
     'AU Football',
@@ -2205,7 +2204,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/sybosavwmscbil92.png'
   ),
-(
+  (
     179,
     'Adelaide University Gliding Club',
     'AU Gliding',
@@ -2219,7 +2218,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/7xeafcoychfqvrh9.jpg'
   ),
-(
+  (
     180,
     'Adelaide University Gridiron Club',
     'AU Gridiron',
@@ -2233,7 +2232,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/wxfdlseo6flsyal0.jpg'
   ),
-(
+  (
     181,
     'Adelaide University Gymnastics Club',
     'AU Gymnastics',
@@ -2247,7 +2246,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/mkkm4f0ijcogomzs.png'
   ),
-(
+  (
     182,
     'Adelaide University Hockey Club',
     'AU Hockey',
@@ -2261,7 +2260,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/lti0bkkibwmps2bu.jpg'
   ),
-(
+  (
     183,
     'Adelaide University Judo Club',
     'AU Judo',
@@ -2275,7 +2274,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/oqvlr5ovnmym1fqa.png'
   ),
-(
+  (
     184,
     'Adelaide University Karate Club',
     'AU Karate',
@@ -2289,7 +2288,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/agjcmzbton1z6jia.png'
   ),
-(
+  (
     185,
     'Adelaide University Kendo Club',
     'AU Kendo',
@@ -2303,7 +2302,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/oaethil3qlvh5tve.jpg'
   ),
-(
+  (
     186,
     'Adelaide University Lacrosse Club',
     'AU Lacrosse',
@@ -2317,7 +2316,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/ekrmdfrofejo36mv.png'
   ),
-(
+  (
     187,
     'Adelaide University Lawn Tennis Club',
     'AU Lawn Tennis',
@@ -2331,7 +2330,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/frm6edmhoxak9sym.jpg'
   ),
-(
+  (
     188,
     'Adelaide University Motorsport Team',
     'AU Motorsport',
@@ -2345,7 +2344,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/hoitxqyy2un5pvij.png'
   ),
-(
+  (
     189,
     'Adelaide University Mountain Club',
     'AU Mountain',
@@ -2359,7 +2358,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/tjopahvf7lbyca2w.png'
   ),
-(
+  (
     190,
     'Adelaide University Netball Club',
     'AU Netball',
@@ -2373,7 +2372,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/cujetbkyfglg8q5d.jpg'
   ),
-(
+  (
     191,
     'Adelaide University Rifle Club',
     'AU Rifle',
@@ -2387,7 +2386,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/edxtmrluxfszx3x9.png'
   ),
-(
+  (
     192,
     'Adelaide University Sailing Club',
     'AU Sailing',
@@ -2401,7 +2400,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/lxgekpbm9ulcvqr3.png'
   ),
-(
+  (
     193,
     'Adelaide University Scuba Diving Club',
     'AU Scuba',
@@ -2415,7 +2414,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/gnr8annsjwkestt1.png'
   ),
-(
+  (
     194,
     'Adelaide University Snow Ski Club',
     'AU Snow Ski',
@@ -2429,7 +2428,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/oup7jlvfujijeb1i.png'
   ),
-(
+  (
     195,
     'Adelaide University Soccer Club',
     'AU Soccer',
@@ -2443,7 +2442,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/bach7mkepkn2tgul.png'
   ),
-(
+  (
     196,
     'Adelaide University Squash Club',
     'AU Squash',
@@ -2457,7 +2456,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/rav5vnc8heghgdgn.png'
   ),
-(
+  (
     197,
     'Adelaide University Swimming Club',
     'AU Swimming',
@@ -2471,7 +2470,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/lrn0kwsz7dvmtxli.png'
   ),
-(
+  (
     198,
     'Adelaide University Table Tennis Club',
     'AU Table Tennis',
@@ -2485,7 +2484,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/rx0pelxloapnvg1i.png'
   ),
-(
+  (
     199,
     'Adelaide University Taekwondo Club',
     'AU Taekwondo',
@@ -2499,7 +2498,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/rnorht1adf9bqndy.png'
   ),
-(
+  (
     200,
     'Adelaide University Touch Club',
     'AU Touch',
@@ -2513,7 +2512,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/gywqta2ymwfkwy5v.png'
   ),
-(
+  (
     201,
     'Adelaide University Ultimate Frisbee Club',
     'AU UFrisbee',
@@ -2527,7 +2526,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/rfd4uwagrk3bxvhc.png'
   ),
-(
+  (
     202,
     'Adelaide University Volleyball Club',
     'AU Volleyball',
@@ -2541,7 +2540,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/sh8czecfzpan3rlx.png'
   ),
-(
+  (
     203,
     'Adelaide University Water Ski Club',
     'AU Water Ski',
@@ -2555,7 +2554,7 @@ VALUES (
     1,
     'http://localhost:8080/club-logos/8fowkkeyhq0phdvl.jpg'
   ),
-(
+  (
     204,
     'Adelaide University Wing Chun Kung Fu Club',
     'AU Wing Chun',
@@ -2571,367 +2570,366 @@ VALUES (
   );
 INSERT INTO `ClubMembers`
 VALUES (1, 2),
-(2, 2),
-(3, 2),
-(7, 2),
-(8, 2),
-(9, 2),
-(10, 2),
-(11, 2),
-(12, 2),
-(13, 2),
-(14, 2),
-(15, 2),
-(16, 2),
-(17, 2),
-(18, 2),
-(19, 2),
-(20, 2),
-(21, 2),
-(22, 2),
-(23, 2),
-(25, 2),
-(30, 2),
-(31, 2),
-(32, 2),
-(33, 2),
-(34, 2),
-(35, 2),
-(38, 2),
-(39, 2),
-(40, 2),
-(41, 2),
-(42, 2),
-(43, 2),
-(44, 2),
-(45, 2),
-(46, 2),
-(47, 2),
-(48, 2),
-(49, 2),
-(50, 2),
-(51, 2),
-(52, 2),
-(53, 2),
-(54, 2),
-(55, 2),
-(56, 2),
-(57, 2),
-(58, 2),
-(61, 2),
-(62, 2),
-(63, 2),
-(64, 2),
-(65, 2),
-(66, 2),
-(67, 2),
-(68, 2),
-(69, 2),
-(70, 2),
-(71, 2),
-(72, 2),
-(73, 2),
-(74, 2),
-(75, 2),
-(76, 2),
-(77, 2),
-(78, 2),
-(79, 2),
-(80, 2),
-(81, 2),
-(82, 2),
-(83, 2),
-(84, 2),
-(85, 2),
-(86, 2),
-(87, 2),
-(88, 2),
-(91, 2),
-(92, 2),
-(93, 2),
-(94, 2),
-(95, 2),
-(96, 2),
-(97, 2),
-(98, 2),
-(99, 2),
-(103, 2),
-(104, 2),
-(105, 2),
-(106, 2),
-(107, 2),
-(108, 2),
-(109, 2),
-(110, 2),
-(111, 2),
-(114, 2),
-(115, 2),
-(116, 2),
-(117, 2),
-(118, 2),
-(119, 2),
-(120, 2),
-(121, 2),
-(122, 2),
-(125, 2),
-(126, 2),
-(127, 2),
-(129, 2),
-(130, 2),
-(131, 2),
-(132, 2),
-(133, 2),
-(134, 2),
-(135, 2),
-(136, 2),
-(137, 2),
-(138, 2),
-(139, 2),
-(140, 2),
-(141, 2),
-(142, 2),
-(143, 2),
-(144, 2),
-(145, 2),
-(146, 2),
-(147, 2),
-(150, 2),
-(151, 2),
-(152, 2),
-(153, 2),
-(154, 2),
-(155, 2),
-(156, 2),
-(157, 2),
-(158, 2),
-(159, 2),
-(160, 2),
-(161, 2),
-(162, 2),
-(163, 2),
-(164, 2),
-(165, 2),
-(166, 2),
-(167, 2),
-(168, 2),
-(169, 2),
-(170, 2),
-(171, 2),
-(172, 2),
-(173, 2),
-(174, 2),
-(175, 2),
-(176, 2),
-(177, 2),
-(178, 2),
-(179, 2),
-(180, 2),
-(181, 2),
-(182, 2),
-(183, 2),
-(184, 2),
-(185, 2),
-(186, 2),
-(187, 2),
-(188, 2),
-(189, 2),
-(190, 2),
-(191, 2),
-(192, 2),
-(193, 2),
-(194, 2),
-(195, 2),
-(196, 2),
-(197, 2),
-(198, 2),
-(199, 2),
-(200, 2),
-(201, 2),
-(202, 2),
-(203, 2),
-(204, 2);
+  (2, 2),
+  (3, 2),
+  (7, 2),
+  (8, 2),
+  (9, 2),
+  (10, 2),
+  (11, 2),
+  (12, 2),
+  (13, 2),
+  (14, 2),
+  (15, 2),
+  (16, 2),
+  (17, 2),
+  (18, 2),
+  (19, 2),
+  (20, 2),
+  (21, 2),
+  (22, 2),
+  (23, 2),
+  (25, 2),
+  (30, 2),
+  (31, 2),
+  (32, 2),
+  (33, 2),
+  (34, 2),
+  (35, 2),
+  (38, 2),
+  (39, 2),
+  (40, 2),
+  (41, 2),
+  (42, 2),
+  (43, 2),
+  (44, 2),
+  (45, 2),
+  (46, 2),
+  (47, 2),
+  (48, 2),
+  (49, 2),
+  (50, 2),
+  (51, 2),
+  (52, 2),
+  (53, 2),
+  (54, 2),
+  (55, 2),
+  (56, 2),
+  (57, 2),
+  (58, 2),
+  (61, 2),
+  (62, 2),
+  (63, 2),
+  (64, 2),
+  (65, 2),
+  (66, 2),
+  (67, 2),
+  (68, 2),
+  (69, 2),
+  (70, 2),
+  (71, 2),
+  (72, 2),
+  (73, 2),
+  (74, 2),
+  (75, 2),
+  (76, 2),
+  (77, 2),
+  (78, 2),
+  (79, 2),
+  (80, 2),
+  (81, 2),
+  (82, 2),
+  (83, 2),
+  (84, 2),
+  (85, 2),
+  (86, 2),
+  (87, 2),
+  (88, 2),
+  (91, 2),
+  (92, 2),
+  (93, 2),
+  (94, 2),
+  (95, 2),
+  (96, 2),
+  (97, 2),
+  (98, 2),
+  (99, 2),
+  (103, 2),
+  (104, 2),
+  (105, 2),
+  (106, 2),
+  (107, 2),
+  (108, 2),
+  (109, 2),
+  (110, 2),
+  (111, 2),
+  (114, 2),
+  (115, 2),
+  (116, 2),
+  (117, 2),
+  (118, 2),
+  (119, 2),
+  (120, 2),
+  (121, 2),
+  (122, 2),
+  (125, 2),
+  (126, 2),
+  (127, 2),
+  (129, 2),
+  (130, 2),
+  (131, 2),
+  (132, 2),
+  (133, 2),
+  (134, 2),
+  (135, 2),
+  (136, 2),
+  (137, 2),
+  (138, 2),
+  (139, 2),
+  (140, 2),
+  (141, 2),
+  (142, 2),
+  (143, 2),
+  (144, 2),
+  (145, 2),
+  (146, 2),
+  (147, 2),
+  (150, 2),
+  (151, 2),
+  (152, 2),
+  (153, 2),
+  (154, 2),
+  (155, 2),
+  (156, 2),
+  (157, 2),
+  (158, 2),
+  (159, 2),
+  (160, 2),
+  (161, 2),
+  (162, 2),
+  (163, 2),
+  (164, 2),
+  (165, 2),
+  (166, 2),
+  (167, 2),
+  (168, 2),
+  (169, 2),
+  (170, 2),
+  (171, 2),
+  (172, 2),
+  (173, 2),
+  (174, 2),
+  (175, 2),
+  (176, 2),
+  (177, 2),
+  (178, 2),
+  (179, 2),
+  (180, 2),
+  (181, 2),
+  (182, 2),
+  (183, 2),
+  (184, 2),
+  (185, 2),
+  (186, 2),
+  (187, 2),
+  (188, 2),
+  (189, 2),
+  (190, 2),
+  (191, 2),
+  (192, 2),
+  (193, 2),
+  (194, 2),
+  (195, 2),
+  (196, 2),
+  (197, 2),
+  (198, 2),
+  (199, 2),
+  (200, 2),
+  (201, 2),
+  (202, 2),
+  (203, 2),
+  (204, 2);
 INSERT INTO `Managers`
 VALUES (2, 1),
-(2, 2),
-(2, 3),
-(2, 7),
-(2, 8),
-(2, 9),
-(2, 10),
-(2, 11),
-(2, 12),
-(2, 13),
-(2, 14),
-(2, 15),
-(2, 16),
-(2, 17),
-(2, 18),
-(2, 19),
-(2, 20),
-(2, 21),
-(2, 22),
-(2, 23),
-(2, 25),
-(2, 30),
-(2, 31),
-(2, 32),
-(2, 33),
-(2, 34),
-(2, 35),
-(2, 38),
-(2, 39),
-(2, 40),
-(2, 41),
-(2, 42),
-(2, 43),
-(2, 44),
-(2, 45),
-(2, 46),
-(2, 47),
-(2, 48),
-(2, 49),
-(2, 50),
-(2, 51),
-(2, 52),
-(2, 53),
-(2, 54),
-(2, 55),
-(2, 56),
-(2, 57),
-(2, 58),
-(2, 61),
-(2, 62),
-(2, 63),
-(2, 64),
-(2, 65),
-(2, 66),
-(2, 67),
-(2, 68),
-(2, 69),
-(2, 70),
-(2, 71),
-(2, 72),
-(2, 73),
-(2, 74),
-(2, 75),
-(2, 76),
-(2, 77),
-(2, 78),
-(2, 79),
-(2, 80),
-(2, 81),
-(2, 82),
-(2, 83),
-(2, 84),
-(2, 85),
-(2, 86),
-(2, 87),
-(2, 88),
-(2, 91),
-(2, 92),
-(2, 93),
-(2, 94),
-(2, 95),
-(2, 96),
-(2, 97),
-(2, 98),
-(2, 99),
-(2, 103),
-(2, 104),
-(2, 105),
-(2, 106),
-(2, 107),
-(2, 108),
-(2, 109),
-(2, 110),
-(2, 111),
-(2, 114),
-(2, 115),
-(2, 116),
-(2, 117),
-(2, 118),
-(2, 119),
-(2, 120),
-(2, 121),
-(2, 122),
-(2, 125),
-(2, 126),
-(2, 127),
-(2, 129),
-(2, 130),
-(2, 131),
-(2, 132),
-(2, 133),
-(2, 134),
-(2, 135),
-(2, 136),
-(2, 137),
-(2, 138),
-(2, 139),
-(2, 140),
-(2, 141),
-(2, 142),
-(2, 143),
-(2, 144),
-(2, 145),
-(2, 146),
-(2, 147),
-(2, 150),
-(2, 151),
-(2, 152),
-(2, 153),
-(2, 154),
-(2, 155),
-(2, 156),
-(2, 157),
-(2, 158),
-(2, 159),
-(2, 160),
-(2, 161),
-(2, 162),
-(2, 163),
-(2, 164),
-(2, 165),
-(2, 166),
-(2, 167),
-(2, 168),
-(2, 169),
-(2, 170),
-(2, 171),
-(2, 172),
-(2, 173),
-(2, 174),
-(2, 175),
-(2, 176),
-(2, 177),
-(2, 178),
-(2, 179),
-(2, 180),
-(2, 181),
-(2, 182),
-(2, 183),
-(2, 184),
-(2, 185),
-(2, 186),
-(2, 187),
-(2, 188),
-(2, 189),
-(2, 190),
-(2, 191),
-(2, 192),
-(2, 193),
-(2, 194),
-(2, 195),
-(2, 196),
-(2, 197),
-(2, 198),
-(2, 199),
-(2, 200),
-(2, 201),
-(2, 202),
-(2, 203),
-(2, 204);
-
+  (2, 2),
+  (2, 3),
+  (2, 7),
+  (2, 8),
+  (2, 9),
+  (2, 10),
+  (2, 11),
+  (2, 12),
+  (2, 13),
+  (2, 14),
+  (2, 15),
+  (2, 16),
+  (2, 17),
+  (2, 18),
+  (2, 19),
+  (2, 20),
+  (2, 21),
+  (2, 22),
+  (2, 23),
+  (2, 25),
+  (2, 30),
+  (2, 31),
+  (2, 32),
+  (2, 33),
+  (2, 34),
+  (2, 35),
+  (2, 38),
+  (2, 39),
+  (2, 40),
+  (2, 41),
+  (2, 42),
+  (2, 43),
+  (2, 44),
+  (2, 45),
+  (2, 46),
+  (2, 47),
+  (2, 48),
+  (2, 49),
+  (2, 50),
+  (2, 51),
+  (2, 52),
+  (2, 53),
+  (2, 54),
+  (2, 55),
+  (2, 56),
+  (2, 57),
+  (2, 58),
+  (2, 61),
+  (2, 62),
+  (2, 63),
+  (2, 64),
+  (2, 65),
+  (2, 66),
+  (2, 67),
+  (2, 68),
+  (2, 69),
+  (2, 70),
+  (2, 71),
+  (2, 72),
+  (2, 73),
+  (2, 74),
+  (2, 75),
+  (2, 76),
+  (2, 77),
+  (2, 78),
+  (2, 79),
+  (2, 80),
+  (2, 81),
+  (2, 82),
+  (2, 83),
+  (2, 84),
+  (2, 85),
+  (2, 86),
+  (2, 87),
+  (2, 88),
+  (2, 91),
+  (2, 92),
+  (2, 93),
+  (2, 94),
+  (2, 95),
+  (2, 96),
+  (2, 97),
+  (2, 98),
+  (2, 99),
+  (2, 103),
+  (2, 104),
+  (2, 105),
+  (2, 106),
+  (2, 107),
+  (2, 108),
+  (2, 109),
+  (2, 110),
+  (2, 111),
+  (2, 114),
+  (2, 115),
+  (2, 116),
+  (2, 117),
+  (2, 118),
+  (2, 119),
+  (2, 120),
+  (2, 121),
+  (2, 122),
+  (2, 125),
+  (2, 126),
+  (2, 127),
+  (2, 129),
+  (2, 130),
+  (2, 131),
+  (2, 132),
+  (2, 133),
+  (2, 134),
+  (2, 135),
+  (2, 136),
+  (2, 137),
+  (2, 138),
+  (2, 139),
+  (2, 140),
+  (2, 141),
+  (2, 142),
+  (2, 143),
+  (2, 144),
+  (2, 145),
+  (2, 146),
+  (2, 147),
+  (2, 150),
+  (2, 151),
+  (2, 152),
+  (2, 153),
+  (2, 154),
+  (2, 155),
+  (2, 156),
+  (2, 157),
+  (2, 158),
+  (2, 159),
+  (2, 160),
+  (2, 161),
+  (2, 162),
+  (2, 163),
+  (2, 164),
+  (2, 165),
+  (2, 166),
+  (2, 167),
+  (2, 168),
+  (2, 169),
+  (2, 170),
+  (2, 171),
+  (2, 172),
+  (2, 173),
+  (2, 174),
+  (2, 175),
+  (2, 176),
+  (2, 177),
+  (2, 178),
+  (2, 179),
+  (2, 180),
+  (2, 181),
+  (2, 182),
+  (2, 183),
+  (2, 184),
+  (2, 185),
+  (2, 186),
+  (2, 187),
+  (2, 188),
+  (2, 189),
+  (2, 190),
+  (2, 191),
+  (2, 192),
+  (2, 193),
+  (2, 194),
+  (2, 195),
+  (2, 196),
+  (2, 197),
+  (2, 198),
+  (2, 199),
+  (2, 200),
+  (2, 201),
+  (2, 202),
+  (2, 203),
+  (2, 204);
 INSERT INTO `Events` (
     name,
     description,
@@ -2957,8 +2955,28 @@ VALUES (
     2
   );
 
-INSERT INTO  `News` (title, content, status, clubID)
-VALUES
-('First Announcement', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut sem viverra aliquet eget sit amet. Felis eget nunc lobortis mattis aliquam. Vel fringilla est ullamcorper eget nulla. Libero id faucibus nisl tincidunt. Mauris pellentesque pulvinar pellentesque habitant morbi. Ac felis donec et odio pellentesque diam. In nibh mauris cursus mattis. Vitae elementum curabitur vitae nunc sed velit dignissim. Accumsan tortor posuere ac ut consequat semper viverra nam libero. Risus commodo viverra maecenas accumsan.</p><br/><p>Egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. In tellus integer feugiat scelerisque varius morbi enim nunc. Leo in vitae turpis massa. Neque gravida in fermentum et sollicitudin ac orci phasellus. Fringilla est ullamcorper eget nulla facilisi. Cursus euismod quis viverra nibh cras. Lectus mauris ultrices eros in cursus turpis. Sed enim ut sem viverra aliquet. A erat nam at lectus urna duis convallis convallis tellus. Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Nisi porta lorem mollis aliquam ut porttitor. Purus in mollis nunc sed id semper risus in.</p><br /><p>Pretium nibh ipsum consequat nisl vel. Sem nulla pharetra diam sit. Mattis nunc sed blandit libero volutpat sed cras ornare arcu. Tristique senectus et netus et malesuada. Ultrices dui sapien eget mi proin sed libero enim sed. Id venenatis a condimentum vitae sapien. Hac habitasse platea dictumst quisque sagittis purus. Et magnis dis parturient montes nascetur ridiculus mus mauris vitae. Justo donec enim diam vulputate ut. Velit ut tortor pretium viverra suspendisse potenti nullam ac tortor. Et pharetra pharetra massa massa ultricies mi quis hendrerit.</p>', 'public', 1),
-('Private Announcement', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut sem viverra aliquet eget sit amet. Felis eget nunc lobortis mattis aliquam. Vel fringilla est ullamcorper eget nulla. Libero id faucibus nisl tincidunt. Mauris pellentesque pulvinar pellentesque habitant morbi. Ac felis donec et odio pellentesque diam. In nibh mauris cursus mattis. Vitae elementum curabitur vitae nunc sed velit dignissim. Accumsan tortor posuere ac ut consequat semper viverra nam libero. Risus commodo viverra maecenas accumsan.</p><br/><p>Egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. In tellus integer feugiat scelerisque varius morbi enim nunc. Leo in vitae turpis massa. Neque gravida in fermentum et sollicitudin ac orci phasellus. Fringilla est ullamcorper eget nulla facilisi. Cursus euismod quis viverra nibh cras. Lectus mauris ultrices eros in cursus turpis. Sed enim ut sem viverra aliquet. A erat nam at lectus urna duis convallis convallis tellus. Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Nisi porta lorem mollis aliquam ut porttitor. Purus in mollis nunc sed id semper risus in.</p><br /><p>Pretium nibh ipsum consequat nisl vel. Sem nulla pharetra diam sit. Mattis nunc sed blandit libero volutpat sed cras ornare arcu. Tristique senectus et netus et malesuada. Ultrices dui sapien eget mi proin sed libero enim sed. Id venenatis a condimentum vitae sapien. Hac habitasse platea dictumst quisque sagittis purus. Et magnis dis parturient montes nascetur ridiculus mus mauris vitae. Justo donec enim diam vulputate ut. Velit ut tortor pretium viverra suspendisse potenti nullam ac tortor. Et pharetra pharetra massa massa ultricies mi quis hendrerit.</p>', 'private', 1),
-('Welcome Newcomers', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut sem viverra aliquet eget sit amet. Felis eget nunc lobortis mattis aliquam. Vel fringilla est ullamcorper eget nulla. Libero id faucibus nisl tincidunt. Mauris pellentesque pulvinar pellentesque habitant morbi. Ac felis donec et odio pellentesque diam. In nibh mauris cursus mattis. Vitae elementum curabitur vitae nunc sed velit dignissim. Accumsan tortor posuere ac ut consequat semper viverra nam libero. Risus commodo viverra maecenas accumsan.</p><br/><p>Egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. In tellus integer feugiat scelerisque varius morbi enim nunc. Leo in vitae turpis massa. Neque gravida in fermentum et sollicitudin ac orci phasellus. Fringilla est ullamcorper eget nulla facilisi. Cursus euismod quis viverra nibh cras. Lectus mauris ultrices eros in cursus turpis. Sed enim ut sem viverra aliquet. A erat nam at lectus urna duis convallis convallis tellus. Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Nisi porta lorem mollis aliquam ut porttitor. Purus in mollis nunc sed id semper risus in.</p><br /><p>Pretium nibh ipsum consequat nisl vel. Sem nulla pharetra diam sit. Mattis nunc sed blandit libero volutpat sed cras ornare arcu. Tristique senectus et netus et malesuada. Ultrices dui sapien eget mi proin sed libero enim sed. Id venenatis a condimentum vitae sapien. Hac habitasse platea dictumst quisque sagittis purus. Et magnis dis parturient montes nascetur ridiculus mus mauris vitae. Justo donec enim diam vulputate ut. Velit ut tortor pretium viverra suspendisse potenti nullam ac tortor. Et pharetra pharetra massa massa ultricies mi quis hendrerit.</p>', 'private', 3);
+INSERT INTO Rsvp (userID, eventID)
+VALUES (1, 1),
+  (1, 2),
+  (2, 2),
+  (3, 2);
+
+INSERT INTO `News` (title, content, status, clubID)
+VALUES (
+    'First Announcement',
+    '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut sem viverra aliquet eget sit amet. Felis eget nunc lobortis mattis aliquam. Vel fringilla est ullamcorper eget nulla. Libero id faucibus nisl tincidunt. Mauris pellentesque pulvinar pellentesque habitant morbi. Ac felis donec et odio pellentesque diam. In nibh mauris cursus mattis. Vitae elementum curabitur vitae nunc sed velit dignissim. Accumsan tortor posuere ac ut consequat semper viverra nam libero. Risus commodo viverra maecenas accumsan.</p><br/><p>Egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. In tellus integer feugiat scelerisque varius morbi enim nunc. Leo in vitae turpis massa. Neque gravida in fermentum et sollicitudin ac orci phasellus. Fringilla est ullamcorper eget nulla facilisi. Cursus euismod quis viverra nibh cras. Lectus mauris ultrices eros in cursus turpis. Sed enim ut sem viverra aliquet. A erat nam at lectus urna duis convallis convallis tellus. Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Nisi porta lorem mollis aliquam ut porttitor. Purus in mollis nunc sed id semper risus in.</p><br /><p>Pretium nibh ipsum consequat nisl vel. Sem nulla pharetra diam sit. Mattis nunc sed blandit libero volutpat sed cras ornare arcu. Tristique senectus et netus et malesuada. Ultrices dui sapien eget mi proin sed libero enim sed. Id venenatis a condimentum vitae sapien. Hac habitasse platea dictumst quisque sagittis purus. Et magnis dis parturient montes nascetur ridiculus mus mauris vitae. Justo donec enim diam vulputate ut. Velit ut tortor pretium viverra suspendisse potenti nullam ac tortor. Et pharetra pharetra massa massa ultricies mi quis hendrerit.</p>',
+    'public',
+    1
+  ),
+  (
+    'Private Announcement',
+    '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut sem viverra aliquet eget sit amet. Felis eget nunc lobortis mattis aliquam. Vel fringilla est ullamcorper eget nulla. Libero id faucibus nisl tincidunt. Mauris pellentesque pulvinar pellentesque habitant morbi. Ac felis donec et odio pellentesque diam. In nibh mauris cursus mattis. Vitae elementum curabitur vitae nunc sed velit dignissim. Accumsan tortor posuere ac ut consequat semper viverra nam libero. Risus commodo viverra maecenas accumsan.</p><br/><p>Egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. In tellus integer feugiat scelerisque varius morbi enim nunc. Leo in vitae turpis massa. Neque gravida in fermentum et sollicitudin ac orci phasellus. Fringilla est ullamcorper eget nulla facilisi. Cursus euismod quis viverra nibh cras. Lectus mauris ultrices eros in cursus turpis. Sed enim ut sem viverra aliquet. A erat nam at lectus urna duis convallis convallis tellus. Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Nisi porta lorem mollis aliquam ut porttitor. Purus in mollis nunc sed id semper risus in.</p><br /><p>Pretium nibh ipsum consequat nisl vel. Sem nulla pharetra diam sit. Mattis nunc sed blandit libero volutpat sed cras ornare arcu. Tristique senectus et netus et malesuada. Ultrices dui sapien eget mi proin sed libero enim sed. Id venenatis a condimentum vitae sapien. Hac habitasse platea dictumst quisque sagittis purus. Et magnis dis parturient montes nascetur ridiculus mus mauris vitae. Justo donec enim diam vulputate ut. Velit ut tortor pretium viverra suspendisse potenti nullam ac tortor. Et pharetra pharetra massa massa ultricies mi quis hendrerit.</p>',
+    'private',
+    1
+  ),
+  (
+    'Welcome Newcomers',
+    '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut sem viverra aliquet eget sit amet. Felis eget nunc lobortis mattis aliquam. Vel fringilla est ullamcorper eget nulla. Libero id faucibus nisl tincidunt. Mauris pellentesque pulvinar pellentesque habitant morbi. Ac felis donec et odio pellentesque diam. In nibh mauris cursus mattis. Vitae elementum curabitur vitae nunc sed velit dignissim. Accumsan tortor posuere ac ut consequat semper viverra nam libero. Risus commodo viverra maecenas accumsan.</p><br/><p>Egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. In tellus integer feugiat scelerisque varius morbi enim nunc. Leo in vitae turpis massa. Neque gravida in fermentum et sollicitudin ac orci phasellus. Fringilla est ullamcorper eget nulla facilisi. Cursus euismod quis viverra nibh cras. Lectus mauris ultrices eros in cursus turpis. Sed enim ut sem viverra aliquet. A erat nam at lectus urna duis convallis convallis tellus. Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Nisi porta lorem mollis aliquam ut porttitor. Purus in mollis nunc sed id semper risus in.</p><br /><p>Pretium nibh ipsum consequat nisl vel. Sem nulla pharetra diam sit. Mattis nunc sed blandit libero volutpat sed cras ornare arcu. Tristique senectus et netus et malesuada. Ultrices dui sapien eget mi proin sed libero enim sed. Id venenatis a condimentum vitae sapien. Hac habitasse platea dictumst quisque sagittis purus. Et magnis dis parturient montes nascetur ridiculus mus mauris vitae. Justo donec enim diam vulputate ut. Velit ut tortor pretium viverra suspendisse potenti nullam ac tortor. Et pharetra pharetra massa massa ultricies mi quis hendrerit.</p>',
+    'private',
+    3
+  );

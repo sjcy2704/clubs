@@ -8,7 +8,7 @@ export async function logUser(login, router, userStore, errors = null) {
     .then((res) => {
       userStore.user = res.data;
       userStore.loggedIn = true;
-      router.push("/");
+      router.go(-1);
     })
     .catch(({ response }) => {
       if ((response.status === 401 || response.status === 400) && errors) {
