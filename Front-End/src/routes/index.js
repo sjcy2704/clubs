@@ -18,14 +18,8 @@ const ManageEvents = () => import("../views/ManageEvents.vue");
 const ManageAnnouncements = () => import("../views/ManageAnnouncements.vue");
 const AddEvent = () => import("../views/forms/AddEvents.vue");
 const AddNews = () => import("../views/forms/AddAnnouncement.vue");
-// const test = () => import("../views/Test.vue");
+const Announcement = () => import("../views/Announcement.vue");
 
-// {
-//   path: "/user",
-//   component: ClubsRouterView,
-//   children: [{ name: "profile", path: "" }, { path: "clubs" }],
-//   meta: { requiresAuth: true },
-// },
 export const routes = [
   { name: "Home", path: "/", component: Home },
   // { path: "/test", component: test },
@@ -45,8 +39,25 @@ export const routes = [
         meta: { requiresAuth: true, privilages: true },
       },
       {
+        name: "Club",
         path: ":clubID",
         component: ClubDetails,
+      },
+      {
+        path: ":clubID/news",
+        redirect: (to) => {
+          return { name: "Club", params: { clubID: to.params.clubID } };
+        },
+      },
+      {
+        path: ":clubID/events",
+        redirect: (to) => {
+          return { name: "Club", params: { clubID: to.params.clubID } };
+        },
+      },
+      {
+        path: ":clubID/news/:newsID",
+        component: Announcement,
       },
       {
         name: "ManageClub",

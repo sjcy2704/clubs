@@ -123,7 +123,7 @@ router.post("/", upload.single("logo"), function (req, res) {
       return;
     }
 
-    const {
+    let {
       name,
       short_name,
       category,
@@ -134,6 +134,10 @@ router.post("/", upload.single("logo"), function (req, res) {
       instagram,
       discord,
     } = req.body;
+    facebook = facebook.length <= 0 ? null : facebook;
+    twitter = twitter.length <= 0 ? null : twitter;
+    instagram = instagram.length <= 0 ? null : instagram;
+    discord = discord.length <= 0 ? null : discord;
     let path;
     let query =
       "INSERT INTO Clubs(name, short_name, category, description, manager,facebook, twitter, instagram, discord) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -198,7 +202,7 @@ router.post("/update", upload.single("logo"), function (req, res) {
       return;
     }
 
-    const {
+    let {
       name,
       short_name,
       category,
@@ -209,6 +213,12 @@ router.post("/update", upload.single("logo"), function (req, res) {
       discord,
       clubID,
     } = req.body;
+
+    facebook = facebook.length <= 0 ? null : facebook;
+    twitter = twitter.length <= 0 ? null : twitter;
+    instagram = instagram.length <= 0 ? null : instagram;
+    discord = discord.length <= 0 ? null : discord;
+
     let path;
     let query =
       "UPDATE Clubs SET name = ?, short_name = ?, category = ?, description = ?,facebook = ?, twitter = ?, instagram = ?, discord = ? WHERE clubID = ?";

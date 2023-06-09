@@ -16,14 +16,17 @@ let news = ref([]);
 async function getInfo() {
   await api.get("/news").then(({ data }) => {
     if (userStore.loggedIn) {
-      news.value = data.filter(async (announce) => {
-        let joined = false;
+      data.forEach(async (announce) => {
         await api
           .get(`/members/club/${announce.clubID}/user/${userStore.user.userID}`)
           .then(({ data }) => {
-            joined = data.joined;
+            if (data.joined && announce.status === "private") {
+              news.value.push(announce);
+            }
+            if (announce.status === "public") {
+              news.value.push(announce);
+            }
           });
-        return joined;
       });
     } else {
       news.value = data.filter((announce) => announce.status === "public");

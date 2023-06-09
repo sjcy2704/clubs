@@ -23,12 +23,21 @@ if (route.params.eventID) {
   update.value = true;
   await api.get(`/events/${route.params.eventID}`).then(({ data }) => {
     eventDetails = reactive(data[0]);
-    eventDetails.starttime = new Date(eventDetails.starttime)
-      .toISOString()
-      .slice(0, 16);
-    eventDetails.endtime = new Date(eventDetails.endtime)
-      .toISOString()
-      .slice(0, 16);
+    eventDetails.starttime = new Date(eventDetails.starttime);
+    eventDetails.starttime.setMinutes(
+      eventDetails.starttime.getMinutes() -
+        eventDetails.starttime.getTimezoneOffset()
+    );
+
+    eventDetails.starttime = eventDetails.starttime.toISOString().slice(0, 16);
+
+    eventDetails.endtime = new Date(eventDetails.endtime);
+    eventDetails.endtime.setMinutes(
+      eventDetails.endtime.getMinutes() -
+        eventDetails.endtime.getTimezoneOffset()
+    );
+
+    eventDetails.endtime = eventDetails.endtime.toISOString().slice(0, 16);
   });
 } else {
   const tomorrow = new Date();
