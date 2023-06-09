@@ -8,7 +8,7 @@ import { api } from "../../helpers/api";
 
 const route = useRoute();
 
-const eventDetails = reactive({
+let eventDetails = reactive({
   name: "",
   description: "",
   starttime: null,
@@ -17,11 +17,27 @@ const eventDetails = reactive({
   clubID: route.params.clubID,
 });
 
-const tomorrow = new Date();
-tomorrow.setDate(tomorrow.getDate() + 1);
-tomorrow.setMinutes(tomorrow.getMinutes() - tomorrow.getTimezoneOffset());
-eventDetails.starttime = tomorrow.toISOString().slice(0, 16);
-eventDetails.endtime = eventDetails.starttime;
+let update = ref(false);
+
+if (route.params.eventID) {
+  update.value = true;
+  await api.get(`/events/${route.params.eventID}`).then(({ data }) => {
+    eventDetails = reactive(data[0]);
+    eventDetails.starttime = new Date(eventDetails.starttime)
+      .toISOString()
+      .slice(0, 16);
+    eventDetails.endtime = new Date(eventDetails.endtime)
+      .toISOString()
+      .slice(0, 16);
+  });
+  console.log(eventDetails.starttime);
+} else {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  tomorrow.setMinutes(tomorrow.getMinutes() - tomorrow.getTimezoneOffset());
+  eventDetails.starttime = tomorrow.toISOString().slice(0, 16);
+  eventDetails.endtime = eventDetails.starttime;
+}
 
 const router = useRouter();
 
@@ -30,7 +46,11 @@ async function addEvent() {
     .toJSON()
     .slice(0, 16);
   eventDetails.endtime = new Date(eventDetails.endtime).toJSON().slice(0, 16);
-  await api.post("/events", eventDetails).then(() => router.go(-1));
+  let path = "/events";
+  if (update) {
+    path = "/events/update";
+  }
+  await api.post(path, eventDetails).then(() => router.go(-1));
 }
 
 let rsvp = ref(false);
@@ -52,7 +72,7 @@ function setRSVP() {
     fa-chevron-left"
   /></a>
   <div class="container">
-    <p class="title">New Event</p>
+    <p class="title">{{ update ? "Edit Event" : "New Event" }}</p>
   </div>
   <form class="lsgForm registerForm" v-on:submit.prevent="addEvent">
     <Input label="Club Name" v-model="eventDetails.name" required="true" />
@@ -60,7 +80,7 @@ function setRSVP() {
     <input
       type="datetime-local"
       v-model="eventDetails.starttime"
-      :min="tomorrow"
+      :min="update ? eventDetails.starttime : tomorrow"
     />
     <p class="category">End Time</p>
     <input
@@ -84,7 +104,7 @@ function setRSVP() {
       contentType="html"
     />
 
-    <button type="submit">Add Event</button>
+    <button type="submit">{{ update ? "Update Event" : "Add Event" }}</button>
   </form>
 </template>
 

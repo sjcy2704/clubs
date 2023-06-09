@@ -20,7 +20,7 @@ let update = ref(false);
 if (route.params.newsID) {
   update.value = true;
   await api.get(`/news/${route.params.newsID}`).then(({ data }) => {
-    newsDetails = data[0];
+    newsDetails = reactive(data[0]);
   });
 }
 

@@ -49,6 +49,58 @@ router.post("/", function (req, res) {
   });
 });
 
+router.get("/:eventID", function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const { eventID } = req.params;
+
+    const query = "SELECT * FROM Events WHERE eventID = ?";
+
+    connection.query(query, eventID, function (err, rows) {
+      if (err) {
+        res.sendStatus(500);
+        throw err;
+        return;
+      }
+
+      connection.release();
+      res.json(rows);
+    });
+  });
+});
+
+router.post("/update", function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const { name, description, starttime, endtime, rsvpLimit, eventID } =
+      req.body;
+
+    const query =
+      "UPDATE Events SET name = ?, description = ?, starttime = ?, endtime = ?, rsvpLimit = ? WHERE eventID = ?";
+
+    connection.query(
+      query,
+      [name, description, starttime, endtime, rsvpLimit, eventID],
+      function (err) {
+        if (err) {
+          res.sendStatus(500);
+          return;
+        }
+
+        res.send(200);
+      }
+    );
+  });
+});
+
 router.post("/remove", function (req, res) {
   req.pool.getConnection(function (err, connection) {
     if (err) {

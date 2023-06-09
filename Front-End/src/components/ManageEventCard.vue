@@ -68,7 +68,9 @@ async function removeEvent() {
         </div>
       </div>
       <div class="options flex align-center">
-        <p>Edit <font-awesome-icon icon="fa-solid fa-pen-to-square" /></p>
+        <RouterLink :to="$route.path + '/' + props.eventID"
+          >Edit <font-awesome-icon icon="fa-solid fa-pen-to-square"
+        /></RouterLink>
         <a @click="removeEvent"
           >Delete <font-awesome-icon icon="fa-solid fa-trash-can"
         /></a>

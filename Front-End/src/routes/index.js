@@ -69,9 +69,26 @@ export const routes = [
         component: ManageAnnouncements,
         meta: { requiresAuth: true, privilages: true, manager: true },
       },
-      { path: ":clubID/manage/events/add", component: AddEvent },
-      { path: ":clubID/manage/announcements/add", component: AddNews },
-      { path: ":clubID/manage/announcements/:newsID", component: AddNews },
+      {
+        path: ":clubID/manage/events/add",
+        component: AddEvent,
+        meta: { requiresAuth: true, privilages: true, manager: true },
+      },
+      {
+        path: ":clubID/manage/events/:eventID",
+        component: AddEvent,
+        meta: { requiresAuth: true, privilages: true, manager: true },
+      },
+      {
+        path: ":clubID/manage/announcements/add",
+        component: AddNews,
+        meta: { requiresAuth: true, privilages: true, manager: true },
+      },
+      {
+        path: ":clubID/manage/announcements/:newsID",
+        component: AddNews,
+        meta: { requiresAuth: true, privilages: true, manager: true },
+      },
     ],
   },
   {
@@ -120,19 +137,17 @@ router.beforeEach((to, from, next) => {
 
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (userStore.loggedIn) {
-      next();
-      return;
+      if (to.matched.some((record) => record.meta.privilages)) {
+        if (userStore.user.userType !== "user") {
+          next();
+          return;
+        }
+        next("/");
+      }
+    } else {
+      next("/login");
     }
-    next("/login");
-  } else {
-    next();
-  }
-});
-
-router.beforeEach((to, from, next) => {
-  const userStore = useUserStore();
-
-  if (to.matched.some((record) => record.meta.guestOnly)) {
+  } else if (to.matched.some((record) => record.meta.guestOnly)) {
     if (userStore.loggedIn) {
       next("/");
       return;
@@ -143,32 +158,20 @@ router.beforeEach((to, from, next) => {
   }
 });
 
-router.beforeEach((to, from, next) => {
-  const userStore = useUserStore();
-  if (to.matched.some((record) => record.meta.privilages)) {
-    if (
-      userStore.user.userType === "admin" ||
-      userStore.user.userType === "manager"
-    ) {
-      next();
-      return;
-    }
-
-    next("/");
-  } else {
-    next();
-  }
-});
-
 router.beforeEach(async (to, from, next) => {
   const userStore = useUserStore();
   if (to.matched.some((record) => record.meta.manager)) {
-    await api.get(`/clubs/${to.params.clubID}/managers`).then(({ data }) => {
-      if (!data.find((club) => club.manager === userStore.user.userID)) {
-        next("/");
-        return;
-      }
-    });
+    if (userStore.user.userType === "admin") {
+      next();
+      return;
+    } else if (userStore.user.userType === "manager") {
+      await api.get(`/clubs/${to.params.clubID}/managers`).then(({ data }) => {
+        if (!data.find((club) => club.manager === userStore.user.userID)) {
+          next("/");
+          return;
+        }
+      });
+    }
     next();
   } else {
     next();
