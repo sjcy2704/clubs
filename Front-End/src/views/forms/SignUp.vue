@@ -42,6 +42,9 @@ function createUser() {
     signUpUser(signup, router, userStore);
   }
 }
+async function logWithGoogle() {
+  router.push("/auth/google");
+}
 </script>
 
 <template>

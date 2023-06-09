@@ -52,8 +52,7 @@ async function joinClub() {
         userID: userStore.user.userID,
       })
       .then(() => {
-        join.value = true;
-        details.value.members += 1;
+        router.go();
       });
   }
 }
@@ -106,7 +105,7 @@ async function joinClub() {
 
     <div class="clubRelated">
       <div class="column">
-        <h2 class="subTitle">Announcments</h2>
+        <h2 class="subTitle">Announcements</h2>
         <div class="eventCards flex col">
           <h3 v-if="news.length <= 0">No news</h3>
           <NewsCard

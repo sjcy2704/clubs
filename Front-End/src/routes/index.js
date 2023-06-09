@@ -21,6 +21,7 @@ const AddNews = () => import("../views/forms/AddAnnouncement.vue");
 const Announcement = () => import("../views/Announcement.vue");
 const Event = () => import("../views/Event.vue");
 const GuestList = () => import("../views/GuestList.vue");
+const Profile = () => import("../views/Profile.vue");
 
 export const routes = [
   { name: "Home", path: "/", component: Home },
@@ -122,7 +123,7 @@ export const routes = [
     path: "/profile",
     component: RouterView,
     children: [
-      { name: "Profile", path: "", component: RouterView },
+      { name: "Profile", path: "", component: Profile },
       { path: "clubs", component: MyClubs },
     ],
   },
@@ -180,8 +181,10 @@ router.beforeEach((to, from, next) => {
       return;
     }
     next();
+    return;
   } else {
     next();
+    return;
   }
 });
 
@@ -202,5 +205,6 @@ router.beforeEach(async (to, from, next) => {
     next();
   } else {
     next();
+    return;
   }
 });

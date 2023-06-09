@@ -116,4 +116,52 @@ router.get("/:userID/clubs", function (req, res) {
   });
 });
 
+router.get("/:userID/news", function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const { userID } = req.params;
+
+    const query =
+      "SELECT n.* From News n INNER JOIN ClubMembers c ON c.clubID = n.clubID WHERE c.userID = ?";
+
+    connection.query(query, userID, function (err, rows) {
+      connection.release();
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+
+      res.json(rows);
+    });
+  });
+});
+
+router.get("/:userID/rsvp", function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const { userID } = req.params;
+
+    const query =
+      "SELECT e.* FROM Events e INNER JOIN Rsvp r ON e.eventID = r.eventID WHERE r.userID = ?";
+
+    connection.query(query, userID, function (err, rows) {
+      connection.release();
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+
+      res.json(rows);
+    });
+  });
+});
+
 module.exports = router;

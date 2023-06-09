@@ -36,6 +36,10 @@ async function removeNews() {
         <div class="details flex">Date Posted: {{ date }}</div>
       </div>
       <div class="options flex align-center">
+        <RouterLink :to="/clubs/ + props.clubID + /news/ + props.newsID">
+          View
+          <font-awesome-icon icon="fa-solid fa-eye" />
+        </RouterLink>
         <RouterLink :to="$route.path + '/' + props.newsID"
           >Edit <font-awesome-icon icon="fa-solid fa-pen-to-square"
         /></RouterLink>
@@ -78,7 +82,7 @@ async function removeNews() {
   font-weight: 400;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   .options {
     margin-top: 10px;
   }

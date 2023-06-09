@@ -17,10 +17,9 @@ const userStore = useUserStore();
 <template>
   <div class="dropdown">
     <div v-if="!hide" class="profile">
-      <a class="name flex" href="#"
+      <RouterLink class="name flex" to="/profile"
         >{{ userStore.user.firstName }}
-        <!-- <img class="avatar" :src="userStore.user.avatar" /> -->
-      </a>
+      </RouterLink>
     </div>
     <div class="dropdownContent">
       <div class="dropdownItems flex col">
@@ -36,12 +35,12 @@ const userStore = useUserStore();
             <span> <font-awesome-icon icon="fa-solid fa-bars-progress" /> </span
           ></RouterLink>
         </div>
-        <a class="navLink flex justify-between" href="#"
+        <RouterLink class="navLink flex justify-between" to="/profile"
           >Profile <span> <font-awesome-icon icon="fa-solid fa-user" /> </span
-        ></a>
-        <a class="navLink flex justify-between" href="#"
+        ></RouterLink>
+        <RouterLink class="navLink flex justify-between" to="/profile/edit"
           >Settings <span> <font-awesome-icon icon="fa-solid fa-gear" /> </span
-        ></a>
+        ></RouterLink>
         <a
           class="navLink flex justify-between"
           href="#"
