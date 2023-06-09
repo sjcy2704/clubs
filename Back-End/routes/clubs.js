@@ -50,6 +50,50 @@ router.get("/top", function (req, res) {
   });
 });
 
+router.get("/all", function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const query = "SELECT * FROM Clubs";
+    connection.query(query, function (err, rows) {
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+
+      connection.release();
+
+      res.json(rows);
+    });
+  });
+});
+
+router.post("/remove", function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      throw err;
+      return;
+    }
+    const { clubID } = req.body;
+
+    const query = "DELETE FROM Clubs WHERE clubID = ?";
+    connection.query(query, clubID, function (err) {
+      if (err) {
+        res.sendStatus(500);
+        throw err;
+        return;
+      }
+
+      connection.release();
+      res.sendStatus(200);
+    });
+  });
+});
+
 /* GET users listing. */
 router.get("/", function (req, res, next) {
   req.pool.getConnection(function (err, connection) {

@@ -4,7 +4,6 @@ import { ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
 
 const router = useRouter();
-const route = useRoute();
 
 const props = defineProps({
   newsID: Number,
@@ -40,7 +39,8 @@ async function removeNews() {
           View
           <font-awesome-icon icon="fa-solid fa-eye" />
         </RouterLink>
-        <RouterLink :to="$route.path + '/' + props.newsID"
+        <RouterLink
+          :to="/clubs/ + props.clubID + /manage/ + 'news/' + props.newsID"
           >Edit <font-awesome-icon icon="fa-solid fa-pen-to-square"
         /></RouterLink>
         <a @click="removeNews"

@@ -21,6 +21,27 @@ router.get("/", function (req, res, next) {
   });
 });
 
+router.post("/remove", function (req, res) {
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    const { userID } = req.body;
+
+    const query = "DELETE FROM Users WHERE userID = ?";
+
+    connection.query(query, userID, function (err) {
+      connection.release();
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+    });
+  });
+});
+
 router.get("/username/:username", function (req, res, next) {
   req.pool.getConnection(function (err, connection) {
     if (err) {

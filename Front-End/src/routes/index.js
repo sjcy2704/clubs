@@ -23,6 +23,11 @@ const Event = () => import("../views/Event.vue");
 const GuestList = () => import("../views/GuestList.vue");
 const Profile = () => import("../views/Profile.vue");
 const Settings = () => import("../views/forms/Settings.vue");
+const Dashboard = () => import("../views/Dashboard.vue");
+const AdminUsers = () => import("../views/AdminUsers.vue");
+const AdminEvents = () => import("../views/AdminEvents.vue");
+const AdminNews = () => import("../views/AdminNews.vue");
+const AdminClubs = () => import("../views/AdminClubs.vue");
 
 export const routes = [
   { name: "Home", path: "/", component: Home },
@@ -83,7 +88,7 @@ export const routes = [
         meta: { requiresAuth: true, privilages: true, manager: true },
       },
       {
-        path: ":clubID/manage/announcements",
+        path: ":clubID/manage/news",
         component: ManageAnnouncements,
         meta: { requiresAuth: true, privilages: true, manager: true },
       },
@@ -103,12 +108,12 @@ export const routes = [
         meta: { requiresAuth: true, privilages: true, manager: true },
       },
       {
-        path: ":clubID/manage/announcements/add",
+        path: ":clubID/manage/news/add",
         component: AddNews,
         meta: { requiresAuth: true, privilages: true, manager: true },
       },
       {
-        path: ":clubID/manage/announcements/:newsID",
+        path: ":clubID/manage/news/:newsID",
         component: AddNews,
         meta: { requiresAuth: true, privilages: true, manager: true },
       },
@@ -126,6 +131,17 @@ export const routes = [
       { name: "Profile", path: "", component: Profile },
       { path: "clubs", component: MyClubs },
       { path: "settings", component: Settings },
+    ],
+  },
+  {
+    path: "/dashboard",
+    component: RouterView,
+    children: [
+      { name: "Dashboard", path: "", component: Dashboard },
+      { path: "users", component: AdminUsers },
+      { path: "events", component: AdminEvents },
+      { path: "announcements", component: AdminNews },
+      { path: "clubs", component: AdminClubs },
     ],
   },
   {

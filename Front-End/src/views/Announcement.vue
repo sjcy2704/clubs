@@ -15,7 +15,7 @@ await api.get(`/news/${route.params.newsID}`).then(({ data }) => {
     api
       .get(`/members/club/${data[0].clubID}/user/${userStore.user.userID}`)
       .then(({ data }) => {
-        if (!data.joined) {
+        if (!data.joined && userStore.user.userType !== "admin") {
           router.push("/");
         }
       });

@@ -53,6 +53,19 @@ CREATE TABLE
     CONSTRAINT `ClubMembers_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `Users` (`userID`)
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
+ALTER TABLE
+  `ClubMembers`
+  DROP FOREIGN KEY ClubMembers_ibfk_1,
+  ADD FOREIGN KEY (clubID)
+  REFERENCES Clubs(clubID)
+  ON DELETE CASCADE;
+
+ALTER TABLE
+  `ClubMembers`
+  DROP FOREIGN KEY ClubMembers_ibfk_2,
+  ADD FOREIGN KEY (userID)
+  REFERENCES Users(userID)
+  ON DELETE CASCADE;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +109,6 @@ CREATE TABLE
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 /*!40101 SET character_set_client = @saved_cs_client */;
-
 --
 -- Dumping data for table `Clubs`
 --
@@ -124,6 +136,12 @@ CREATE TABLE
 
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+ALTER TABLE
+  `Events`
+  DROP FOREIGN KEY Events_ibfk_1,
+  ADD FOREIGN KEY (clubID)
+  REFERENCES Clubs(clubID)
+  ON DELETE CASCADE;
 --
 -- Dumping data for table `Events`
 --
@@ -153,6 +171,20 @@ CREATE TABLE
     CONSTRAINT `Managers_ibfk_1` FOREIGN KEY (`manager`) REFERENCES `Users` (`userID`),
     CONSTRAINT `Managers_ibfk_2` FOREIGN KEY (`clubID`) REFERENCES `Clubs` (`clubID`)
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+
+ALTER TABLE
+  `Managers`
+  DROP FOREIGN KEY Managers_ibfk_1,
+  ADD FOREIGN KEY (clubID)
+  REFERENCES Clubs(clubID)
+  ON DELETE CASCADE;
+
+  ALTER TABLE
+  `Managers`
+  DROP FOREIGN KEY Managers_ibfk_2,
+  ADD FOREIGN KEY (manager)
+  REFERENCES Users(userID)
+  ON DELETE CASCADE;
 
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -188,6 +220,12 @@ CREATE TABLE
       CONSTRAINT `News_ibfk_1` FOREIGN KEY (`clubID`) REFERENCES `Clubs` (`clubID`)
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
+ALTER TABLE
+  `News`
+  DROP FOREIGN KEY News_ibfk_1,
+  ADD FOREIGN KEY (clubID)
+  REFERENCES Clubs(clubID)
+  ON DELETE CASCADE;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,6 +254,20 @@ CREATE TABLE `Rsvp` (
   CONSTRAINT `Rsvp_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `Users` (`userID`),
   CONSTRAINT `Rsvp_ibfk_2` FOREIGN KEY (`eventID`) REFERENCES `Events` (`eventID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+ALTER TABLE
+  `Rsvp`
+  DROP FOREIGN KEY Rsvp_ibfk_1,
+  ADD FOREIGN KEY (userID)
+  REFERENCES Users(userID)
+  ON DELETE CASCADE;
+
+ALTER TABLE
+  `Rsvp`
+  DROP FOREIGN KEY Rsvp_ibfk_2,
+  ADD FOREIGN KEY (eventID)
+  REFERENCES Events(eventID)
+  ON DELETE CASCADE;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

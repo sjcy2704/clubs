@@ -46,10 +46,20 @@ watchEffect(async () => {
     v-model="allClubs"
     label="My Clubs"
   >
+    <p v-if="allClubs.length <= 0">
+      Join one here <RouterLink class="link" to="/clubs">Clubs</RouterLink>
+    </p>
     <Pagination
+      v-if="allClubs.length > 0"
       :current-page="currentPage"
       :page-count="pageCount"
       @changepage="onPageChange"
     />
   </ViewClubs>
 </template>
+
+<style scoped>
+.link {
+  color: black;
+}
+</style>

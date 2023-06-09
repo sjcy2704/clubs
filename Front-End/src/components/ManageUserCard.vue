@@ -11,6 +11,8 @@ const props = defineProps({
   role: String,
   gender: String,
   currManager: Boolean,
+  avatar: String,
+  admin: Boolean,
 });
 
 const genderValues = {
@@ -20,20 +22,23 @@ const genderValues = {
 };
 
 async function removeMember() {
-  await api
-    .post("/members/remove", { clubID: props.clubID, userID: props.userID })
-    .then(() => {
+  if (!props.admin) {
+    await api
+      .post("/members/remove", { clubID: props.clubID, userID: props.userID })
+      .then(() => {
+        router.go();
+      });
+  } else {
+    await api.post("/users/remove", { userID: props.userID }).then(() => {
       router.go();
     });
+  }
 }
 </script>
 
 <template>
   <div class="userCard flex align-center">
-    <img
-      src="http://localhost:8080/user-avatars/default-user.jpg"
-      class="profilePic"
-    />
+    <img :src="props.avatar" class="profilePic" />
     <div class="flex justify-between w-100 sm-col">
       <div class="userDetails">
         <h3>{{ props.firstName + " " + props.familyName }}</h3>

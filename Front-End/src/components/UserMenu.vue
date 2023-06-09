@@ -24,7 +24,7 @@ const userStore = useUserStore();
     <div class="dropdownContent">
       <div class="dropdownItems flex col">
         <div v-if="userStore.user.userType === 'admin'">
-          <RouterLink class="navLink flex justify-between" to="/"
+          <RouterLink class="navLink flex justify-between" to="/dashboard"
             >Dashboard
             <span><font-awesome-icon icon="fa-solid fa-table-columns" /></span
           ></RouterLink>

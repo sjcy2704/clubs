@@ -13,6 +13,7 @@ const props = defineProps({
   disabled: Boolean,
   eventID: Number,
   modelValue: Object,
+  clubID: Number,
 });
 
 const emits = defineEmits(["update:modelValue"]);
@@ -68,10 +69,18 @@ async function removeEvent() {
         </div>
       </div>
       <div class="options flex align-center">
-        <RouterLink :to="$route.path + '/' + props.eventID + '/guestlist'"
+        <RouterLink
+          :to="
+            '/clubs/' +
+            props.clubID +
+            '/manage/events/' +
+            props.eventID +
+            '/guestlist'
+          "
           >Guest List <font-awesome-icon icon="fa-solid fa-list"
         /></RouterLink>
-        <RouterLink :to="$route.path + '/' + props.eventID"
+        <RouterLink
+          :to="'/clubs/' + props.clubID + '/manage/events/' + props.eventID"
           >Edit <font-awesome-icon icon="fa-solid fa-pen-to-square"
         /></RouterLink>
         <a @click="removeEvent"
