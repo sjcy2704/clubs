@@ -2,15 +2,27 @@
 import ClubCard from "./ClubCard.vue";
 import { ref, toRef } from "vue";
 import { watchEffect } from "vue";
+import Pagination from "./Pagination.vue";
+import { api } from "../helpers/api";
 
 const props = defineProps({
-  modelValue: Array,
+  pathRoute: String,
   label: String,
   manager: Boolean,
 });
 
-const emits = defineEmits(["changecategory", "update:modelValue"]);
-let allClubs = ref(props.modelValue);
+let clubs = ref([]);
+let pageCount = ref(0);
+let currentPage = ref(1);
+
+function onPageChange(page) {
+  currentPage.value = page;
+}
+
+await api.get("/clubs").then(({ data }) => {
+  pageCount.value = data.pageCount;
+  clubs.value = data.data;
+});
 
 let search = ref("");
 let showSearch = ref(false);
@@ -30,26 +42,16 @@ const categories = ref([
   { value: "Waite" },
 ]);
 
-function searchClubs(search) {
-  if (search === "") {
-    return allClubs.value;
+watchEffect(async () => {
+  let path = `/${props.pathRoute}?page=${currentPage.value}&search=${search.value}`;
+  if (categoryFilter.value !== "") {
+    path = `/${props.pathRoute}?page=${currentPage.value}&category=${categoryFilter.value}&search=${search.value}`;
   }
 
-  search = search.toLowerCase();
-  return allClubs.value.filter(
-    (club) =>
-      club.name.toLowerCase().includes(search) ||
-      club.short_name.toLowerCase().includes(search) ||
-      club.category.toLowerCase().includes(search)
-  );
-}
-
-let clubs = ref([]);
-
-watchEffect(() => {
-  emits("changecategory", categoryFilter.value);
-  allClubs.value = props.modelValue;
-  clubs.value = searchClubs(search.value);
+  await api.get(path).then(({ data }) => {
+    clubs.value = data.data;
+    pageCount.value = data.pageCount;
+  });
 });
 </script>
 
@@ -119,8 +121,12 @@ watchEffect(() => {
       />
       <h2 class="noClubs" v-if="clubs.length <= 0">No Clubs</h2>
     </div>
-
-    <slot />
+    <Pagination
+      v-if="clubs.length > 0"
+      :current-page="currentPage"
+      :page-count="pageCount"
+      @changepage="onPageChange"
+    />
   </div>
 </template>
 
