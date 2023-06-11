@@ -14,6 +14,7 @@ const props = defineProps({
 let clubs = ref([]);
 let pageCount = ref(0);
 let currentPage = ref(1);
+let prevCategory = ref("");
 
 function onPageChange(page) {
   currentPage.value = page;
@@ -43,6 +44,11 @@ const categories = ref([
 ]);
 
 watchEffect(async () => {
+  if (categoryFilter.value !== prevCategory.value && currentPage.value > 1) {
+    prevCategory.value = categoryFilter.value;
+    currentPage.value = 1;
+  }
+
   let path = `/${props.pathRoute}?page=${currentPage.value}&search=${search.value}`;
   if (categoryFilter.value !== "") {
     path = `/${props.pathRoute}?page=${currentPage.value}&category=${categoryFilter.value}&search=${search.value}`;
